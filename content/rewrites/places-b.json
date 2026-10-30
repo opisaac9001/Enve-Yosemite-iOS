@@ -1,0 +1,87 @@
+{
+  "bridge-vernal-fall-footbridge": {
+    "summary": "Footbridge over the Merced at the top of the first climb from Happy Isles, with the classic view of Vernal Fall.",
+    "notice": "NPS, October 2, 2026: Mist Trail work above the footbridge means a Monday to Thursday, 7 am to 3:30 pm detour through October, subject to change. Nothing in that notice closes the footbridge itself. Check current trail conditions."
+  },
+  "bridge-swinging-bridge": {
+    "summary": "Footbridge over the Merced beside the Swinging Bridge picnic area, looking up at Yosemite Falls.",
+    "accessibility": "NPS describes paved, mostly level approaches to the bridge. The picnic ground is unpaved and the beach is not wheelchair accessible."
+  },
+  "bridge-sentinel-bridge": {
+    "summary": "A Merced River crossing with the well-known view of Half Dome and its reflection, best around sunset.",
+    "accessibility": "NPS describes marked accessible parking nearby and a paved sidewalk onto the bridge."
+  },
+  "bridge-el-capitan-bridge": {
+    "summary": "The Merced crossing on El Capitan Drive next to El Capitan Meadow.",
+    "notice": "NPS, October 2, 2026: the trail across El Capitan Bridge is closed on weekdays through December for bridge work, and drivers should expect 15-minute delays Monday to Friday, 7 am to 7 pm, with short closures and a detour possible. Check current conditions before relying on this crossing."
+  },
+  "ev-yosemite-falls": { "summary": "In the north-east corner of the Yosemite Falls day-use lot; NPS counts ten Level 2 chargers." },
+  "ev-ahwahnee": { "summary": "At the south-west end of The Ahwahnee's parking; NPS counts six Level 2 chargers. You do not need to be a hotel guest, but move the car once it has charged." },
+  "ev-valley-lodge-laurel": {
+    "summary": "Four chargers between the Laurel and Juniper buildings. Another four stand in front of Alder opposite the front desk, without a confirmed pin, making eight at the Lodge.",
+    "details": [
+      { "label": "Chargers at this pin", "text": "4 J1772 ports, Level 2 AC. This is the installed count, not how many are free." },
+      { "label": "The other Lodge bank", "text": "Four more chargers face Alder, across from the front desk. Follow the signs; the Maple-versus-Alder labelling on the map has not been resolved, and the count on this pin covers Laurel and Juniper only." },
+      { "label": "Network", "text": "Rivian Waypoints, per the AFDC station record." },
+      { "label": "Rated power", "text": "AFDC lists up to 11 kW per port. What your car draws depends on the vehicle and the site." },
+      { "label": "Who runs it", "text": "Installed under the Rivian and Adopt a Charger program for Yosemite and managed by Yosemite Hospitality according to NPS. The electrical contractor is not recorded." },
+      { "label": "Before you plug in", "text": "Carry the J1772 adapter your car needs, read the posted price and idle-fee rules instead of assuming charging is free, and expect no live status: this guide has no occupancy feed." }
+    ]
+  },
+  "ev-curry-village": { "summary": "In the west lot east of Stoneman Bridge; NPS counts twenty Level 2 chargers." },
+  "ev-welcome-center": { "summary": "In the lot east of the Valley Welcome Center; NPS counts four Level 2 chargers." },
+  "ev-wawona-store": {
+    "summary": "In the lot beside the Wawona Store, near the Yosemite History Center; NPS counts 24 Level 2 chargers.",
+    "sourceNote": "NPS public GIS feature 21097 and AFDC station 391166, reviewed October 2, 2026. The pin is an orientation point, not a field observation."
+  },
+  "ev-el-portal-market": {
+    "summary": "Two Level 2 chargers next to the El Portal Market and gas station, outside the park entrance.",
+    "notice": "The pin uses AFDC station coordinates, not surveyed bay positions. Follow the signs; whether the equipment works or a bay is free is not known to this guide.",
+    "sourceNote": "AFDC station 391217, confirmed and updated October 2, 2026 (04:15 UTC), retrieved the same day; geocode status GPS."
+  },
+  "ev-tuolumne-meadows": {
+    "summary": "Four Level 2 chargers near the Tuolumne Meadows store on the site of the old gas station. The road in is seasonal; check Tioga Road first.",
+    "sourceNote": "NPS public GIS feature 22864 and AFDC station 391103, reviewed October 2, 2026. The pin is an orientation point, not a field observation."
+  },
+  "ev-redwoods-wawona": {
+    "summary": "Two Level 2 chargers at The Redwoods central office, 8038 Chilnualna Falls Road.",
+    "notice": "The pin uses AFDC station coordinates, not surveyed bay positions. Follow the signs; whether the equipment works or a bay is free is not known to this guide.",
+    "sourceNote": "AFDC station 220767, confirmed and updated October 2, 2026 (02:13 UTC), retrieved the same day; geocode status GPS.",
+    "details": [
+      { "label": "Chargers at this pin", "text": "2 J1772 ports, Level 2 AC. This is the installed count, not how many are free." },
+      { "label": "Network", "text": "ChargePoint, per the AFDC station record." },
+      { "label": "Rated power", "text": "AFDC lists up to 6.5 kW per port. What your car draws depends on the vehicle and the site." },
+      { "label": "Who runs it", "text": "Hosted at The Redwoods central office on the ChargePoint network; the installer is not recorded." },
+      { "label": "Before you plug in", "text": "Carry the J1772 adapter your car needs, read the posted price and idle-fee rules instead of assuming charging is free, and expect no live status: this guide has no occupancy feed." }
+    ]
+  },
+  "dump-upper-pines": {
+    "summary": "RV waste disposal just inside the Upper Pines entrance. NPS lists it as open all year with fresh water; Recreation.gov lists use as free.",
+    "notice": "Follow the signs to the relocated station. The pin is approximate and today's operation has not been checked.",
+    "sourceNote": "Reviewed October 2, 2026. Season and water come from NPS guidance, the free-use note from Recreation.gov. Position: © OpenStreetMap contributors, node 3424485565 version 8 (September 18, 2025), ODbL. NPS GIS still shows the earlier riverside spot.",
+    "details": [
+      { "label": "Where the pin comes from", "text": "A community-mapped position for the moved station: an October 2024 edit recorded a locally verified move and the point was nudged in September 2025. The exact drain and entrance are still unconfirmed." },
+      { "label": "Fresh water", "text": "NPS lists fresh water at the station. Fill drinking tanks only from the outlet signed for potable water, never with a rinse hose." },
+      { "label": "Who may use it", "text": "Whether visitors without a campsite can use the station is unconfirmed. Follow campground signs and ask staff before entering restricted loops." }
+    ]
+  },
+  "dump-wawona": {
+    "summary": "A summer-only RV dump station on Forest Drive east of the Wawona Store. NPS lists fresh water at its dump stations.",
+    "notice": "Summer only; do not expect it to be open in October. Today's operation has not been checked.",
+    "sourceNote": "Reviewed October 2, 2026. NPS public GIS feature 22323, edited January 10, 2026, with unknown source date and accuracy. The published season is not a live status.",
+    "details": [
+      { "label": "Where the pin comes from", "text": "An NPS digitized point of unknown accuracy. This is the Wawona dump station, separate from the campground pin." },
+      { "label": "Before using it", "text": "Confirm the season, hours, fees and whether non-campers may use it. Follow the signs for potable water versus rinse outlets." }
+    ]
+  },
+  "dump-tuolumne-meadows": {
+    "summary": "The RV dump station near Tuolumne Meadows is closed until further notice for wastewater-plant work. Do not plan around it.",
+    "notice": "Closed until further notice. This pin records a location, not a working station.",
+    "sourceNote": "Reviewed October 2, 2026. NPS public GIS feature 20409, edited January 10, 2026, with unknown source date and accuracy. The closure comes from NPS campground guidance, not a live feed.",
+    "details": [
+      { "label": "Closure", "text": "NPS reports an ongoing closure for work on the wastewater treatment plant. The normal season is summer only; reopening and water availability are unknown." },
+      { "label": "Where the pin comes from", "text": "An NPS digitized point of unknown accuracy, recording the facility rather than an available service." },
+      { "label": "Road access", "text": "Tioga Road is seasonal; check its status before heading to the high country." }
+    ]
+  }
+}

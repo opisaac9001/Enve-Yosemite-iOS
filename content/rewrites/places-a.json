@@ -1,0 +1,214 @@
+{
+  "parking-yosemite-village": {
+    "summary": "The largest of the three public day-use lots in the Valley and the usual first stop for drivers heading to the shuttle.",
+    "accessibility": "Marked accessible spaces. The EV chargers are in the Welcome Center's east lot and are listed as their own place."
+  },
+  "parking-yosemite-falls": {
+    "summary": "Public day-use lot serving Yosemite Falls, Camp 4 and the Lodge area.",
+    "accessibility": "Ten Level 2 chargers sit in this lot; see the EV charging entry."
+  },
+  "parking-curry-east": {
+    "summary": "Part of the main Curry Village parking, beside the eastbound shuttle stop.",
+    "accessibility": "Twenty Level 2 chargers are spread across the Curry Village lots."
+  },
+  "parking-curry-orchard": { "summary": "The orchard section of the main Curry Village parking." },
+  "parking-curry-west": { "summary": "Part of the main Curry Village parking, beside the westbound shuttle stop." },
+  "parking-bridalveil": { "summary": "Public lot at the start of the Bridalveil Fall paths." },
+  "parking-sentinel-bridge": { "summary": "A small public lot between Sentinel Bridge and Cook's Meadow." },
+  "parking-el-capitan-meadow": {
+    "summary": "Signed roadside spaces along the meadow.",
+    "notice": "Keep off the vegetation and never leave a car where it narrows the road."
+  },
+  "parking-trailhead": {
+    "summary": "Overnight parking reserved for people holding a wilderness permit.",
+    "notice": "Not for day visitors."
+  },
+  "parking-welcome-center": {
+    "summary": "A small lot next to the Welcome Center.",
+    "notice": "It fills quickly; Yosemite Village Parking is the dependable day-use choice.",
+    "accessibility": "Four Level 2 chargers are close by."
+  },
+  "parking-village-store": {
+    "summary": "A small lot intended for Village Store customers.",
+    "notice": "It fills quickly; Yosemite Village Parking is the dependable day-use choice."
+  },
+  "parking-happy-isles-center": {
+    "summary": "Accessible spaces at the end of the restricted Happy Isles road.",
+    "accessibility": "Only vehicles showing an accessible placard may use these spaces."
+  },
+  "parking-happy-isles-restroom": {
+    "summary": "Accessible spaces beside the Happy Isles restroom.",
+    "accessibility": "Only vehicles showing an accessible placard may use these spaces."
+  },
+  "parking-mirror-lake": {
+    "summary": "Accessible spaces close to the Mirror Lake trailhead.",
+    "accessibility": "Only vehicles showing an accessible placard may use these spaces."
+  },
+  "parking-exploration-center": {
+    "summary": "Marked accessible spaces at the Exploration Center.",
+    "accessibility": "Only vehicles showing an accessible placard may use these spaces."
+  },
+  "parking-sentinel-beach": {
+    "summary": "A small lot at Sentinel Beach close to the Four Mile Trailhead, with picnic tables, grills, vault toilets and seasonal access to the river.",
+    "notice": "The pin is the NPS picnic-area point rather than a surveyed lot entrance. Read the posted hours before a long Four Mile Trail day; the lot may not be open when you get back.",
+    "accessibility": "Paths are unpaved and mostly level. The 2022 NPS accessibility guide describes uneven parking with no marked accessible spaces, so confirm on arrival."
+  },
+  "parking-swinging-bridge": {
+    "summary": "A small lot for the Swinging Bridge picnic area and nearby Valley paths, and a fallback for Four Mile Trail hikers.",
+    "notice": "Space is limited. The pin sits at the centre of the NPS parking polygon, not at a surveyed entrance, and no walking route has been checked.",
+    "accessibility": "Marked accessible spaces, accessible picnic tables and vault toilets. The picnic ground is unpaved but level and paved, mostly flat walkways reach the bridge; the beach itself is not wheelchair accessible."
+  },
+  "welcome-center": {
+    "summary": "Ranger information desk, maps, Junior Ranger booklets, lost and found, gifts and passport stamps.",
+    "accessibility": "Wheelchair accessible, with accessible restrooms and Wi-Fi.",
+    "details": [
+      { "label": "Road and weather recording", "text": "Dial 209-372-0200, then 1 and 1 again, for the latest recorded road conditions; the recording also covers weather. NPS points out that its web road table only shows planned or long-term closures, so listen to the recording before winter trips and whenever conditions shift." },
+      { "label": "Talking to a ranger", "text": "Dial 3, then 5, for general questions between 9 am and 4 pm Pacific (closed over lunch). Those are phone hours; the building's own hours are listed separately." }
+    ]
+  },
+  "exploration-center": {
+    "summary": "Changing exhibits, the Spirit of Yosemite film, park books and gifts.",
+    "accessibility": "Wheelchair accessible; exhibits include tactile and audio elements."
+  },
+  "yosemite-museum": {
+    "summary": "Indoor and outdoor exhibits, cultural demonstrations and a museum shop.",
+    "accessibility": "Wheelchair accessible."
+  },
+  "wilderness-center": {
+    "summary": "Where wilderness permits are picked up and trips are planned with staff.",
+    "accessibility": "Wheelchair accessible. NPS points to marked accessible parking behind the Post Office next door."
+  },
+  "ansel-adams-gallery": {
+    "summary": "Fine-art prints, photography, books and gifts, with exhibitions and classes.",
+    "notice": "A visitor reported in September 2026 that batteries and phone chargers were for sale here. Stock changes, so ask the gallery before you count on it."
+  },
+  "degnans-kitchen": { "summary": "Coffee, breakfast, deli sandwiches and grab-and-go food, with indoor seating and public Wi-Fi." },
+  "village-grill": { "summary": "Burgers, sandwiches, hot dogs and soft serve at outdoor tables." },
+  "village-store": { "summary": "The Valley's widest range of groceries, gifts and supplies." },
+  "village-bike-rentals": {
+    "summary": "Rental bikes and a tour desk.",
+    "notice": "Published hours disagree (checked October 25, 2026): Guide 51.8 says 9 am to 5 pm from September 28, while the operator's undated table says 8 am to 7 pm. Both close the 2026 season on October 25, conditions permitting. Ask at the stand for today's hours."
+  },
+  "village-post-office": {
+    "summary": "A United States Postal Service branch.",
+    "accessibility": "Accessible entrance on the west side. NPS points to marked accessible parking west of the Yosemite Museum, linked by paved paths."
+  },
+  "yosemite-garage": {
+    "summary": "Vehicle repairs and propane by arrangement. No gasoline is sold anywhere in the Valley.",
+    "notice": "NPS says the garage takes no walk-ins: call 209-372-1060 to arrange repairs or propane. Roadside help and towing run around the clock, and the air hose in front works 24 hours. Confirm before you drive over.",
+    "accessibility": "NPS lists wheelchair access and marked accessible parking at the front (page dated September 26, 2025; checked October 26, 2026).",
+    "details": [
+      { "label": "Getting through", "text": "The roadside number is the direct line for towing and breakdowns. Visitors have suggested the Yosemite Hospitality (Aramark) switchboard as another way to reach the garage and other concession services; its hours and whether it transfers calls have not been checked." }
+    ]
+  },
+  "medical-clinic": {
+    "summary": "Urgent and primary care. This is not an emergency room: call or text 911 for emergencies.",
+    "notice": "NPS clinic page dated September 2 (checked October 23, 2026): urgent-care hours depend on staffing, few insurance plans are accepted and out-of-state patients should expect to pay directly. Phone first.",
+    "accessibility": "Wheelchair accessible."
+  },
+  "mariposa-library": {
+    "summary": "A county library branch with public computers and Wi-Fi.",
+    "notice": "Hours follow the county schedule; check it once you have signal."
+  },
+  "ahwahnee-hotel": { "summary": "The historic hotel, with dining rooms, shops and guest services." },
+  "ahwahnee-dining-room": {
+    "summary": "Fine dining; book ahead for dinner.",
+    "details": [
+      { "label": "Reservations", "text": "Guide 51.8 strongly recommends dinner reservations by phone (209-372-1489) or on OpenTable. The operator's page, checked October 5, 2026, adds that a hotel booking does not guarantee a table and steers guests to OpenTable." },
+      { "label": "Dress", "text": "Guide 51.8 calls for appropriate attire at dinner. The operator spells it out: long trousers with a collared shirt, or a dress, skirt or trousers with a blouse; no hiking clothes, shorts, T-shirts, tank tops, flip-flops or baseball caps. Breakfast and brunch are casual." },
+      { "label": "Afternoon tea", "text": "Served 4 to 5 pm daily for hotel guests only, according to the operator." }
+    ]
+  },
+  "ahwahnee-bar": {
+    "summary": "Cocktails, wine, appetizers and lighter plates.",
+    "details": [ { "label": "Dress", "text": "Casual clothing is fine at the bar, per the operator's page checked October 5, 2026." } ]
+  },
+  "ahwahnee-gift-shop": { "summary": "Gifts and hotel merchandise." },
+  "ahwahnee-sweet-shop": { "summary": "Coffee, sweets, snacks and a few provisions." },
+  "curry-village": {
+    "summary": "A lodging hub with restaurants, a store, rentals, public showers and parking.",
+    "notice": "The operator's lodging page (checked October 23, 2026) says Curry Village closes November 29 to December 10, 2026. Confirm which guest services are affected; nearby activities may still run."
+  },
+  "curry-coffee-corner": { "summary": "Coffee and a light breakfast." },
+  "curry-bar-1899": { "summary": "Craft beer, cocktails and light meals, inside or out." },
+  "curry-seven-tents": { "summary": "Home-style breakfast and dinner with indoor seating." },
+  "curry-pizza-deck": { "summary": "Pizza by the pie or slice, salads and garlic bread on an outdoor deck." },
+  "curry-meadow-grill": {
+    "summary": "Counter-service tacos and burritos with outdoor seating.",
+    "notice": "Seasonal; it reopens in spring or summer. Check once you have signal."
+  },
+  "curry-ice-cream": { "summary": "A seasonal ice-cream counter." },
+  "curry-gift-grocery": { "summary": "Gifts and basic groceries." },
+  "mountain-shop": { "summary": "Hiking and climbing gear and clothing." },
+  "mountaineering-school": {
+    "summary": "Guided hikes, climbing instruction and other outdoor programs.",
+    "notice": "Operator guidance checked October 25, 2026: lessons and guided climbs must be reserved, while gear rentals are first-come with no reservations. Confirm before travelling."
+  },
+  "curry-bike-rentals": {
+    "summary": "Rental bikes and a tour desk.",
+    "notice": "Published hours disagree (checked October 25, 2026): Guide 51.8 says 9 am to 5 pm from September 28, while the operator's undated table says 8 am to 7 pm. Both close the 2026 season on October 25, conditions permitting. Ask at the stand for today's hours."
+  },
+  "curry-raft-rentals": {
+    "summary": "Raft rentals on the Merced when the river allows it.",
+    "notice": "Seasonal and dependent on river conditions, usually late spring into summer."
+  },
+  "curry-pool": { "summary": "A seasonal pool, open when conditions allow." },
+  "curry-ice-rink": {
+    "summary": "An outdoor rink with skating sessions of two and a half hours, conditions permitting.",
+    "notice": "Seasonal; the opening date depends on conditions."
+  },
+  "valley-lodge": { "summary": "A lodging hub with restaurants, a gift shop, tour desk, bike rentals and a pool." },
+  "base-camp-eatery": { "summary": "Counter service for breakfast, burgers, chicken, pasta and more." },
+  "lodge-starbucks": { "summary": "Coffee, snacks and a light breakfast." },
+  "mountain-room-lounge": { "summary": "Beer, cocktails and light meals." },
+  "mountain-room-restaurant": { "summary": "A relaxed steakhouse; reservations recommended." },
+  "lodge-gift-shop": {
+    "summary": "Gifts, snacks and drinks.",
+    "notice": "Guide 51.8 prints 8 am to 9 pm; the operator's undated lodge page says 8 am to 8 pm. Check the closing time at the door."
+  },
+  "lodge-bike-rentals": {
+    "summary": "Adaptive bikes must be reserved in advance; call the Lodge stand to book an ADA scooter. Wheelchair rentals are listed without a reservation policy. Standard bikes are first-come, so confirm availability.",
+    "notice": "Published hours disagree (checked October 25, 2026): Guide 51.8 says 9 am to 5 pm from September 28, while the operator's undated table says 8 am to 7 pm. Both close the 2026 season on October 25, conditions permitting. Ask at the stand for today's hours."
+  },
+  "lodge-pool": { "summary": "A seasonal outdoor pool." },
+  "housekeeping-camp": {
+    "summary": "Seasonal riverside lodging in numbered units with concrete walls, a canvas roof, patio, bear locker and fire ring. The operator counts 266 units; the NPS building labels used for pins are not a booking inventory.",
+    "notice": "Search Places for a unit number, for example 'Housekeeping site 179'. Unit pins are approximate building centres; the front desk confirms where your unit is.",
+    "details": [
+      { "label": "The unit", "text": "Three concrete walls, a canvas roof, a privacy curtain and a covered patio. A standard unit sleeps up to six with a double bed, twin bunks and two optional cots. There are lights and outlets but no phone or TV." },
+      { "label": "Arriving", "text": "Check-in is at 4 pm and check-out at 11 am. Bring bedding or rent it on site. The desk is staffed around the clock during the season." },
+      { "label": "Services and access", "text": "Non-guests may use the laundry for a fee. The showers are only for registered guests; Curry Village sells public showers. Shuttle stop 12 is the camp's stop." },
+      { "label": "Food and fire", "text": "Everything with a scent, including coolers, toiletries and rubbish, goes in a closed, latched bear locker. Every unit has a grill and fire ring; wood fires are allowed only 5 to 10 pm and any current restrictions apply." },
+      { "label": "House rules", "text": "Quiet hours run 10 pm to 6 am. No pets other than service animals. Sleeping in vehicles or outside the units is not allowed." },
+      { "label": "Accessible units", "text": "Ask for an accessible unit when booking. The operator describes nearby parking, paved paths and accessible toilets, but the accessibility of any particular numbered unit has not been checked." }
+    ]
+  },
+  "housekeeping-store": {
+    "summary": "Basic supplies and camping items in the office building, which also handles registration. Firewood and rental bedding come through camp staff.",
+    "accessibility": "NPS lists the store as accessible; ask staff about the best approach."
+  },
+  "housekeeping-laundry": {
+    "summary": "Coin washers and dryers near the registration office and showers. NPS says non-guests are welcome to use it.",
+    "accessibility": "NPS lists the laundry as accessible; ask staff about the best approach."
+  },
+  "housekeeping-showers": {
+    "summary": "Shower houses next to registration and the laundry, with soap and towels, for registered Housekeeping guests only. Curry Village has paid public showers.",
+    "accessibility": "NPS lists accessible showers. The pin marks the men's shower building; ask staff for the accessible entrance."
+  },
+  "conservation-heritage-center": {
+    "summary": "Seasonal exhibits, a natural-history library and information.",
+    "accessibility": "The historic stone steps rule out wheelchair access."
+  },
+  "happy-isles-center": {
+    "summary": "Exhibits, drop-in activities and seasonal art classes.",
+    "accessibility": "The building is accessible; driving in and parking require an accessible placard."
+  },
+  "yosemite-chapel": { "summary": "A historic chapel with community services." },
+  "upper-pines-campground": { "summary": "Reservation campground near Happy Isles and the East Valley shuttle." },
+  "lower-pines-campground": { "summary": "Reservation campground on the bank of the Merced." },
+  "north-pines-campground": { "summary": "Reservation campground between the Merced and Tenaya Creek." },
+  "camp-4": {
+    "summary": "A walk-in campground with a long place in climbing history.",
+    "notice": "Booking rules change by season; check Recreation.gov."
+  }
+}

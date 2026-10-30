@@ -1,0 +1,18 @@
+{
+  "version": "f983ef12d21c",
+  "fetchedAt": "2026-09-21T23:44:40.560Z",
+  "files": [
+    {
+      "file": "park-roads.geojson",
+      "count": 224,
+      "bytes": 69561,
+      "sha256": "6ee28e7b6120e737faf1547acb7b1040049f52968d21e75edec76740e4a1e8dd"
+    },
+    {
+      "file": "park-pois.geojson",
+      "count": 207,
+      "bytes": 46273,
+      "sha256": "c92c96291411956c3a08a93c6896c5cb5103db386c63671fb09eff01aedccc32"
+    }
+  ]
+}

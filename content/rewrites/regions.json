@@ -1,0 +1,50 @@
+{
+  "glacier-point": {
+    "tagline": "The rim view of Half Dome and the Valley floor 3,200 feet down",
+    "season": "Glacier Point Road closes for winter, usually from the first heavy snow in November until late May or June. In winter it is ploughed only as far as the Badger Pass ski area.",
+    "summary": "A 16-mile spur road climbs from the Wawona Road at Chinquapin to the Glacier Point overlook, passing Badger Pass, the Sentinel Dome and Taft Point trailheads and Washburn Point.",
+    "highlights": ["The Glacier Point overlook and amphitheater", "Sentinel Dome and Taft Point, each about two miles round trip", "Washburn Point", "The Four Mile and Panorama trails link the rim to the Valley on foot", "Badger Pass skiing in winter when conditions allow"],
+    "services": ["Glacier Point Gift Shop, 9 am to 7 pm, closing October 25, 2026 (Guide 51.8)", "The Glacier Point tour bus from the Valley runs through October 11, 2026", "Badger Pass Ski Area is closed for the season and usually opens in December or January depending on snow", "No fuel; the nearest pumps are at Wawona or Crane Flat", "Bridalveil Creek Campground, seasonal and by reservation"],
+    "cautions": ["Glacier Point parking fills by late morning in summer, and no shuttle from the Valley is in the bundled timetable.", "The road can close at short notice for snow, fire or construction; check conditions before driving.", "Vehicle length limits apply on parts of the road; see the NPS driving page."]
+  },
+  "wawona-mariposa-grove": {
+    "tagline": "Giant sequoias, the historic Wawona Hotel and the South Entrance",
+    "season": "Wawona is open all year. The Mariposa Grove shuttle from the Welcome Plaza may run between April 15 and November 30 (dates vary); when it is not running, the walk from the plaza to the grove is about two miles each way.",
+    "summary": "The South Entrance on SR-41 leads to the Mariposa Grove Welcome Plaza and on to Wawona, with the Pioneer Yosemite History Center, a store, a gas station and a campground.",
+    "highlights": ["Mariposa Grove, about 500 mature giant sequoias including the Grizzly Giant", "The Wawona Hotel, historic and closed for renovation per Guide 51.8", "The Pioneer Yosemite History Center and its covered bridge, open daily", "The Chilnualna Falls Trail", "Wawona Visitor Center at Hill's Studio, seasonal"],
+    "services": ["Wawona Visitor Center and bookstore, 8 am to 5 pm, closing October 31, 2026", "Mariposa Grove Depot, 9 am to 5 pm, for gifts, information and the passport stamp", "Wawona Gas Station: Guide 51.8 gives staffed hours of 9 am to 5 pm while the NPS place page says 8 am to 5 pm (checked October 25, 2026); pay-at-the-pump is listed as 24 hours. Confirm attendant and propane hours", "Wawona Store, 8 am to 8 pm", "Wawona post office: Guide 51.8 lists Monday to Friday 9 am to 1 pm and Saturday 9 am to noon; the operator lists Monday to Saturday 9 am to 5 pm without a date (checked October 25, 2026). Confirm with the branch", "Wawona Campground: Loops B and C close for the season on October 26; Loop A takes reservations until November 29 and then goes first-come (NPS update, September 28, 2026)", "The Wawona Hotel is closed for renovation (Guide 51.8)"],
+    "cautions": ["Mariposa Grove Road is closed to private cars most of the year; ride the shuttle or walk. Rules for accessible-placard holders differ, so read the NPS page.", "Vehicles over the posted length cannot use Mariposa Grove Road; RVs and trailers stay at the Welcome Plaza.", "Welcome Plaza parking fills early on summer days."]
+  },
+  "tioga-tuolumne": {
+    "tagline": "High meadows, granite domes and Tenaya Lake along the Sierra crest",
+    "season": "Tioga Road, the SR-120 crossing of the park, closes for winter, typically from November until late May, June or even July after a big snow year. NPS announces each spring's opening date.",
+    "summary": "Tioga Road runs 47 miles from Crane Flat to Tioga Pass at about 9,940 feet, California's highest highway pass, by way of Olmsted Point, Tenaya Lake and Tuolumne Meadows with its visitor center, campground, store, lodge and wilderness center.",
+    "highlights": ["Olmsted Point's view of the north side of Half Dome and Clouds Rest", "Tenaya Lake's beaches and the Sunrise Lakes trailhead", "Tuolumne Meadows, Lembert Dome, Soda Springs and Parsons Lodge", "Trailheads for Cathedral Lakes, Dog Lake, Elizabeth Lake and Gaylor Lakes", "A free summer shuttle in Tuolumne Meadows when it operates"],
+    "services": ["Tuolumne Meadows Visitor Center, 9 am to 5 pm, closing September 27, 2026", "Tuolumne Meadows Wilderness Center, 8 am to 5 pm, closing October 14, 2026", "The Tuolumne Meadows store, grill and lodge are closed for the season (Guide 51.8)", "White Wolf Lodge, store and dining room are closed for the season", "Tuolumne Meadows and Porcupine Flat campgrounds, seasonal", "No fuel anywhere on Tioga Road; fill up at Crane Flat or in Lee Vining"],
+    "cautions": ["Most of the road is above 8,000 feet; weather turns quickly and summer afternoons often bring thunderstorms.", "Snow can shut the road for a while even in early summer and autumn. Carry chains when required and check the NPS road table before driving.", "Phone coverage is patchy; everything in this app already works offline, so save conditions before leaving the Valley."]
+  },
+  "hetch-hetchy": {
+    "tagline": "A quiet reservoir valley with early-season waterfalls",
+    "season": "Open all year, but the entrance gate keeps daytime hours that change with the season. Wapama and Tueeulala Falls run strongest in spring, and summer is hot.",
+    "summary": "Hetch Hetchy Valley holds O'Shaughnessy Dam and the reservoir that supplies San Francisco. Its own entrance station and a narrow road lead to the dam, the trailheads and a backpackers' campground.",
+    "highlights": ["The walk across O'Shaughnessy Dam and through the tunnel", "The Wapama Falls Trail, about five miles round trip", "Tueeulala Falls in spring", "Low-elevation trails that open before the high country does"],
+    "services": ["No food, fuel or lodging inside the Hetch Hetchy area", "A backpackers' campground for wilderness permit holders only", "The nearest services are in Groveland and along SR-120"],
+    "cautions": ["The entrance gate is open only during posted daytime hours; plan to arrive and leave inside them.", "Vehicles over the posted length, about 25 feet, are not allowed on Hetch Hetchy Road.", "No swimming or boating in the reservoir.", "Wapama Falls footbridges: an NPS safety project (PEPC 87715, cleared November 2019) warns that the westernmost bridge can flood during spring runoff and heavy rain and become impassable, and that hikers have been swept off. Current bridge conditions are not tracked here."]
+  },
+  "crane-flat-big-oak-flat": {
+    "tagline": "The north-west junction: fuel, two sequoia groves and the turn for Tioga Road",
+    "season": "Open all year; winter chain controls are common on Big Oak Flat Road. The Tuolumne Grove and Merced Grove trails can be walked in snow.",
+    "summary": "Crane Flat is the junction of Big Oak Flat Road and Tioga Road, with the park's busiest gas station, a small store, a campground and short trails into the Tuolumne and Merced groves of giant sequoias.",
+    "highlights": ["Tuolumne Grove, about 2.5 miles round trip with a steep climb back", "Merced Grove, about three miles round trip", "Crane Flat Lookout", "The Big Oak Flat Information Station near the entrance"],
+    "services": ["Crane Flat Gas and Grocery: Guide 51.8 lists the store at 8 am to 5 pm through October 25, 2026, while the operator says the store is closed for the season (checked October 25). Both describe the pumps as year-round, 24-hour pay-at-the-pump, gas and diesel", "Big Oak Flat Information Station and bookstore, 8 am to 5 pm (9 am to 5 pm from October 19)", "Hodgdon Meadow Campground goes first-come after October 26; Crane Flat and Tamarack Flat are seasonal"],
+    "cautions": ["Big Oak Flat Road has steep grades and frequent winter chain controls between the entrance and the Valley.", "Crane Flat is the last fuel before Tioga Road and Tuolumne Meadows."]
+  },
+  "el-portal-arch-rock": {
+    "tagline": "The lowest, all-season approach, on SR-140",
+    "season": "SR-140 follows the Merced River canyon at low elevation, so it is the approach least troubled by snow. Chains can still be required, and rockfall and construction closures happen in every season.",
+    "summary": "The Arch Rock Entrance on SR-140 leads down the Merced canyon to El Portal, a small community just outside the park with fuel, lodging and a market, then on to Midpines and Mariposa.",
+    "highlights": ["The Merced Wild and Scenic River canyon", "Cascades Picnic Area and The Cascades", "The Arch Rock Entrance, where the road squeezes between two boulders", "YARTS Highway 140 buses run all year between Merced, Mariposa, El Portal and the Valley"],
+    "services": ["El Portal Gas Station, staffed 8 am to 5 pm with 24-hour pay-at-the-pump; gas, diesel and propane when staffed", "El Portal Market, 9 am to 7 pm, with limited groceries, gifts and Wi-Fi", "Gateway lodging in El Portal, outside the park", "Fuller services in Mariposa, about 45 minutes further"],
+    "cautions": ["After rockfalls SR-140 can run one lane or under traffic control; check Caltrans QuickMap before setting out.", "The Arch Rock Entrance has height and length limits; oversize vehicles must use another entrance."]
+  }
+}

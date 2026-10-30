@@ -1,0 +1,33 @@
+# Local development and research
+.local/
+CLAUDE.md
+research/
+screenshots/
+.DS_Store
+__pycache__/
+*.py[cod]
+
+# Build products and generated Xcode files
+DerivedData/
+build/
+*.xcresult/
+*.xcarchive/
+*.ipa
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+ios/*.xcodeproj/
+ios/PettyFieldGuide/Info.plist
+ios/PettyFieldGuide/PettyFieldGuide.entitlements
+
+# Credentials and operator data
+.env
+.env.*
+*.env
+!.env.example
+*.p8
+*.p12
+*.mobileprovision
+*.key
+server/node_modules/
+server/data/
+server/public/data/explorer/*.gz

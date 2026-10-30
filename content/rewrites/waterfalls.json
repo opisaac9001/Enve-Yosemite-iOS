@@ -1,0 +1,62 @@
+{
+  "waterfall-yosemite-falls": {
+    "summary": "Among the tallest waterfalls on Earth, in three parts: Upper Yosemite Fall, the middle cascades and Lower Yosemite Fall. NPS warns it is often a trickle or dry by August.",
+    "normalSeason": "Roughly November through July, peaking in May. Expect thundering runoff from April to June and an ice cone at the foot of the upper fall in winter.",
+    "viewing": "Visible from much of the Valley, especially around Yosemite Village and the Lodge. A one-mile loop reaches the base of the lower fall, and its east side from the shuttle stop to the base is wheelchair accessible. A strenuous all-day trail climbs to the top."
+  },
+  "waterfall-sentinel-falls": {
+    "summary": "A chain of cascades, each 50 to 500 feet, on the Valley's south wall just west of Sentinel Rock.",
+    "normalSeason": "Roughly March through June, peaking in May.",
+    "viewing": "Seen from Southside Drive near the Sentinel Beach picnic area and the Four Mile Trailhead, from across the Valley near Leidig Meadow, or from the Yosemite Falls Trail."
+  },
+  "waterfall-ribbon-fall": {
+    "summary": "A seasonal fall that NPS says you can spot from the road on the drive into the Valley.",
+    "normalSeason": "Roughly March through June, peaking in May.",
+    "viewing": "Visible from the road entering the Valley just past the Bridalveil Fall turn. NPS mentions turnouts for parking; this guide has not verified a specific one."
+  },
+  "waterfall-horsetail-fall": {
+    "summary": "A slender winter fall on the east flank of El Capitan. On rare clear evenings in February it can light up orange at sunset, if water is flowing.",
+    "normalSeason": "Roughly December through April. NPS says it usually runs only in winter and is easy to overlook.",
+    "viewing": "Best seen from just east of El Capitan. NPS suggests the El Capitan Picnic Area on Northside Drive west of the Lodge, or the turnouts just east of it; the fall is visible from the road. Viewing restrictions may apply in mid to late February, so check that year's NPS Horsetail Fall page rather than assuming past rules."
+  },
+  "waterfall-bridalveil-fall": {
+    "summary": "Usually the first waterfall visitors meet on entering the Valley: a roar in spring, a light swaying veil the rest of the year.",
+    "normalSeason": "All year, peaking in May.",
+    "viewing": "Seen from near the tunnels on Wawona Road and Big Oak Flat Road and from the signed lot on the way into the Valley. Short trails reach the base within minutes; one is wheelchair accessible."
+  },
+  "waterfall-vernal-fall": {
+    "summary": "Reached by the steep trail from Happy Isles. NPS says that by mid to late summer it narrows and can split into one, two or three strands.",
+    "normalSeason": "All year, peaking in late May or June. As flow drops in mid to late summer it narrows and separates into one to three falls.",
+    "viewing": "From a distance at Glacier Point, which has a wheelchair-accessible path to the viewpoint when the road is open; NPS says nearby Washburn Point gives a more direct view. The steep trail from Happy Isles leads to the fall itself.",
+    "notice": "Glacier Point Road is seasonal, roughly late May to October or November. NPS conditions updated October 23 and checked October 25, 2026 list the road open with no overnight parking, and a separate fire-area closure stays in force south of it; an open road does not mean trails are open. This is a dated note: check conditions before counting on a Glacier Point view."
+  },
+  "waterfall-nevada-fall": {
+    "summary": "Reached by continuing up the steep trail past Vernal Fall from Happy Isles, or seen from afar at Glacier Point.",
+    "normalSeason": "All year, peaking in late May or June.",
+    "viewing": "From a distance at Glacier Point, which has a wheelchair-accessible path to the viewpoint when the road is open; NPS says nearby Washburn Point gives a more direct view. The steep trail continues beyond Vernal Fall to the top of Nevada Fall.",
+    "notice": "Glacier Point Road is seasonal, roughly late May to October or November. NPS conditions updated October 23 and checked October 25, 2026 list the road open with no overnight parking, and a separate fire-area closure stays in force south of it; an open road does not mean trails are open. This is a dated note: check conditions before counting on a Glacier Point view."
+  },
+  "waterfall-illilouette-fall": {
+    "summary": "Best seen from the Panorama Trail. NPS pages disagree about road views: the waterfall guide says there are none, while the Glacier Point page lists it from Washburn Point.",
+    "normalSeason": "All year, peaking in late May.",
+    "viewing": "NPS's waterfall guide (updated May 12, 2026) says it cannot be seen from any road, only from steep trails: many hikers notice it on the way to Vernal Fall, and the best view is from the Panorama Trail a few miles from Glacier Point. NPS's Glacier Point page (updated June 11, 2026) instead includes it in the view from Washburn Point, just south of Glacier Point and a stop on the Badger Pass to Glacier Point shuttle. This guide leaves the conflict as it stands.",
+    "notice": "Glacier Point Road is seasonal, roughly late May to October or November. NPS conditions updated October 23 and checked October 25, 2026 list the road open with no overnight parking, and a separate fire-area closure stays in force south of it; an open road does not mean trails are open. This is a dated note: check conditions before counting on a Glacier Point view."
+  },
+  "waterfall-staircase-falls": {
+    "summary": "A waterfall in the NPS map layer about 0.4 km south-west of Curry Village. It is not on the NPS waterfall guide, so its season and any public viewpoint are unverified.",
+    "viewing": "No NPS viewing guidance exists. Do not go to the base of the cliff looking for it.",
+    "details": [ { "label": "Research note", "text": "A 2011 post on the Geotripper geology blog describes spring flow here. That is an attributed historical account, not NPS guidance or a current observation." } ]
+  },
+  "waterfall-wapama-falls": {
+    "summary": "A thundering fall in Hetch Hetchy Valley that, as NPS notes, relatively few people make the trip to see.",
+    "normalSeason": "All year, peaking in May.",
+    "viewing": "Visible from the O'Shaughnessy Dam parking lot. An uneven trail gets close to the base: NPS Hetch Hetchy hikes list five miles round trip with 507 feet of gain and loss, crossing the dam and passing through the tunnel, with views of Tueeulala and Wapama Falls.",
+    "details": [ { "label": "Footbridges", "text": "An NPS safety project (PEPC 87715, cleared November 2019) describes five footbridges in front of the fall. In spring runoff and heavy rain the westernmost can flood and become impassable; hikers were swept off the bridges in 2011 and 2017. Whether the planned reroute was built, and the bridges' current state, are not tracked here." } ]
+  },
+  "waterfall-chilnualna-falls": {
+    "summary": "A Wawona waterfall that hides in the folds of the rock, so no single spot shows the whole thing.",
+    "normalSeason": "All year, peaking in May. NPS Wawona hikes: fullest in spring and early summer.",
+    "viewing": "Not visible from any road; the only way to see it is the steep hike to its top. NPS Wawona hikes list 8.2 miles round trip, 2,400 feet of gain and five to seven hours from the Chilnualna Falls Trailhead near the end of Chilnualna Falls Road, with cascades in view a quarter mile in.",
+    "notice": "NPS conditions updated October 23 and checked October 25, 2026 say the trail to the top of Chilnualna Falls has reopened. The separate closed area east of Wawona Road, south of Glacier Point Road and north of Wawona still reaches east to the Bridalveil Creek trailhead, south of the Ostrander Lake trail, as drawn on the NPS public information map. That says nothing about other routes; check conditions before hiking."
+  }
+}

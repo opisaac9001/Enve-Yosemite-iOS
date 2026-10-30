@@ -1,0 +1,594 @@
+{
+  "trail-bridalveil-fall": {
+    "summary": "A short paved walk to the foot of Bridalveil Fall. The gentle route ends at a wheelchair-accessible viewing area; a steeper path gets closer to the spray.",
+    "notes": [
+      "Stay behind the barriers: the rocks at the base are wet and treacherous.",
+      "Flow is strongest in spring and can be close to nothing by late summer."
+    ],
+    "accessibility": "The gentle path has a wheelchair-accessible viewing area.",
+    "pets": "Leashed pets may use the paved path.",
+    "routes": [
+      {
+        "label": "To the viewing area",
+        "distanceMi": 0.5,
+        "kind": "round trip",
+        "gainFt": 80,
+        "time": "20 minutes",
+        "difficulty": "Easy",
+        "difficultySource": {
+          "label": "NPS · Bridalveil Fall Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/bridalveilfalltrail.htm",
+          "updated": "2024-10-23",
+          "checked": "2026-10-27"
+        }
+      }
+    ],
+    "guide": {
+      "terrain": "Paved the whole way with a gentle rise to the platform. Rocks and boulders above the platform are slippery even when dry, and NPS reports serious injuries from scrambling off the pavement.",
+      "access": "No shuttle serves Bridalveil Fall; drive to the trailhead or walk in on the Valley Loop Trail. A second, longer approach of about a quarter mile more starts from roadside parking a few hundred yards east on Southside Drive and crosses Bridalveil Creek.",
+      "parking": "The Bridalveil Fall parking area, reached from Wawona Road or Southside Drive, fills quickly in summer and jams at its entrance even with turnover. Watch for traffic when parking on Southside Drive.",
+      "seasons": "Typically walked in every season. In spring and early summer the spray can be strong enough to keep you off the end of the trail; in winter the pavement is usually icy and very slick.",
+      "water": "No drinking water at the trailhead, the parking area or the base of the fall.",
+      "toilets": "Restrooms in the parking area.",
+      "etiquette": "Leashed pets are allowed. Keep food within arm's reach and pack out all trash.",
+      "source": {
+        "label": "NPS · Bridalveil Fall Trail",
+        "url": "https://www.nps.gov/yose/planyourvisit/bridalveilfalltrail.htm",
+        "updated": "2024-10-23",
+        "checked": "2026-10-27"
+      }
+    }
+  },
+  "trail-lower-yosemite-fall": {
+    "summary": "A short paved loop to the base of Yosemite Falls, the tallest waterfall in North America. The east side of the loop is wheelchair accessible.",
+    "notes": [
+      "Yosemite Falls is usually dry from late summer into autumn.",
+      "Keep behind the barriers at the base."
+    ],
+    "accessibility": "The east side of the loop is wheelchair accessible.",
+    "pets": "Leashed pets are welcome on the paved loop.",
+    "routes": [
+      {
+        "label": "Entire loop",
+        "distanceMi": 1,
+        "kind": "loop",
+        "gainFt": 50,
+        "time": "30 minutes",
+        "difficulty": "Easy",
+        "difficultySource": {
+          "label": "NPS · Lower Yosemite Fall Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/lowerfalltrail.htm",
+          "updated": "2024-12-13",
+          "checked": "2026-10-27"
+        }
+      }
+    ],
+    "guide": {
+      "terrain": "A paved loop with roughly 50 feet of rise; the short climb to the footbridge on the western side ices over in winter. Above the wooden footbridge the rocks are slippery even when dry.",
+      "access": "Valleywide shuttle to stop 6 (7 am to 10 pm), then follow the bike path in either direction to reach the western or eastern half of the loop. The 2024 NPS page also describes walking in along the bike path from the former Valley Visitor Center at stop 5 (today the Yosemite Exploration Center area, not the newer Welcome Center at stop 2), which adds about half a mile.",
+      "parking": "No parking at the trailhead. Use the Yosemite Village or Yosemite Falls parking areas.",
+      "seasons": "Typically walked year-round. Expect spray in spring and early summer; the fall is usually dry from late July or August through October, and the short western climb to the footbridge usually ices over in winter.",
+      "water": "A drinking fountain near the restrooms on the western path; nothing else along the loop.",
+      "toilets": "Restrooms on the western path only.",
+      "etiquette": "Leashed pets and strollers are allowed; bicycles are not, with racks nearby. Keep food within arm's reach.",
+      "source": {
+        "label": "NPS · Lower Yosemite Fall Trail",
+        "url": "https://www.nps.gov/yose/planyourvisit/lowerfalltrail.htm",
+        "updated": "2024-12-13",
+        "checked": "2026-10-27"
+      }
+    }
+  },
+  "trail-cooks-meadow": {
+    "summary": "An easy flat loop on pavement and boardwalk with views of Yosemite Falls, Half Dome and the Merced. Wildlife is most active early and around dusk.",
+    "accessibility": "Level pavement and boardwalk throughout.",
+    "pets": "Leashed pets are welcome.",
+    "routes": [
+      {
+        "label": "Entire loop",
+        "distanceMi": 1,
+        "kind": "loop",
+        "gainFt": 0,
+        "time": "30 minutes",
+        "difficulty": "Easy",
+        "difficultySource": {
+          "label": "NPS · Cook’s Meadow Loop",
+          "url": "https://www.nps.gov/yose/planyourvisit/cooksmeadowtrail.htm",
+          "updated": "2024-10-23",
+          "checked": "2026-10-27"
+        }
+      }
+    ],
+    "notes": [
+      "NPS describes the loop starting at the former Valley Visitor Center at shuttle stop 5 (today the Yosemite Exploration Center area, not the newer Welcome Center at stop 2) and says it can also begin at stop 6. The route traced here starts at stop 6 and keeps the Sentinel Bridge out-and-back; see the route note for how that compares with the published mile."
+    ],
+    "guide": {
+      "terrain": "Flat pavement and boardwalk. Boardwalks are slippery when wet and more so under frost or snow.",
+      "access": "Valleywide shuttle to stop 5 or stop 6 (Lower Yosemite Fall). The 2024 NPS page starts the walk at the former Valley Visitor Center at stop 5, which is today the Yosemite Exploration Center area and not the newer Welcome Center at stop 2; from there it heads west along the bike path. From stop 6 cross the street into the meadow.",
+      "parking": "Yosemite Village and Yosemite Falls parking areas are nearest; the Sentinel Bridge area has minimal parking and can serve as a start or end point.",
+      "seasons": "Typically walked year-round with a view in every season; the path can be snow-covered or icy in winter.",
+      "water": "None along the loop. The 2024 NPS page lists a fountain at the former Valley Visitor Center building (today the Exploration Center area at stop 5) and one near the Lower Yosemite Fall restrooms; whether either runs today is not something this guide can confirm.",
+      "toilets": "None along the loop. The 2024 NPS page lists restrooms at the former Valley Visitor Center at stop 5 and in the Lower Yosemite Fall area; treat both as dated amenity notes, not current status.",
+      "etiquette": "Leashed pets, bicycles and strollers are allowed. Stay on the path; walking into the meadow tramples it.",
+      "source": {
+        "label": "NPS · Cook's Meadow Loop",
+        "url": "https://www.nps.gov/yose/planyourvisit/cooksmeadowtrail.htm",
+        "updated": "2024-10-23",
+        "checked": "2026-10-27"
+      }
+    }
+  },
+  "trail-mirror-lake": {
+    "summary": "Follow the paved road from shuttle stop 17 to the small lake, which reflects Half Dome in spring, then take the unpaved trail around it for the loop.",
+    "notes": [
+      "The lake is usually dry in summer and autumn.",
+      "Vehicles with a valid disability placard may drive the paved road to the lake.",
+      "Guide 51.8 gives the loop as 4.5 miles; the NPS hikes page says 5."
+    ],
+    "accessibility": "The road to the lake is paved, and placard holders may drive it.",
+    "pets": "Pets are allowed on the paved road only.",
+    "routes": [
+      {
+        "label": "Paved road to the lake and back",
+        "distanceMi": 2,
+        "kind": "round trip",
+        "gainFt": 100,
+        "time": "1 hour",
+        "difficulty": "Easy to moderate",
+        "difficultySource": {
+          "label": "NPS · Mirror Lake Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/mirrorlaketrail.htm",
+          "updated": "2024-03-11",
+          "checked": "2026-10-27"
+        }
+      },
+      {
+        "label": "Full loop around the lake",
+        "distanceMi": 5,
+        "kind": "loop",
+        "gainFt": 200,
+        "time": "2–3 hours",
+        "difficulty": "Easy to moderate",
+        "difficultySource": {
+          "label": "NPS · Mirror Lake Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/mirrorlaketrail.htm",
+          "updated": "2024-03-11",
+          "checked": "2026-10-27"
+        }
+      }
+    ],
+    "guide": {
+      "terrain": "The first mile is a paved service road; the loop beyond it is native trail along Tenaya Creek with about 200 feet of rise. The south side of the loop stays icy and snowy longest, with little to hold on to.",
+      "access": "Valleywide and East Valley shuttles to stop 17 (7 am to 10 pm). Bicycles may use the paved mile to the end of the road.",
+      "parking": "No parking at the trailhead; Curry Village is the nearest lot, or park anywhere in the eastern Valley and ride the shuttle.",
+      "seasons": "Typically hiked year-round. The lake holds water mainly in spring and early summer and is often a meadow by late summer. In winter and early spring NPS suggests an out-and-back on the north side instead of the full loop.",
+      "water": "None at the trailhead or along the trail.",
+      "toilets": "Vault toilets about half a mile from the trailhead and at the end of the paved road; none beyond.",
+      "etiquette": "Leashed pets, bicycles and strollers only on the first paved mile. Do not try to rock-hop Tenaya Creek to shortcut the loop; NPS records swiftwater rescues there.",
+      "source": {
+        "label": "NPS · Mirror Lake Trail",
+        "url": "https://www.nps.gov/yose/planyourvisit/mirrorlaketrail.htm",
+        "updated": "2024-03-11",
+        "checked": "2026-10-27"
+      }
+    }
+  },
+  "trail-valley-loop": {
+    "summary": "A quiet circuit of the western Valley floor on mostly level but mixed trail, away from the crowds. Walk a short stretch or make a day of the whole loop.",
+    "start": "Lower Yosemite Fall, shuttle stop 6, for both loops; the NPS route heads west along the bike path to the Valley Loop Trail signs",
+    "latitude": 37.745645,
+    "longitude": -119.593405,
+    "shuttleStops": [
+      6,
+      9,
+      11
+    ],
+    "routes": [
+      {
+        "label": "Half loop",
+        "distanceMi": 7.2,
+        "kind": "loop",
+        "gainFt": null,
+        "time": "2.5–3.5 hours",
+        "difficulty": "Moderate",
+        "difficultySource": {
+          "label": "NPS · Yosemite Valley Loop Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/valleylooptrail.htm",
+          "updated": "2026-09-14",
+          "checked": "2026-10-27"
+        }
+      },
+      {
+        "label": "Full loop",
+        "distanceMi": 11.5,
+        "kind": "loop",
+        "gainFt": null,
+        "time": "5–7 hours",
+        "difficulty": "Moderate",
+        "difficultySource": {
+          "label": "NPS · Yosemite Valley Loop Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/valleylooptrail.htm",
+          "updated": "2026-09-14",
+          "checked": "2026-10-27"
+        }
+      }
+    ],
+    "notes": [
+      "NPS Valley Loop Trail page (updated September 14, checked October 27, 2026): the trail over El Capitan Bridge, which links the north and south halves of the loop, is closed on weekdays through December 2026 for bridge work, with limited access on weekends. This is a dated reference notice, not live status; check conditions and signed detours before committing to a loop.",
+      "Low sections can be flooded or muddy in spring.",
+      "Both loops start at Lower Yosemite Fall (shuttle stop 6), head west along the north side past Camp 4 to El Capitan, and close at Sentinel Bridge. The half loop crosses El Capitan Bridge; the full loop continues to Pohono Bridge."
+    ],
+    "discrepancies": [
+      "Published distances disagree (checked October 27, 2026). The figures here follow the NPS Valley Loop Trail page: 7.2 miles for the half loop and 11.5 for the full loop from Lower Yosemite Fall. The NPS day-hike overview lists 6.5 and 13 miles; Guide 51.8 says up to 11.5. Settle your route and detours before planning mileage."
+    ],
+    "pets": "No pets and no bicycles.",
+    "guide": {
+      "terrain": "Mostly level with some hilly stretches, on mixed dirt, rock, sand and old pavement through meadows, talus at the cliff bases and along the Merced. NPS warns that route-finding is hard in places and recommends carrying a map.",
+      "access": "Valleywide shuttle to stop 6, then head west along the bike path until the Valley Loop Trail signs. Walking from Yosemite Village along the bike path adds about half a mile. Stops 9 (El Capitan Meadow) and 11 (Four Mile Trailhead) offer a way back from the western Valley.",
+      "parking": "No parking at the trailhead. Primary lots are Yosemite Village and Yosemite Falls; roadside pull-outs around the Valley also reach the trail.",
+      "seasons": "Typically hiked year-round. Localised flooding near creeks in spring; snow and ice in winter, especially on the south side, where a few inches of snow can hide the trail. Dated closure notices such as the 2026 El Capitan Bridge work are under warnings and notes, not here.",
+      "water": "None along the trail. A drinking fountain near the Lower Yosemite Fall trailhead at the start.",
+      "toilets": "Restrooms near the Lower Yosemite Fall trailhead and at Bridalveil Fall; vault toilets at picnic areas along or near the trail.",
+      "etiquette": "Pets, bicycles and strollers are prohibited. Keep food within arm's reach and pack out all trash.",
+      "source": {
+        "label": "NPS · Yosemite Valley Loop Trail",
+        "url": "https://www.nps.gov/yose/planyourvisit/valleylooptrail.htm",
+        "updated": "2026-09-14",
+        "checked": "2026-10-27"
+      }
+    },
+    "extraSources": [
+      {
+        "label": "NPS · Valley Loop Trail map (valleyloopmap.jpg)",
+        "url": "https://www.nps.gov/yose/planyourvisit/images/valleyloopmap.jpg",
+        "checked": "2026-10-27"
+      }
+    ]
+  },
+  "trail-vernal-footbridge": {
+    "summary": "The short but very steep opening stretch of the John Muir Trail to the footbridge and its view of Vernal Fall. Come back the same way.",
+    "notes": [
+      "Guide 51.8 shows trail repairs with a signed detour in the Vernal Fall corridor. The work zone is open on Fridays, Saturdays, Sundays and holidays, and on weekdays only before 7 am and after 3:30 pm, through the end of October as conditions allow. Follow the detour signs."
+    ],
+    "discrepancies": [
+      "The NPS Vernal and Nevada Fall page (updated July 27, checked October 27, 2026) gives the footbridge climb as 400 feet; Guide 51.8 gives 380. The guide figure is shown."
+    ],
+    "guide": {
+      "terrain": "Paved and almost entirely uphill from Happy Isles, with loose decomposed granite and steps that turn slippery; sprained ankles and knee injuries are common on this corridor.",
+      "access": "Valleywide or East Valley shuttle to stop 16, then follow the signs across the Happy Isles bridge to the trail. Before the shuttle starts at 7 am you can walk the closed road from the trailhead parking or Curry Village.",
+      "parking": "None at the trailhead. Park at Curry Village, under a mile away, or the trailhead lot just beyond it.",
+      "seasons": "Typically hiked year-round. The lower Mist Trail above the bridge usually closes in winter for falling ice and rock, so winter visitors continue on the John Muir Trail.",
+      "water": "At stop 16 and at the footbridge (May to October); NPS suggests a quart per person to the bridge.",
+      "toilets": "At stop 16 and at the footbridge (May to October).",
+      "etiquette": "Pets, bicycles and strollers are prohibited. Do not cut switchbacks.",
+      "source": {
+        "label": "NPS · Vernal and Nevada Fall Trails",
+        "url": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm",
+        "updated": "2026-07-27",
+        "checked": "2026-10-27"
+      }
+    },
+    "routes": [
+      {
+        "label": "Out and back on the John Muir Trail",
+        "distanceMi": 1.6,
+        "kind": "round trip",
+        "gainFt": 380,
+        "time": "1–1.5 hours",
+        "difficulty": "Moderate",
+        "difficultySource": {
+          "label": "NPS · Vernal and Nevada Fall Trails",
+          "url": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm",
+          "updated": "2026-07-27",
+          "checked": "2026-10-27"
+        }
+      }
+    ]
+  },
+  "trail-vernal-fall": {
+    "summary": "Beyond the footbridge, climb the Mist Trail's steep granite stairway to the top of Vernal Fall. Spring brings heavy spray and slick steps; the John Muir Trail offers a drier way down.",
+    "notes": [
+      "Guide 51.8 shows trail repairs with a signed detour in the Vernal Fall corridor. The work zone is open on Fridays, Saturdays, Sundays and holidays, and on weekdays only before 7 am and after 3:30 pm, through the end of October as conditions allow. Follow the detour signs.",
+      "The Mist Trail above the Vernal Fall footbridge and the John Muir Trail between Clark Point and the Panorama Trail junction can close for ice from November."
+    ],
+    "discrepancies": [
+      "The NPS Vernal and Nevada Fall page (updated July 27, checked October 27, 2026) allows 3 hours for the top of Vernal Fall via the Mist Trail; Guide 51.8 gives 2 to 4 hours, shown here."
+    ],
+    "guide": {
+      "terrain": "Pavement to the footbridge, then more than 600 wet granite steps on the Mist Trail with heavy spray in spring and early summer. The John Muir Trail descent is longer and drier but still steep. Loose rock and slick steps make ankle and knee injuries common.",
+      "access": "Shuttle stop 16 at Happy Isles; follow the signs across the bridge. The road from Curry Village is walkable before the 7 am shuttle start.",
+      "parking": "None at the trailhead; Curry Village or the trailhead lot beyond it.",
+      "seasons": "Both falls are typically reachable year-round by the winter route NPS describes, but the Mist Trail above the footbridge usually closes in winter for falling ice and rock and the John Muir Trail between Clark Point and the Panorama junction usually closes for ice; the sections that stay open can still be icy.",
+      "water": "Stop 16 and the footbridge fountain (May to October) are the only drinking water; NPS suggests two quarts per person to the top of Vernal Fall.",
+      "toilets": "Stop 16, the footbridge (May to October) and composting toilets near Emerald Pool above the fall.",
+      "etiquette": "Pets, bicycles and strollers are prohibited. Swimming in Emerald Pool and the Silver Apron is illegal and has been fatal.",
+      "source": {
+        "label": "NPS · Vernal and Nevada Fall Trails",
+        "url": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm",
+        "updated": "2026-07-27",
+        "checked": "2026-10-27"
+      }
+    },
+    "routes": [
+      {
+        "label": "Out and back on the Mist Trail",
+        "distanceMi": 2.4,
+        "kind": "round trip",
+        "gainFt": 1000,
+        "time": "2–4 hours",
+        "difficulty": "Strenuous",
+        "difficultySource": {
+          "label": "NPS · Vernal and Nevada Fall Trails",
+          "url": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm",
+          "updated": "2026-07-27",
+          "checked": "2026-10-27"
+        }
+      },
+      {
+        "label": "Loop via Clark Point and the John Muir Trail",
+        "distanceMi": 3.7,
+        "kind": "loop",
+        "gainFt": 1500,
+        "time": "2–4 hours",
+        "difficulty": "Strenuous",
+        "difficultySource": {
+          "label": "NPS · Vernal and Nevada Fall Trails",
+          "url": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm",
+          "updated": "2026-07-27",
+          "checked": "2026-10-27"
+        }
+      }
+    ]
+  },
+  "trail-nevada-fall": {
+    "summary": "From the top of Vernal Fall, keep climbing the Mist Trail to the top of Nevada Fall at 5,907 feet. Return the same way or descend the John Muir Trail as a loop.",
+    "notes": [
+      "Guide 51.8 shows trail repairs with a signed detour in the Vernal Fall corridor. The work zone is open on Fridays, Saturdays, Sundays and holidays, and on weekdays only before 7 am and after 3:30 pm, through the end of October as conditions allow. Follow the detour signs.",
+      "The Mist Trail above the Vernal Fall footbridge and the John Muir Trail between Clark Point and the Panorama Trail junction can close for ice from November.",
+      "Carry at least three quarts of water per person for a full day out."
+    ],
+    "discrepancies": [
+      "Published distances disagree (checked October 27, 2026). The Guide-based Mist Trail round trip shown here is 5 miles; the NPS Vernal and Nevada Fall page (updated July 27, 2026) says 5.4 miles and 5 to 6 hours, while its route text gives 2.5 miles one way. None of these is a fresh measurement; fix your route and detours before setting a turnaround time."
+    ],
+    "guide": {
+      "terrain": "The Mist Trail's stone steps past Vernal Fall, then about 1.5 miles of steep, rocky switchbacks beside Nevada Fall. The John Muir Trail return is roughly 4 miles down against the Mist Trail's 2.5, on gentler but still exposed switchbacks past Clark Point.",
+      "access": "Shuttle stop 16 at Happy Isles; the road from Curry Village is walkable before the 7 am shuttle start.",
+      "parking": "None at the trailhead; Curry Village or the trailhead lot beyond it.",
+      "seasons": "Typically reachable year-round by the winter route NPS describes; the lower Mist Trail and the John Muir Trail above Clark Point usually close in winter for ice and rockfall, and the open sections may still be icy.",
+      "water": "Stop 16 and the footbridge fountain (May to October) only; NPS suggests three to four quarts per person for the top of Nevada Fall.",
+      "toilets": "Stop 16, the footbridge (May to October), composting toilets near Emerald Pool and a vault toilet at the top of Nevada Fall on the Mist Trail side.",
+      "etiquette": "Pets, bicycles and strollers are prohibited. Stay behind railings and off wet rock above both falls.",
+      "source": {
+        "label": "NPS · Vernal and Nevada Fall Trails",
+        "url": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm",
+        "updated": "2026-07-27",
+        "checked": "2026-10-27"
+      }
+    },
+    "routes": [
+      {
+        "label": "Out and back on the Mist Trail",
+        "distanceMi": 5,
+        "kind": "round trip",
+        "gainFt": 2000,
+        "time": "4–6 hours",
+        "difficulty": "Strenuous",
+        "difficultySource": {
+          "label": "NPS · Vernal and Nevada Fall Trails",
+          "url": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm",
+          "updated": "2026-07-27",
+          "checked": "2026-10-27"
+        }
+      },
+      {
+        "label": "Loop via Clark Point and the John Muir Trail",
+        "distanceMi": 5.8,
+        "kind": "loop",
+        "gainFt": 2000,
+        "time": "4–6 hours",
+        "difficulty": "Strenuous",
+        "difficultySource": {
+          "label": "NPS · Vernal and Nevada Fall Trails",
+          "url": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm",
+          "updated": "2026-07-27",
+          "checked": "2026-10-27"
+        }
+      }
+    ]
+  },
+  "trail-yosemite-falls": {
+    "summary": "A very steep, rough trail of dozens of switchbacks. The first mile reaches Columbia Rock at 5,040 feet for wide Valley views; the full route tops out above Yosemite Falls.",
+    "notes": [
+      "Bring sun protection, salty snacks and at least three quarts of water per person."
+    ],
+    "routes": [
+      {
+        "label": "Columbia Rock",
+        "distanceMi": 2,
+        "kind": "round trip",
+        "gainFt": 1000,
+        "time": "2–3 hours",
+        "difficulty": "Moderate",
+        "difficultySource": {
+          "label": "NPS · Yosemite Falls Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/yosemitefallstrail.htm",
+          "updated": "2024-12-29",
+          "checked": "2026-10-27"
+        }
+      },
+      {
+        "label": "Top of Yosemite Falls",
+        "distanceMi": 7.2,
+        "kind": "round trip",
+        "gainFt": 2700,
+        "time": "6–8 hours",
+        "difficulty": "Strenuous",
+        "difficultySource": {
+          "label": "NPS · Yosemite Falls Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/yosemitefallstrail.htm",
+          "updated": "2024-12-29",
+          "checked": "2026-10-27"
+        }
+      }
+    ],
+    "guide": {
+      "terrain": "Built in the 1870s, the trail climbs switchback after switchback through oak woodland to Columbia Rock, dips to the Upper Yosemite Fall viewpoint, then takes steep, rocky and exposed switchbacks to the rim. Loose sand over rock makes footing slippery; steep drops lie just off the path.",
+      "access": "Valleywide shuttle to stop 7, cross the street to Camp 4 and follow the trailhead signs; the trail leaves the Valley Loop Trail beside Camp 4.",
+      "parking": "Camp 4 parking is for campers only. Use the Yosemite Falls parking area across the street, just past the Camp 4 entrance.",
+      "seasons": "Typically hiked year-round. Spring brings spray on part of the climb; summer is hot with slippery decomposed granite; by August the fall can be a trickle. In winter the sunny lower trail is often snow-free while the upper half can be deeply snowed or glazed with ice.",
+      "water": "A fountain near the trailhead in Camp 4; none on the trail. NPS suggests four quarts per person for the top.",
+      "toilets": "In Camp 4 near the trailhead; none on the trail.",
+      "etiquette": "Pets, bicycles and strollers are prohibited. Do not cut switchbacks or wade in the creek above the fall.",
+      "source": {
+        "label": "NPS · Yosemite Falls Trail",
+        "url": "https://www.nps.gov/yose/planyourvisit/yosemitefallstrail.htm",
+        "updated": "2024-12-29",
+        "checked": "2026-10-27"
+      }
+    }
+  },
+  "trail-four-mile": {
+    "summary": "A very steep climb with sweeping Valley views that ends at Glacier Point. Until early October the Glacier Point tour bus can drop hikers at the top, with no pickup.",
+    "notes": [
+      "Signed Four Mile Trail parking on Southside Drive is very limited. Consider the Sentinel Beach or Swinging Bridge lots before the trailhead, or ride the Valleywide shuttle to stop 11. Obey posted restrictions and allow walking time; nearby distances are straight-line, not checked routes. Never park in the shuttle stop.",
+      "The upper part of the trail closes in winter.",
+      "Guide 51.8 lists Glacier Point tour drop-offs through October 11, 2026, with tickets at TravelYosemite.com."
+    ],
+    "routes": [
+      {
+        "label": "One way to Glacier Point",
+        "distanceMi": 4.8,
+        "kind": "one way",
+        "gainFt": 3200,
+        "time": "3–4 hours",
+        "difficulty": "Strenuous",
+        "difficultySource": {
+          "label": "NPS · Four Mile Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/fourmiletrail.htm",
+          "updated": "2026-01-13",
+          "checked": "2026-10-27"
+        }
+      },
+      {
+        "label": "Round trip",
+        "distanceMi": 9.6,
+        "kind": "round trip",
+        "gainFt": 3200,
+        "time": "6–8 hours",
+        "difficulty": "Strenuous",
+        "difficultySource": {
+          "label": "NPS · Four Mile Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/fourmiletrail.htm",
+          "updated": "2026-01-13",
+          "checked": "2026-10-27"
+        }
+      }
+    ],
+    "guide": {
+      "terrain": "A continuous steep grade on an old toll-trail alignment, partly paved with loose sand on top. Brush hides drop-offs beside the switchbacks, so NPS asks hikers not to cut them. The Union Point side trip is a little over two-thirds of the way up.",
+      "access": "Valleywide shuttle to stop 11 at the trailhead on Southside Drive. There is no free shuttle between Glacier Point and the Valley; summer tour buses sold at Valley tour desks drop off at Glacier Point but never pick up, so a one-way hike needs your own ride.",
+      "parking": "Very limited signed parking along Southside Drive at the trailhead; parking at Glacier Point near the top.",
+      "seasons": "Usually opens in May and closes below Union Point after heavy snow, often by November or December, when only the lower three miles to the gate stay open and can be icy.",
+      "water": "None on the trail. A fountain at Glacier Point and snacks at the gift shop from late May to early October. NPS suggests two quarts one way, four for the round trip.",
+      "toilets": "None at the Valley trailhead; vault toilets just east at the Swinging Bridge picnic area and at Glacier Point.",
+      "etiquette": "Pets, bicycles and strollers are prohibited.",
+      "source": {
+        "label": "NPS · Four Mile Trail",
+        "url": "https://www.nps.gov/yose/planyourvisit/fourmiletrail.htm",
+        "updated": "2026-01-13",
+        "checked": "2026-10-27"
+      }
+    }
+  },
+  "trail-snow-creek": {
+    "summary": "An unrelenting stack of switchbacks out of Tenaya Canyon beyond Mirror Lake, with views of Half Dome and Clouds Rest.",
+    "notes": [
+      "There is no drinking water on the trail or at the trailhead; carry what you need.",
+      "The 9.4-mile round trip includes the walk from the Mirror Lake trailhead to the Snow Creek footbridge (NPS, checked October 23, 2026)."
+    ],
+    "routes": [
+      {
+        "label": "Round trip from Mirror Lake Trailhead (stop 17)",
+        "distanceMi": 9.4,
+        "kind": "round trip",
+        "gainFt": 2700,
+        "time": "6–7 hours",
+        "difficulty": "Strenuous",
+        "difficultySource": {
+          "label": "NPS · Snow Creek Trail",
+          "url": "https://www.nps.gov/yose/planyourvisit/snowcreektrail.htm",
+          "updated": "2024-03-11",
+          "checked": "2026-10-27"
+        }
+      }
+    ],
+    "guide": {
+      "terrain": "A mile of paved road and a mile of creekside trail, then several dozen narrow, exposed switchbacks climbing about 2,700 feet out of Tenaya Canyon, with loose sand over rock. Views of Half Dome, the Quarter Domes and Clouds Rest open after the first dozen turns; the trail enters forest near the top.",
+      "access": "Valleywide and East Valley shuttles to stop 17. Bicycles may use the paved first mile to the end of the road.",
+      "parking": "None at the trailhead; Curry Village is the nearest lot, or park anywhere in the eastern Valley and ride the shuttle.",
+      "seasons": "Typically hiked year-round; in winter the lower switchbacks can be snowy and icy while the sunny upper trail usually melts out. Watch for rattlesnakes in warm weather.",
+      "water": "None at the trailhead or on the trail.",
+      "toilets": "Vault toilets about half a mile from the trailhead and at the end of the paved road; none beyond.",
+      "etiquette": "Leashed pets, bicycles and strollers only on the paved first mile. Do not cut switchbacks.",
+      "source": {
+        "label": "NPS · Snow Creek Trail",
+        "url": "https://www.nps.gov/yose/planyourvisit/snowcreektrail.htm",
+        "updated": "2024-03-11",
+        "checked": "2026-10-27"
+      }
+    }
+  },
+  "trail-half-dome": {
+    "summary": "The classic all-day ascent past Vernal and Nevada Falls to the cables on Half Dome at 8,836 feet. A permit is required every day the cables are up, roughly late May to early October.",
+    "notes": [
+      "Permits come from a preseason lottery (March 1 to 31) and a daily lottery; see go.nps.gov/HDpermits.",
+      "Stay off the cables when storms are building.",
+      "Guide 51.8 shows trail repairs with a signed detour in the Vernal Fall corridor. The work zone is open on Fridays, Saturdays, Sundays and holidays, and on weekdays only before 7 am and after 3:30 pm, through the end of October as conditions allow. Follow the detour signs."
+    ],
+    "routes": [
+      {
+        "label": "Round trip from Happy Isles",
+        "distanceMi": 14,
+        "kind": "round trip",
+        "gainFt": 4800,
+        "time": "10–12 hours",
+        "difficulty": "Strenuous",
+        "difficultySource": {
+          "label": "NPS · Yosemite Valley Day Hikes",
+          "url": "https://www.nps.gov/yose/planyourvisit/valleyhikes.htm",
+          "updated": "2024-11-25",
+          "checked": "2026-10-27"
+        }
+      },
+      {
+        "label": "Round trip via the John Muir Trail both ways",
+        "distanceMi": 16.4,
+        "kind": "round trip",
+        "gainFt": 4800,
+        "time": "10–12 hours",
+        "difficulty": "Strenuous",
+        "difficultySource": {
+          "label": "NPS · Yosemite Valley Day Hikes",
+          "url": "https://www.nps.gov/yose/planyourvisit/valleyhikes.htm",
+          "updated": "2024-11-25",
+          "checked": "2026-10-27"
+        }
+      }
+    ],
+    "guide": {
+      "terrain": "Steady climbing almost all the way, 4,800 feet in total, past both falls, through Little Yosemite Valley and up the shoulder to the sub-dome steps and the two cables that cover the last 400 feet of rock. NPS says most hikers need 10 to 12 hours and advises a fixed turnaround time such as 3:30 pm.",
+      "access": "Most hikers start at Happy Isles (stop 16), about half a mile from the trailhead parking and three-quarters of a mile from Curry Village. Before the 7 am shuttle start, walk the closed road from either lot.",
+      "parking": "Trailhead parking just beyond Curry Village, or Curry Village itself.",
+      "seasons": "The cables usually go up the Friday before Memorial Day and come down the day after the second Monday in October, dates that shift with conditions. Never climb the cables with storm clouds nearby or wet rock; the summit runs 15 to 20 °F cooler than the Valley and is dangerous in lightning.",
+      "water": "The only treated water is the summer fountain at the Vernal Fall footbridge; river water up to Little Yosemite Valley must be treated. NPS suggests a gallon per person for the summit.",
+      "toilets": "Flush toilets at the Vernal Fall footbridge; composting toilets near Emerald Pool, near the top of Nevada Fall and in Little Yosemite Valley.",
+      "etiquette": "Pets, bicycles and strollers are prohibited. Pack out gloves and trash; keep food within arm's reach because bears work this trail. A permit is required whenever the cables are up.",
+      "source": {
+        "label": "NPS · Half Dome Day Hike",
+        "url": "https://www.nps.gov/yose/planyourvisit/halfdome.htm",
+        "updated": "2025-09-22",
+        "checked": "2026-10-27"
+      }
+    }
+  }
+}

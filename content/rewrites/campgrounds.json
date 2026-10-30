@@ -1,0 +1,13 @@
+{
+  "cg-upper-pines": { "notes": ["The dump station, with fresh water, stays open all year.", "From December to mid-February only the first three loops, about 90 sites, are normally open (NPS road data)."] },
+  "cg-lower-pines": { "notes": ["On the bank of the Merced.", "Closed from late October to early April (NPS road data)."] },
+  "cg-north-pines": { "notes": ["Between the Merced and Tenaya Creek."] },
+  "cg-camp-4": { "notes": ["No pets.", "Sites are shared by up to six people; the historic climbers' camp sits near shuttle stop 7."] },
+  "cg-wawona": { "notes": ["Group and horse sites must be reserved.", "The dump station near the campground runs in summer only."] },
+  "cg-bridalveil-creek": { "notes": ["On Glacier Point Road.", "Group and horse sites in summer."] },
+  "cg-hodgdon-meadow": { "notes": ["Close to the Big Oak Flat Entrance.", "Campfires only between 5 and 10 pm, the same rule as the Valley."] },
+  "cg-crane-flat": { "notes": ["Near the Crane Flat gas station and the Tuolumne and Merced sequoia groves."] },
+  "cg-tamarack-flat": { "notes": ["Reached by a rough three-mile road off Tioga Road."] },
+  "cg-yosemite-creek": { "notes": ["Reached by a rough five-mile road off Tioga Road."] },
+  "cg-tuolumne-meadows": { "notes": ["Group and horse sites must be reserved.", "The Tuolumne Meadows dump station has been closed since September 8, 2026 for wastewater-plant work, until further notice."] }
+}

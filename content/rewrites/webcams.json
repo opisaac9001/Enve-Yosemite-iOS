@@ -1,0 +1,14 @@
+{
+  "yc-yosemite-falls": { "shows": "Upper Yosemite Fall, the top tier of Yosemite Falls. The provider notes that flow peaks with early-summer snowmelt.", "caveats": ["Guide 51.8 says the fall is usually dry from late summer into autumn."] },
+  "yc-half-dome": { "shows": "Half Dome's sheer face seen across the Valley floor; animals sometimes cross the frame." },
+  "yc-el-capitan": { "shows": "A Valley panorama with El Capitan on the left and Half Dome far off.", "caveats": ["The camera is not on El Capitan."] },
+  "nps-happy-isles": { "shows": "The Merced River passing the USGS Happy Isles gauging station in the east Valley.", "caveats": ["River readings in this app come from the Pohono Bridge gauge, not Happy Isles."] },
+  "yc-wawona-dome": { "shows": "Wawona Dome rising over the Wawona basin in the south of the park." },
+  "nps-badger-pass": { "shows": "The ski area on Glacier Point Road; NPS offers it for checking conditions and activity.", "caveats": ["A live picture does not mean the ski area or Glacier Point Road is open.", "The time stamped on the image has not been verified."] },
+  "yc-high-sierra": { "shows": "Half Dome with the high country behind it: Clouds Rest, Tenaya Peak and Cathedral Peak.", "caveats": ["A distant view that says nothing about Tioga Road or Tuolumne Meadows conditions."] },
+  "nps-tuolumne-meadows": { "shows": "Across the high country toward Fairview Dome." },
+  "nps-turtleback-air": { "shows": "South-west toward the foothills, alongside the page's air-quality and weather readings.", "caveats": ["Haze in a picture is not a measured air-quality value."] },
+  "alertca-yosemite-west-1": { "shows": "The current view and recent frames from a wildfire-detection camera.", "caveats": ["Responders aim it; on October 5 it pointed north-west, away from the park."] },
+  "alertca-yosemite-west-2": { "shows": "A second detection camera at the same site, aimed independently.", "caveats": ["Responders aim it; on October 5 it pointed west-north-west, away from the park."] },
+  "alertca-regional-map": { "shows": "The provider's map of wildfire cameras around Yosemite, including Signal Peak, Miami Peak and Cherry Lake Road, plus June Mountain to the east (pan east to find it). The cameras reviewed near Yosemite all stand outside the park boundary." }
+}

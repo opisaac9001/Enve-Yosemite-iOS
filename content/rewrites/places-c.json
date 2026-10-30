@@ -1,0 +1,32 @@
+{
+  "water-lower-yosemite-fall": { "summary": "At the restroom near the west end of the Lower Yosemite Fall loop, across the road from the Lodge." },
+  "water-bridalveil": { "summary": "At the Bridalveil Fall trailhead restroom off Wawona Road, where NPS lists a bottle-filling station." },
+  "water-vernal-footbridge": { "summary": "By the restroom at the Vernal Fall footbridge, roughly 0.8 miles up from the trailhead. NPS calls it the only drinking water on the trail beyond Happy Isles." },
+  "water-happy-isles": { "summary": "At shuttle stop 16 next to the Mist Trail and John Muir Trail trailhead. Fill up before the climb." },
+  "water-lodge-lobby": { "summary": "Inside the Lodge lobby; the operator's 2023 property map marks a refill station in this building." },
+  "ice-lodge-hemlock": { "summary": "At the Hemlock building, marked ICE on the operator's Lodge property map. The map or the front desk will point you to the machine." },
+  "ice-lodge-maple": { "summary": "At the Maple building, marked ICE on the operator's Lodge property map. The map or the front desk will point you to the machine." },
+  "ice-lodge-cottonwood": { "summary": "At the Cottonwood building, marked ICE on the operator's Lodge property map. The map or the front desk will point you to the machine." },
+  "ice-lodge-aspen": { "summary": "At the Aspen building, marked ICE on the operator's Lodge property map. The map or the front desk will point you to the machine." },
+  "ice-lodge-cedar": { "summary": "On the walkway between Cedar and the gift shop, as shown on the operator's Lodge property map. The front desk knows whether it runs in the off-season." },
+  "ice-housekeeping": { "summary": "In the small ice-machine building that NPS maps in the southern part of Housekeeping Camp." },
+  "fac-water-mariposa-grove-trailhead-drinking-water": { "summary": "At the Mariposa Grove arrival area and trailhead. NPS lists drinking water here in summer only and none further into the grove." },
+  "fac-water-mariposa-grove-welcome-plaza-drinking-water": { "summary": "At the Mariposa Grove Welcome Plaza parking and restroom area, where NPS lists a bottle-filling station." },
+  "water-osm-3060358933": { "summary": "Near the Exploration Center restroom and theater; the community record describes a fountain you can fill a bottle from." },
+  "water-osm-3453503953": {
+    "summary": "Near the Valley Tours kiosk between the Village Store and the Welcome Center. The record notes a bottle tap with an old fault report, so have a backup.",
+    "notice": "A repair report from April 13, 2015 said the bottle-filling tap was out of order. Nobody has confirmed a fix; do not count on this tap."
+  },
+  "water-osm-3700489301": { "summary": "At the restroom in the Village parking area on the way to the Welcome Center; a community-mapped covered fountain." },
+  "water-osm-4562814053": { "summary": "On the west side of the Village Store area near the Welcome Center; a community-mapped fountain." },
+  "water-osm-6467054285": { "summary": "Near the Church Bowl picnic-area restroom. NPS lists a bottle-filling station; the community point gives the approximate spot." },
+  "water-osm-4150372240": { "summary": "A community-mapped water point near units 179 and 180. Check for the potable sign and whether the camp allows access." },
+  "water-osm-4150372241": { "summary": "A community-mapped water point near units 176 and 177. Check for the potable sign and whether the camp allows access." },
+  "water-osm-4150372243": { "summary": "A community-mapped water point near units 218 and 219. Check for the potable sign and whether the camp allows access." },
+  "water-osm-4150372244": { "summary": "A community-mapped water point near units 190 and 191. Check for the potable sign and whether the camp allows access." },
+  "water-osm-4150372246": { "summary": "A community-mapped water point near units 236 and 237. Check for the potable sign and whether the camp allows access." },
+  "water-osm-4150372248": { "summary": "A community-mapped water point near units 222 and 223. Check for the potable sign and whether the camp allows access." },
+  "water-osm-5103495257": { "summary": "Near the Curry Village Pavilion. The community record says drinking water but not what kind of fixture." },
+  "water-osm-12997991701": { "summary": "Near the east cabins and the Boys Town laundry building. Public access is unconfirmed; ask the Curry Village desk before walking in." },
+  "ice-village-store-east": { "summary": "Just outside the Village Store's east entrance, according to a visitor who found the new machine there." }
+}

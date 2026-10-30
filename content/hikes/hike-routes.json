@@ -1,0 +1,2206 @@
+{
+ "schema": 1,
+ "generated": "2026-10-27",
+ "title": "Enve Yosemite hike routes — source manifest",
+ "about": "Ordered chains of NPS trail features (bundled trails.geojson ids = NPS NationalDatasets OBJECTIDs) that make up each published hike variant. `from`/`to` are fractions of a feature's arc length in travel order (from > to means the feature is walked against its digitised direction); {\"at\": anchor} trims at the nearest point of the feature to a named anchor. tools/build_hike_routes.py validates continuity and endpoints against the real geometry and writes the bundled pack.",
+ "derivation": "Chains were produced by a shortest-path exploration over the NPS pack constrained to official map waypoints (docs/HIKING_ROUTE_AUDIT.md, docs/HIKING_UPGRADE_BRIEF.md), then reviewed segment by segment against the NPS trail maps (Vernal/Nevada, Yosemite Falls, Valley Loop, Cook's Meadow) on 2026-10-27. No connectors were invented; every segment is an NPS feature.",
+ "geometry": {
+  "file": "ios/PettyFieldGuide/Resources/Geo/trails.geojson",
+  "extraFeatures": "content/hikes/trails-extra-lyv.geojson"
+ },
+ "anchors": {
+  "happy-isles-trailhead": {
+   "name": "Happy Isles trailhead",
+   "lonlat": [
+    -119.55779,
+    37.732831
+   ],
+   "source": "NPS POI 21534 (Happy Isles Trailhead)"
+  },
+  "vernal-fall-footbridge": {
+   "name": "Vernal Fall Footbridge",
+   "lonlat": [
+    -119.551666,
+    37.726099
+   ],
+   "source": "NPS POI 20423 (Vernal Fall Footbridge)"
+  },
+  "mist-jmt-fork": {
+   "name": "Mist Trail / John Muir Trail fork",
+   "lonlat": [
+    -119.54866,
+    37.726217
+   ],
+   "source": "shared vertex of NPS trail features 15046, 16432 and 19515"
+  },
+  "vernal-fall-top": {
+   "name": "Top of Vernal Fall (approximate)",
+   "lonlat": [
+    -119.54337,
+    37.727266
+   ],
+   "source": "derived: Mist Trail feature 19515 at its nearest point to NPS waterfall POI 22881 (41 m away); NPS maps no brink point"
+  },
+  "emerald-pool-junction": {
+   "name": "Clark Point cut-off junction above Emerald Pool",
+   "lonlat": [
+    -119.541475,
+    37.726228
+   ],
+   "source": "shared vertex of NPS trail features 19515, 20240 and 20407"
+  },
+  "clark-point": {
+   "name": "Clark Point",
+   "lonlat": [
+    -119.545165,
+    37.725206
+   ],
+   "source": "NPS POI 22940 (Clark Point)"
+  },
+  "silver-apron-footbridge": {
+   "name": "Silver Apron Footbridge",
+   "lonlat": [
+    -119.540368,
+    37.726467
+   ],
+   "source": "NPS POI 20239 (Silver Apron Footbridge)"
+  },
+  "nevada-fall-footbridge": {
+   "name": "Nevada Fall Footbridge",
+   "lonlat": [
+    -119.533075,
+    37.724824
+   ],
+   "source": "NPS POI 21032 (Nevada Fall Footbridge)"
+  },
+  "mist-jmt-upper-junction": {
+   "name": "Mist Trail / John Muir Trail junction above Nevada Fall",
+   "lonlat": [
+    -119.530405,
+    37.726181
+   ],
+   "source": "shared vertex of NPS trail features 17156, 18748 and 18962"
+  },
+  "half-dome-junction": {
+   "name": "Half Dome Trail junction",
+   "lonlat": [
+    -119.512732,
+    37.745069
+   ],
+   "source": "shared vertex of NPS trail features 22688 and 19755"
+  },
+  "half-dome-trail-end": {
+   "name": "Half Dome (end of the mapped trail, approximate)",
+   "lonlat": [
+    -119.53333,
+    37.745446
+   ],
+   "source": "end vertex of NPS trail feature 19755; the NPS cliff POI 20247 is about 75 m away"
+  },
+  "yosemite-falls-trailhead": {
+   "name": "Yosemite Falls trailhead at Camp 4",
+   "lonlat": [
+    -119.603251,
+    37.742769
+   ],
+   "source": "NPS POI 20513 (Yosemite Falls Trailhead)"
+  },
+  "columbia-rock": {
+   "name": "Columbia Rock",
+   "lonlat": [
+    -119.60275,
+    37.746625
+   ],
+   "source": "NPS POI 21234 (Columbia Rock)"
+  },
+  "yosemite-falls-top-junction": {
+   "name": "Top junction (Yosemite Point / Eagle Peak trails)",
+   "lonlat": [
+    -119.599108,
+    37.759709
+   ],
+   "source": "end vertex of NPS trail feature 15475"
+  },
+  "yosemite-falls-overlook": {
+   "name": "Top of Yosemite Falls overlook (approximate)",
+   "lonlat": [
+    -119.596923,
+    37.757021
+   ],
+   "source": "end vertex of unnamed NPS spur feature 19858; the NPS map shows the route turning to the brink here"
+  },
+  "four-mile-trailhead": {
+   "name": "Four Mile trailhead, Southside Drive",
+   "lonlat": [
+    -119.601815,
+    37.733868
+   ],
+   "source": "NPS POI 21390 (Four Mile Trailhead, Yosemite Valley)"
+  },
+  "glacier-point-trailhead": {
+   "name": "Glacier Point, Four Mile trailhead",
+   "lonlat": [
+    -119.573742,
+    37.72885
+   ],
+   "source": "NPS POI 22950 (Four Mile Trailhead, Glacier Point); the viewpoint POI 22174 is about 200 m further"
+  },
+  "mirror-lake-trailhead": {
+   "name": "Mirror Lake trailhead, shuttle stop 17",
+   "lonlat": [
+    -119.559781,
+    37.739523
+   ],
+   "source": "NPS POI 21188 (Mirror Lake Trailhead)"
+  },
+  "tenaya-bridge-junction": {
+   "name": "Tenaya Bridge junction",
+   "lonlat": [
+    -119.55818,
+    37.741642
+   ],
+   "source": "shared vertex of NPS trail features 14697, 15790 and 16147"
+  },
+  "mirror-lake-road-end": {
+   "name": "End of the paved Mirror Lake road",
+   "lonlat": [
+    -119.550795,
+    37.746575
+   ],
+   "source": "end vertex of NPS trail feature 15711 (Mirror Lake Road); NPS accessible-parking POI 20271 is 12 m away"
+  },
+  "mirror-lake-west-bridge": {
+   "name": "Mirror Lake Loop bridge, west end",
+   "lonlat": [
+    -119.550405,
+    37.749743
+   ],
+   "source": "shared vertex of NPS trail features 15469, 17644 and 19014"
+  },
+  "snow-creek-junction": {
+   "name": "Snow Creek Trail junction",
+   "lonlat": [
+    -119.539079,
+    37.75905
+   ],
+   "source": "shared vertex of NPS trail features 17644 and 18341, and an interior vertex of 17904; NPS POI 22821 (Snow Creek Trailhead) is 23 m away"
+  },
+  "snow-creek-footbridge": {
+   "name": "Snow Creek footbridge",
+   "lonlat": [
+    -119.53916,
+    37.7737
+   ],
+   "source": "NPS trail feature 19504 (Snow Creek Bridge), bundled as place bridge-snow-creek-bridge"
+  },
+  "tenaya-creek-bridge": {
+   "name": "Tenaya Creek bridge, east end of the loop",
+   "lonlat": [
+    -119.534336,
+    37.759334
+   ],
+   "source": "shared vertex of NPS trail features 15790 and 19004"
+  },
+  "shuttle-stop-6": {
+   "name": "Lower Yosemite Fall, shuttle stop 6",
+   "lonlat": [
+    -119.593405,
+    37.745645
+   ],
+   "source": "NPS POI 20385 (Lower Yosemite Fall Shuttle Stop)"
+  },
+  "lower-fall-east-path": {
+   "name": "Eastern path (wheelchair accessible)",
+   "lonlat": [
+    -119.592851,
+    37.748448
+   ],
+   "source": "midpoint of NPS trail feature 22651"
+  },
+  "lower-fall-footbridge": {
+   "name": "Lower Yosemite Fall footbridge",
+   "lonlat": [
+    -119.595563,
+    37.750019
+   ],
+   "source": "NPS POI 21711 (Lower Yosemite Fall Footbridge)"
+  },
+  "lower-fall-west-path": {
+   "name": "Western path by the restrooms",
+   "lonlat": [
+    -119.59618,
+    37.74638
+   ],
+   "source": "shared vertex of NPS trail features 17766 and 21867"
+  },
+  "cooks-boardwalk-west": {
+   "name": "Cook's Meadow boardwalk (west)",
+   "lonlat": [
+    -119.59198,
+    37.743975
+   ],
+   "source": "midpoint of NPS trail feature 16293 (Cook's Meadow Boardwalk #2)"
+  },
+  "sentinel-bridge": {
+   "name": "Sentinel Bridge",
+   "lonlat": [
+    -119.589731,
+    37.743344
+   ],
+   "source": "midpoint of unnamed NPS trail feature 20751 (alternate name Sentinel Bridge)"
+  },
+  "cooks-boardwalk-south": {
+   "name": "Cook's Meadow boardwalk, Sentinel Drive crossing",
+   "lonlat": [
+    -119.58961,
+    37.744309
+   ],
+   "source": "shared vertex of NPS trail features 16140, 20485 and 20517"
+  },
+  "cooks-boardwalk-north": {
+   "name": "Cook's Meadow boardwalk, Northside Drive crossing",
+   "lonlat": [
+    -119.589808,
+    37.746451
+   ],
+   "source": "shared vertex of NPS trail features 19417, 22316 and 22713"
+  },
+  "el-capitan-bridge": {
+   "name": "El Capitan Bridge",
+   "lonlat": [
+    -119.631253,
+    37.724023
+   ],
+   "source": "midpoint of unnamed NPS trail feature 19413 (alternate name El Capitan Bridge)"
+  },
+  "pohono-bridge": {
+   "name": "Pohono Bridge",
+   "lonlat": [
+    -119.666168,
+    37.716757
+   ],
+   "source": "start vertex of NPS trail feature 15200 (Valley Loop Trail, alternate name Pohono Bridge)"
+  },
+  "bridalveil-junction": {
+   "name": "Bridalveil Fall trail junction",
+   "lonlat": [
+    -119.64766,
+    37.72024
+   ],
+   "source": "shared vertex of NPS trail features 15293, 21235 and 21366"
+  },
+  "four-mile-junction": {
+   "name": "Four Mile Trail junction",
+   "lonlat": [
+    -119.601108,
+    37.733074
+   ],
+   "source": "shared vertex of NPS trail features 15283, 15618, 16033 and 16717"
+  },
+  "bridalveil-trail-start": {
+   "name": "Bridalveil Fall Trail, western entrance",
+   "lonlat": [
+    -119.651009,
+    37.716847
+   ],
+   "source": "start vertex of NPS trail feature 15426; NPS parking POI 20476 is 80 m to the west"
+  },
+  "bridalveil-viewing-area": {
+   "name": "Bridalveil Fall viewing area (approximate)",
+   "lonlat": [
+    -119.648311,
+    37.717632
+   ],
+   "source": "end vertex of NPS trail feature 15754, the easternmost end of the named Bridalveil Fall Trail; NPS maps no platform point"
+  }
+ },
+ "routes": [
+  {
+   "id": "bridalveil-viewing-area",
+   "trailId": "trail-bridalveil-fall",
+   "label": "To the viewing area",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "start": "bridalveil-trail-start",
+   "destination": "bridalveil-viewing-area",
+   "milestones": [],
+   "sequence": "The paved western trail leaves the parking area and climbs gently to the viewing platform at the base of Bridalveil Fall, which drops 620 feet. Rocks above the platform are slippery even when dry; NPS says to stay on the pavement.",
+   "traceNote": "The NPS trail feature begins about 80 m east of the parking-lot point, so the short walk across the lot is not part of the mapped line. The published half mile is the NPS figure for the whole walk.",
+   "segments": [
+    {
+     "feature": 15426,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16384,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15754,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "lower-yosemite-fall-loop",
+   "trailId": "trail-lower-yosemite-fall",
+   "label": "Entire loop",
+   "kind": "loop",
+   "isDefault": true,
+   "start": "shuttle-stop-6",
+   "destination": "shuttle-stop-6",
+   "milestones": [
+    "lower-fall-east-path",
+    "lower-fall-footbridge",
+    "lower-fall-west-path"
+   ],
+   "sequence": "From stop 6 the paved loop runs clockwise: the eastern path, which is wheelchair accessible, leads north to the footbridge at the base of Lower Yosemite Fall, and the western path returns past the restrooms and drinking fountain. NPS suggests clockwise for the best views of the whole fall.",
+   "traceNote": "The mapped loop is close to the published mile; the few connecting metres at the shuttle stop are unnamed path and bike-path pieces.",
+   "segments": [
+    {
+     "feature": 16007,
+     "from": {
+      "at": "shuttle-stop-6"
+     },
+     "to": 1
+    },
+    {
+     "feature": 22777,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19136,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18768,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 14818,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21899,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 14850,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19583,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 14897,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17453,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22651,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19297,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21456,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16590,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15403,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22649,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15750,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21702,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17895,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21867,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19406,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16526,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17222,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22143,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18423,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22161,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20214,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21368,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22042,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16007,
+     "from": 0,
+     "to": {
+      "at": "shuttle-stop-6"
+     }
+    }
+   ]
+  },
+  {
+   "id": "cooks-meadow-loop",
+   "trailId": "trail-cooks-meadow",
+   "label": "Entire loop",
+   "kind": "loop",
+   "isDefault": true,
+   "start": "shuttle-stop-6",
+   "destination": "shuttle-stop-6",
+   "milestones": [
+    "cooks-boardwalk-west",
+    "sentinel-bridge",
+    "cooks-boardwalk-south",
+    "cooks-boardwalk-north"
+   ],
+   "sequence": "From stop 6 cross Northside Drive onto the bike path and bear left to the Sentinel Bridge parking area. Walk out onto the bridge for the classic Half Dome view and back, then follow the boardwalk north across the meadow, over its two street crossings, and along the path beside Northside Drive to stop 6.",
+   "traceNote": "NPS describes the loop from the former Valley Visitor Center and says it can also begin at stop 6; this trace is the stop 6 version with the Sentinel Bridge out-and-back, so it is shorter than the published mile. The walk between the visitor center and stop 6 is access, not part of this loop. The separately named Sentinel Boardwalk south of the Merced is not on this route.",
+   "segments": [
+    {
+     "feature": 16007,
+     "from": {
+      "at": "shuttle-stop-6"
+     },
+     "to": 0
+    },
+    {
+     "feature": 21904,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22118,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22537,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22162,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18247,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16293,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20725,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17482,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21598,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21598,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17482,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20485,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16140,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22066,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22713,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19417,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22537,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22118,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21904,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16007,
+     "from": 0,
+     "to": {
+      "at": "shuttle-stop-6"
+     }
+    }
+   ]
+  },
+  {
+   "id": "mirror-lake-paved-road",
+   "trailId": "trail-mirror-lake",
+   "label": "Paved road to the lake and back",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "start": "mirror-lake-trailhead",
+   "destination": "mirror-lake-road-end",
+   "milestones": [
+    "tenaya-bridge-junction"
+   ],
+   "sequence": "A paved service road from shuttle stop 17 past the Tenaya Bridge junction to the end of the pavement at Mirror Lake. NPS defines the 2-mile round trip as the road end and back; vault toilets stand about halfway and at the end, and bicycles, strollers and leashed pets are allowed on this paved mile.",
+   "traceNote": "The mapped road is shorter than the published round trip; the published figure is the NPS estimate and the endpoint is the end of the pavement, as NPS defines it.",
+   "segments": [
+    {
+     "feature": 18617,
+     "from": {
+      "at": "mirror-lake-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 18890,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15804,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22449,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15481,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15550,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15711,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "mirror-lake-loop",
+   "trailId": "trail-mirror-lake",
+   "label": "Full loop around the lake",
+   "kind": "loop",
+   "isDefault": false,
+   "start": "mirror-lake-trailhead",
+   "destination": "mirror-lake-trailhead",
+   "milestones": [
+    "mirror-lake-road-end",
+    "mirror-lake-west-bridge",
+    "snow-creek-junction",
+    "tenaya-creek-bridge",
+    "tenaya-bridge-junction"
+   ],
+   "sequence": "Road to the lake, then the north-side trail along Tenaya Creek past the Snow Creek junction, across the two bridges over Snow Creek and Tenaya Creek, and back along the south side of Tenaya Canyon to the Tenaya Bridge junction and the road. NPS warns there is no safe crossing between the bridges and that the south side stays icy longest.",
+   "traceNote": "The mapped loop is a little under the published 5 miles and matches the Yosemite Guide's 4.5. Near the Snow Creek junction the NPS loop feature runs 16 m past the junction; the route is trimmed at the junction vertex itself.",
+   "segments": [
+    {
+     "feature": 18617,
+     "from": {
+      "at": "mirror-lake-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 18890,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15804,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22449,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15481,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15550,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15711,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18050,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15834,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15401,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19059,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18757,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18665,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19014,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17644,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17904,
+     "from": {
+      "at": "snow-creek-junction"
+     },
+     "to": 0
+    },
+    {
+     "feature": 14833,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19639,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19004,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15790,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 14697,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18890,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18617,
+     "from": 0,
+     "to": {
+      "at": "mirror-lake-trailhead"
+     }
+    }
+   ]
+  },
+  {
+   "id": "valley-loop-half",
+   "trailId": "trail-valley-loop",
+   "label": "Half loop",
+   "kind": "loop",
+   "isDefault": false,
+   "start": "shuttle-stop-6",
+   "destination": "shuttle-stop-6",
+   "milestones": [
+    "yosemite-falls-trailhead",
+    "el-capitan-bridge",
+    "four-mile-junction",
+    "sentinel-bridge"
+   ],
+   "sequence": "West from stop 6 on the bike path and Valley Loop Trail beneath the Three Brothers, past Camp 4 to El Capitan. Cross the Merced on El Capitan Bridge and return east on the south side past Cathedral Beach and the Four Mile trailhead to Sentinel Bridge, then north over Cook's Meadow to stop 6.",
+   "traceNote": "Traced from the NPS Valley Loop map and description (start at Lower Yosemite Fall, cross at El Capitan Bridge). The mapped loop is slightly longer than the 7.2 miles on the NPS trail page; the Valley hikes overview lists 6.5 miles for the half loop.",
+   "segments": [
+    {
+     "feature": 16007,
+     "from": {
+      "at": "shuttle-stop-6"
+     },
+     "to": 0
+    },
+    {
+     "feature": 22042,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21631,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20694,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18802,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19113,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21867,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17895,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21702,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15750,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16449,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17317,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22264,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19063,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17376,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 14921,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19998,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15609,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22044,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21527,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18402,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19413,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22106,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22681,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18366,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16717,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15618,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15239,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21528,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19556,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15137,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16496,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20751,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21598,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17482,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20485,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16140,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22066,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22713,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19417,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22537,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22118,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21904,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16007,
+     "from": 0,
+     "to": {
+      "at": "shuttle-stop-6"
+     }
+    }
+   ]
+  },
+  {
+   "id": "valley-loop-full",
+   "trailId": "trail-valley-loop",
+   "label": "Full loop",
+   "kind": "loop",
+   "isDefault": true,
+   "start": "shuttle-stop-6",
+   "destination": "shuttle-stop-6",
+   "milestones": [
+    "yosemite-falls-trailhead",
+    "pohono-bridge",
+    "bridalveil-junction",
+    "four-mile-junction",
+    "sentinel-bridge"
+   ],
+   "sequence": "The same start west to El Capitan, then on past El Capitan Meadow to Pohono Bridge at the western end of the Valley. Cross and return east on the south side past Bridalveil Meadow, Cathedral Rocks and the Four Mile trailhead to Sentinel Bridge, closing over Cook's Meadow to stop 6.",
+   "traceNote": "Traced from the NPS Valley Loop map (start at Lower Yosemite Fall, west end at Pohono Bridge, no eastern Valley extension). The mapped loop is slightly longer than the 11.5 miles on the NPS trail page; the overview lists 13 miles.",
+   "segments": [
+    {
+     "feature": 16007,
+     "from": {
+      "at": "shuttle-stop-6"
+     },
+     "to": 0
+    },
+    {
+     "feature": 22042,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21631,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20694,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18802,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19113,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21867,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17895,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21702,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15750,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16449,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17317,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22264,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19063,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17376,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 14921,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19998,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15609,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22044,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21527,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17043,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19144,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21122,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17140,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15895,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19388,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18898,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17892,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15200,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 14868,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20978,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17705,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21029,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15293,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21366,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16717,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15618,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15239,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21528,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19556,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15137,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16496,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20751,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21598,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17482,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20485,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16140,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22066,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22713,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19417,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22537,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22118,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21904,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16007,
+     "from": 0,
+     "to": {
+      "at": "shuttle-stop-6"
+     }
+    }
+   ]
+  },
+  {
+   "id": "vernal-footbridge",
+   "trailId": "trail-vernal-footbridge",
+   "label": "Out and back on the John Muir Trail",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "start": "happy-isles-trailhead",
+   "destination": "vernal-fall-footbridge",
+   "milestones": [],
+   "sequence": "Cross the Happy Isles bridge and follow the paved John Muir Trail uphill beside the Merced. The footbridge, 0.8 miles up by the NPS count, gives the classic view of Vernal Fall; its drinking fountain and restrooms run May to October. Return the same way.",
+   "traceNote": "The mapped line is slightly longer than the published 0.8 miles each way; the trim ends exactly at the NPS footbridge point.",
+   "segments": [
+    {
+     "feature": 18937,
+     "from": {
+      "at": "happy-isles-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 15622,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16589,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20007,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20091,
+     "from": 0,
+     "to": {
+      "at": "vernal-fall-footbridge"
+     }
+    }
+   ]
+  },
+  {
+   "id": "vernal-fall-mist",
+   "trailId": "trail-vernal-fall",
+   "label": "Out and back on the Mist Trail",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "start": "happy-isles-trailhead",
+   "destination": "vernal-fall-top",
+   "milestones": [
+    "vernal-fall-footbridge",
+    "mist-jmt-fork"
+   ],
+   "sequence": "Beyond the footbridge the Mist Trail splits left from the John Muir Trail and climbs its granite stairway of more than 600 steps beside the fall. Spray soaks the steps in spring and early summer. The railing at the brink of the 317-foot fall is the turnaround.",
+   "traceNote": "NPS maps no point for the brink, so the turnaround is the Mist Trail's nearest point to the NPS waterfall record. The mapped distance runs longer than the published 1.2 miles each way.",
+   "segments": [
+    {
+     "feature": 18937,
+     "from": {
+      "at": "happy-isles-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 15622,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16589,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20007,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20091,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15046,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19515,
+     "from": 0,
+     "to": {
+      "at": "vernal-fall-top"
+     }
+    }
+   ]
+  },
+  {
+   "id": "vernal-fall-clark-point-loop",
+   "trailId": "trail-vernal-fall",
+   "label": "Loop via Clark Point and the John Muir Trail",
+   "kind": "loop",
+   "isDefault": false,
+   "start": "happy-isles-trailhead",
+   "destination": "happy-isles-trailhead",
+   "milestones": [
+    "vernal-fall-footbridge",
+    "mist-jmt-fork",
+    "vernal-fall-top",
+    "emerald-pool-junction",
+    "clark-point"
+   ],
+   "sequence": "Climb the Mist Trail to the top of Vernal Fall, continue past Emerald Pool to the next junction and take the cut-off up to Clark Point. Descend the John Muir Trail's longer switchbacks back to the fork above the footbridge. NPS suggests this loop to avoid descending the slick, crowded stairs.",
+   "traceNote": "The cut-off between Emerald Pool and Clark Point is an unnamed NPS trail feature. The mapped loop runs longer than the published 3.7 miles.",
+   "segments": [
+    {
+     "feature": 18937,
+     "from": {
+      "at": "happy-isles-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 15622,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16589,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20007,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20091,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15046,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19515,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20407,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16432,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15046,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20091,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20007,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16589,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15622,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18937,
+     "from": 0,
+     "to": {
+      "at": "happy-isles-trailhead"
+     }
+    }
+   ]
+  },
+  {
+   "id": "nevada-fall-mist",
+   "trailId": "trail-nevada-fall",
+   "label": "Out and back on the Mist Trail",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "start": "happy-isles-trailhead",
+   "destination": "nevada-fall-footbridge",
+   "milestones": [
+    "vernal-fall-footbridge",
+    "vernal-fall-top",
+    "silver-apron-footbridge",
+    "mist-jmt-upper-junction"
+   ],
+   "sequence": "Past the top of Vernal Fall the Mist Trail passes Emerald Pool and the Silver Apron footbridge, then climbs about 1.5 miles of rocky switchbacks beside the 594-foot Nevada Fall. At the top, bear right to the footbridge over the Merced above the fall, the turnaround.",
+   "traceNote": "The turnaround is the NPS footbridge point above Nevada Fall. The mapped distance is longer than the 5 miles in the Yosemite Guide and the 5.4 miles on the NPS trail page.",
+   "segments": [
+    {
+     "feature": 18937,
+     "from": {
+      "at": "happy-isles-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 15622,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16589,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20007,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20091,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15046,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19515,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20240,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22642,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18748,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17156,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16450,
+     "from": 1,
+     "to": {
+      "at": "nevada-fall-footbridge"
+     }
+    }
+   ]
+  },
+  {
+   "id": "nevada-fall-clark-point-loop",
+   "trailId": "trail-nevada-fall",
+   "label": "Loop via Clark Point and the John Muir Trail",
+   "kind": "loop",
+   "isDefault": false,
+   "start": "happy-isles-trailhead",
+   "destination": "happy-isles-trailhead",
+   "milestones": [
+    "vernal-fall-footbridge",
+    "vernal-fall-top",
+    "silver-apron-footbridge",
+    "nevada-fall-footbridge",
+    "clark-point"
+   ],
+   "sequence": "Up the Mist Trail past both falls to the footbridge above Nevada Fall, then over the bridge onto the John Muir Trail. It descends past Clark Point with views of Liberty Cap and Nevada Fall and rejoins the fork above the Vernal Fall footbridge. NPS puts the John Muir Trail at about 4 miles down against the Mist Trail's 2.5.",
+   "traceNote": "The mapped loop runs longer than the published 5.8 miles.",
+   "segments": [
+    {
+     "feature": 18937,
+     "from": {
+      "at": "happy-isles-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 15622,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16589,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20007,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20091,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15046,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19515,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20240,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22642,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18748,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17156,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16450,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21659,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16205,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20133,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16432,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15046,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20091,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20007,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16589,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15622,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18937,
+     "from": 0,
+     "to": {
+      "at": "happy-isles-trailhead"
+     }
+    }
+   ]
+  },
+  {
+   "id": "yosemite-falls-columbia-rock",
+   "trailId": "trail-yosemite-falls",
+   "label": "Columbia Rock",
+   "kind": "outAndBack",
+   "isDefault": false,
+   "start": "yosemite-falls-trailhead",
+   "destination": "columbia-rock",
+   "milestones": [],
+   "sequence": "From Camp 4 the trail starts its switchbacks at once through oak woodland. Columbia Rock, a mile and roughly 1,000 feet up, opens onto Yosemite Valley, Half Dome and Sentinel Rock. Return the same way.",
+   "traceNote": "The trim ends at the NPS Columbia Rock point, 0.2 m off the mapped trail.",
+   "segments": [
+    {
+     "feature": 15475,
+     "from": 0,
+     "to": {
+      "at": "columbia-rock"
+     }
+    }
+   ]
+  },
+  {
+   "id": "yosemite-falls-top",
+   "trailId": "trail-yosemite-falls",
+   "label": "Top of Yosemite Falls",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "start": "yosemite-falls-trailhead",
+   "destination": "yosemite-falls-overlook",
+   "milestones": [
+    "columbia-rock",
+    "yosemite-falls-top-junction"
+   ],
+   "sequence": "Past Columbia Rock the trail dips briefly to the Upper Yosemite Fall viewpoint, then climbs steep, rocky switchbacks to the rim. At the top junction a short spur drops east to the overlook above the fall, the destination here. Yosemite Point and Eagle Peak are separate extensions NPS lists beyond it.",
+   "traceNote": "The destination is the end of the mapped overlook spur, about 0.3 miles past the junction where the named Yosemite Falls Trail feature ends, as the NPS map shows the route turning toward the brink. The mapped round trip is shorter than the published 7.2 miles.",
+   "segments": [
+    {
+     "feature": 15475,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22204,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19858,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "four-mile-one-way",
+   "trailId": "trail-four-mile",
+   "label": "One way to Glacier Point",
+   "kind": "oneWay",
+   "isDefault": true,
+   "start": "four-mile-trailhead",
+   "destination": "glacier-point-trailhead",
+   "milestones": [],
+   "sequence": "A continuous steep grade from the base of Sentinel Rock to Glacier Point on an 1872 toll-trail alignment, with the Union Point side trip a little over two-thirds of the way up. The mapped trail ends at the Glacier Point trailhead beside the parking area and vault toilets.",
+   "traceNote": "The mapped line matches the published 4.8 miles; NPS notes the trail is now closer to five miles than four.",
+   "segments": [
+    {
+     "feature": 16033,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15283,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "four-mile-round-trip",
+   "trailId": "trail-four-mile",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": false,
+   "start": "four-mile-trailhead",
+   "destination": "glacier-point-trailhead",
+   "milestones": [],
+   "sequence": "Up the Four Mile Trail to Glacier Point and back the same way. NPS runs no free shuttle between Glacier Point and the Valley; summer tour buses drop off at Glacier Point but do not pick up.",
+   "traceNote": "The mapped line matches the published 9.6-mile round trip.",
+   "segments": [
+    {
+     "feature": 16033,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15283,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "snow-creek-footbridge",
+   "trailId": "trail-snow-creek",
+   "label": "Round trip from Mirror Lake Trailhead (stop 17)",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "start": "mirror-lake-trailhead",
+   "destination": "snow-creek-footbridge",
+   "milestones": [
+    "mirror-lake-road-end",
+    "mirror-lake-west-bridge",
+    "snow-creek-junction"
+   ],
+   "sequence": "The paved Mirror Lake road, then the loop trail along Tenaya Creek to the Snow Creek junction about a mile beyond the lake. From there the Snow Creek Trail climbs out of Tenaya Canyon on dozens of switchbacks with Half Dome, the Quarter Domes and Clouds Rest in view, reaching the footbridge about 2.6 miles up. Return the same way.",
+   "traceNote": "The mapped round trip matches the published 9.4 miles, which NPS counts from the Mirror Lake trailhead to the footbridge.",
+   "segments": [
+    {
+     "feature": 18617,
+     "from": {
+      "at": "mirror-lake-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 18890,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15804,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22449,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15481,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15550,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15711,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18050,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15834,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15401,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19059,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18757,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18665,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19014,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17644,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18341,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 14730,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19504,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21409,
+     "from": 0,
+     "to": {
+      "at": "snow-creek-footbridge"
+     }
+    }
+   ]
+  },
+  {
+   "id": "half-dome-mist",
+   "trailId": "trail-half-dome",
+   "label": "Round trip from Happy Isles",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "start": "happy-isles-trailhead",
+   "destination": "half-dome-trail-end",
+   "milestones": [
+    "vernal-fall-footbridge",
+    "vernal-fall-top",
+    "silver-apron-footbridge",
+    "mist-jmt-upper-junction",
+    "half-dome-junction"
+   ],
+   "sequence": "Mist Trail to the top of Nevada Fall, then the John Muir Trail through Little Yosemite Valley, past the seasonal ranger station and composting toilet, to the Half Dome junction. The Half Dome Trail climbs the shoulder to the sub-dome steps and the cables; the mapped trail ends at the summit edge. Return the same way or by the John Muir Trail.",
+   "traceNote": "Two John Muir Trail features through Little Yosemite Valley (NPS ids 20072 and 22688) were added to the bundled pack for this route. The mapped trail ends about 75 m from the NPS Half Dome cliff point; the cables and sub-dome are not separate NPS features. The round trip matches the published 14 miles.",
+   "segments": [
+    {
+     "feature": 18937,
+     "from": {
+      "at": "happy-isles-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 15622,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16589,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20007,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20091,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15046,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19515,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20240,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22642,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18748,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18962,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20072,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22688,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19755,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "half-dome-john-muir",
+   "trailId": "trail-half-dome",
+   "label": "Round trip via the John Muir Trail both ways",
+   "kind": "outAndBack",
+   "isDefault": false,
+   "start": "happy-isles-trailhead",
+   "destination": "half-dome-trail-end",
+   "milestones": [
+    "vernal-fall-footbridge",
+    "clark-point",
+    "nevada-fall-footbridge",
+    "mist-jmt-upper-junction",
+    "half-dome-junction"
+   ],
+   "sequence": "The John Muir Trail the whole way: past Clark Point, over the footbridge above Nevada Fall, through Little Yosemite Valley to the Half Dome junction and up the Half Dome Trail. Longer but gentler than the Mist Trail stairs, and the route that stays open when the lower Mist Trail is closed in winter.",
+   "traceNote": "Same added features as the Mist Trail route. The round trip matches the published 16.4 miles.",
+   "segments": [
+    {
+     "feature": 18937,
+     "from": {
+      "at": "happy-isles-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 15622,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16589,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20007,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20091,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15046,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16432,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20133,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16205,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21659,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16450,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17156,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18962,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20072,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22688,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19755,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  }
+ ]
+}

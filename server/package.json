@@ -1,0 +1,16 @@
+{
+  "name": "enve-yosemite-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Companion server for Enve Yosemite — aggregates public condition feeds, hosts optional GIS packs, suggestions and APNs registration.",
+  "type": "module",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node src/index.js",
+    "check": "node --check src/index.js && node --test",
+    "refresh": "node scripts/refresh.mjs",
+    "send-push": "node scripts/send-push.mjs",
+    "reply": "node scripts/reply.mjs",
+    "fetch-gis": "node scripts/fetch-gis-packs.mjs"
+  }
+}

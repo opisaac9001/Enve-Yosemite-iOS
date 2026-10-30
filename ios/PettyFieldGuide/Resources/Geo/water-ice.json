@@ -1,0 +1,2022 @@
+{
+  "checked": "2026-09-25",
+  "attribution": "Contains © OpenStreetMap contributors data",
+  "license": "ODbL 1.0",
+  "licenseUrl": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "places": [
+    {
+      "id": "water-campground-20620",
+      "name": "Upper Pines · bathroom water 1",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.737584,
+      "longitude": -119.565601,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Upper Pines open year-round; some loops close in winter. Verify the station is operating."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 20620; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/20620?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-21827",
+      "name": "Upper Pines · bathroom water 2",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.735984,
+      "longitude": -119.564876,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Upper Pines open year-round; some loops close in winter. Verify the station is operating."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 21827; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/21827?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22237",
+      "name": "Upper Pines · bathroom water 3",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.737246,
+      "longitude": -119.564711,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Upper Pines open year-round; some loops close in winter. Verify the station is operating."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22237; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22237?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-20865",
+      "name": "Upper Pines · bathroom water 4",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.736337,
+      "longitude": -119.563958,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Upper Pines open year-round; some loops close in winter. Verify the station is operating."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 20865; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/20865?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22401",
+      "name": "Upper Pines · bathroom water 5",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.735157,
+      "longitude": -119.563354,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Upper Pines open year-round; some loops close in winter. Verify the station is operating."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22401; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22401?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-21093",
+      "name": "Upper Pines · bathroom water 6",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.735681,
+      "longitude": -119.563321,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Upper Pines open year-round; some loops close in winter. Verify the station is operating."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 21093; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/21093?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22633",
+      "name": "Upper Pines · bathroom water 7",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.734581,
+      "longitude": -119.562446,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Upper Pines open year-round; some loops close in winter. Verify the station is operating."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22633; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22633?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22218",
+      "name": "Upper Pines · bathroom water 8",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.735268,
+      "longitude": -119.56216,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Upper Pines open year-round; some loops close in winter. Verify the station is operating."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22218; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22218?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22467",
+      "name": "Upper Pines · bathroom water 9",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.734552,
+      "longitude": -119.560966,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Upper Pines open year-round; some loops close in winter. Verify the station is operating."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22467; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22467?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22223",
+      "name": "Upper Pines · bathroom water 10",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.73371,
+      "longitude": -119.560578,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Upper Pines open year-round; some loops close in winter. Verify the station is operating."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Upper Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22223; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22223?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-21199",
+      "name": "Lower Pines · bathroom water 1",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.741174,
+      "longitude": -119.568141,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Lower Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Seasonal campground; water may be off when closed."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Lower Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 21199; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/21199?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22840",
+      "name": "Lower Pines · bathroom water 2",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.740189,
+      "longitude": -119.567553,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Lower Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Seasonal campground; water may be off when closed."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Lower Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22840; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22840?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22850",
+      "name": "Lower Pines · bathroom water 3",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.739505,
+      "longitude": -119.566802,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Lower Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Seasonal campground; water may be off when closed."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Lower Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22850; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22850?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22500",
+      "name": "North Pines · bathroom water 1",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.742699,
+      "longitude": -119.567068,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the North Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Seasonal campground; water may be off when closed."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the North Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22500; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22500?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-21610",
+      "name": "North Pines · bathroom water 2",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.741764,
+      "longitude": -119.566775,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the North Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Seasonal campground; water may be off when closed."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the North Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 21610; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/21610?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22010",
+      "name": "North Pines · bathroom water 3",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.742414,
+      "longitude": -119.565759,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the North Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Seasonal campground; water may be off when closed."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the North Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22010; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22010?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-22890",
+      "name": "North Pines · bathroom water 4",
+      "campus": "Pines Campgrounds",
+      "latitude": 37.741059,
+      "longitude": -119.565691,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the North Pines campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Seasonal campground; water may be off when closed."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the North Pines campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 22890; bathroom-station location, not the exact faucet. Numbers run west to east and are guide labels, not posted station numbers.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/pinescampgrounds.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22890?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-21231",
+      "name": "Camp 4 West · bathroom water",
+      "campus": "Camp 4",
+      "latitude": 37.741477,
+      "longitude": -119.603458,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Camp 4 West campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Campground open year-round; individual faucets may be shut off."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/camp4.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Camp 4 West campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 21231; bathroom-station location, not the exact faucet.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/camp4.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/21231?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-campground-21569",
+      "name": "Camp 4 East · bathroom water",
+      "campus": "Camp 4",
+      "latitude": 37.743483,
+      "longitude": -119.600566,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Camp 4 East campground bathroom station. Look for the signed potable-water faucet.",
+      "hours": [
+        "Campground open year-round; individual faucets may be shut off."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle",
+        "faucet",
+        "tap",
+        "spigot",
+        "campground bathroom"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/camp4.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "faucet",
+        "directions": "At the Camp 4 East campground bathroom station. Look for the signed potable-water faucet.",
+        "locationBasis": "NPS restroom point 21569; bathroom-station location, not the exact faucet.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS campground drinking-water description",
+            "url": "https://www.nps.gov/yose/planyourvisit/camp4.htm"
+          },
+          {
+            "label": "NPS bathroom location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/21569?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-lower-yosemite-fall",
+      "name": "Lower Yosemite Fall · bottle filler",
+      "campus": "Yosemite Falls",
+      "latitude": 37.745956,
+      "longitude": -119.595802,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the restroom near the western end of the Lower Yosemite Fall loop, across the road from Yosemite Valley Lodge.",
+      "hours": [
+        "Seasonal shutoffs and operating status unverified."
+      ],
+      "accessScope": "public-day-use",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.nps.gov/places/000/lower-yosemite-fall-trailhead.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "bottle-filler",
+        "directions": "At the restroom near the western end of the Lower Yosemite Fall loop, across the road from Yosemite Valley Lodge.",
+        "locationBasis": "Nearby NPS restroom point; approximate station area, not a surveyed dispenser.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS location and water information",
+            "url": "https://www.nps.gov/places/000/lower-yosemite-fall-trailhead.htm"
+          },
+          {
+            "label": "NPS reference location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-bridalveil",
+      "name": "Bridalveil Fall · bottle filler",
+      "campus": "Bridalveil Fall",
+      "latitude": 37.716626,
+      "longitude": -119.651061,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Bridalveil Fall trailhead restroom facility off Wawona Road. NPS lists a bottle-filling station at this trailhead.",
+      "hours": [
+        "Seasonal shutoffs and operating status unverified."
+      ],
+      "accessScope": "public-day-use",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.nps.gov/places/000/bridalveil-fall-trailhead.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "bottle-filler",
+        "directions": "At the Bridalveil Fall trailhead restroom facility off Wawona Road. NPS lists a bottle-filling station at this trailhead.",
+        "locationBasis": "Nearby NPS restroom point; approximate station area, not a surveyed dispenser.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS location and water information",
+            "url": "https://www.nps.gov/places/000/bridalveil-fall-trailhead.htm"
+          },
+          {
+            "label": "NPS reference location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-vernal-footbridge",
+      "name": "Vernal Fall footbridge · drinking water",
+      "campus": "Happy Isles & Mist Trail",
+      "latitude": 37.725594,
+      "longitude": -119.551627,
+      "categories": [
+        "water"
+      ],
+      "summary": "Near the restroom at the Vernal Fall footbridge, about 0.8 miles uphill from the trailhead. NPS lists this as the only drinking water along the trail beyond Happy Isles.",
+      "hours": [
+        "May–October only, subject to seasonal shutoff; carry water."
+      ],
+      "accessScope": "public-day-use",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Near the restroom at the Vernal Fall footbridge, about 0.8 miles uphill from the trailhead. NPS lists this as the only drinking water along the trail beyond Happy Isles.",
+        "locationBasis": "Nearby NPS restroom point; approximate station area, not a surveyed dispenser.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS location and water information",
+            "url": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm"
+          },
+          {
+            "label": "NPS reference location",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-happy-isles",
+      "name": "Happy Isles · drinking water",
+      "campus": "Happy Isles & Mist Trail",
+      "latitude": 37.732421,
+      "longitude": -119.559797,
+      "categories": [
+        "water"
+      ],
+      "summary": "At shuttle stop 16 near the Mist Trail / John Muir Trail trailhead. Fill before starting uphill.",
+      "hours": [
+        "Operating status and seasonal shutoffs unverified."
+      ],
+      "accessScope": "public-day-use",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "At shuttle stop 16 near the Mist Trail / John Muir Trail trailhead. Fill before starting uphill.",
+        "locationBasis": "Shuttle-stop reference point; NPS places drinking water at this stop, but does not locate the individual fixture.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS Mist Trail water locations",
+            "url": "https://www.nps.gov/yose/planyourvisit/vernalnevadatrail.htm"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-lodge-lobby",
+      "name": "Yosemite Valley Lodge · lobby bottle filler",
+      "campus": "Yosemite Valley Lodge",
+      "latitude": 37.743487,
+      "longitude": -119.598299,
+      "categories": [
+        "water"
+      ],
+      "summary": "Inside the Lodge lobby. The official 2023 property map marks a water-refill station in this building.",
+      "hours": [
+        "Indoor access and operating hours unverified; ask at the front desk."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "bottle-filler",
+        "directions": "Inside the Lodge lobby. The official 2023 property map marks a water-refill station in this building.",
+        "locationBasis": "NPS registration-building center; use the lobby directions and property map to find the dispenser.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "Official Lodge map · 2023",
+            "url": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf"
+          },
+          {
+            "label": "NPS building location",
+            "url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_Buildings/FeatureServer/1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ice-lodge-hemlock",
+      "name": "Yosemite Valley Lodge · Hemlock ice machine",
+      "campus": "Yosemite Valley Lodge",
+      "latitude": 37.742041,
+      "longitude": -119.598465,
+      "categories": [
+        "ice"
+      ],
+      "summary": "At the Hemlock building, marked ICE on the official Lodge property map. Follow the property map or ask the front desk for the machine entrance.",
+      "hours": [
+        "Lodging amenity; guest access, operating status and any charge must be confirmed at the Lodge."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "ice",
+        "ice machine"
+      ],
+      "sourceUrl": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf",
+      "mapPriority": 2,
+      "glyph": "ICE",
+      "waterIce": {
+        "kind": "ice",
+        "type": "ice-machine",
+        "directions": "At the Hemlock building, marked ICE on the official Lodge property map. Follow the property map or ask the front desk for the machine entrance.",
+        "locationBasis": "NPS Hemlock building center; the machine is at a building corner, not at the pin itself.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "Official Lodge map · 2023",
+            "url": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf"
+          },
+          {
+            "label": "NPS building location",
+            "url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_Buildings/FeatureServer/1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ice-lodge-maple",
+      "name": "Yosemite Valley Lodge · Maple ice machine",
+      "campus": "Yosemite Valley Lodge",
+      "latitude": 37.742472,
+      "longitude": -119.598207,
+      "categories": [
+        "ice"
+      ],
+      "summary": "At the Maple building, marked ICE on the official Lodge property map. Follow the property map or ask the front desk for the machine entrance.",
+      "hours": [
+        "Lodging amenity; guest access, operating status and any charge must be confirmed at the Lodge."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "ice",
+        "ice machine"
+      ],
+      "sourceUrl": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf",
+      "mapPriority": 2,
+      "glyph": "ICE",
+      "waterIce": {
+        "kind": "ice",
+        "type": "ice-machine",
+        "directions": "At the Maple building, marked ICE on the official Lodge property map. Follow the property map or ask the front desk for the machine entrance.",
+        "locationBasis": "NPS Maple building center; the machine is at a building corner, not at the pin itself.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "Official Lodge map · 2023",
+            "url": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf"
+          },
+          {
+            "label": "NPS building location",
+            "url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_Buildings/FeatureServer/1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ice-lodge-cottonwood",
+      "name": "Yosemite Valley Lodge · Cottonwood ice machine",
+      "campus": "Yosemite Valley Lodge",
+      "latitude": 37.744884,
+      "longitude": -119.598383,
+      "categories": [
+        "ice"
+      ],
+      "summary": "At the Cottonwood building, marked ICE on the official Lodge property map. Follow the property map or ask the front desk for the machine entrance.",
+      "hours": [
+        "Lodging amenity; guest access, operating status and any charge must be confirmed at the Lodge."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "ice",
+        "ice machine"
+      ],
+      "sourceUrl": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf",
+      "mapPriority": 2,
+      "glyph": "ICE",
+      "waterIce": {
+        "kind": "ice",
+        "type": "ice-machine",
+        "directions": "At the Cottonwood building, marked ICE on the official Lodge property map. Follow the property map or ask the front desk for the machine entrance.",
+        "locationBasis": "NPS Cottonwood building center; the machine is at a building corner, not at the pin itself.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "Official Lodge map · 2023",
+            "url": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf"
+          },
+          {
+            "label": "NPS building location",
+            "url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_Buildings/FeatureServer/1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ice-lodge-aspen",
+      "name": "Yosemite Valley Lodge · Aspen ice machine",
+      "campus": "Yosemite Valley Lodge",
+      "latitude": 37.744782,
+      "longitude": -119.596716,
+      "categories": [
+        "ice"
+      ],
+      "summary": "At the Aspen building, marked ICE on the official Lodge property map. Follow the property map or ask the front desk for the machine entrance.",
+      "hours": [
+        "Lodging amenity; guest access, operating status and any charge must be confirmed at the Lodge."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "ice",
+        "ice machine"
+      ],
+      "sourceUrl": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf",
+      "mapPriority": 2,
+      "glyph": "ICE",
+      "waterIce": {
+        "kind": "ice",
+        "type": "ice-machine",
+        "directions": "At the Aspen building, marked ICE on the official Lodge property map. Follow the property map or ask the front desk for the machine entrance.",
+        "locationBasis": "NPS Aspen building center; the machine is at a building corner, not at the pin itself.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "Official Lodge map · 2023",
+            "url": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf"
+          },
+          {
+            "label": "NPS building location",
+            "url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_Buildings/FeatureServer/1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ice-lodge-cedar",
+      "name": "Yosemite Valley Lodge · Cedar / gift-shop walkway ice machine",
+      "campus": "Yosemite Valley Lodge",
+      "latitude": 37.744024,
+      "longitude": -119.597875,
+      "categories": [
+        "ice"
+      ],
+      "summary": "On the walkway between Cedar and the gift shop, shown on the official Lodge property map. Ask the front desk about seasonal operation.",
+      "hours": [
+        "Lodging amenity; guest access, operating status and any charge must be confirmed at the Lodge."
+      ],
+      "accessScope": "registered-guest",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "ice",
+        "ice machine"
+      ],
+      "sourceUrl": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf",
+      "mapPriority": 2,
+      "glyph": "ICE",
+      "waterIce": {
+        "kind": "ice",
+        "type": "ice-machine",
+        "directions": "On the walkway between Cedar and the gift shop, shown on the official Lodge property map. Ask the front desk about seasonal operation.",
+        "locationBasis": "NPS Cedar building center; the machine is on the adjacent walkway, not at the pin itself.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "Official Lodge map · 2023",
+            "url": "https://www.travelyosemite.com/media/825705/yosemite_valley_lodge_2023_notrim.pdf"
+          },
+          {
+            "label": "NPS building location",
+            "url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_Buildings/FeatureServer/1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ice-housekeeping",
+      "name": "Housekeeping Camp · ice machine",
+      "campus": "Housekeeping Camp",
+      "latitude": 37.740828,
+      "longitude": -119.57923,
+      "categories": [
+        "ice"
+      ],
+      "summary": "At the small NPS-mapped ice-machine building in southern Housekeeping Camp.",
+      "hours": [
+        "NPS lists approximately April–October; current operation, payment and access are unverified."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "ice",
+        "ice machine"
+      ],
+      "sourceUrl": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_Buildings/FeatureServer/1/455?f=pjson",
+      "mapPriority": 2,
+      "glyph": "ICE",
+      "waterIce": {
+        "kind": "ice",
+        "type": "ice-machine",
+        "directions": "At the small NPS-mapped ice-machine building in southern Housekeeping Camp.",
+        "locationBasis": "Center of the NPS building footprint explicitly named Housekeeping Camp Ice Machine; record edited October 14, 2025.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS ice-machine building record",
+            "url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_Buildings/FeatureServer/1/455?f=pjson"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fac-water-mariposa-grove-trailhead-drinking-water",
+      "name": "Mariposa Grove Trailhead · bottle filler",
+      "campus": "Mariposa Grove",
+      "latitude": 37.501484,
+      "longitude": -119.610767,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Mariposa Grove arrival area / trailhead. NPS lists summer-only drinking water here, with no drinking water farther into the grove.",
+      "hours": [
+        "Summer only; verify water is on before entering the grove."
+      ],
+      "accessScope": "public-day-use",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.nps.gov/places/000/mariposa-grove-arrival-area-trailhead.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "bottle-filler",
+        "directions": "At the Mariposa Grove arrival area / trailhead. NPS lists summer-only drinking water here, with no drinking water farther into the grove.",
+        "locationBasis": "NPS drinking-water point; positional accuracy unknown.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS bottle-filling information",
+            "url": "https://www.nps.gov/places/000/mariposa-grove-arrival-area-trailhead.htm"
+          },
+          {
+            "label": "NPS drinking-water point",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fac-water-mariposa-grove-welcome-plaza-drinking-water",
+      "name": "Mariposa Grove Welcome Plaza · bottle filler",
+      "campus": "Mariposa Grove",
+      "latitude": 37.506724,
+      "longitude": -119.630269,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Mariposa Grove Welcome Plaza parking and restroom area. NPS lists a bottle-filling station.",
+      "hours": [
+        "Seasonal shutoffs and operating status unverified."
+      ],
+      "accessScope": "public-day-use",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.nps.gov/places/000/mariposa-grove-welcome-plaza.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "bottle-filler",
+        "directions": "At the Mariposa Grove Welcome Plaza parking and restroom area. NPS lists a bottle-filling station.",
+        "locationBasis": "NPS drinking-water point; positional accuracy unknown.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS bottle-filling information",
+            "url": "https://www.nps.gov/places/000/mariposa-grove-welcome-plaza.htm"
+          },
+          {
+            "label": "NPS drinking-water point",
+            "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "water-osm-3060358933",
+      "name": "Yosemite Exploration Center · drinking fountain",
+      "campus": "Yosemite Village",
+      "latitude": 37.7484649,
+      "longitude": -119.5875024,
+      "categories": [
+        "water"
+      ],
+      "summary": "Near the Exploration Center restroom and theater. The community record marks a drinking fountain suitable for filling bottles.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/3060358933",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Near the Exploration Center restroom and theater. The community record marks a drinking fountain suitable for filling bottles.",
+        "locationBasis": "OpenStreetMap drinking-water point 3060358933; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/3060358933"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2025-07-11. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-3453503953",
+      "name": "Village Store / Welcome Center · drinking water",
+      "campus": "Yosemite Village",
+      "latitude": 37.7467279,
+      "longitude": -119.5842222,
+      "categories": [
+        "water"
+      ],
+      "summary": "Near the Valley Tours kiosk between Village Store and the Welcome Center. The record includes a bottle tap with an old repair report; use another location if it is not working.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Old repair report (April 13, 2015): bottle-filling tap inoperative. Repair status is unverified; do not rely on this tap.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/3453503953",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Near the Valley Tours kiosk between Village Store and the Welcome Center. The record includes a bottle tap with an old repair report; use another location if it is not working.",
+        "locationBasis": "OpenStreetMap drinking-water point 3453503953; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/3453503953"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2015-04-13. Source retrieval is not a field check.",
+        "communityMapped": true,
+        "warning": "Old repair report (April 13, 2015): bottle-filling tap inoperative. Repair status is unverified; do not rely on this tap."
+      }
+    },
+    {
+      "id": "water-osm-3700489301",
+      "name": "Village parking restroom · drinking fountain",
+      "campus": "Yosemite Village",
+      "latitude": 37.7446097,
+      "longitude": -119.5840161,
+      "categories": [
+        "water"
+      ],
+      "summary": "At the Village parking restroom on the approach to the Welcome Center. Community-mapped covered drinking fountain.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/3700489301",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "At the Village parking restroom on the approach to the Welcome Center. Community-mapped covered drinking fountain.",
+        "locationBasis": "OpenStreetMap drinking-water point 3700489301; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/3700489301"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2025-10-09. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-4562814053",
+      "name": "Village Store west side · drinking fountain",
+      "campus": "Yosemite Village",
+      "latitude": 37.7468655,
+      "longitude": -119.5848089,
+      "categories": [
+        "water"
+      ],
+      "summary": "On the west side of the Village Store area, near the Welcome Center. Follow the pin to the community-mapped drinking fountain.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/4562814053",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "On the west side of the Village Store area, near the Welcome Center. Follow the pin to the community-mapped drinking fountain.",
+        "locationBasis": "OpenStreetMap drinking-water point 4562814053; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/4562814053"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2025-09-10 · mapper check 2025-09-10. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-6467054285",
+      "name": "Church Bowl · bottle filler",
+      "campus": "Church Bowl",
+      "latitude": 37.748721,
+      "longitude": -119.5809317,
+      "categories": [
+        "water"
+      ],
+      "summary": "Near the Church Bowl picnic-area restroom. NPS lists a bottle-filling station; the community water point supplies the approximate location.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.nps.gov/places/000/church-bowl-picnic-area.htm",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "bottle-filler",
+        "directions": "Near the Church Bowl picnic-area restroom. NPS lists a bottle-filling station; the community water point supplies the approximate location.",
+        "locationBasis": "OpenStreetMap drinking-water point 6467054285; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS Church Bowl bottle-filling station",
+            "url": "https://www.nps.gov/places/000/church-bowl-picnic-area.htm"
+          },
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/6467054285"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2019-05-11. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-4150372240",
+      "name": "Housekeeping Camp · water near units 179–180",
+      "campus": "Housekeeping Camp",
+      "latitude": 37.7421869,
+      "longitude": -119.5812703,
+      "categories": [
+        "water"
+      ],
+      "summary": "Community-mapped drinking-water point near units 179–180; confirm the signed potable outlet and permitted access at camp.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/4150372240",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Community-mapped drinking-water point near units 179–180; confirm the signed potable outlet and permitted access at camp.",
+        "locationBasis": "OpenStreetMap drinking-water point 4150372240; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/4150372240"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2016-04-27. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-4150372241",
+      "name": "Housekeeping Camp · water near units 176–177",
+      "campus": "Housekeeping Camp",
+      "latitude": 37.7421964,
+      "longitude": -119.5810497,
+      "categories": [
+        "water"
+      ],
+      "summary": "Community-mapped drinking-water point near units 176–177; confirm the signed potable outlet and permitted access at camp.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/4150372241",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Community-mapped drinking-water point near units 176–177; confirm the signed potable outlet and permitted access at camp.",
+        "locationBasis": "OpenStreetMap drinking-water point 4150372241; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/4150372241"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2016-04-27. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-4150372243",
+      "name": "Housekeeping Camp · water near units 218–219",
+      "campus": "Housekeeping Camp",
+      "latitude": 37.7424859,
+      "longitude": -119.5814989,
+      "categories": [
+        "water"
+      ],
+      "summary": "Community-mapped drinking-water point near units 218–219; confirm the signed potable outlet and permitted access at camp.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/4150372243",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Community-mapped drinking-water point near units 218–219; confirm the signed potable outlet and permitted access at camp.",
+        "locationBasis": "OpenStreetMap drinking-water point 4150372243; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/4150372243"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2016-04-27. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-4150372244",
+      "name": "Housekeeping Camp · water near units 190–191",
+      "campus": "Housekeeping Camp",
+      "latitude": 37.742487,
+      "longitude": -119.5804234,
+      "categories": [
+        "water"
+      ],
+      "summary": "Community-mapped drinking-water point near units 190–191; confirm the signed potable outlet and permitted access at camp.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/4150372244",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Community-mapped drinking-water point near units 190–191; confirm the signed potable outlet and permitted access at camp.",
+        "locationBasis": "OpenStreetMap drinking-water point 4150372244; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/4150372244"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2016-04-27. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-4150372246",
+      "name": "Housekeeping Camp · water near units 236–237",
+      "campus": "Housekeeping Camp",
+      "latitude": 37.7428211,
+      "longitude": -119.581452,
+      "categories": [
+        "water"
+      ],
+      "summary": "Community-mapped drinking-water point near units 236–237; confirm the signed potable outlet and permitted access at camp.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/4150372246",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Community-mapped drinking-water point near units 236–237; confirm the signed potable outlet and permitted access at camp.",
+        "locationBasis": "OpenStreetMap drinking-water point 4150372246; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/4150372246"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2016-04-27. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-4150372248",
+      "name": "Housekeeping Camp · water near units 222–223",
+      "campus": "Housekeeping Camp",
+      "latitude": 37.7428836,
+      "longitude": -119.5811972,
+      "categories": [
+        "water"
+      ],
+      "summary": "Community-mapped drinking-water point near units 222–223; confirm the signed potable outlet and permitted access at camp.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/4150372248",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Community-mapped drinking-water point near units 222–223; confirm the signed potable outlet and permitted access at camp.",
+        "locationBasis": "OpenStreetMap drinking-water point 4150372248; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/4150372248"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2016-04-27. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-5103495257",
+      "name": "Curry Village Pavilion · drinking water",
+      "campus": "Curry Village",
+      "latitude": 37.7375983,
+      "longitude": -119.5710793,
+      "categories": [
+        "water"
+      ],
+      "summary": "Near the Curry Village Pavilion. The community record identifies drinking water but does not specify the fixture type.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/5103495257",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Near the Curry Village Pavilion. The community record identifies drinking water but does not specify the fixture type.",
+        "locationBasis": "OpenStreetMap drinking-water point 5103495257; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/5103495257"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2025-07-29 · mapper check 2025-07-28. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "water-osm-12997991701",
+      "name": "Curry Village east cabins / laundry · drinking water",
+      "campus": "Curry Village",
+      "latitude": 37.7377705,
+      "longitude": -119.5676841,
+      "categories": [
+        "water"
+      ],
+      "summary": "Near the east cabins and Boys Town laundry building. Public access is unverified; ask the Curry Village front desk before entering this area.",
+      "hours": [
+        "Operation, seasonal shutoffs and access unverified; check posted signs."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "potable",
+        "drinking water",
+        "refill",
+        "water bottle"
+      ],
+      "sourceUrl": "https://www.openstreetmap.org/node/12997991701",
+      "mapPriority": 2,
+      "glyph": "H₂O",
+      "waterIce": {
+        "kind": "water",
+        "type": "drinking-water",
+        "directions": "Near the east cabins and Boys Town laundry building. Public access is unverified; ask the Curry Village front desk before entering this area.",
+        "locationBasis": "OpenStreetMap drinking-water point 12997991701; community-mapped position, not field-verified. Nearby building/unit names are wayfinding references, not surveyed fixture entrances.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "OpenStreetMap water record",
+            "url": "https://www.openstreetmap.org/node/12997991701"
+          },
+          {
+            "label": "© OpenStreetMap contributors · ODbL",
+            "url": "https://www.openstreetmap.org/copyright"
+          }
+        ],
+        "evidenceNote": "Community mapped · record edited 2025-07-13. Source retrieval is not a field check.",
+        "communityMapped": true
+      }
+    },
+    {
+      "id": "ice-village-store-east",
+      "name": "Village Store · east entrance ice machine",
+      "campus": "Yosemite Village",
+      "latitude": 37.746909,
+      "longitude": -119.58448,
+      "categories": [
+        "ice"
+      ],
+      "summary": "Just outside the east entrance of the Village Store, as reported by a visitor. Walk to the building's east entrance to find the new machine.",
+      "hours": [
+        "Hours, payment and access unverified; follow signs at the machine."
+      ],
+      "accessScope": "unknown",
+      "notice": "Recorded location, not live availability. Follow posted signs; seasonal shutdowns, outages and access restrictions can change.",
+      "tags": [
+        "ice",
+        "ice machine"
+      ],
+      "sourceUrl": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_Buildings/FeatureServer/1/259?f=pjson",
+      "mapPriority": 2,
+      "glyph": "ICE",
+      "waterIce": {
+        "kind": "ice",
+        "type": "ice-machine",
+        "directions": "Just outside the east entrance of the Village Store, as reported by a visitor. Walk to the building's east entrance to find the new machine.",
+        "locationBasis": "Approximate NPS Village Store building-center pin; the reported machine is outside the east entrance, not at the pin itself.",
+        "checked": "2026-09-25",
+        "sources": [
+          {
+            "label": "NPS Village Store building location (coordinates only)",
+            "url": "https://services1.arcgis.com/fBc8EJBxQRMcHlei/arcgis/rest/services/YOSE_Buildings/FeatureServer/1/259?f=pjson"
+          }
+        ],
+        "evidenceNote": "User reported September 25, 2026 · exact coordinates and operation not independently verified."
+      }
+    }
+  ]
+}

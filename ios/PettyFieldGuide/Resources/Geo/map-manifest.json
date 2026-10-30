@@ -1,0 +1,74 @@
+{
+  "version": "9e02f2742ed9",
+  "fetchedAt": "2026-09-21T23:44:38.576Z",
+  "serviceRoot": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/",
+  "envelope": [
+    -119.72,
+    37.69,
+    -119.53,
+    37.78
+  ],
+  "layers": [
+    {
+      "file": "buildings.geojson",
+      "service": "NPS_Public_Buildings_Geographic",
+      "where": "UNITCODE='YOSE' AND ISEXTANT='True'",
+      "count": 1234,
+      "bytes": 543863,
+      "sha256": "4c8b8668177a5cbebc7f62ced78bfda2e76298cbca976817c1a63d8d64c4f8f1",
+      "pages": 1,
+      "minimumCount": 1000
+    },
+    {
+      "file": "parking.geojson",
+      "service": "NPS_Public_ParkingLots_Geographic",
+      "where": "UNITCODE='YOSE'",
+      "count": 101,
+      "bytes": 609205,
+      "sha256": "86eed3f2114b8bf6b73dcdc28bb35bc2fac6a71cc581a99d3ffa5e38debad53d",
+      "pages": 1,
+      "minimumCount": 90
+    },
+    {
+      "file": "pois.geojson",
+      "service": "NPS_Public_POIs_Geographic",
+      "where": "UNITCODE='YOSE'",
+      "count": 217,
+      "bytes": 78480,
+      "sha256": "1a70423db41ecc00d9bf92124aac3d385ae39797767e504e0468778751da066b",
+      "pages": 1,
+      "minimumCount": 200
+    },
+    {
+      "file": "roads.geojson",
+      "service": "NPS_Public_Roads_Geographic",
+      "where": "UNITCODE='YOSE' AND ISEXTANT='True'",
+      "count": 299,
+      "bytes": 323403,
+      "sha256": "e2ff590153d3e4ec96000379df2aa4dc5334de02fec148b777690622c7e8ff35",
+      "pages": 1,
+      "minimumCount": 250
+    },
+    {
+      "file": "trails.geojson",
+      "service": "NPS_Public_Trails_Geographic",
+      "where": "UNITCODE='YOSE' AND ISEXTANT='True'",
+      "count": 612,
+      "bytes": 871490,
+      "sha256": "8f0f67866b6ede98a7fd216eeaa549a05a7f3e4007bc2da7a3811fadc3632470",
+      "pages": 1,
+      "minimumCount": 500,
+      "appended": {
+        "features": [
+          20072,
+          22688
+        ],
+        "fetchedAt": "2026-10-27",
+        "service": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_Trails_Geographic/FeatureServer/0",
+        "query": "where=UNITCODE='YOSE' AND ISEXTANT='True' AND TRLNAME IN ('John Muir Trail','Half Dome Trail'); envelope -119.535,37.715,-119.495,37.755; outFields=*; outSR=4326; f=geojson",
+        "reason": "Two John Muir Trail segments through Little Yosemite Valley that the Valley envelope query omits. Appended to trails.geojson by tools/build_content.py with their original NPS ids and properties so the Half Dome routes resolve offline."
+      }
+    }
+  ],
+  "accuracyNote": "NPS XYACCURACY is frequently Unknown; geometry is orientation data, not survey data."
+}

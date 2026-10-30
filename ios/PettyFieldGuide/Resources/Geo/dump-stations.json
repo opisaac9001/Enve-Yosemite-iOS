@@ -1,0 +1,210 @@
+{
+  "checked": "2026-10-02",
+  "attribution": "Contains © OpenStreetMap contributors data and National Park Service records",
+  "license": "ODbL 1.0",
+  "licenseUrl": "https://www.openstreetmap.org/copyright",
+  "places": [
+    {
+      "id": "dump-upper-pines",
+      "name": "Upper Pines RV Dump Station",
+      "campus": "Pines Campgrounds",
+      "categories": [
+        "dump-stations"
+      ],
+      "latitude": 37.7387949,
+      "longitude": -119.5658572,
+      "mapPriority": 10,
+      "checked": "2026-10-02",
+      "accessScope": "unknown",
+      "nearbyStops": [
+        15,
+        18
+      ],
+      "summary": "RV wastewater disposal near the Upper Pines entrance. NPS lists year-round service with fresh water; Recreation.gov lists the dump station as free.",
+      "hours": [
+        "Year-round · check posted hours and access"
+      ],
+      "tags": [
+        "RV",
+        "camper",
+        "motorhome",
+        "trailer",
+        "sanitary dump station",
+        "dump site",
+        "dumpsite",
+        "sewage",
+        "black water",
+        "blackwater",
+        "gray water",
+        "grey water",
+        "wastewater"
+      ],
+      "dumpStation": {
+        "status": "year-round",
+        "npsFeatureId": "{BCEB42FF-B3AF-40D5-8031-366E5E58D0C4}",
+        "osmNodeId": 3424485565
+      },
+      "details": [
+        {
+          "label": "Pin location",
+          "text": "Approximate community-mapped relocated station. The October 2024 map edit reports a locally verified move; the position was adjusted in September 2025. The exact drain and entrance remain unconfirmed."
+        },
+        {
+          "label": "Fresh water",
+          "text": "NPS lists fresh water here. Use the outlet signed for potable filling; do not use a waste-rinsing hose to fill a drinking-water tank."
+        },
+        {
+          "label": "Access",
+          "text": "Use by visitors without a campsite reservation is unconfirmed. Follow campground signs and ask staff before entering restricted areas."
+        }
+      ],
+      "notice": "Follow signs to the relocated station. This pin is approximate; current operation is unverified.",
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/campgrounds.htm",
+      "sourceNote": "Reviewed October 2, 2026. NPS guidance supplies season/water; Recreation.gov supplies the free-use listing. Position: © OpenStreetMap contributors, node 3424485565 v8 (September 18, 2025), ODbL. NPS GIS appears to retain the former riverside position.",
+      "sources": [
+        {
+          "label": "Recreation.gov · Upper Pines",
+          "url": "https://www.recreation.gov/camping/campgrounds/232447"
+        },
+        {
+          "label": "OpenStreetMap · relocated station",
+          "url": "https://www.openstreetmap.org/node/3424485565"
+        },
+        {
+          "label": "OpenStreetMap · locally verified relocation edit",
+          "url": "https://www.openstreetmap.org/changeset/158227308"
+        },
+        {
+          "label": "© OpenStreetMap contributors · ODbL",
+          "url": "https://www.openstreetmap.org/copyright"
+        },
+        {
+          "label": "Dump-station database · ODbL download",
+          "url": "/data/dump-stations.json"
+        }
+      ]
+    },
+    {
+      "id": "dump-wawona",
+      "name": "Wawona RV Dump Station",
+      "campus": "Wawona",
+      "categories": [
+        "dump-stations"
+      ],
+      "latitude": 37.53830477549273,
+      "longitude": -119.6537253801804,
+      "mapPriority": 10,
+      "checked": "2026-10-02",
+      "accessScope": "unknown",
+      "tags": [
+        "RV",
+        "camper",
+        "motorhome",
+        "trailer",
+        "sanitary dump station",
+        "dump site",
+        "dumpsite",
+        "sewage",
+        "black water",
+        "blackwater",
+        "gray water",
+        "grey water",
+        "wastewater"
+      ],
+      "summary": "Summer-only RV wastewater disposal in Wawona, on Forest Drive east of the Wawona Store. NPS lists fresh water with its dump stations.",
+      "hours": [
+        "Summer only · opening and closing dates unconfirmed"
+      ],
+      "dumpStation": {
+        "status": "seasonal",
+        "npsFeatureId": "{2AD607A7-E44E-459A-95BF-F0B5CB30100E}"
+      },
+      "details": [
+        {
+          "label": "Pin location",
+          "text": "NPS digitized point, with unknown accuracy. This is the dump station in Wawona, separate from the campground pin."
+        },
+        {
+          "label": "Before using",
+          "text": "Confirm seasonal operation, hours, fees and use without a campsite reservation. Follow signs for potable water and waste-rinsing outlets."
+        }
+      ],
+      "notice": "Summer-only service; do not assume it is operating in October. Current operation is unverified.",
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/campgrounds.htm",
+      "sourceNote": "Reviewed October 2, 2026. NPS public GIS feature 22323, edited January 10, 2026; source date and positional accuracy unknown. Published season is summer only, not live availability.",
+      "sources": [
+        {
+          "label": "NPS · Wawona campground and dump-station directions",
+          "url": "https://www.nps.gov/yose/planyourvisit/wawonacamp.htm"
+        },
+        {
+          "label": "NPS · mapped Wawona station",
+          "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/22323?f=pjson"
+        }
+      ]
+    },
+    {
+      "id": "dump-tuolumne-meadows",
+      "name": "Tuolumne Meadows RV Dump Station",
+      "campus": "Tuolumne Meadows",
+      "categories": [
+        "dump-stations"
+      ],
+      "latitude": 37.87202869705201,
+      "longitude": -119.3719907138869,
+      "mapPriority": 10,
+      "checked": "2026-10-02",
+      "accessScope": "unknown",
+      "tags": [
+        "RV",
+        "camper",
+        "motorhome",
+        "trailer",
+        "sanitary dump station",
+        "dump site",
+        "dumpsite",
+        "sewage",
+        "black water",
+        "blackwater",
+        "gray water",
+        "grey water",
+        "wastewater"
+      ],
+      "summary": "RV dump-station location near Tuolumne Meadows. Closed until further notice for wastewater-treatment-plant work; do not plan on using it.",
+      "hours": [
+        "Closed until further notice · closure began September 8, 2026"
+      ],
+      "dumpStation": {
+        "status": "closed",
+        "npsFeatureId": "{914E356E-232F-4EB1-B321-83AE8F41D441}"
+      },
+      "details": [
+        {
+          "label": "Closure",
+          "text": "NPS reports an ongoing closure for wastewater-treatment-plant work. The normal season is summer only; reopening and water availability are unconfirmed."
+        },
+        {
+          "label": "Pin location",
+          "text": "NPS digitized point, with unknown accuracy. This marker records the facility location, not an available service."
+        },
+        {
+          "label": "Road access",
+          "text": "Tioga Road is seasonal. Verify road status before traveling to the high country."
+        }
+      ],
+      "notice": "Closed until further notice. This marker does not indicate an operating dump station.",
+      "sourceUrl": "https://www.nps.gov/yose/planyourvisit/campgrounds.htm",
+      "sourceNote": "Reviewed October 2, 2026. NPS public GIS feature 20409, edited January 10, 2026; source date and positional accuracy unknown. Closure from NPS campground guidance; not a live status feed.",
+      "sources": [
+        {
+          "label": "NPS · mapped Tuolumne station",
+          "url": "https://mapservices.nps.gov/arcgis/rest/services/NationalDatasets/NPS_Public_POIs_Geographic/FeatureServer/0/20409?f=pjson"
+        },
+        {
+          "label": "NPS · current park conditions",
+          "url": "https://www.nps.gov/yose/planyourvisit/conditions.htm"
+        }
+      ]
+    }
+  ]
+}
