@@ -84,4 +84,4 @@ Map and guide records retain their source URLs, snapshot dates and accuracy note
 
 ## License
 
-A license for the original app code has not been selected yet. Public availability does not grant a general license to reuse it. Bundled data and publications retain the separate terms listed in [source attribution](docs/SOURCES.md).
+Enve Yosemite’s original source code is licensed under the [GNU Affero General Public License v3.0 only](LICENSE.md) (`AGPL-3.0-only`). Bundled data and publications retain the separate terms listed in [source attribution](docs/SOURCES.md).

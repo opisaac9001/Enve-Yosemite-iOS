@@ -2,6 +2,7 @@
   "name": "enve-yosemite-server",
   "version": "0.1.0",
   "private": true,
+  "license": "AGPL-3.0-only",
   "description": "Companion server for Enve Yosemite — aggregates public condition feeds, hosts optional GIS packs, suggestions and APNs registration.",
   "type": "module",
   "engines": { "node": ">=22" },
