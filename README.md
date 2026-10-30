@@ -6,12 +6,21 @@ An offline Yosemite field guide for iPhone and iPad. Explore the Valley, compare
 
 Independent project, not affiliated with or endorsed by the National Park Service.
 
-<p>
-  <img src="docs/images/hikes.png" width="270" alt="Hikes list with distance, difficulty and elevation filters">
-  <img src="docs/images/trail-detail.png" width="270" alt="Trail detail with route choices and an offline map">
-</p>
+## Screenshots
 
-*Simulator captures from October 27, 2026. The terrain inspector has since gained linked map and profile controls.*
+| Valley map | Hikes | Trail details |
+| :---: | :---: | :---: |
+| <img src="docs/images/valley-map.png" width="250" alt="Offline Valley map with shaded relief and place markers"> | <img src="docs/images/hikes.png" width="250" alt="Hikes list with filters"> | <img src="docs/images/trail-detail.png" width="250" alt="Hike details with route choices and map"> |
+
+| Places | Events |
+| :---: | :---: |
+| <img src="docs/images/places.png" width="250" alt="Searchable places directory"> | <img src="docs/images/events.png" width="250" alt="Event calendar and listings"> |
+
+**iPad:** trail details, route map and elevation profile in dark mode.
+
+<img src="docs/images/ipad-trail-profile.png" width="720" alt="iPad trail details with route map and terrain profile">
+
+*Simulator captures from October 26–27, 2026. Navigation and the terrain inspector have since been updated.*
 
 ## Features
 
