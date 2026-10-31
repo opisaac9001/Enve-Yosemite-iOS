@@ -22,12 +22,19 @@ struct TrailDetailView: View {
             let route = routes.first { $0.id == selectedRouteId } ?? routes.first { $0.id == routeId } ?? c.defaultHikeRoute(for: trail.id)
             FieldScroll {
                 header(trail, route, routes, c)
+                if routes.count < trail.routes.count { publishedRoutesCard(trail, traced: routes) }
                 if let route {
                     routeCards(trail, route)
                     HikeSequenceCard(route: route)
+                } else if let regionId = trail.regionId {
+                    regionalMapCard(trail, regionId: regionId)
                 }
                 if let guide = trail.guide { HikeGuideCards(guide: guide) }
+                if let regionId = trail.regionId, let advice = c.hikeAdvice(forRegion: regionId) {
+                    HikeAdviceCard(title: "Know before you go · \(c.region(regionId)?.name ?? "")", advice: advice)
+                }
                 trailheadCard(trail, c)
+                TrailheadDaylightCard(coordinate: trail.coordinate)
                 noticesCard(trail, c)
                 if !trail.notes.isEmpty || trail.warnings != nil {
                     FieldCard(eyebrow: "Seasonal warnings & notes") {
@@ -74,12 +81,17 @@ struct TrailDetailView: View {
         FieldCard {
             Text(route.flatMap { trail.route($0.id) }.map { trail.difficulty(for: $0) } ?? trail.difficulty).font(.fieldEyebrow).foregroundStyle(Palette.accent)
             Text(trail.summary).font(.fieldBody)
+            Text(c.areaName(of: trail)).font(.fieldCaption).foregroundStyle(.secondary)
             HikeRoutePicker(trail: trail, routes: routes, selection: $selectedRouteId)
             if let route, let published = trail.route(route.id) {
                 HikeStatsRow(difficulty: trail.difficulty(for: published), published: published, route: route)
             }
             HStack {
-                Button { if let route { router.showOnMap(.hikeRoute(route.id)) } else { router.showOnMap(.trail(trail.id)) } } label: { Label("Show route on map", systemImage: "map").frame(minHeight: 32) }
+                if let route {
+                    Button { router.showOnMap(.hikeRoute(route.id)) } label: { Label("Show route on map", systemImage: "map").frame(minHeight: 32) }
+                } else if let regionId = trail.regionId {
+                    Button { router.push(.region(regionId), in: .park) } label: { Label("Region guide", systemImage: "mountain.2").frame(minHeight: 32) }
+                }
                 if let url = AppRouter.url(for: route.map { Route.hikeRoute(trailId: trail.id, routeId: $0.id) } ?? .trail(trail.id)) {
                     ShareLink(item: url, subject: Text(trail.name)) { Label("Share", systemImage: "square.and.arrow.up").frame(minHeight: 32) }
                 }
@@ -102,7 +114,7 @@ struct TrailDetailView: View {
                 terrain(route, inspector: inspector)
             }
             if let inspector {
-                Text("Elevations sampled every \(Int(inspector.profile.stepMetres)) m from the bundled 20 m relief grid (Mapzen/Tilezen Terrarium, USGS 3DEP); grade is averaged over \(Int(HikeInspector.gradeHalfWindowMetres * 2)) m of those samples. Terrain-sampled climb about \(HikeFormat.feet(metres: inspector.profile.approxGainMetres)); the NPS figure above is the published gain. Distances follow the mapped NPS trail features, not the published mileage.")
+                Text("Elevations sampled every \(Int(inspector.profile.stepMetres)) m from the bundled \(Int(inspector.profile.gridMetres.rounded())) m relief grid (\(route.pack == .park ? "USGS 3DEP" : "Mapzen/Tilezen Terrarium, from USGS 3DEP")); grade is averaged over \(Int(HikeInspector.gradeHalfWindowMetres * 2)) m of those samples. Terrain-sampled climb about \(HikeFormat.feet(metres: inspector.profile.approxGainMetres)); the NPS figure above is the published gain. Distances follow the mapped NPS trail features, not the published mileage.")
                     .font(.caption2).foregroundStyle(.secondary)
             }
         }
@@ -110,7 +122,7 @@ struct TrailDetailView: View {
 
     @ViewBuilder private func miniMap(_ route: HikeRoute, cursor: CGPoint?) -> some View {
         let height: CGFloat = sizeClass == .regular ? 280 : 210
-        if case .ready(let scene) = packs.valley {
+        if case .ready(let scene) = packs.map {
             if let trace = scene.hikeRoutes[route.id] {
                 HikeMiniMap(scene: scene, route: route, trace: trace, dark: scheme == .dark, cursor: cursor)
                     .frame(height: height)
@@ -120,10 +132,10 @@ struct TrailDetailView: View {
             } else {
                 Text("This route could not be resolved onto the bundled trail geometry, so it is not drawn.").font(.fieldCaption).foregroundStyle(Palette.ember)
             }
-        } else if case .failed(let message) = packs.valley {
+        } else if case .failed(let message) = packs.map {
             Text("Route geometry unavailable: \(message)").font(.fieldCaption).foregroundStyle(Palette.ember)
         } else {
-            ProgressView().frame(maxWidth: .infinity).frame(height: height).task { await packs.loadValley() }
+            ProgressView().frame(maxWidth: .infinity).frame(height: height).task { await packs.loadMap() }
         }
     }
 
@@ -131,16 +143,51 @@ struct TrailDetailView: View {
         if let inspector {
             HikeTerrainInspector(inspector: inspector, metres: $inspectedMetres)
         } else if case .unavailable = inspection {
-            Text("No terrain profile: the route or the relief grid could not be loaded.").font(.fieldCaption).foregroundStyle(Palette.ember)
+            Text("No terrain profile: the route leaves the bundled relief grid, or the route or grid could not be loaded.").font(.fieldCaption).foregroundStyle(Palette.ember)
             Button { inspectionAttempt += 1 } label: { Label("Try again", systemImage: "arrow.clockwise").frame(minHeight: 44) }.buttonStyle(.bordered).font(.fieldCaption)
         } else {
             ProgressView().frame(maxWidth: .infinity).frame(height: 150)
         }
     }
 
+    /// Every published variant, including those without a bundled trace, with the NPS figures only.
+    private func publishedRoutesCard(_ trail: Trail, traced: [HikeRoute]) -> some View {
+        FieldCard(eyebrow: "Published routes · NPS figures") {
+            ForEach(trail.routes, id: \.id) { r in
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(r.label).font(.fieldBody.weight(.semibold))
+                    Text([HikeFormat.miles(r.distanceMi) + " " + r.kind, r.gainFt.map { "\(HikeFormat.feet($0)) gain" } ?? "gain not published",
+                          r.timeHours.map { "about \($0)" } ?? "no published time", r.difficulty ?? trail.difficulty].joined(separator: " · "))
+                        .font(.fieldCaption).foregroundStyle(.secondary)
+                    if !traced.contains(where: { $0.id == r.id }) {
+                        Text("No route trace bundled").font(.caption2).foregroundStyle(.tertiary)
+                    }
+                }
+                .accessibilityElement(children: .combine)
+            }
+        }
+    }
+
+    /// Untraced hikes get the region's map and trailhead pins, never a highlighted route.
+    private func regionalMapCard(_ trail: Trail, regionId: String) -> some View {
+        FieldCard(eyebrow: "Regional orientation map · no route trace") {
+            ParkMapView(mode: .region(regionId), onSelect: { _ in }, focusTrailId: trail.id, height: sizeClass == .regular ? 300 : 230,
+                        canvasAccessibilityLabel: "Regional map with park roads, trail lines and trailheads; this hike's route is not highlighted")
+            Text("No verified route trace is bundled for this hike, so none is highlighted. Zoomed in, the map shows every NPS trail line, but which lines make up this hike has not been checked. Orientation only; carry a topographic map and follow trail signs.")
+                .font(.caption2).foregroundStyle(.secondary)
+        }
+    }
+
     private func trailheadCard(_ trail: Trail, _ c: Content) -> some View {
-        FieldCard(eyebrow: "Trailhead & shuttle") {
+        FieldCard(eyebrow: trail.isValley ? "Trailhead & shuttle" : "Trailhead & access") {
             Text(trail.start).font(.fieldBody)
+            if let source = trail.trailheadSource {
+                Text("Map point: \(source).").font(.caption2).foregroundStyle(.secondary)
+            }
+            if let roads = trail.accessRoads, !roads.isEmpty {
+                Label("Reached by \(roads.map(\.name).joined(separator: ", "))", systemImage: "road.lanes").font(.fieldCaption)
+            }
+            ForEach(trail.access ?? [], id: \.self) { Text($0).font(.fieldCaption) }
             ForEach(trail.shuttleStops, id: \.self) { n in
                 if let stop = c.place("shuttle-\(n)") {
                     Button { router.push(.place(stop.id), in: .directory) } label: { Label(stop.name, systemImage: "bus").frame(minHeight: 44) }.font(.fieldCaption)
@@ -150,13 +197,15 @@ struct TrailDetailView: View {
     }
 
     @ViewBuilder private func noticesCard(_ trail: Trail, _ c: Content) -> some View {
-        let items = NoticeMatcher.notices(forTrail: trail.id, content: c, snapshot: conditions.conditions)
-        FieldCard(eyebrow: "Official notices for this hike") {
-            if items.isEmpty {
-                Text(conditions.conditions == nil ? "No saved NPS conditions snapshot. A missing notice is not an open trail." : "No saved notice names this hike. That is not confirmation it is open.")
-                    .font(.fieldCaption).foregroundStyle(.secondary)
+        let notices = NoticeMatcher.hikeNotices(trail, content: c, snapshot: conditions.conditions)
+        FieldCard(eyebrow: trail.isValley ? "Official notices for this hike" : "Official notices for this hike, its road or region") {
+            if notices.isEmpty {
+                Text(emptyNoticesText(trail)).font(.fieldCaption).foregroundStyle(.secondary)
             } else {
-                ForEach(items) { NoticeRow(item: $0) }
+                noticeGroup("Naming this hike", notices.hike)
+                ForEach(notices.roads, id: \.road) { noticeGroup("Naming \($0.road.name)", $0.items) }
+                noticeGroup("Naming the wider region", notices.region)
+                Text("Matched by place and road names in the notice text; read each notice for what it covers.").font(.caption2).foregroundStyle(.secondary)
             }
             if c.trails.mistTrailIds.contains(trail.id) || c.trails.johnMuirValleyIds.contains(trail.id) {
                 Text(c.trails.corridorRepairNotice).font(.fieldCaption)
@@ -164,6 +213,20 @@ struct TrailDetailView: View {
             }
             SnapshotFooter(snapshot: conditions.conditions, staleAfter: 6 * 3600)
         }
+    }
+
+    @ViewBuilder private func noticeGroup(_ title: String, _ items: [NoticeItem]) -> some View {
+        if !items.isEmpty {
+            Text(title).font(.fieldEyebrow).foregroundStyle(.secondary)
+            ForEach(items.sorted { $0.title < $1.title }) { NoticeRow(item: $0) }
+        }
+    }
+
+    private func emptyNoticesText(_ trail: Trail) -> String {
+        let scope = trail.accessRoads?.isEmpty == false ? "this hike, its access road or its region" : "this hike"
+        guard let snapshot = conditions.conditions else { return "No saved NPS conditions snapshot. A missing notice is not an open trail or road." }
+        if snapshot.isExpired { return "The saved conditions are over 48 hours old, so their notices are not shown. That is not confirmation the trail or road is open." }
+        return "No saved notice names \(scope). That is not confirmation it is open."
     }
 
     @ViewBuilder private func permitsCard(_ trail: Trail, _ c: Content) -> some View {

@@ -28,6 +28,11 @@ struct SettingsSheet: View {
                             .font(.fieldCaption).foregroundStyle(.secondary)
                     }
                 }
+                Section("Night vision") {
+                    Toggle("Night vision", isOn: $theme.nightVision)
+                    Text("Dims app content with a red tint. System controls may remain bright; lower screen brightness in Control Center if needed.")
+                        .font(.fieldCaption).foregroundStyle(.secondary)
+                }
                 Section("Readability") {
                     Picker("Text size", selection: $theme.textSize) { ForEach(TextSizeChoice.allCases) { Text($0.title).tag($0) } }
                     Toggle("Bold text", isOn: $theme.boldText)

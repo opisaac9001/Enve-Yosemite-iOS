@@ -44,7 +44,9 @@ final class PersistenceAndNoticeTests: XCTestCase {
         _ = try CampgroundSceneBuilder.frames()
         _ = try BundleContent.decode(ExplorerCatalog.self, "explorer-catalog.json", subdirectory: "Geo")
         _ = try BundleContent.decode(OfflinePackStatus.Manifest.self, "pack-manifest.json")
-        for file in ["roads", "trails", "buildings", "parking", "pois", "waterways", "park-roads", "park-pois", "park-boundary", "fire-scars", "campground-context", "campsites"] {
+        _ = try TerrainGrid.load(file: TerrainGrid.surroundFile)
+        for file in ["roads", "trails", "buildings", "parking", "pois", "waterways", "park-roads", "park-pois", "park-buildings", "park-parking", "park-water", "park-names",
+                     "park-trails", "park-boundary", "fire-scars", "campground-context", "campsites"] {
             XCTAssertFalse(try GeoJSON.parse(BundleContent.data("\(file).geojson", subdirectory: "Geo")).features.isEmpty, file)
         }
         for doc in try BundleContent.decode([DocumentItem].self, "documents.json") {

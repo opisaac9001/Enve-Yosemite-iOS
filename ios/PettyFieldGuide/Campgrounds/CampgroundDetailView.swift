@@ -29,7 +29,7 @@ struct CampgroundDetailView: View {
                     }
                     HStack {
                         if let pid = cg.placeId, c.place(pid) != nil {
-                            Button { router.showOnMap(.place(pid)) } label: { Label("Valley map", systemImage: "map") }
+                            Button { router.showOnMap(.place(pid)) } label: { Label("Show on map", systemImage: "map") }
                         }
                         if let url = URL(string: "https://www.recreation.gov/camping/campgrounds/\(recreationFacilityId(cg.id) ?? "")"), recreationFacilityId(cg.id) != nil {
                             Link(destination: url) { Label("Recreation.gov", systemImage: "arrow.up.right.square") }
@@ -160,7 +160,7 @@ struct SiteDetailView: View {
                     } label: { Label(saved.state.campsite?.siteId == site.ridbId ? "This is my campsite" : "Mark as my campsite", systemImage: "tent") }
                     .disabled(saved.state.campsite?.siteId == site.ridbId)
                     if cg.isValley {
-                        Button { router.showOnMap(.site(campground: cg.id, ridbId: site.ridbId)) } label: { Label("Valley map", systemImage: "map") }
+                        Button { router.showOnMap(.site(campground: cg.id, ridbId: site.ridbId)) } label: { Label("Show on map", systemImage: "map") }
                     }
                     if let url = site.recreationGovURL { Link(destination: url) { Label("Recreation.gov", systemImage: "arrow.up.right.square") } }
                 }

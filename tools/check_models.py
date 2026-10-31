@@ -21,7 +21,7 @@ MODEL_FILES = [
     "Content/Place.swift", "Content/EventModels.swift", "Content/PlanningModels.swift", "Content/StatusModels.swift",
     "Content/TrailModels.swift", "Content/ContentStore.swift", "Transit/TransitModels.swift", "Conditions/FeedModels.swift",
     "Geo/YosemiteGeo.swift", "Explorer/ExplorerStore.swift", "Trip/TripScreen.swift", "Sun/TerrainGrid.swift",
-    "Map/Engine/ParkSceneBuilder.swift", "Hiking/HikeRouteModels.swift",
+    "Map/Engine/CampgroundSceneBuilder.swift", "Hiking/HikeRouteModels.swift",
 ]
 
 # (json path relative to repo, Swift type expression)
@@ -31,9 +31,10 @@ CONTENT_TARGETS = [
     ("Content/regions.json", "RegionsPack"), ("Content/webcams.json", "WebcamsPack"), ("Content/documents.json", "[DocumentItem]"),
     ("Content/status.json", "StatusPack"), ("Content/categories.json", "CategoriesPack"), ("Content/notices.json", "NoticesPack"),
     ("Content/changelog.json", "[ChangelogEntry]"), ("Content/housekeeping.json", "HousekeepingPack"),
-    ("Content/pack-manifest.json", "OfflinePackStatus.Manifest"), ("Content/hike-routes.json", "HikeRoutesPack"),
+    ("Content/pack-manifest.json", "OfflinePackStatus.Manifest"), ("Content/hike-routes.json", "HikeRoutesPack"), ("Content/park-hikes.json", "ParkHikesPack"),
     ("Geo/transit.json", "TransitFeedPack"), ("Geo/campsites.geojson", "CampsiteLoader.Collection"),
     ("Geo/explorer-catalog.json", "ExplorerCatalog"), ("Geo/elevation-valley.json", "TerrainGrid.Raw"),
+    ("Geo/elevation-park.json", "TerrainGrid.Raw"), ("Geo/elevation-surround.json", "TerrainGrid.Raw"), ("Geo/elevation-outer.json", "TerrainGrid.Raw"),
     ("Geo/campground-context.geojson", "CampgroundSceneBuilder.Doc"),
 ]
 API_TARGETS = [

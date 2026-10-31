@@ -14,9 +14,16 @@ enum HikeRouteKind: String, Codable, Sendable {
     }
 }
 
+/// The bundled trail pack a route's feature ids refer to; routes without one use the Valley pack.
+enum HikeRouteGeometry: String, Codable, Sendable {
+    case valley, park
+}
+
 /// One stretch of an NPS trail feature in travel order; `from > to` walks it against its digitised direction.
 struct HikeSegment: Codable, Hashable, Sendable {
     var feature: Int
+    /// Part index within a multi-part NPS feature, whose scene features are split as "<id>-<part>".
+    var part: Int?
     var name: String?
     var altName: String?
     var surface: String?
@@ -59,7 +66,9 @@ struct HikeRoute: Codable, Identifiable, Hashable, Sendable {
     var unnamedFeatures: Int
     var sequence: String
     var traceNote: String
+    var geometry: HikeRouteGeometry?
 
+    var pack: HikeRouteGeometry { geometry ?? .valley }
     /// Every milestone in travel order, start first.
     var orderedMilestones: [HikeMilestone] { [start] + milestones + [destination] }
     /// Rows for lists: a loop's start and destination share an anchor, so identity comes from the position.
@@ -87,6 +96,7 @@ struct HikeRoutesPack: Codable, Sendable {
     var schema: Int
     var generated: String
     var geometry: Geometry
+    var parkGeometry: Geometry?
     var derivation: String
     var routes: [HikeRoute]
 }

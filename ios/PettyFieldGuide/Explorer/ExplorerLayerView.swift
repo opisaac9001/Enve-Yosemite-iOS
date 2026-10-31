@@ -131,8 +131,8 @@ struct ExplorerMapView: View {
     }
 
     private func load() async {
-        await packs.loadPark()
-        guard case .ready(let scene) = packs.park else { loading = false; return }
+        await packs.loadMap()
+        guard case .ready(let scene) = packs.map else { loading = false; return }
         model.setScene(scene)
         model.frameOptions = MapFrameOptions(dark: scheme == .dark, elementScale: theme.mapElementSize.scale, showBuildings: false, buildingLabelMode: .off, showRoadNames: false, showOneWayArrows: false)
         model.camera = MapCamera.fitting(scene.extent, in: CGSize(width: 360, height: 400), padding: 12)

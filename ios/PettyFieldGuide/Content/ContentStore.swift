@@ -22,8 +22,14 @@ struct Content: Sendable {
     var housekeeping: HousekeepingPack
     var transit: TransitFeedPack
     var hikeRoutes: HikeRoutesPack
+    var parkHikes: ParkHikesPack
 
     func place(_ id: String) -> Place? { placesById[id] }
+    /// Hikes listed for a park region, in published order.
+    func hikes(inRegion regionId: String) -> [Trail] { trails.trails.filter { $0.regionId == regionId } }
+    func hikeAdvice(forRegion regionId: String) -> HikeAdvice? { parkHikes.regionNotes.first { $0.regionId == regionId } }
+    /// "Yosemite Valley" or the hike's region name.
+    func areaName(of trail: Trail) -> String { trail.regionId.flatMap { region($0)?.name } ?? "Yosemite Valley" }
     func trail(_ id: String) -> Trail? { trails.trails.first { $0.id == id } }
     func hikeRoute(_ id: String) -> HikeRoute? { hikeRoutes.routes.first { $0.id == id } }
     /// Routes in the trail's published order.
@@ -35,7 +41,7 @@ struct Content: Sendable {
         let routes = hikeRoutes(for: trailId)
         return routes.first(where: \.isDefault) ?? routes.first
     }
-    /// Hikes whose selected-or-any route walks the given NPS trail feature.
+    /// Routes that walk the given NPS trail feature, whichever pack they were traced on; the map draws them all.
     func hikeRoutes(usingFeature featureId: Int) -> [HikeRoute] {
         hikeRoutes.routes.filter { $0.featureIds.contains(featureId) }
     }
@@ -133,10 +139,13 @@ enum BundleContent {
     static func load() throws -> Content {
         let places = try decode([Place].self, "places.json")
         let campsites = try CampsiteLoader.load(from: data("campsites.geojson", subdirectory: "Geo"))
+        let parkHikes = try decode(ParkHikesPack.self, "park-hikes.json")
+        var trails = try decode(TrailsPack.self, "trails.json")
+        trails.trails += parkHikes.trails
         return Content(
             places: places,
             placesById: Dictionary(places.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a }),
-            trails: try decode(TrailsPack.self, "trails.json"),
+            trails: trails,
             campgrounds: try decode(CampgroundsPack.self, "campgrounds.json"),
             campsites: campsites,
             permits: try decode(PermitsPack.self, "permits.json"),
@@ -151,7 +160,8 @@ enum BundleContent {
             changelog: try decode([ChangelogEntry].self, "changelog.json"),
             housekeeping: try decode(HousekeepingPack.self, "housekeeping.json"),
             transit: try decode(TransitFeedPack.self, "transit.json", subdirectory: "Geo"),
-            hikeRoutes: try decode(HikeRoutesPack.self, "hike-routes.json")
+            hikeRoutes: try decode(HikeRoutesPack.self, "hike-routes.json"),
+            parkHikes: parkHikes
         )
     }
 }

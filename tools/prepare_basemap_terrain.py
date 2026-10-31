@@ -6,15 +6,10 @@ Downloads the Terrarium tiles covering the requested bounds from the AWS Open Da
 pixels onto a regular WGS84 latitude/longitude grid and writes the same `uint16-le-base64` JSON
 layout as `elevation-valley.json`, with full provenance.
 
-Two tiers are shipped:
-  # 20 m detail over the Valley extent (+0.04°), zoom 13
+One tier is shipped from this tool, the 20 m Valley detail (the park and surround tiers come from USGS
+3DEP through tools/prepare_park_relief.py):
   python3 -I tools/prepare_basemap_terrain.py --cache /tmp/petty-field-guide-terrain-tiles \
       --out ios/PettyFieldGuide/Resources/Geo/elevation-basemap.json --zoom 13 --cell 20
-  # 45 m background covering the camera's pan/zoom envelope, zoom 12
-  python3 -I tools/prepare_basemap_terrain.py --cache /tmp/petty-field-guide-terrain-tiles \
-      --out ios/PettyFieldGuide/Resources/Geo/elevation-region.json --zoom 12 --cell 45 \
-      --west -119.93 --south 37.46 --east -119.32 --north 38.01 \
-      --purpose "Background relief for the Valley map's full pan/zoom range; the 20 m detail tier draws on top."
 
 The cache directory holds the raw tiles (untracked). Only the derived grids are bundled.
 The sun/shadow grid (`elevation-valley.json`) is a separate asset and is not touched.

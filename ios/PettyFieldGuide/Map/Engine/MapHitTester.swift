@@ -58,7 +58,7 @@ enum MapHitTester {
             if d <= lineTolerance && (bestLine == nil || d < bestLine!.1) { bestLine = (r.id, d, false) }
         }
         if let (id, _, isTrail) = bestLine { return isTrail ? .trail(id: id) : .road(id: id) }
-        for scar in scene.fireScars where scar.contains(projected) { return .fireScar(id: scar.id) }
+        for scar in scene.fireScars where options.showFireScars && scar.contains(projected) { return .fireScar(id: scar.id) }
         return .none
     }
 }

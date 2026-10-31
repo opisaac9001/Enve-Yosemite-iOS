@@ -93,7 +93,10 @@ final class SearchIndex: Sendable {
             add("region-\(r.id)", .region, r.name, r.tagline, route: .region(r.id), section: .park, extra: r.highlights + r.services + r.points.map(\.name), priority: 5)
         }
         for t in content.trails.trails {
-            add("trail-\(t.id)", .trail, t.name, "\(t.difficulty) · \(t.start)", route: .trail(t.id), map: .trail(t.id), section: .trails, extra: t.notes + [t.summary] + t.gisNames, priority: 6)
+            // Every hike can be shown: traced routes on the map holding their trace, untraced park hikes at their trailhead.
+            let area = content.areaName(of: t)
+            add("trail-\(t.id)", .trail, t.name, "\(area) · \(t.difficulty) · \(t.start)", route: .trail(t.id), map: MapCoverage.canShow(.trail(t.id), content: content) ? .trail(t.id) : nil, section: .trails,
+                extra: t.notes + [t.summary, "hike", "hiking", "trail"] + t.gisNames + t.routes.map(\.label), priority: 6)
         }
         for g in content.permits.guides {
             add("permit-\(g.id)", .permit, g.title, g.plan, route: .permit(g.id), section: .permits, extra: g.keywords + [g.summary] + g.facts.map(\.text), priority: 5)

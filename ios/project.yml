@@ -63,7 +63,7 @@ targets:
           - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
-        NSLocationWhenInUseUsageDescription: "Used only when you ask the map to find you, sort places by distance, or pin your car at your position."
+        NSLocationWhenInUseUsageDescription: "Used only when you ask: to show your live position on the offline maps while the app is open, sort places by distance, or pin your parked car. Live positions stay in memory on this device and are never recorded or sent; a car position is saved only when you choose."
         UIApplicationSupportsIndirectInputEvents: true
         LSApplicationCategoryType: public.app-category.travel
         ITSAppUsesNonExemptEncryption: false

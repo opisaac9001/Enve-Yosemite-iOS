@@ -65,6 +65,8 @@ final class ThemeManager: ObservableObject {
     @Published var textSize: TextSizeChoice { didSet { defaults.set(textSize.rawValue, forKey: Keys.textSize) } }
     @Published var boldText: Bool { didSet { defaults.set(boldText, forKey: Keys.boldText) } }
     @Published var mapElementSize: MapElementSize { didSet { defaults.set(mapElementSize.rawValue, forKey: Keys.mapElementSize) } }
+    /// Opt-in red, dimmed rendering for use in the dark. Forces the dark scheme while on without touching `appearance`.
+    @Published var nightVision: Bool { didSet { defaults.set(nightVision, forKey: Keys.nightVision) } }
     @Published private(set) var sunIsUp = true
 
     private let defaults = UserDefaults.standard
@@ -75,6 +77,7 @@ final class ThemeManager: ObservableObject {
         static let textSize = "theme.textSize"
         static let boldText = "theme.boldText"
         static let mapElementSize = "theme.mapElementSize"
+        static let nightVision = "theme.nightVision"
     }
 
     private init() {
@@ -82,6 +85,7 @@ final class ThemeManager: ObservableObject {
         textSize = TextSizeChoice(rawValue: defaults.string(forKey: Keys.textSize) ?? "") ?? .system
         boldText = defaults.bool(forKey: Keys.boldText)
         mapElementSize = MapElementSize(rawValue: defaults.string(forKey: Keys.mapElementSize) ?? "") ?? .standard
+        nightVision = defaults.bool(forKey: Keys.nightVision)
         refreshSun()
         minuteTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
             Task { @MainActor in self?.refreshSun() }
@@ -89,7 +93,8 @@ final class ThemeManager: ObservableObject {
     }
 
     var resolvedColorScheme: ColorScheme? {
-        switch appearance {
+        if nightVision { return .dark }
+        return switch appearance {
         case .system: nil
         case .light: .light
         case .dark: .dark
@@ -114,4 +119,24 @@ final class ThemeManager: ObservableObject {
             sunIsUp = true
         }
     }
+}
+
+/// Desaturates to luminance before tinting so map hues and greys keep their contrast instead of
+/// dropping out, then multiplies by a dim red. Pure rendering filters: touch targets, layout and
+/// VoiceOver are unaffected. Sheets render outside the root hierarchy, so each presented sheet
+/// applies this to its own content.
+private struct NightVisionModifier: ViewModifier {
+    typealias Content = _ViewModifier_Content<NightVisionModifier>
+
+    @ObservedObject private var theme = ThemeManager.shared
+
+    func body(content: Content) -> some View {
+        content
+            .grayscale(theme.nightVision ? 1 : 0)
+            .colorMultiply(theme.nightVision ? Palette.nightVisionTint : .white)
+    }
+}
+
+extension View {
+    func nightVision() -> some View { modifier(NightVisionModifier()) }
 }

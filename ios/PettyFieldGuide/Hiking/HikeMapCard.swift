@@ -50,6 +50,7 @@ struct HikeMapCard: View {
         .onPreferenceChange(BodyHeightKey.self) { bodyHeight = $0 }
         .sheet(isPresented: sheetShown) {
             HikeTerrainSheet(trail: trail, route: route, figures: figures, inspection: inspection, model: model) { attempt += 1 }
+                .nightVision()
         }
         .task(id: "\(route.id)#\(attempt)") {
             inspection = .loading

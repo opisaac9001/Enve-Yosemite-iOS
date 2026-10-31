@@ -2,8 +2,9 @@
 """Validates the hike route manifest against the bundled NPS trail geometry and writes the app pack.
 
 Input:  content/hikes/hike-routes.json (reviewed ordered feature chains with trims and anchors)
-        ios/PettyFieldGuide/Resources/Geo/trails.geojson (must already contain the appended NPS features)
-        ios/PettyFieldGuide/Resources/Content/trails.json (published distances and route labels)
+        ios/PettyFieldGuide/Resources/Geo/trails.geojson (must already contain the appended NPS features) for
+        Valley routes, and Geo/park-trails.geojson (tools/build_park_trails.py) for routes marked "geometry": "park"
+        ios/PettyFieldGuide/Resources/Content/trails.json and park-hikes.json (published distances and route labels)
 Output: ios/PettyFieldGuide/Resources/Content/hike-routes.json (resolved fractions, trace lengths, bounds,
         milestones with chainage, provenance) and docs/hiking-atlas/<route>.svg review drawings.
 
@@ -19,7 +20,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SOURCE = ROOT / "content" / "hikes" / "hike-routes.json"
 GEO = ROOT / "ios" / "PettyFieldGuide" / "Resources" / "Geo" / "trails.geojson"
+PARK_GEO = ROOT / "ios" / "PettyFieldGuide" / "Resources" / "Geo" / "park-trails.geojson"
 TRAILS = ROOT / "ios" / "PettyFieldGuide" / "Resources" / "Content" / "trails.json"
+PARK_HIKES = ROOT / "ios" / "PettyFieldGuide" / "Resources" / "Content" / "park-hikes.json"
 PACK = ROOT / "ios" / "PettyFieldGuide" / "Resources" / "Content" / "hike-routes.json"
 ATLAS = ROOT / "docs" / "hiking-atlas"
 
@@ -85,8 +88,8 @@ class Feature:
         return out[::-1] if reverse else out
 
 
-def load_features():
-    doc = json.loads(GEO.read_text())
+def load_features(path=GEO):
+    doc = json.loads(path.read_text())
     feats = {}
     for f in doc["features"]:
         g = f["geometry"]
@@ -95,7 +98,7 @@ def load_features():
         elif g["type"] == "MultiLineString":
             for k, part in enumerate(g["coordinates"]):
                 feats[f"{f['id']}-{k}"] = Feature(f"{f['id']}-{k}", f["properties"], part)
-    return feats, hashlib.sha256(GEO.read_bytes()).hexdigest(), len(doc["features"])
+    return feats, hashlib.sha256(path.read_bytes()).hexdigest(), len(doc["features"]), doc.get("fetchedAt")
 
 
 def line_length(coords):
@@ -135,7 +138,7 @@ def resolve_route(route, manifest, feats, trails, errors):
     for i, seg in enumerate(route["segments"]):
         feat = feats.get(seg["feature"])
         if feat is None:
-            errors.append(f"{rid}: segment {i} references feature {seg['feature']} that is not in trails.geojson")
+            errors.append(f"{rid}: segment {i} references feature {seg['feature']} that is not in the {route.get('geometry', 'valley')} trail pack")
             return None
         fr = []
         for key in ("from", "to"):
@@ -158,9 +161,14 @@ def resolve_route(route, manifest, feats, trails, errors):
                 errors.append(f"{rid}: segment {i} ({feat.id}) starts {joint:.1f} m from the end of segment {i - 1}")
             part = part[1:]
         coords += part
-        segments.append({"feature": feat.id, "name": feat.props.get("TRLNAME"), "altName": feat.props.get("TRLALTNAME"),
-                         "surface": feat.props.get("TRLSURFACE"), "use": feat.props.get("TRLUSE"),
-                         "from": round(f0, 6), "to": round(f1, 6), "metres": round(abs(f1 - f0) * feat.length, 1)})
+        # Parts of a multi-part NPS feature are keyed "<id>-<k>"; the pack keeps the integer id and the part index.
+        base, _, part = str(feat.id).partition("-")
+        segment = {"feature": int(base), "name": feat.props.get("TRLNAME"), "altName": feat.props.get("TRLALTNAME"),
+                   "surface": feat.props.get("TRLSURFACE"), "use": feat.props.get("TRLUSE"),
+                   "from": round(f0, 6), "to": round(f1, 6), "metres": round(abs(f1 - f0) * feat.length, 1)}
+        if part:
+            segment["part"] = int(part)
+        segments.append(segment)
 
     one_way = line_length(coords)
     kind = route["kind"]
@@ -210,7 +218,7 @@ def resolve_route(route, manifest, feats, trails, errors):
     names = {}
     for s in segments:
         names[s["name"] or "unnamed"] = round(names.get(s["name"] or "unnamed", 0) + s["metres"], 1)
-    return {
+    resolved = {
         "id": rid, "trailId": route["trailId"], "label": route["label"], "kind": kind, "isDefault": route["isDefault"],
         "publishedMiles": published["distanceMi"], "traceMiles": round(total / 1609.344, 2), "traceOneWayMiles": round(one_way / 1609.344, 2),
         "traceToPublishedRatio": round(ratio, 3),
@@ -220,6 +228,10 @@ def resolve_route(route, manifest, feats, trails, errors):
         "sequence": route["sequence"], "traceNote": route["traceNote"],
         "_coords": coords, "_travelled": travelled,
     }
+    # Valley routes omit the key so their pack entries stay byte-identical.
+    if route.get("geometry") == "park":
+        resolved["geometry"] = "park"
+    return resolved
 
 
 def atlas_svg(route, feats):
@@ -264,8 +276,12 @@ def atlas_svg(route, feats):
 
 def build(check_only=False, atlas=True):
     manifest = json.loads(SOURCE.read_text())
-    feats, sha, count = load_features()
-    trails = json.loads(TRAILS.read_text())["trails"]
+    feats, sha, count, _ = load_features()
+    park_feats, park_sha, park_count, park_fetched = load_features(PARK_GEO)
+    packs = {"valley": feats, "park": park_feats}
+    valley = json.loads(TRAILS.read_text())["trails"]
+    park = json.loads(PARK_HIKES.read_text())["trails"]
+    trails = valley + park
     errors = []
     routes = []
     ids = set()
@@ -273,21 +289,30 @@ def build(check_only=False, atlas=True):
         if route["id"] in ids:
             errors.append(f"duplicate route id {route['id']}")
         ids.add(route["id"])
-        resolved = resolve_route(route, manifest, feats, trails, errors)
+        if route.get("geometry", "valley") not in packs:
+            errors.append(f"{route['id']}: unknown geometry {route['geometry']!r}")
+            continue
+        resolved = resolve_route(route, manifest, packs[route.get("geometry", "valley")], trails, errors)
         if resolved:
             routes.append(resolved)
+    # Valley hikes must be traced completely; park-wide hikes are traced only where the bundled geometry
+    # holds the whole route, and the app labels the rest as untraced.
     for trail in trails:
         own = [r for r in routes if r["trailId"] == trail["id"]]
-        if len(own) != len(trail["routes"]):
+        published = {r["id"] for r in trail["routes"]}
+        for r in own:
+            if r["id"] not in published:
+                errors.append(f"{trail['id']}: traced route {r['id']} has no published route with that id")
+        if trail in valley and len(own) != len(trail["routes"]):
             errors.append(f"{trail['id']}: {len(trail['routes'])} published routes but {len(own)} traced")
-        if sum(1 for r in own if r["isDefault"]) != 1:
+        if own and sum(1 for r in own if r["isDefault"]) != 1:
             errors.append(f"{trail['id']}: exactly one default route is required")
     for route in routes:
         print(f"{route['id']:32} {route['kind']:10} trace {route['traceMiles']:6.2f} mi  published {route['publishedMiles']:5} mi  ratio {route['traceToPublishedRatio']:.3f}  features {len(route['segments']):3d}")
     if errors:
         print("\n".join("ERROR " + e for e in errors))
         sys.exit(1)
-    print(f"{len(routes)} routes validated against {count} features (sha256 {sha[:12]}…)")
+    print(f"{len(routes)} routes validated against {count} Valley features (sha256 {sha[:12]}…) and {park_count} park features (sha256 {park_sha[:12]}…)")
     if check_only:
         return
     pack = {
@@ -295,6 +320,8 @@ def build(check_only=False, atlas=True):
         "generated": manifest.get("generated", "2026-10-27"),
         "geometry": {"file": "trails.geojson", "sha256": sha, "featureCount": count,
                      "source": "NPS Public GIS NationalDatasets NPS_Public_Trails_Geographic (UNITCODE YOSE), fetched 2026-09-21; John Muir Trail features 20072 and 22688 fetched 2026-10-27"},
+        "parkGeometry": {"file": "park-trails.geojson", "sha256": park_sha, "featureCount": park_count,
+                         "source": f"NPS Public GIS NationalDatasets NPS_Public_Trails_Geographic (UNITCODE YOSE, all {park_count} existing features), fetched {park_fetched}"},
         "derivation": manifest["derivation"],
         "routes": [{k: v for k, v in r.items() if not k.startswith("_")} for r in routes],
     }
@@ -303,7 +330,7 @@ def build(check_only=False, atlas=True):
     if atlas:
         ATLAS.mkdir(parents=True, exist_ok=True)
         for route in routes:
-            (ATLAS / f"{route['id']}.svg").write_text(atlas_svg(route, feats))
+            (ATLAS / f"{route['id']}.svg").write_text(atlas_svg(route, packs[route.get("geometry", "valley")]))
         index = ["# Hiking route atlas", "", "Generated by `tools/build_hike_routes.py` from the bundled NPS geometry; orange is the traced route, dashed grey every other NPS trail feature in the frame. Coordinates are WGS84, north up.", ""]
         for route in routes:
             index.append(f"- [{route['id']}]({route['id']}.svg) — {route['label']} ({route['kind']}): trace {route['traceMiles']} mi vs published {route['publishedMiles']} mi, {len(route['segments'])} features")

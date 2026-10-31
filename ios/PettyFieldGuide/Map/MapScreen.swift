@@ -6,10 +6,10 @@ struct MapScreen: View {
     @EnvironmentObject private var saved: SavedStore
     @EnvironmentObject private var theme: ThemeManager
     @EnvironmentObject private var router: AppRouter
-    @StateObject private var model = MapViewModel(restoresPreferences: true)
+    @ObservedObject var model: MapViewModel
     @StateObject private var location = LocationService()
+    @ObservedObject private var tracker = LiveLocationTracker.shared
     @ObservedObject private var packs = GeoPackStore.shared
-    @ObservedObject private var updates = UpdatesStore.shared
     @ObservedObject private var conditions = ConditionsStore.shared
     @Environment(\.colorScheme) private var scheme
     @Environment(\.bottomBarInset) private var bottomInset
@@ -18,6 +18,7 @@ struct MapScreen: View {
     @State private var showCategories = false
     @State private var showSun = false
     @State private var showCar = false
+    @State private var showFinder = false
     @State private var placingCar = false
     @State private var proposedCar: CLLocationCoordinate2D?
     @State private var carNote = ""
@@ -40,7 +41,7 @@ struct MapScreen: View {
             MapCanvasView(model: model, scaleLimits: model.scaleLimits, clampRect: model.clampRect)
                 .overlay { if placingCar { crosshairMark } }
                 .ignoresSafeArea()
-                .accessibilityLabel("Yosemite Valley map")
+                .accessibilityLabel("Yosemite map, from the whole park down to Valley buildings")
             VStack(spacing: 8) {
                 topBar
                 filterRow
@@ -51,6 +52,7 @@ struct MapScreen: View {
             controls
             bottomStack
         }
+        .liveLocationHost(model: model, followScale: 0.5)
         .background(GeometryReader { p in
             Color.clear
                 .onAppear { safeInsets = p.safeAreaInsets; viewHeight = p.size.height }
@@ -74,11 +76,6 @@ struct MapScreen: View {
             .onChange(of: conditions.smoke?.retrievedAt) { _, _ in model.update(smoke: conditions.smoke) }
             .onChange(of: theme.mapElementSize) { _, _ in model.update(elementScale: theme.mapElementSize.scale, dark: scheme == .dark) }
             .onChange(of: scheme) { _, new in model.update(elementScale: theme.mapElementSize.scale, dark: new == .dark) }
-            .onChange(of: router.mapFocus) { _, focus in
-                guard let focus else { return }
-                model.focus(on: focus)
-                router.mapFocus = nil
-            }
             .onChange(of: router.pendingMapTool) { _, _ in openPendingTool() }
             .onChange(of: model.camera.scale) { old, new in
                 if (old < 1.2) != (new < 1.2) { model.cameraScaleChanged() }
@@ -97,11 +94,12 @@ struct MapScreen: View {
 
     private func sheets(of view: some View) -> some View {
         view
-            .sheet(isPresented: $showLayers) { MapLayersSheet(model: model) }
-            .sheet(isPresented: $showKey) { MapKeySheet(scene: model.scene) }
-            .sheet(isPresented: $showCategories) { if let c = content.content { MapCategoriesSheet(model: model, categories: c.categories.categories) } }
-            .sheet(isPresented: $showSun) { SunPreviewSheet(model: model) }
-            .sheet(isPresented: $showCar, onDismiss: { proposedCar = nil }) { carSheet }
+            .sheet(isPresented: $showLayers) { MapLayersSheet(model: model).nightVision() }
+            .sheet(isPresented: $showKey) { MapKeySheet(scene: model.scene).nightVision() }
+            .sheet(isPresented: $showCategories) { if let c = content.content { MapCategoriesSheet(model: model, categories: c.categories.categories).nightVision() } }
+            .sheet(isPresented: $showSun) { SunPreviewSheet(model: model).nightVision() }
+            .sheet(isPresented: $showCar, onDismiss: { proposedCar = nil }) { carSheet.nightVision() }
+            .sheet(isPresented: $showFinder) { if let c = content.content { ParkMapFinderSheet(content: c, model: model).nightVision() } }
             .task(id: carMessage) {
                 guard carMessage != nil else { return }
                 try? await Task.sleep(for: .seconds(6))
@@ -122,10 +120,7 @@ struct MapScreen: View {
 
     private func handleLocation(_ loc: CLLocation?) {
         guard let loc else { return }
-        model.userLocation = loc.coordinate
-        if location.pendingAction == .centre {
-            model.focus(on: loc.coordinate, scale: max(model.camera.scale, 0.8))
-        } else if location.pendingAction == .car {
+        if location.pendingAction == .car {
             pinCar(at: loc.coordinate, basis: .location, accuracy: loc.horizontalAccuracy)
         }
         location.pendingAction = nil
@@ -143,7 +138,7 @@ struct MapScreen: View {
     }
 
     private func showCarOnMap() {
-        guard let car = saved.state.car else { return }
+        guard let car = saved.state.car, MapCoverage.contains(car.coordinate) else { return }
         model.selection = .car
         model.focus(on: car.coordinate, scale: max(model.camera.scale, 1.0))
     }
@@ -161,10 +156,10 @@ struct MapScreen: View {
         placingCar = false
         var text = basis == .location ? "Parked car pinned at your position" : "Parked car pinned"
         if let accuracy, accuracy > 0 { text += String(format: " (±%.0f m)", accuracy) }
-        if ParkedCar.isOnValleyMap(coordinate) {
+        if MapCoverage.contains(coordinate) {
             model.selection = .car
         } else {
-            text += ". It lies outside the bundled Valley map, so it is not drawn here; Trip prep keeps the coordinates."
+            text += ". It lies outside the bundled map, so it is not drawn; Trip prep keeps the coordinates."
         }
         carMessage = text + "."
     }
@@ -182,12 +177,8 @@ struct MapScreen: View {
     private func bootstrap() async {
         configure()
         updateInsets()
-        await packs.loadValley()
-        if case .ready(let scene) = packs.valley { model.setScene(scene) }
-        if let focus = router.mapFocus {
-            model.focus(on: focus)
-            router.mapFocus = nil
-        }
+        await packs.loadMap()
+        if case .ready(let scene) = packs.map { model.setScene(scene) }
         openPendingTool()
     }
 
@@ -210,7 +201,7 @@ struct MapScreen: View {
     // MARK: Chrome
 
     private var topBar: some View {
-        HStack(spacing: 8) {
+        MapTopBar {
             HStack {
                 Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
                 TextField("Find a place, stop or site", text: $query)
@@ -227,29 +218,15 @@ struct MapScreen: View {
             }
             .padding(.horizontal, 12).padding(.vertical, 9)
             .background(.regularMaterial, in: Capsule())
-            Button { router.sheet = .settings } label: {
-                Image(systemName: "gearshape.fill").padding(10).background(.regularMaterial, in: Circle())
-            }
-            .accessibilityLabel("Settings")
-            Button { router.sheet = .updates } label: {
-                Image(systemName: "bell.fill").padding(10).background(.regularMaterial, in: Circle())
-                    .overlay(alignment: .topTrailing) {
-                        if updates.unreadCount > 0 {
-                            Text("\(updates.unreadCount)").font(.system(size: 9, weight: .bold)).foregroundStyle(.white)
-                                .padding(4).background(Palette.accent, in: Circle())
-                        }
+            .overlay(alignment: .top) {
+                if !query.isEmpty, let c = content.content {
+                    MapSearchResults(query: query, content: c) { place in
+                        query = ""
+                        searchFocused = false
+                        router.showOnMap(.place(place.id))
                     }
-            }
-            .accessibilityLabel(updates.unreadCount > 0 ? "Updates, \(updates.unreadCount) unread" : "Updates")
-        }
-        .overlay(alignment: .top) {
-            if !query.isEmpty, let c = content.content {
-                MapSearchResults(query: query, content: c) { place in
-                    query = ""
-                    searchFocused = false
-                    model.focus(on: .place(place.id))
+                    .padding(.top, 48)
                 }
-                .padding(.top, 48)
             }
         }
         .zIndex(2)
@@ -260,7 +237,7 @@ struct MapScreen: View {
         if let hit = SearchIndex.shared(for: c).placeOrSite(matching: query) {
             query = ""
             searchFocused = false
-            model.focus(on: hit)
+            router.showOnMap(hit)
         }
     }
 
@@ -279,6 +256,13 @@ struct MapScreen: View {
                 }
                 .buttonStyle(.plain)
                 .accessibilityLabel("Map filters, \(shown) of \(total) categories shown")
+                Button { showFinder = true } label: {
+                    Image(systemName: "mountain.2.fill")
+                        .padding(.horizontal, 10).padding(.vertical, 7)
+                        .background(.regularMaterial, in: Capsule())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("Find a region, park hike or campground")
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 6) {
                         ForEach(Self.quickCategories, id: \.self) { id in
@@ -298,10 +282,10 @@ struct MapScreen: View {
 
     private var controls: some View {
         VStack(spacing: 10) {
-            controlGroup {
-                controlButton("plus", "Zoom in") { model.zoomIn() }
+            MapControlGroup {
+                MapControlButton("plus", "Zoom in") { model.zoomIn() }
                 Divider().frame(width: 24)
-                controlButton("minus", "Zoom out") { model.zoomOut() }
+                MapControlButton("minus", "Zoom out") { model.zoomOut() }
             }
             .overlay(alignment: .topTrailing) {
                 if model.zoomLocked {
@@ -310,34 +294,25 @@ struct MapScreen: View {
                         .accessibilityHidden(true)
                 }
             }
-            controlGroup { controlButton("location", "Show my position") { location.request(.centre) } }
-            controlGroup {
-                controlButton("square.3.layers.3d", "Layers") { showLayers = true }
+            MapControlGroup {
+                MapControlButton(LiveLocationControl.symbol(isOn: tracker.state.isOn, following: model.followsUser),
+                                 LiveLocationControl.label(isOn: tracker.state.isOn, following: model.followsUser)) {
+                    LiveLocationControl.activate(model: model, tracker: tracker, followScale: 0.5)
+                }
+                .foregroundStyle(tracker.state.isOn ? Palette.river : Color.primary)
+            }
+            MapControlGroup {
+                MapControlButton("square.3.layers.3d", "Layers") { showLayers = true }
                 Divider().frame(width: 24)
-                controlButton("arrow.down.left.and.arrow.up.right", "Fit the whole Valley") { model.fitValley() }
+                MapControlButton("mountain.2", "Fit the whole park") { model.fitPark() }
+                Divider().frame(width: 24)
+                MapControlButton("arrow.down.left.and.arrow.up.right", "Fit Yosemite Valley") { model.fitValley() }
             }
             toolsMenu
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
         .padding(.trailing, 10)
         .padding(.top, topChromeHeight + 16)
-    }
-
-    private func controlGroup<Content: View>(@ViewBuilder _ content: () -> Content) -> some View {
-        VStack(spacing: 0) { content() }
-            .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 14, style: .continuous))
-            .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).strokeBorder(Palette.cardStroke(scheme)))
-    }
-
-    private func controlButton(_ symbol: String, _ label: String, action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Image(systemName: symbol)
-                .font(.system(size: 15, weight: .semibold))
-                .frame(width: 44, height: 42)
-                .contentShape(Rectangle())
-        }
-        .buttonStyle(.plain)
-        .accessibilityLabel(label)
     }
 
     private var toolsMenu: some View {
@@ -364,9 +339,10 @@ struct MapScreen: View {
         VStack(alignment: .leading, spacing: 0) {
             Spacer()
             VStack(alignment: .leading, spacing: 8) {
+                LiveLocationBanner(model: model, note: "Orientation only, not navigation or rescue guidance. Bundled NPS trail lines have mostly unknown positional accuracy.")
                 HStack {
-                    if case .loading = packs.valley { StatusPill(state: .unknown, text: "Loading Valley geometry…") }
-                    if case .failed(let message) = packs.valley { StatusPill(state: .unavailable, text: "Detailed layers unavailable: \(message)") }
+                    if case .loading = packs.map { StatusPill(state: .unknown, text: "Loading the park map…") }
+                    if case .failed(let message) = packs.map { StatusPill(state: .unavailable, text: "Map layers unavailable: \(message)") }
                     if let message = location.message { StatusPill(state: .unknown, text: message) }
                     if let carMessage { StatusPill(state: .ready, text: carMessage) }
                     Spacer()
@@ -381,6 +357,9 @@ struct MapScreen: View {
                 } else if case .hike(let routeId)? = model.selection, let c = content.content, let route = c.hikeRoute(routeId), let trail = c.trail(route.trailId) {
                     HikeMapCard(trail: trail, route: route, content: c, model: model, maxHeight: hikeCardMaxHeight)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
+                } else if case .place(let id)? = model.selection, ParkMarkerCard.handles(id), let c = content.content {
+                    ParkMarkerCard(id: id, content: c, model: model, maxHeight: hikeCardMaxHeight)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
                 } else if let selection = model.selection, let c = content.content {
                     MapSelectionCard(selection: selection, content: c, scene: model.scene, model: model) { model.selection = nil }
                         .transition(.move(edge: .bottom).combined(with: .opacity))
@@ -391,16 +370,6 @@ struct MapScreen: View {
         .padding(.horizontal, 12)
         .padding(.bottom, bottomInset + 4)
     }
-}
-
-private struct TopChromeHeightKey: PreferenceKey {
-    static let defaultValue: CGFloat = 96
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = max(value, nextValue()) }
-}
-
-private struct BottomChromeHeightKey: PreferenceKey {
-    static let defaultValue: CGFloat = 44
-    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) { value = max(value, nextValue()) }
 }
 
 struct MapScaleBadge: View {

@@ -13,6 +13,8 @@ final class MapCanvas: UIView, UIGestureRecognizerDelegate {
     var onCameraChange: ((MapCamera) -> Void)?
     var onTap: ((MapHit, CGPoint) -> Void)?
     var onLongPress: ((CGPoint) -> Void)?
+    /// A pan, pinch or double-tap began: the person is moving the map themselves.
+    var onUserGesture: (() -> Void)?
 
     private var pinchStartScale: CGFloat = 1
 
@@ -41,9 +43,13 @@ final class MapCanvas: UIView, UIGestureRecognizerDelegate {
 
     required init?(coder: NSCoder) { fatalError("init(coder:) is not supported") }
 
+    private var reportedLayout = false
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        if camera.viewSize != bounds.size {
+        // A canvas re-created for a kept model starts at the model's size, so its first real layout is reported even unchanged.
+        if camera.viewSize != bounds.size || (!reportedLayout && bounds.width > 0 && bounds.height > 0) {
+            reportedLayout = bounds.width > 0 && bounds.height > 0
             camera.viewSize = bounds.size
             onCameraChange?(camera)
         }
@@ -86,6 +92,7 @@ final class MapCanvas: UIView, UIGestureRecognizerDelegate {
     }
 
     @objc private func handlePan(_ g: UIPanGestureRecognizer) {
+        if g.state == .began { onUserGesture?() }
         let delta = g.translation(in: self)
         g.setTranslation(.zero, in: self)
         camera.pan(byScreen: delta)
@@ -107,6 +114,7 @@ final class MapCanvas: UIView, UIGestureRecognizerDelegate {
         guard !zoomLocked else { return }
         switch g.state {
         case .began:
+            onUserGesture?()
             pinchStartScale = camera.scale
         case .changed:
             let target = pinchStartScale * g.scale
@@ -127,6 +135,7 @@ final class MapCanvas: UIView, UIGestureRecognizerDelegate {
 
     @objc private func handleDoubleTap(_ g: UITapGestureRecognizer) {
         guard !zoomLocked else { return }
+        onUserGesture?()
         animateZoom(by: 2, around: g.location(in: self))
     }
 
@@ -218,6 +227,7 @@ struct MapCanvasView: UIViewRepresentable {
         canvas.onCameraChange = { [weak model] camera in model?.cameraDidChange(camera) }
         canvas.onTap = { [weak model] hit, point in model?.handleTap(hit, at: point) }
         canvas.onLongPress = { [weak model] point in model?.handleLongPress(at: point) }
+        canvas.onUserGesture = { [weak model] in model?.followsUser = false }
         model.attach(canvas)
         return canvas
     }

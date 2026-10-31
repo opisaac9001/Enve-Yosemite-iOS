@@ -116,12 +116,11 @@ struct MapSelectionCard: View {
             }
             .buttonStyle(.bordered).font(.fieldCaption)
         case .cluster(let ids):
+            // Every member, including trailheads, region points and pins that have no directory record.
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(ids, id: \.self) { id in
-                        if let p = content.place(id) {
-                            Button(p.name) { model.selection = .place(id) }.buttonStyle(.bordered).font(.fieldCaption)
-                        }
+                    ForEach(model.frameContent.markers.filter { ids.contains($0.id) }, id: \.id) { marker in
+                        Button(marker.accessibleName) { model.selection = Self.selection(forMarker: marker.id) }.buttonStyle(.bordered).font(.fieldCaption)
                     }
                 }
             }
@@ -162,6 +161,14 @@ struct MapSelectionCard: View {
             out.append((trail, route))
         }
         return out
+    }
+
+    static func selection(forMarker id: String) -> MapSelection {
+        switch id {
+        case "car": .car
+        case "campsite": .campsitePin
+        default: id.hasPrefix("site-") ? .campsite(ridbId: String(id.dropFirst(5))) : .place(id)
+        }
     }
 
     private func markCampsite(_ site: Campsite) {

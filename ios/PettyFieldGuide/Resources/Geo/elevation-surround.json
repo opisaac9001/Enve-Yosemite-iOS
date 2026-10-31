@@ -1,0 +1,30 @@
+{
+ "version": "aa97b7c12779",
+ "source": "USGS 3D Elevation Program (3DEP) bare-earth DEM via The National Map 3DEPElevation ImageServer",
+ "sourceUrl": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer",
+ "catalog": "https://data.usgs.gov/datacatalog/data/USGS%3A3a81321b-c153-416f-98b7-cc8e5f0e17c3",
+ "licence": "Public domain (U.S. Government work, USGS); credit: U.S. Geological Survey, 3D Elevation Program",
+ "fetchedAt": "2026-10-30T16:14:35Z",
+ "purpose": "Coarse relief around the park for regional zooms near the park edge; the park tier draws on top of it",
+ "processing": "exportImage in 1 chunks, bilinear resampling by the service onto sample centres; rounded to 0.25 m; planar-prediction residuals, raw DEFLATE",
+ "bounds": {
+  "north": 38.75,
+  "south": 36.9,
+  "west": -121.1,
+  "east": -118.6
+ },
+ "width": 1001,
+ "height": 741,
+ "encoding": "uint16-le-planar-deflate",
+ "dataFile": "elevation-surround.bin",
+ "verticalScale": 0.25,
+ "cellSizeMeters": {
+  "x": 219.82,
+  "y": 277.48
+ },
+ "rangeMeters": {
+  "min": 12.4,
+  "max": 4111.2
+ },
+ "dataSha256": "aa97b7c1277902c5788de86224173cb9d7866009c4e4e2c29eb5d204cd13377c"
+}

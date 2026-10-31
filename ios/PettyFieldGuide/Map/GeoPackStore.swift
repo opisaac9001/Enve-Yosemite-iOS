@@ -13,41 +13,31 @@ final class GeoPackStore: ObservableObject {
         case failed(String)
     }
 
-    @Published private(set) var valley: SceneState = .idle
-    @Published private(set) var park: SceneState = .idle
+    /// The continuous park map every screen draws: the Map tab, the region and fire maps and the hike maps.
+    @Published private(set) var map: SceneState = .idle
     @Published private(set) var terrain: TerrainGrid?
     @Published private(set) var campgroundScenes: [String: MapScene] = [:]
     @Published private(set) var hikeProfiles: [String: HikeProfile] = [:]
-    private var valleyTask: Task<MapScene, Error>?
+    private var mapTask: Task<MapScene, Error>?
     private var basemapTask: Task<TerrainGrid, Error>?
+    private var parkGridTask: Task<TerrainGrid, Error>?
 
     /// Every caller awaits the same build, so a second screen asking while the first is still loading
     /// gets the finished scene instead of returning early on `.loading`.
-    func loadValley() async {
-        switch valley {
+    func loadMap() async {
+        switch map {
         case .ready, .failed: return
         case .idle, .loading: break
         }
-        if valleyTask == nil {
-            valley = .loading
-            valleyTask = Task.detached(priority: .userInitiated) { try ValleySceneBuilder.build() }
+        if mapTask == nil {
+            map = .loading
+            mapTask = Task.detached(priority: .userInitiated) { try MapSceneBuilder.build() }
         }
         do {
-            let scene = try await valleyTask!.value
-            valley = .ready(scene)
+            let scene = try await mapTask!.value
+            map = .ready(scene)
         } catch {
-            valley = .failed(error.localizedDescription)
-        }
-    }
-
-    func loadPark() async {
-        guard case .idle = park else { return }
-        park = .loading
-        do {
-            let scene = try await Task.detached(priority: .userInitiated) { try ParkSceneBuilder.build() }.value
-            park = .ready(scene)
-        } catch {
-            park = .failed(error.localizedDescription)
+            map = .failed(error.localizedDescription)
         }
     }
 
@@ -56,15 +46,28 @@ final class GeoPackStore: ObservableObject {
         terrain = try? await Task.detached(priority: .utility) { try TerrainGrid.load() }.value
     }
 
-    /// Terrain profile of a hike route from the 20 m relief grid, sampled off the main actor and cached.
-    func hikeProfile(for routeId: String) async -> HikeProfile? {
+    /// The loaded map scene, which holds every resolved hike route.
+    func scene() async -> MapScene? {
+        await loadMap()
+        if case .ready(let scene) = map { return scene }
+        return nil
+    }
+
+    /// Terrain profile of a hike route, sampled off the main actor and cached: routes traced on the Valley pack
+    /// use the 20 m Valley grid, park-pack routes the ≈30 m 3DEP park grid. Nil when the route leaves the grid.
+    func hikeProfile(for routeId: String, pack: HikeRouteGeometry = .valley) async -> HikeProfile? {
         if let cached = hikeProfiles[routeId] { return cached }
-        await loadValley()
-        guard case .ready(let scene) = valley, let trace = scene.hikeRoutes[routeId] else { return nil }
-        if basemapTask == nil {
-            basemapTask = Task.detached(priority: .utility) { try TerrainGrid.load(file: TerrainGrid.basemapFile) }
+        guard let scene = await scene(), let trace = scene.hikeRoutes[routeId] else { return nil }
+        let task: Task<TerrainGrid, Error>
+        switch pack {
+        case .valley:
+            if basemapTask == nil { basemapTask = Task.detached(priority: .utility) { try TerrainGrid.load(file: TerrainGrid.basemapFile) } }
+            task = basemapTask!
+        case .park:
+            if parkGridTask == nil { parkGridTask = Task.detached(priority: .utility) { try TerrainGrid.load(file: TerrainGrid.parkFile) } }
+            task = parkGridTask!
         }
-        guard let grid = try? await basemapTask?.value else { return nil }
+        guard let grid = try? await task.value else { return nil }
         let projection = scene.projection
         let profile = await Task.detached(priority: .utility) { HikeRouteResolver.profile(for: trace, grid: grid, projection: projection) }.value
         if let profile { hikeProfiles[routeId] = profile }

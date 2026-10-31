@@ -5,7 +5,7 @@ import CoreLocation
 /// One-shot location requests. Permission is only asked when the user invokes a location tool.
 @MainActor
 final class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate {
-    enum PendingAction: Equatable { case centre, car, sortByDistance }
+    enum PendingAction: Equatable { case car, sortByDistance }
 
     @Published private(set) var lastLocation: CLLocation?
     @Published private(set) var message: String?

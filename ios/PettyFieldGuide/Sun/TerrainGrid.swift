@@ -6,7 +6,9 @@ import CoreLocation
 struct TerrainGrid: Sendable {
     static let sunFile = "elevation-valley.json"        // 320×152 crop the sun preview marches
     static let basemapFile = "elevation-basemap.json"   // 20 m detail relief over the Valley extent
-    static let regionFile = "elevation-region.json"     // 45 m background relief for the whole pan/zoom range
+    static let parkFile = "elevation-park.json"         // ≈30 m USGS 3DEP over parkBounds: park relief, contours and park hike profiles
+    static let surroundFile = "elevation-surround.json" // ≈250 m USGS 3DEP context around the park for regional zooms near its edge
+    static let outerFile = "elevation-outer.json"       // ≈800 m USGS 3DEP far context for the map's zoom floor; open-ocean gaps are NaN
 
     let width: Int
     let height: Int
@@ -14,7 +16,7 @@ struct TerrainGrid: Sendable {
     let cellSizeMeters: (x: Double, y: Double)
     let minElevation: Double
     let maxElevation: Double
-    let elevations: [Float]      // row-major, row 0 = north edge
+    let elevations: [Float]      // row-major, row 0 = north edge; NaN where the source has no value
     let source: String
     let fetchedAt: String
 
@@ -32,26 +34,70 @@ struct TerrainGrid: Sendable {
         var verticalScale: Double
         var cellSizeMeters: Cell
         var rangeMeters: Range
-        var data: String
+        var data: String?
+        var dataFile: String?
+        var offsetMeters: Double?
+        var noDataUnits: Int?
     }
 
     static func load(file: String = sunFile) throws -> TerrainGrid {
         let raw = try JSONDecoder().decode(Raw.self, from: BundleContent.data(file, subdirectory: "Geo"))
-        guard raw.encoding == "uint16-le-base64", let bytes = Data(base64Encoded: raw.data), bytes.count == raw.width * raw.height * 2 else {
-            throw CocoaError(.fileReadCorruptFile)
-        }
-        var values = [Float](repeating: 0, count: raw.width * raw.height)
-        bytes.withUnsafeBytes { buffer in
-            for i in 0..<values.count {
-                let lo = UInt16(buffer[i * 2]), hi = UInt16(buffer[i * 2 + 1])
-                values[i] = Float(Double(lo | (hi << 8)) * raw.verticalScale)
+        let count = raw.width * raw.height
+        let values: [Float]
+        switch raw.encoding {
+        case "uint16-le-base64":
+            guard let bytes = raw.data.flatMap({ Data(base64Encoded: $0) }), bytes.count == count * 2 else { throw CocoaError(.fileReadCorruptFile) }
+            values = bytes.withUnsafeBytes { (buffer: UnsafeRawBufferPointer) in
+                (0..<count).map { i -> Float in
+                    let lo = UInt16(buffer[i * 2]), hi = UInt16(buffer[i * 2 + 1])
+                    return Float(Double(lo | hi << 8) * raw.verticalScale)
+                }
             }
+        case "uint16-le-planar-deflate":
+            guard let name = raw.dataFile else { throw CocoaError(.fileReadCorruptFile) }
+            let packed = try BundleContent.data(name, subdirectory: "Geo")
+            let bytes = try (packed as NSData).decompressed(using: .zlib) as Data
+            guard bytes.count == count * 2 else { throw CocoaError(.fileReadCorruptFile) }
+            values = Self.planarDecode(bytes, width: raw.width, height: raw.height, scale: Float(raw.verticalScale),
+                                       offset: Float(raw.offsetMeters ?? 0), noData: raw.noDataUnits.map(Int32.init))
+        default:
+            throw CocoaError(.fileReadCorruptFile)
         }
         return TerrainGrid(width: raw.width, height: raw.height,
                            bounds: GeoBounds(west: raw.bounds.west, south: raw.bounds.south, east: raw.bounds.east, north: raw.bounds.north),
                            cellSizeMeters: (raw.cellSizeMeters.x, raw.cellSizeMeters.y),
                            minElevation: raw.rangeMeters.min, maxElevation: raw.rangeMeters.max,
                            elevations: values, source: raw.source, fetchedAt: raw.fetchedAt)
+    }
+
+    /// Inverts tools/prepare_park_relief.py: each sample is its 16-bit residual plus left + above − above-left, modulo 2^16,
+    /// in `scale` metres above `offset`; the `noData` unit value decodes to NaN.
+    static func planarDecode(_ bytes: Data, width: Int, height: Int, scale: Float, offset: Float = 0, noData: Int32? = nil) -> [Float] {
+        let noData = noData ?? -1
+        var values = [Float](repeating: 0, count: width * height)
+        var rows = [Int32](repeating: 0, count: 2 * width)
+        bytes.withUnsafeBytes { (buffer: UnsafeRawBufferPointer) in
+            values.withUnsafeMutableBufferPointer { out in
+                rows.withUnsafeMutableBufferPointer { rows in
+                    var above = rows.baseAddress!, current = rows.baseAddress! + width
+                    for row in 0..<height {
+                        let base = row * width
+                        @inline(__always) func residual(_ col: Int) -> Int32 { Int32(buffer[(base + col) * 2]) | Int32(buffer[(base + col) * 2 + 1]) << 8 }
+                        current[0] = ((row == 0 ? 0 : above[0]) + residual(0)) & 0xFFFF
+                        out[base] = current[0] == noData ? .nan : Float(current[0]) * scale + offset
+                        if width > 1 {
+                            for col in 1..<width {
+                                let prediction = row == 0 ? current[col - 1] : current[col - 1] + above[col] - above[col - 1]
+                                current[col] = (prediction + residual(col)) & 0xFFFF
+                                out[base + col] = current[col] == noData ? .nan : Float(current[col]) * scale + offset
+                            }
+                        }
+                        swap(&above, &current)
+                    }
+                }
+            }
+        }
+        return values
     }
 
     func elevation(col: Int, row: Int) -> Float {
@@ -91,17 +137,19 @@ struct TerrainGrid: Sendable {
 
 /// Marching-squares contour lines from the grid, projected.
 enum ContourBuilder {
-    static func contours(from grid: TerrainGrid, projection: LocalProjection, intervalMeters: Double) -> [LineFeature] {
+    /// Lines every `intervalMeters`, named and styled as index lines every `indexEvery`. Cells whose north-west
+    /// sample lies inside `excluding` are skipped, so a finer grid can contour that area instead.
+    static func contours(from grid: TerrainGrid, projection: LocalProjection, intervalMeters: Double, indexEvery: Double,
+                         excluding: GeoBounds? = nil, idPrefix: String = "contour") -> [LineFeature] {
         var features: [LineFeature] = []
-        let start = (grid.minElevation / intervalMeters).rounded(.up) * intervalMeters
-        var level = start
+        var level = (grid.minElevation / intervalMeters).rounded(.up) * intervalMeters
         var index = 0
         while level < grid.maxElevation {
-            let segments = marchingSquares(grid: grid, level: Float(level))
+            let segments = marchingSquares(grid: grid, level: Float(level), excluding: excluding)
             for chain in joinSegments(segments) {
                 let coords = chain.map { grid.coordinate(col: Double($0.x), row: Double($0.y)) }
-                let isIndex = Int(level) % 250 == 0
-                if let f = SceneBuilder.lineFeature(id: "contour-\(index)", coords: coords, projection: projection, name: isIndex ? "\(Int(level)) m" : nil,
+                let isIndex = level.truncatingRemainder(dividingBy: indexEvery) == 0
+                if let f = SceneBuilder.lineFeature(id: "\(idPrefix)-\(index)", coords: coords, projection: projection, name: isIndex ? "\(Int(level)) m" : nil,
                                                     label: isIndex ? "\(Int(level)) m" : nil, attributes: ["elevation": .number(level)],
                                                     styleKey: isIndex ? "contour-index" : "contour") {
                     features.append(f)
@@ -113,14 +161,20 @@ enum ContourBuilder {
         return features
     }
 
-    private static func marchingSquares(grid: TerrainGrid, level: Float) -> [(CGPoint, CGPoint)] {
+    private static func marchingSquares(grid: TerrainGrid, level: Float, excluding: GeoBounds?) -> [(CGPoint, CGPoint)] {
         var segments: [(CGPoint, CGPoint)] = []
         func interp(_ a: CGPoint, _ va: Float, _ b: CGPoint, _ vb: Float) -> CGPoint {
             let t = vb == va ? 0.5 : CGFloat((level - va) / (vb - va))
             return CGPoint(x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t)
         }
+        let skip = excluding.map { b -> (cols: ClosedRange<Int>, rows: ClosedRange<Int>) in
+            let x = { (lon: Double) in Int(((lon - grid.bounds.west) / (grid.bounds.east - grid.bounds.west) * Double(grid.width - 1)).rounded(.down)) }
+            let y = { (lat: Double) in Int(((grid.bounds.north - lat) / (grid.bounds.north - grid.bounds.south) * Double(grid.height - 1)).rounded(.down)) }
+            return (min(x(b.west) + 1, x(b.east))...x(b.east), min(y(b.north) + 1, y(b.south))...y(b.south))
+        }
         for row in 0..<(grid.height - 1) {
             for col in 0..<(grid.width - 1) {
+                if let skip, skip.rows.contains(row), skip.cols.contains(col) { continue }
                 let v0 = grid.elevation(col: col, row: row), v1 = grid.elevation(col: col + 1, row: row)
                 let v2 = grid.elevation(col: col + 1, row: row + 1), v3 = grid.elevation(col: col, row: row + 1)
                 let p0 = CGPoint(x: col, y: row), p1 = CGPoint(x: col + 1, y: row), p2 = CGPoint(x: col + 1, y: row + 1), p3 = CGPoint(x: col, y: row + 1)

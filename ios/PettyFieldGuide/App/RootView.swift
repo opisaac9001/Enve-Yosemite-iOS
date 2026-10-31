@@ -59,6 +59,7 @@ private struct CompactRootView: View {
                 showMore = false
                 router.show(section)
             }
+            .nightVision()
         }
         .sheet(item: $router.sheet) { sheet in SheetHost(sheet: sheet) }
     }
@@ -101,7 +102,7 @@ struct SectionHost: View {
 
     @ViewBuilder private var sectionRoot: some View {
         switch section {
-        case .map: MapScreen()
+        case .map: MapTabScreen()
         case .directory: DirectoryScreen()
         case .search: SearchScreen()
         case .status: FieldStatusScreen()

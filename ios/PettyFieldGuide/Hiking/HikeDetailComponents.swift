@@ -54,7 +54,7 @@ struct HikeRoutePicker: View {
                             Image(systemName: selection == route.id ? "largecircle.fill.circle" : "circle").foregroundStyle(Palette.accent)
                             VStack(alignment: .leading, spacing: 1) {
                                 Text(route.label).font(.fieldCaption.weight(selection == route.id ? .semibold : .regular)).multilineTextAlignment(.leading)
-                                Text([published.map { HikeFormat.miles($0.distanceMi) }, published?.difficulty ?? trail.difficulty, route.kind.title.lowercased()].compactMap { $0 }.joined(separator: " · "))
+                                Text([published.map { HikeFormat.miles($0.distanceMi) }, published?.difficulty ?? trail.difficulty, published?.kind ?? route.kind.title.lowercased()].compactMap { $0 }.joined(separator: " · "))
                                     .font(.caption2).foregroundStyle(.secondary)
                             }
                             Spacer()

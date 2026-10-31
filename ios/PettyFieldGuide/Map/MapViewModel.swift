@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 import CoreLocation
 
-/// What the Valley map is currently showing on top of the base geometry.
+/// What the map is currently showing on top of the base geometry.
 struct MapLayerToggles: Codable, Equatable {
     var shuttleRoutes = true
     var emphasizeShuttle = false
@@ -26,7 +26,7 @@ enum MapSelection: Equatable {
     case overlay(id: String)
 }
 
-/// Main-actor state for the Valley map screen. The scene itself is immutable and shared.
+/// Main-actor state for a map screen: the Map tab's continuous park map, or a secondary map. The scene itself is immutable and shared.
 @MainActor
 final class MapViewModel: ObservableObject {
     @Published var camera: MapCamera
@@ -67,16 +67,28 @@ final class MapViewModel: ObservableObject {
     @Published private(set) var inspectedMetres: Double?
     private(set) var activeLandmarks: [HikeLandmark] = []
     @Published var sunPreview: SunPreviewState? { didSet { rebuildContent() } }
-    @Published var userLocation: CLLocationCoordinate2D? { didSet { rebuildContent() } }
+    /// Live GPS position; the Map tab rebuilds around it, secondary maps patch it into their own frame.
+    @Published var userFix: MapUserFix? {
+        didSet {
+            guard userFix != oldValue else { return }
+            if content != nil { rebuildContent() } else { frameContent = withUser(frameContent) }
+        }
+    }
+    /// Re-centres on each new fix until the person moves the map or another focus takes over.
+    @Published var followsUser = false
     @Published var smokePolygons: [MapOverlayArea] = [] { didSet { rebuildContent() } }
+    /// A point a link or search asked to show that has no marker of its own.
+    @Published private(set) var shownPin: ShownPin?
     @Published var statusMessage: String?
     /// Canvas points covered by chrome; framing and labels keep clear of them.
     @Published var obscuredInsets: UIEdgeInsets = .zero {
         didSet {
             guard obscuredInsets != oldValue else { return }
-            rebuildOptions()
+            // Patched rather than rebuilt: secondary maps set their own options, which a rebuild would replace with the Valley's.
+            frameOptions.obscuredInsets = obscuredInsets
             // The hike card raises the bottom inset after the route was framed; refit once so the whole route stays clear of it.
             if refitRouteOnInsetChange { fitActiveRoute(animated: false) }
+            if areaFit?.camera != nil { applyAreaFit(animated: false) }
         }
     }
 
@@ -85,6 +97,9 @@ final class MapViewModel: ObservableObject {
     /// Projected area the route fit showed; the pan clamp keeps covering it while the route is up.
     private var routeViewport: CGRect?
     private var refitRouteOnInsetChange = false
+    /// Area the last `fit(_:)` asked for, and the camera it produced; nil camera means it waits for the first layout.
+    /// Layout and inset changes refit it until the camera is moved some other way.
+    private var areaFit: (rect: CGRect, maxScale: CGFloat, camera: MapCamera?)?
 
     var cameraFromCanvas = false
     private weak var canvas: MapCanvas?
@@ -107,7 +122,7 @@ final class MapViewModel: ObservableObject {
     static let layersKey = "map.layers"
     static let categoriesKey = "map.categories"
 
-    /// The Valley map restores and persists its layer and category choices and frames the visitor core
+    /// The Map tab restores and persists its layer and category choices and frames the Valley visitor core
     /// on first layout; secondary maps start from defaults, leave preferences alone and set their own cameras.
     init(restoresPreferences: Bool = false, defaults: UserDefaults = .standard) {
         let projection = LocalProjection(origin: YosemiteGeo.valleyCenter)
@@ -164,6 +179,7 @@ final class MapViewModel: ObservableObject {
     func setScene(_ scene: MapScene) {
         self.scene = scene
         projection = scene.projection
+        if userFix != nil { frameContent = withUser(frameContent) }
         if !framesValleyCoreOnFirstLayout, camera.viewSize == .zero {
             camera = MapCamera.fitting(scene.extent, in: CGSize(width: 390, height: 600))
         }
@@ -171,22 +187,45 @@ final class MapViewModel: ObservableObject {
         resolvePendingFocus()
     }
 
-    /// The Valley map's zoom floor is a little past a whole-view fit of the extent, and never above
-    /// what "Fit the whole Valley" needs between the chrome; the bundled background relief is sized
-    /// for that envelope on phones and iPads.
+    /// The zoom floor is a little past a whole-view fit of the scene's extent, and never above what
+    /// "Fit the whole park" needs between the chrome. It is raised only where that would show ground past the
+    /// outermost relief tier, which is sized so this never happens on supported phone and iPad layouts.
     var scaleLimits: ClosedRange<CGFloat> {
-        guard framesValleyCoreOnFirstLayout, let scene, hasLaidOut else { return 0.012...6 }
+        guard framesValleyCoreOnFirstLayout, let scene, hasLaidOut else { return 0.002...6 }
         let whole = min(camera.viewSize.width / scene.extent.width, camera.viewSize.height / scene.extent.height)
-        return max(0.012, min(whole * 0.8, fitValleyCamera(viewSize: camera.viewSize).scale))...6
+        let floor = max(0.001, min(whole * 0.8, fitParkCamera(viewSize: camera.viewSize).scale), terrainFloor(viewSize: camera.viewSize))
+        return floor...6
     }
 
-    /// Whole extent inside the chrome insets plus padding.
+    /// The smallest scale at which the view stays on unfaded outermost relief. A view wider than the pan clamp is
+    /// centred on it, and a narrower one stays inside it, so the clamp's centre and the relief edge bound every view.
+    func terrainFloor(viewSize: CGSize) -> CGFloat {
+        guard let scene, let clamp = clampRect, let outer = scene.relief?.layers.first else { return 0 }
+        let fade = CGFloat(outer.feather)
+        let solid = outer.footprint.insetBy(dx: fade * outer.footprint.width / CGFloat(outer.width), dy: fade * outer.footprint.height / CGFloat(outer.height))
+        let halfWidth = min(clamp.midX - solid.minX, solid.maxX - clamp.midX), halfHeight = min(clamp.midY - solid.minY, solid.maxY - clamp.midY)
+        guard halfWidth > 0, halfHeight > 0 else { return 0 }
+        return max(viewSize.width / (2 * halfWidth), viewSize.height / (2 * halfHeight))
+    }
+
+    /// The Valley's detailed extent inside the chrome insets plus padding.
     func fitValleyCamera(viewSize: CGSize) -> MapCamera {
-        MapCamera.fitting(scene?.extent ?? camera.visibleRect(), in: viewSize, insets: obscuredInsets, padding: 8)
+        MapCamera.fitting(projection.projectedRect(YosemiteGeo.valleyBounds), in: viewSize, insets: obscuredInsets, padding: 8)
     }
 
-    /// Pan limits: the Valley extent, widened to hold a selected hike that leaves it (Half Dome) and the
-    /// whole viewport its fit showed, so the framed route is never pushed off or cut by the clamp.
+    /// The park boundary (the scene extent when a scene has none) inside the chrome insets plus padding.
+    func fitParkCamera(viewSize: CGSize) -> MapCamera {
+        MapCamera.fitting(parkRect, in: viewSize, insets: obscuredInsets, padding: 8)
+    }
+
+    private var parkRect: CGRect {
+        guard let scene else { return camera.visibleRect() }
+        let boundary = scene.boundary.map(\.bounds).reduce(CGRect.null) { $0.union($1) }
+        return boundary.isNull ? scene.extent : boundary
+    }
+
+    /// Pan limits: the scene extent, widened to hold a selected hike that leaves it and the whole viewport
+    /// its fit showed, so the framed route is never pushed off or cut by the clamp.
     var clampRect: CGRect? {
         guard let scene else { return nil }
         var rect = scene.extent
@@ -204,6 +243,9 @@ final class MapViewModel: ObservableObject {
         self.camera = camera
         if camera.viewSize.width > 0, camera.viewSize.height > 0 { hasLaidOut = true }
         applyFirstFramingIfNeeded()
+        if let fit = areaFit {
+            if fit.camera == nil || resized { applyAreaFit(animated: false) } else if camera != fit.camera { areaFit = nil }
+        }
         if let fit = routeFitCamera {
             if resized {
                 fitActiveRoute(animated: false)
@@ -243,13 +285,36 @@ final class MapViewModel: ObservableObject {
 
     func fitValley() {
         guard scene != nil, let canvas else { return }
+        followsUser = false
+        areaFit = nil
         canvas.animate(to: fitValleyCamera(viewSize: canvas.bounds.size))
+    }
+
+    func fitPark() {
+        guard scene != nil else { return }
+        fit(parkRect)
+    }
+
+    /// Frames `rect` inside the unobscured part of the view.
+    func fit(_ rect: CGRect, maxScale: CGFloat = .infinity, animated: Bool = true) {
+        followsUser = false
+        areaFit = (rect, maxScale, nil)
+        applyAreaFit(animated: animated)
+    }
+
+    private func applyAreaFit(animated: Bool) {
+        guard let fit = areaFit, let canvas, canvas.bounds.width > 0, canvas.bounds.height > 0 else { return }
+        let target = MapCamera.fitting(fit.rect, in: canvas.bounds.size, insets: obscuredInsets, padding: 12, maxScale: fit.maxScale)
+        areaFit?.camera = target
+        if animated { canvas.animate(to: target) } else { apply(camera: target) }
     }
 
     func zoomIn() { canvas?.animateZoom(by: 1.8) }
     func zoomOut() { canvas?.animateZoom(by: 1 / 1.8) }
 
     func focus(on coordinate: CLLocationCoordinate2D, scale: CGFloat? = nil, animated: Bool = true) {
+        followsUser = false
+        areaFit = nil
         guard let canvas else {
             camera.center = projection.project(coordinate)
             if let scale { camera.scale = scale }
@@ -283,14 +348,38 @@ final class MapViewModel: ObservableObject {
             guard let site = content.campsites.first(where: { $0.ridbId == ridb }) else { return }
             selection = .campsite(ridbId: ridb)
             self.focus(on: site.coordinate, scale: max(camera.scale, 2.5), animated: animated)
-        case .coordinate(let lat, let lon, _):
+        case .coordinate(let lat, let lon, let label):
+            if let car = saved?.car, car.latitude == lat, car.longitude == lon {
+                selection = .car
+            } else {
+                shownPin = ShownPin(title: label, latitude: lat, longitude: lon)
+                selection = .place(ShownPin.markerId)
+            }
             self.focus(on: CLLocationCoordinate2D(latitude: lat, longitude: lon), scale: max(camera.scale, 1.0), animated: animated)
         case .trail(let id):
-            guard let route = content.defaultHikeRoute(for: id) else { return }
-            selectHike(route.id, animated: animated, pending: focus)
+            if let route = content.defaultHikeRoute(for: id) {
+                selectHike(route.id, animated: animated, pending: focus)
+            } else if let trail = content.trail(id), !trail.isValley {
+                // No reviewed trace: the trailhead is picked and nothing is drawn.
+                selection = .place(ParkMapView.trailheadMarkerId(trail))
+                self.focus(on: trail.coordinate, scale: max(camera.scale, 0.12), animated: animated)
+            }
         case .hikeRoute(let id):
             selectHike(id, animated: animated, pending: focus)
+        case .region(let id):
+            guard let scene, let rect = ParkMapView.regionRect(id, scene: scene, content: content) else { return }
+            selection = nil
+            fit(rect, animated: animated)
+        case .park:
+            selection = nil
+            fit(parkRect, animated: animated)
         }
+    }
+
+    func clearShownPin() {
+        shownPin = nil
+        if selection == .place(ShownPin.markerId) { selection = nil }
+        rebuildContent()
     }
 
     // MARK: Hike routes
@@ -305,6 +394,7 @@ final class MapViewModel: ObservableObject {
         }
         // A scene without the trace means the route could not be resolved; nothing to draw or wait for.
         guard scene.hikeRoutes[routeId] != nil else { return }
+        followsUser = false
         selection = .hike(routeId: routeId)
         activeRouteId = routeId
         refitRouteOnInsetChange = true
@@ -327,6 +417,7 @@ final class MapViewModel: ObservableObject {
     func fitActiveRoute(animated: Bool = true) {
         let size = canvas?.bounds.size ?? camera.viewSize
         guard size.width > 0, size.height > 0, let target = routeFitCamera(viewSize: size) else { return }
+        areaFit = nil
         routeFitCamera = target
         routeViewport = target.visibleRect()
         if animated, let canvas { canvas.animate(to: target) } else { apply(camera: target) }
@@ -356,12 +447,53 @@ final class MapViewModel: ObservableObject {
         guard let inspectedMetres, let activeRouteId, let route = scene?.hikeRoutes[activeRouteId], let canvas else { return }
         let size = canvas.bounds.size
         guard size.width > 0, size.height > 0 else { return }
-        let point = route.chainage.point(at: inspectedMetres)
+        followsUser = false
+        canvas.animate(to: centringCamera(on: route.chainage.point(at: inspectedMetres), in: size))
+    }
+
+    /// The camera at `scale` (default: current) that puts `point` in the middle of the unobscured area.
+    private func centringCamera(on point: CGPoint, in size: CGSize, scale: CGFloat? = nil) -> MapCamera {
         let usable = CGPoint(x: (obscuredInsets.left + size.width - obscuredInsets.right) / 2, y: (obscuredInsets.top + size.height - obscuredInsets.bottom) / 2)
         var target = camera
         target.viewSize = size
+        if let scale { target.scale = scale }
         target.center = CGPoint(x: point.x - (usable.x - size.width / 2) / target.scale, y: point.y + (usable.y - size.height / 2) / target.scale)
-        canvas.animate(to: target)
+        return target
+    }
+
+    // MARK: Live position
+
+    /// Whether a position falls inside the area this map can show; outside it the map cannot centre on it.
+    func isOnMap(_ coordinate: CLLocationCoordinate2D) -> Bool {
+        guard let rect = clampRect else { return false }
+        return rect.contains(projection.project(coordinate))
+    }
+
+    /// Centres on the live position, zooming in to at least `minScale`; a fix off this map leaves the camera alone.
+    func centerOnUser(minScale: CGFloat? = nil) {
+        guard let fix = userFix?.fix, isOnMap(fix.coordinate), let canvas else { return }
+        let size = canvas.bounds.size
+        guard size.width > 0, size.height > 0 else { return }
+        let target = centringCamera(on: projection.project(fix.coordinate), in: size, scale: minScale.map { max(camera.scale, $0) })
+        // GPS jitter while standing still should not keep nudging the map.
+        guard target.scale != camera.scale || hypot(target.center.x - camera.center.x, target.center.y - camera.center.y) * camera.scale > 3 else { return }
+        areaFit = nil
+        canvas.animate(to: target, duration: 0.45)
+    }
+
+    /// `frame` with this map's live-position marker and accuracy ring replaced by the current fix.
+    func withUser(_ frame: MapFrameContent) -> MapFrameContent {
+        var frame = frame
+        frame.markers.removeAll { $0.id == "user" }
+        frame.userAccuracy = nil
+        guard let userFix else { return frame }
+        let point = projection.project(userFix.fix.coordinate)
+        let accuracy = String(format: "%.0f", userFix.fix.horizontalAccuracy)
+        frame.markers.append(MapMarker(id: "user", point: point, title: userFix.stale ? "Last GPS fix" : "Your position",
+                                       colorHex: userFix.stale ? "#7D8389" : "#3B7EA8", priority: 70, shape: .user, clusterable: false,
+                                       accessibilityTitle: userFix.stale ? "Last GPS fix, out of date, accuracy about \(accuracy) metres" : "Your position, accuracy about \(accuracy) metres"))
+        frame.userAccuracy = MapAccuracyRing(center: point, radius: userFix.fix.horizontalAccuracy, stale: userFix.stale)
+        return frame
     }
 
     // MARK: Interaction
@@ -415,6 +547,7 @@ final class MapViewModel: ObservableObject {
             selection = .cluster(ids: ids)
             return
         }
+        followsUser = false
         var target = MapCamera.fitting(bounds.insetBy(dx: -max(30, bounds.width * 0.2), dy: -max(30, bounds.height * 0.2)),
                                        in: canvas.bounds.size, insets: obscuredInsets, padding: 48)
         target.scale = min(scaleLimits.upperBound, max(target.scale, camera.scale * 1.8))
@@ -447,7 +580,7 @@ final class MapViewModel: ObservableObject {
         rebuildContent()
     }
 
-    /// NOAA HMS plume polygons from the saved smoke snapshot, projected for the Valley map.
+    /// NOAA HMS plume polygons from the saved smoke snapshot, projected for this map.
     func update(smoke snapshot: Snapshot<SmokeFeed>?) {
         guard let snapshot, !snapshot.isExpired, let polygons = snapshot.payload.plumes.polygons else { smokePolygons = []; return }
         smokePolygons = polygons.enumerated().map { index, poly in
@@ -524,8 +657,7 @@ final class MapViewModel: ObservableObject {
         }
 
         if camera.scale >= 1.2 {
-            let valleyCampgrounds = Set(content.campgrounds.campgrounds.filter(\.isValley).map(\.id))
-            for site in content.campsites where valleyCampgrounds.contains(site.campground) {
+            for site in content.campsites {
                 let isMine = saved?.campsite?.siteId == site.ridbId
                 if focused && !isMine { continue }
                 frame.markers.append(MapMarker(id: "site-\(site.ridbId)", point: projection.project(site.coordinate), title: "Site \(site.displayNumber)",
@@ -534,6 +666,17 @@ final class MapViewModel: ObservableObject {
             }
         }
 
+        // Trailheads, campgrounds and region points beyond the Valley; a picked one stays up whatever the filters or hike focus.
+        var parkMarkers = focused ? [] : ParkMapView.markers(mode: .overview, projection: projection, content: content, focusTrailId: nil, categories: activeCategories)
+        if let selectedPlaceId, !parkMarkers.contains(where: { $0.id == selectedPlaceId }),
+           let picked = ParkMapView.markers(mode: .overview, projection: projection, content: content, focusTrailId: nil, categories: nil).first(where: { $0.id == selectedPlaceId }) {
+            parkMarkers.append(picked)
+        }
+        frame.markers += parkMarkers
+        if let shownPin {
+            frame.markers.append(MapMarker(id: ShownPin.markerId, point: projection.project(shownPin.coordinate), title: shownPin.title, symbol: "mappin",
+                                           colorHex: "#F5921A", priority: 50, shape: .pin, clusterable: false, labelMinScale: 0))
+        }
         if let car = saved?.car {
             frame.markers.append(MapMarker(id: "car", point: projection.project(car.coordinate), title: "My car", symbol: "car.fill", colorHex: "#F5921A",
                                            priority: 60, shape: .car, clusterable: false, labelMinScale: 0))
@@ -541,9 +684,6 @@ final class MapViewModel: ObservableObject {
         if let camp = saved?.campsite, let lat = camp.latitude, let lon = camp.longitude {
             frame.markers.append(MapMarker(id: "campsite", point: projection.project(CLLocationCoordinate2D(latitude: lat, longitude: lon)), title: camp.label,
                                            symbol: "tent.fill", colorHex: "#F5921A", priority: 61, shape: .campsite, clusterable: false, labelMinScale: 0))
-        }
-        if let userLocation {
-            frame.markers.append(MapMarker(id: "user", point: projection.project(userLocation), title: "Your position", colorHex: "#3B7EA8", priority: 70, shape: .user, clusterable: false))
         }
         if let route = activeRoute {
             frame.markers += MapMarker.routeMarkers(for: route, compactLabels: focused) + MapMarker.milestoneMarkers(for: activeLandmarks, labelled: true)
@@ -565,7 +705,7 @@ final class MapViewModel: ObservableObject {
                                              text: landmark.name, size: 12.5, colorHex: dark ? "#E0DCD0" : "#4A4336", halo: true, priority: 5, kind: .landform))
         }
         frame.selectedMarkerId = selectedPlaceId ?? { if case .campsite(let r) = selection { return "site-\(r)" }; return nil }()
-        frameContent = frame
+        frameContent = withUser(frame)
     }
 
     private func persistCategories() {
@@ -588,6 +728,11 @@ extension Notification.Name {
     static let mapPreferencesImported = Notification.Name("dev.petty.fieldguide.mapPreferencesImported")
 }
 
+struct MapUserFix: Equatable {
+    let fix: LiveFix
+    let stale: Bool
+}
+
 struct SunPreviewState: Equatable {
     var date: Date
     var altitude: Double
@@ -595,4 +740,13 @@ struct SunPreviewState: Equatable {
     var overlay: MapOverlayImage
 
     static func == (lhs: SunPreviewState, rhs: SunPreviewState) -> Bool { lhs.date == rhs.date }
+}
+
+/// A point a link or search asked to show, with the label it came with; not a checked location.
+struct ShownPin: Equatable {
+    static let markerId = "pin"
+    let title: String
+    let latitude: Double
+    let longitude: Double
+    var coordinate: CLLocationCoordinate2D { CLLocationCoordinate2D(latitude: latitude, longitude: longitude) }
 }

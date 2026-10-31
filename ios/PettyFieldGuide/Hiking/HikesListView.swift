@@ -41,7 +41,20 @@ enum HikeDifficultyFilter: String, CaseIterable, Identifiable {
         case .all: true
         case .easy: rank <= 1
         case .moderate: (2...3).contains(rank)
-        case .strenuous: rank >= 4
+        case .strenuous: rank == 4
+        }
+    }
+}
+
+/// Which part of the park the hike list shows.
+enum HikeArea: Hashable {
+    case all, valley, region(String)
+
+    func contains(_ trail: Trail) -> Bool {
+        switch self {
+        case .all: true
+        case .valley: trail.isValley
+        case .region(let id): trail.regionId == id
         }
     }
 }
@@ -55,6 +68,7 @@ final class HikeListState: ObservableObject {
     @Published var distance: HikeDistanceFilter = .any
     @Published var savedOnly = false
     @Published var sort: TrailSort = .difficulty
+    @Published var area: HikeArea = .all
 }
 
 /// A hike that passed the filters together with the one published variant that satisfied them.
@@ -100,8 +114,13 @@ struct HikesListView: View {
     @ObservedObject private var conditions = ConditionsStore.shared
     @State private var noticesExpanded = false
 
+    private var areaTrails: [Trail] { content.trails.trails.filter(state.area.contains) }
+
+    /// Regions with listed hikes, in the regions pack order.
+    private var hikeRegions: [ParkRegion] { content.regions.regions.filter { !content.hikes(inRegion: $0.id).isEmpty } }
+
     private var hikes: [HikeMatch] {
-        HikeFilters.apply(content.trails.trails, query: state.query, difficulty: state.difficulty, distance: state.distance,
+        HikeFilters.apply(areaTrails, query: state.query, difficulty: state.difficulty, distance: state.distance,
                           savedOnly: state.savedOnly, savedIds: Set(saved.state.places.keys), sort: state.sort) { content.defaultHikeRoute(for: $0.id)?.id }
     }
 
@@ -111,10 +130,14 @@ struct HikesListView: View {
 
     var body: some View {
         searchField
+        areaChips
         filterChips
+        if case .region(let id) = state.area, let advice = content.hikeAdvice(forRegion: id) {
+            HikeAdviceCard(title: "Before you go · \(content.region(id)?.name ?? "")", advice: advice)
+        }
         noticesStrip
         HStack {
-            Text(hikes.count == content.trails.trails.count ? "\(hikes.count) Valley hikes · \(content.hikeRoutes.routes.count) mapped routes" : "\(hikes.count) of \(content.trails.trails.count) hikes")
+            Text(countText)
                 .font(.fieldEyebrow).foregroundStyle(.secondary)
             Spacer()
             Picker("Sort", selection: $state.sort) { ForEach(TrailSort.allCases) { Text($0.title).tag($0) } }.pickerStyle(.menu).font(.fieldCaption)
@@ -123,15 +146,40 @@ struct HikesListView: View {
             EmptyStateView(symbol: "figure.hiking", title: "No hikes match", message: state.savedOnly ? "Star a hike to keep it here." : "Try fewer words or a wider length band.")
         }
         ForEach(hikes) { match in
-            NavigationLink(value: match.filtered ? Route.hikeRoute(trailId: match.trail.id, routeId: match.route.id) : Route.trail(match.trail.id)) {
-                HikeCard(match: match, isSaved: saved.isSaved(match.trail.id),
-                         noticeCount: NoticeMatcher.notices(forTrail: match.trail.id, content: content, snapshot: conditions.conditions).count)
+            let mapped = content.hikeRoute(match.route.id) != nil
+            NavigationLink(value: match.filtered && mapped ? Route.hikeRoute(trailId: match.trail.id, routeId: match.route.id) : Route.trail(match.trail.id)) {
+                HikeCard(match: match, area: content.areaName(of: match.trail), mapped: mapped, isSaved: saved.isSaved(match.trail.id),
+                         noticeCount: NoticeMatcher.hikeNotices(match.trail, content: content, snapshot: conditions.conditions).specificCount)
             }
             .buttonStyle(.plain)
         }
         FieldCard(eyebrow: "Before you go") {
             ForEach(content.trails.preparationTips, id: \.self) { Label($0, systemImage: "checkmark").font(.fieldCaption) }
         }
+        if state.area != .valley {
+            HikeAdviceCard(title: "Park-wide trail rules", advice: content.parkHikes.parkRules)
+            Text("\(content.parkHikes.about) Highlighted routes appear only where the bundled NPS trail lines cover the whole published hike.")
+                .font(.caption2).foregroundStyle(.secondary)
+        }
+    }
+
+    private var countText: String {
+        let all = areaTrails.count
+        let mapped = areaTrails.filter { !content.hikeRoutes(for: $0.id).isEmpty }.count
+        return hikes.count == all ? "\(all) hikes · \(mapped) with mapped routes" : "\(hikes.count) of \(all) hikes"
+    }
+
+    private var areaChips: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 6) {
+                ChipButton(title: "Whole park", symbol: "map", active: state.area == .all, color: Palette.pine) { state.area = .all }
+                ChipButton(title: "Yosemite Valley", active: state.area == .valley, color: Palette.pine) { state.area = .valley }
+                ForEach(hikeRegions) { region in
+                    ChipButton(title: region.name, active: state.area == .region(region.id), color: Palette.pine) { state.area = .region(region.id) }
+                }
+            }
+        }
+        .accessibilityLabel("Park area")
     }
 
     private var searchField: some View {
@@ -170,6 +218,12 @@ struct HikesListView: View {
         }
     }
 
+    private var emptyNoticesText: String {
+        guard let snapshot = conditions.conditions else { return "No saved NPS trail notices. Nothing here means a trail is open." }
+        if snapshot.isExpired { return "The saved conditions are over 48 hours old, so no notices are shown. That is not confirmation a trail or road is open." }
+        return "No trail items in the saved snapshot; that is not confirmation a trail is open."
+    }
+
     /// One line that never hides the list; expands to the official items and the dated corridor notices.
     private var noticesStrip: some View {
         let items = trailNotices
@@ -177,8 +231,7 @@ struct HikesListView: View {
             Button { withAnimation { noticesExpanded.toggle() } } label: {
                 HStack {
                     Image(systemName: items.isEmpty ? "info.circle" : "exclamationmark.triangle.fill").foregroundStyle(items.isEmpty ? Color.secondary : Palette.accent)
-                    Text(items.isEmpty ? (conditions.conditions == nil ? "No saved NPS trail notices. Nothing here means a trail is open." : "No trail items in the saved snapshot; that is not confirmation a trail is open.")
-                         : "\(items.count) official trail notice\(items.count == 1 ? "" : "s") in the saved snapshot")
+                    Text(items.isEmpty ? emptyNoticesText : "\(items.count) official trail notice\(items.count == 1 ? "" : "s") in the saved snapshot")
                         .font(.fieldCaption).multilineTextAlignment(.leading)
                     Spacer()
                     Image(systemName: noticesExpanded ? "chevron.up" : "chevron.down").font(.caption).foregroundStyle(.tertiary)
@@ -188,9 +241,11 @@ struct HikesListView: View {
             }
             .buttonStyle(.plain)
             .accessibilityLabel(noticesExpanded ? "Hide trail notices" : "Show trail notices")
+            // Age and stale/expired state stay visible collapsed, since the hike badges below come from this snapshot.
+            SnapshotFooter(snapshot: conditions.conditions, staleAfter: 6 * 3600)
+                .padding(.bottom, 4)
             if noticesExpanded {
                 ForEach(items) { NoticeRow(item: $0) }
-                SnapshotFooter(snapshot: conditions.conditions, staleAfter: 6 * 3600)
                 Text(content.trails.corridorRepairNotice).font(.fieldCaption)
                 Text(content.trails.iceClosureNotice).font(.fieldCaption).foregroundStyle(.secondary)
             }
@@ -202,6 +257,8 @@ struct HikesListView: View {
 
 struct HikeCard: View {
     let match: HikeMatch
+    var area: String
+    var mapped: Bool
     var isSaved: Bool
     var noticeCount: Int
 
@@ -214,7 +271,10 @@ struct HikeCard: View {
                     HStack(spacing: 6) {
                         Text(trail.name).font(.fieldHeading)
                         if isSaved { Image(systemName: "star.fill").font(.caption).foregroundStyle(Palette.accent).accessibilityLabel("Saved") }
-                        if noticeCount > 0 { Label("\(noticeCount)", systemImage: "exclamationmark.triangle.fill").font(.caption2).foregroundStyle(Palette.accent) }
+                        if noticeCount > 0 {
+                            Label("\(noticeCount)", systemImage: "exclamationmark.triangle.fill").font(.caption2).foregroundStyle(Palette.accent)
+                                .accessibilityLabel("\(noticeCount) saved notice\(noticeCount == 1 ? "" : "s") naming this hike or its access road; check the snapshot age above the list")
+                        }
                     }
                     Text(match.filtered ? "\(trail.difficulty(for: match.route)) · \(match.route.label)" : trail.difficulty).font(.fieldCaption.weight(.semibold)).foregroundStyle(Palette.accent)
                     ForEach(trail.routes, id: \.id) { r in
@@ -222,11 +282,26 @@ struct HikeCard: View {
                             .font(.fieldCaption.weight(match.filtered && r.id == match.route.id ? .semibold : .regular))
                     }
                     Text("Start: \(trail.start)").font(.caption2).foregroundStyle(.secondary)
+                    Label("\(area) · \(mapped ? "route mapped" : "no route trace; regional map only")", systemImage: mapped ? "point.topleft.down.to.point.bottomright.curvepath" : "map")
+                        .font(.caption2).foregroundStyle(.secondary)
                 }
                 Spacer()
                 Image(systemName: "chevron.right").foregroundStyle(.tertiary)
             }
             .frame(minHeight: 44)
+        }
+    }
+}
+
+/// Sourced planning points shown as a checklist with their dated NPS page.
+struct HikeAdviceCard: View {
+    let title: String
+    let advice: HikeAdvice
+
+    var body: some View {
+        FieldCard(eyebrow: title) {
+            ForEach(advice.points, id: \.self) { Label($0, systemImage: "checkmark").font(.fieldCaption) }
+            SourceList(sources: [advice.source])
         }
     }
 }

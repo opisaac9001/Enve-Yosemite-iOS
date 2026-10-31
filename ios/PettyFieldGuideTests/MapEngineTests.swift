@@ -40,23 +40,26 @@ final class MapEngineTests: XCTestCase {
         let seFacing = grid(width: 21, height: 21) { c, r in Float(40 - c - r) * 10 }
         let flat = grid(width: 21, height: 21) { _, _ in 1500 }
         let centre = 10 * 21 + 10
-        let nw = ReliefRenderer.shade(grid: nwFacing)[centre]
-        let se = ReliefRenderer.shade(grid: seFacing)[centre]
-        let level = ReliefRenderer.shade(grid: flat)[centre]
-        XCTAssertEqual(level, 0.5, accuracy: 0.01, "flat ground is the neutral tone")
-        XCTAssertGreaterThan(nw, level + 0.15)
-        XCTAssertLessThan(se, level - 0.15)
+        let nw = Int(ReliefRenderer.shade(grid: nwFacing)[centre])
+        let se = Int(ReliefRenderer.shade(grid: seFacing)[centre])
+        let level = Int(ReliefRenderer.shade(grid: flat)[centre])
+        XCTAssertEqual(level, 128, accuracy: 2, "flat ground is the neutral tone")
+        XCTAssertGreaterThan(nw, level + 38)
+        XCTAssertLessThan(se, level - 38)
     }
 
-    func testReliefTierIsNorthUpCoversTheGridFootprintAndFeathersItsEdge() throws {
+    func testReliefLayerIsNorthUpCoversTheCellFootprintAndFeathersItsEdge() throws {
         let g = grid(width: 12, height: 10) { _, r in r < 4 ? 2000 : 1200 }
         let projection = LocalProjection(origin: g.bounds.center)
-        let tier = try XCTUnwrap(ReliefRenderer.tier(grid: g, projection: projection, feather: 3))
-        XCTAssertEqual(tier.width, 12)
-        XCTAssertEqual(tier.height, 10)
-        XCTAssertEqual(tier.rect, projection.projectedRect(g.bounds))
-        XCTAssertGreaterThan(tier.rect.maxY, tier.rect.minY, "maxY is the north edge, which the renderer maps to image row 0")
-        let bytes = try XCTUnwrap(tier.light.dataProvider?.data as Data?)
+        let layer = ReliefLayer(grid: g, projection: projection, feather: 3)
+        XCTAssertEqual(layer.levels.count, 1, "a grid within one tile needs no pyramid")
+        let centres = projection.projectedRect(g.bounds)
+        XCTAssertEqual(layer.footprint.width, centres.width * 12 / 11, accuracy: 1e-6, "edge cells extend half a cell past their sample")
+        XCTAssertEqual(layer.footprint.midY, centres.midY, accuracy: 1e-6)
+        XCTAssertEqual(layer.tileRect(level: 0, col: 0, row: 0), layer.footprint)
+        XCTAssertGreaterThan(layer.footprint.maxY, layer.footprint.minY, "maxY is the north edge, which the renderer maps to image row 0")
+        let light = try XCTUnwrap(layer.tile(level: 0, col: 0, row: 0, dark: false))
+        let bytes = try XCTUnwrap(light.dataProvider?.data as Data?)
         XCTAssertEqual(bytes.count, 12 * 10 * 4)
         func pixel(_ c: Int, _ r: Int) -> (r: Int, a: Int) { (Int(bytes[(r * 12 + c) * 4]), Int(bytes[(r * 12 + c) * 4 + 3])) }
         // Interior: the high northern block is tinted toward cool granite and its south-facing edge is shaded.
@@ -67,44 +70,59 @@ final class MapEngineTests: XCTestCase {
         XCTAssertEqual(pixel(5, 9).a, 0)
         XCTAssertEqual(pixel(1, 5).a, 85, accuracy: 1)
         XCTAssertLessThan(pixel(1, 5).r, pixel(5, 5).r, "premultiplied colour follows the alpha ramp")
-        let dark = try XCTUnwrap(tier.dark.dataProvider?.data as Data?)
+        let dark = try XCTUnwrap(layer.tile(level: 0, col: 0, row: 0, dark: true)?.dataProvider?.data as Data?)
         XCTAssertLessThan(Int(dark[(6 * 12 + 5) * 4]), pixel(5, 6).r, "the dark palette is darker than the light one for the same cell")
     }
 
-    func testBundledReliefTiersCoverTheCameraEnvelopeAndMatchKnownElevations() throws {
+    func testBundledReliefTiersCoverTheParkAndCameraEnvelopeAndMatchKnownElevations() throws {
         let detail = try TerrainGrid.load(file: TerrainGrid.basemapFile)
-        let region = try TerrainGrid.load(file: TerrainGrid.regionFile)
+        let park = try TerrainGrid.load(file: TerrainGrid.parkFile)
+        let surround = try TerrainGrid.load(file: TerrainGrid.surroundFile)
+        let outer = try TerrainGrid.load(file: TerrainGrid.outerFile)
         let v = YosemiteGeo.valleyBounds
-        for grid in [detail, region] {
-            XCTAssertLessThan(grid.bounds.west, v.west)
-            XCTAssertGreaterThan(grid.bounds.east, v.east)
-            XCTAssertLessThan(grid.bounds.south, v.south)
-            XCTAssertGreaterThan(grid.bounds.north, v.north)
-        }
+        XCTAssertLessThan(detail.bounds.west, v.west)
+        XCTAssertGreaterThan(detail.bounds.east, v.east)
+        XCTAssertLessThan(detail.bounds.south, v.south)
+        XCTAssertGreaterThan(detail.bounds.north, v.north)
+        XCTAssertEqual(park.bounds, YosemiteGeo.parkBounds, "the 3DEP park grid covers every sample of the park extent")
         XCTAssertLessThan(detail.cellSizeMeters.x, 25)
-        XCTAssertLessThan(region.cellSizeMeters.x, 50)
+        XCTAssertLessThan(max(park.cellSizeMeters.x, park.cellSizeMeters.y), 36)
         // Spacing must match the on-both-edges sampling the loader assumes.
-        let projection = LocalProjection(origin: detail.bounds.center)
-        let span = projection.projectedRect(detail.bounds)
-        XCTAssertEqual(span.width / Double(detail.width - 1), detail.cellSizeMeters.x, accuracy: 0.05)
-        XCTAssertEqual(span.height / Double(detail.height - 1), detail.cellSizeMeters.y, accuracy: 0.05)
+        for grid in [detail, park, surround, outer] {
+            let projection = LocalProjection(origin: grid.bounds.center)
+            let span = projection.projectedRect(grid.bounds)
+            XCTAssertEqual(span.width / Double(grid.width - 1), grid.cellSizeMeters.x, accuracy: 0.3, grid.source)
+            XCTAssertEqual(span.height / Double(grid.height - 1), grid.cellSizeMeters.y, accuracy: 0.3, grid.source)
+        }
 
-        // The background must cover a tall phone zoomed out to the floor (0.8 × whole-view fit), centred on the extent.
-        let extent = projection.projectedRect(v)
-        let phoneFloor = 0.8 * min(390 / extent.width, 844 / extent.height)
-        let regionRect = projection.projectedRect(region.bounds)
-        let needed = CGRect(x: extent.midX - 390 / phoneFloor / 2, y: extent.midY - 844 / phoneFloor / 2, width: 390 / phoneFloor, height: 844 / phoneFloor)
-        XCTAssertTrue(regionRect.contains(needed), "region \(regionRect) must contain \(needed)")
-        let padFloor = 0.8 * min(1024 / extent.width, 1366 / extent.height)
-        XCTAssertTrue(regionRect.contains(CGRect(x: extent.midX - 1024 / padFloor / 2, y: extent.midY - 1366 / padFloor / 2, width: 1024 / padFloor, height: 1366 / padFloor)))
+        // The outermost tier must hold phones and iPads zoomed out to the floor (0.8 × whole-view fit), centred on the park.
+        let projection = LocalProjection(origin: YosemiteGeo.valleyCenter)
+        let extent = projection.projectedRect(YosemiteGeo.parkBounds)
+        let outerRect = projection.projectedRect(outer.bounds)
+        XCTAssertTrue(outerRect.contains(projection.projectedRect(surround.bounds)) && projection.projectedRect(surround.bounds).contains(extent), "tiers nest")
+        for size in [CGSize(width: 390, height: 844), CGSize(width: 844, height: 390), CGSize(width: 1024, height: 1366), CGSize(width: 1366, height: 1024)] {
+            let floor = 0.8 * min(size.width / extent.width, size.height / extent.height)
+            let needed = CGRect(x: extent.midX - size.width / floor / 2, y: extent.midY - size.height / floor / 2, width: size.width / floor, height: size.height / floor)
+            XCTAssertTrue(outerRect.contains(needed), "\(size): outer relief \(outerRect) must contain \(needed)")
+        }
+        // Only open ocean beyond 3DEP coverage is missing, and Death Valley's floor keeps its negative elevation.
+        let gaps = outer.elevations.enumerated().filter { $0.element.isNaN }.map { outer.coordinate(col: Double($0.offset % outer.width), row: Double($0.offset / outer.width)) }
+        XCTAssertFalse(gaps.isEmpty)
+        XCTAssertTrue(gaps.allSatisfy { $0.longitude < -121.0 && $0.latitude < 37.1 }, "gaps lie only in the Pacific south-west of the Bay Area")
+        XCTAssertTrue(park.elevations.allSatisfy { !$0.isNaN } && surround.elevations.allSatisfy { !$0.isNaN })
+        XCTAssertLessThan(try XCTUnwrap(outer.elevation(at: .init(latitude: 36.2400, longitude: -116.8300))), 0, "Badwater Basin lies below sea level")
 
         let halfDome = try XCTUnwrap(detail.elevation(at: .init(latitude: 37.7459, longitude: -119.5332)))
         XCTAssertGreaterThan(halfDome, 2600, "Half Dome's summit is 2,693 m")
         let floor = try XCTUnwrap(detail.elevation(at: YosemiteGeo.valleyCenter))
         XCTAssertGreaterThan(floor, 1150)
         XCTAssertLessThan(floor, 1300)
-        let coarseHalfDome = try XCTUnwrap(region.elevation(at: .init(latitude: 37.7459, longitude: -119.5332)))
-        XCTAssertEqual(coarseHalfDome, halfDome, accuracy: 150, "both tiers come from the same terrain")
+        XCTAssertEqual(try XCTUnwrap(park.elevation(at: .init(latitude: 37.7459, longitude: -119.5332))), halfDome, accuracy: 150, "the 3DEP park grid agrees with the Valley tier")
+        XCTAssertEqual(try XCTUnwrap(park.elevation(at: YosemiteGeo.valleyCenter)), floor, accuracy: 25)
+        // Known points beyond the Valley: Mount Lyell's summit is 3,997 m and the Tuolumne Meadows visitor center about 2,620 m.
+        XCTAssertGreaterThan(try XCTUnwrap(park.elevation(at: .init(latitude: 37.7393, longitude: -119.2716))), 3900)
+        XCTAssertEqual(try XCTUnwrap(park.elevation(at: .init(latitude: 37.8735, longitude: -119.3590))), 2620, accuracy: 40)
+        XCTAssertEqual(try XCTUnwrap(surround.elevation(at: .init(latitude: 37.7459, longitude: -119.5332))), halfDome, accuracy: 500, "the coarse surround is the same terrain")
         let sun = try TerrainGrid.load()
         XCTAssertEqual(sun.width, 320, "the sun/shadow crop is a separate, unchanged asset")
         XCTAssertEqual(sun.height, 152)
@@ -212,31 +230,32 @@ final class MapEngineTests: XCTestCase {
         XCTAssertEqual(Set(cameras.map { "\($0.center) \($0.scale)" }).count, 1)
     }
 
-    func testFitValleyKeepsTheWholeExtentBetweenTheChromeAndTheFloorAllowsIt() throws {
+    func testFitParkAndFitValleyKeepTheirAreasBetweenTheChromeAndTheFloorAllowsBoth() throws {
         let model = valleyModel()
-        XCTAssertEqual(model.scaleLimits.lowerBound, 0.012, "before layout the generic floor applies")
-        model.setScene(emptyValleyScene())
-        let extent = model.scene!.extent
+        XCTAssertEqual(model.scaleLimits.lowerBound, 0.002, "before layout the generic floor applies")
+        let projection = LocalProjection(origin: YosemiteGeo.valleyCenter)
+        model.setScene(MapScene(projection: projection, extent: projection.projectedRect(YosemiteGeo.parkBounds), roads: [], trails: [], waterLines: [], waterAreas: [],
+                                buildings: [], parking: [], pois: [], boundary: [], fireScars: [], contours: [], sources: []))
+        let outer = projection.projectedRect(try TerrainGrid.load(file: TerrainGrid.outerFile).bounds)
         for (size, insets) in [(CGSize(width: 390, height: 844), UIEdgeInsets(top: 150, left: 0, bottom: 120, right: 64)),
                                (CGSize(width: 844, height: 390), UIEdgeInsets(top: 100, left: 0, bottom: 100, right: 64)),
                                (CGSize(width: 1366, height: 1024), UIEdgeInsets(top: 120, left: 0, bottom: 110, right: 64))] {
             model.obscuredInsets = insets
             layOut(model, size)
-            let fit = model.fitValleyCamera(viewSize: size)
-            XCTAssertGreaterThanOrEqual(fit.scale, model.scaleLimits.lowerBound - 1e-12, "\(size): the floor never forces Fit to crop the Valley")
-            XCTAssertGreaterThan(model.scaleLimits.lowerBound, 0.012, "\(size)")
-            let topLeft = fit.screenPoint(for: CGPoint(x: extent.minX, y: extent.maxY))
-            let bottomRight = fit.screenPoint(for: CGPoint(x: extent.maxX, y: extent.minY))
-            XCTAssertGreaterThanOrEqual(topLeft.x, insets.left, "\(size)")
-            XCTAssertGreaterThanOrEqual(topLeft.y, insets.top, "\(size)")
-            XCTAssertLessThanOrEqual(bottomRight.x, size.width - insets.right, "\(size)")
-            XCTAssertLessThanOrEqual(bottomRight.y, size.height - insets.bottom, "\(size)")
-            // The whole canvas at the floor still lies inside the shipped background relief.
-            let region = try TerrainGrid.load(file: TerrainGrid.regionFile)
-            let regionRect = model.scene!.projection.projectedRect(region.bounds)
-            var floored = fit
+            for (fit, area) in [(model.fitParkCamera(viewSize: size), model.scene!.extent), (model.fitValleyCamera(viewSize: size), projection.projectedRect(YosemiteGeo.valleyBounds))] {
+                XCTAssertGreaterThanOrEqual(fit.scale, model.scaleLimits.lowerBound - 1e-12, "\(size): the floor never forces a fit to crop")
+                let topLeft = fit.screenPoint(for: CGPoint(x: area.minX, y: area.maxY))
+                let bottomRight = fit.screenPoint(for: CGPoint(x: area.maxX, y: area.minY))
+                XCTAssertGreaterThanOrEqual(topLeft.x, insets.left - 1e-6, "\(size)")
+                XCTAssertGreaterThanOrEqual(topLeft.y, insets.top - 1e-6, "\(size)")
+                XCTAssertLessThanOrEqual(bottomRight.x, size.width - insets.right + 1e-6, "\(size)")
+                XCTAssertLessThanOrEqual(bottomRight.y, size.height - insets.bottom + 1e-6, "\(size)")
+            }
+            // The whole canvas at the floor, centred on the park, still lies on bundled terrain.
+            var floored = model.fitParkCamera(viewSize: size)
             floored.scale = model.scaleLimits.lowerBound
-            XCTAssertTrue(regionRect.contains(floored.visibleRect()), "\(size): \(floored.visibleRect()) outside \(regionRect)")
+            floored.center = CGPoint(x: model.scene!.extent.midX, y: model.scene!.extent.midY)
+            XCTAssertTrue(outer.contains(floored.visibleRect()), "\(size): \(floored.visibleRect()) outside \(outer)")
         }
     }
 

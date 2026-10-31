@@ -18,7 +18,7 @@ final class HikingInspectionTests: XCTestCase {
         for (i, f) in doc.features.enumerated() {
             trails += SceneBuilder.lineFeatures(from: f, index: i, projection: projection, name: f.string("TRLNAME"), label: f.string("MAPLABEL"), styleKey: "trail")
         }
-        let traces = HikeRouteResolver.traces(for: content.hikeRoutes.routes, trails: trails, projection: projection)
+        let traces = HikeRouteResolver.traces(for: content.hikeRoutes.routes.filter { $0.pack == .valley }, trails: trails, projection: projection)
         let scene = MapScene(projection: projection, extent: projection.projectedRect(YosemiteGeo.valleyBounds), roads: [], trails: trails, waterLines: [], waterAreas: [],
                              buildings: [], parking: [], pois: [], boundary: [], fireScars: [], contours: [], sources: [], hikeRoutes: traces)
         return (content, scene, try! TerrainGrid.load(file: TerrainGrid.basemapFile))
@@ -89,7 +89,7 @@ final class HikingInspectionTests: XCTestCase {
         XCTAssertEqual(HikeChainage(points: []).totalMetres, 0)
 
         // Every bundled trace carries its travelled chainage: an out-and-back is twice its one-way length.
-        for route in content.hikeRoutes.routes {
+        for route in content.hikeRoutes.routes where route.pack == .valley {
             let trace = scene.hikeRoutes[route.id]!
             XCTAssertEqual(trace.chainage.points, trace.travelled, route.id)
             XCTAssertEqual(trace.chainage.totalMetres, Double(GeometryOps.length(trace.travelled)), accuracy: 0.01, route.id)
@@ -231,7 +231,7 @@ final class HikingInspectionTests: XCTestCase {
         saved.car = SavedCar(latitude: 37.7449, longitude: -119.5934, note: nil, basis: .manual, updatedAt: .stamp)
         saved.campsite = SavedCampsite(campgroundId: "upper-pines", siteId: "76", label: "Upper Pines · site 18", placeId: nil, latitude: 37.7358, longitude: -119.5635, updatedAt: .stamp)
         model.configure(content: content, saved: saved, elementScale: 1, dark: false)
-        model.userLocation = CLLocationCoordinate2D(latitude: 37.74, longitude: -119.58)
+        model.userFix = MapUserFix(fix: LiveFix(latitude: 37.74, longitude: -119.58, horizontalAccuracy: 10, timestamp: .now), stale: false)
         model.layers.contours = true
         let storedLayers = defaults.data(forKey: MapViewModel.layersKey)
         let storedCategories = defaults.array(forKey: MapViewModel.categoriesKey) as? [String]

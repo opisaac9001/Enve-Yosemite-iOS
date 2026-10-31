@@ -79,7 +79,7 @@ struct EventsScreen: View {
                     Button { showFilters = true } label: { Label("Filters", systemImage: state.filter.isEmpty ? "line.3.horizontal.decrease.circle" : "line.3.horizontal.decrease.circle.fill") }
                 }
             }
-            .sheet(isPresented: $showFilters) { EventFiltersSheet(content: c) }
+            .sheet(isPresented: $showFilters) { EventFiltersSheet(content: c).nightVision() }
             .onAppear { applyPendingFilter() }
             .onChange(of: router.pendingEventFilter) { _, _ in applyPendingFilter() }
             .alert("Filter view imported", isPresented: Binding(get: { importedFilterMessage != nil }, set: { if !$0 { importedFilterMessage = nil } })) {

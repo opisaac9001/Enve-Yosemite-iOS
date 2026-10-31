@@ -1,4 +1,5 @@
 import SwiftUI
+import CoreLocation
 
 /// The bundled water/ice pack exactly as shipped. Keeps the provenance fields the directory `Place` drops.
 struct WaterIcePack: Decodable, Sendable {
@@ -114,12 +115,12 @@ struct WaterIceRecord: Identifiable, Hashable, Sendable {
     let communityMapped: Bool
     let searchText: String
 
-    var isInValley: Bool { YosemiteGeo.valleyBounds.contains(latitude: latitude, longitude: longitude) }
+    var isOnMap: Bool { MapCoverage.contains(CLLocationCoordinate2D(latitude: latitude, longitude: longitude)) }
     var glyph: String { type.isWater ? "H₂O" : "ICE" }
 }
 
 enum WaterIceAction: Hashable {
-    case focusValleyMap(placeId: String)
+    case focusMap(placeId: String)
     case openExternalMap(latitude: Double, longitude: Double, label: String)
 }
 
@@ -174,9 +175,9 @@ enum WaterIceGuide {
         return order.map { WaterIceGroup(area: $0, records: buckets[$0] ?? []) }
     }
 
-    /// Points inside the bundled Valley extent focus their real pin; anything beyond it is never clamped to the edge.
+    /// Points on the bundled map focus their real pin; anything beyond it is never clamped to the edge.
     static func action(for record: WaterIceRecord) -> WaterIceAction {
-        record.isInValley ? .focusValleyMap(placeId: record.id) : .openExternalMap(latitude: record.latitude, longitude: record.longitude, label: record.name)
+        record.isOnMap ? .focusMap(placeId: record.id) : .openExternalMap(latitude: record.latitude, longitude: record.longitude, label: record.name)
     }
 
     static func externalMapURL(latitude: Double, longitude: Double, label: String) -> URL? {
@@ -249,7 +250,7 @@ struct WaterIceGuideView: View {
 
     private func perform(_ action: WaterIceAction) {
         switch action {
-        case .focusValleyMap(let placeId):
+        case .focusMap(let placeId):
             dismiss()
             router.showOnMap(.place(placeId))
         case .openExternalMap(let lat, let lon, let label):
@@ -363,7 +364,7 @@ struct WaterIceRow: View {
                 HStack(spacing: 8) {
                     if record.warning != nil { Label("Old report", systemImage: "clock.arrow.circlepath").foregroundStyle(Palette.ember) }
                     if record.communityMapped { Label("Community mapped", systemImage: "person.2") }
-                    if !record.isInValley { Label("Outside the Valley map", systemImage: "arrow.up.right.square") }
+                    if !record.isOnMap { Label("Outside the map", systemImage: "arrow.up.right.square") }
                 }
                 .font(.caption2)
                 .foregroundStyle(.secondary)
@@ -402,8 +403,8 @@ struct WaterIceRecordView: View {
                         Label("Community-mapped position from OpenStreetMap. Retrieving the record is not a field inspection.", systemImage: "person.2")
                             .font(.fieldCaption).foregroundStyle(.secondary)
                     }
-                    if !record.isInValley {
-                        Text(String(format: "Recorded at %.6f, %.6f, beyond the bundled Valley map.", record.latitude, record.longitude)).font(.fieldCaption).foregroundStyle(.secondary)
+                    if !record.isOnMap {
+                        Text(String(format: "Recorded at %.6f, %.6f, beyond the bundled map.", record.latitude, record.longitude)).font(.fieldCaption).foregroundStyle(.secondary)
                     }
                 }
                 FieldCard(eyebrow: "Sources & freshness") {
@@ -424,15 +425,15 @@ struct WaterIceRecordView: View {
             Text(record.summary).font(.fieldBody)
             Label(AccessScope.title(record.accessScope), systemImage: "person.2").font(.fieldCaption)
             switch WaterIceGuide.action(for: record) {
-            case .focusValleyMap:
-                Button { perform(.focusValleyMap(placeId: record.id)) } label: { Label("Show on the Valley map", systemImage: "map") }
+            case .focusMap:
+                Button { perform(.focusMap(placeId: record.id)) } label: { Label("Show on the map", systemImage: "map") }
                     .buttonStyle(.borderedProminent).font(.fieldCaption)
                     .accessibilityHint("Closes this guide and focuses the pin")
             case .openExternalMap(let lat, let lon, let label):
                 Button { perform(.openExternalMap(latitude: lat, longitude: lon, label: label)) } label: { Label("Open in Apple Maps", systemImage: "arrow.up.right.square") }
                     .buttonStyle(.borderedProminent).font(.fieldCaption)
-                    .accessibilityHint("Opens the recorded coordinates in Apple Maps because this point is outside the Valley map")
-                Text("Outside the bundled Valley map, so it opens at its recorded coordinates in Apple Maps instead of being pushed to the map edge.").font(.fieldCaption).foregroundStyle(.secondary)
+                    .accessibilityHint("Opens the recorded coordinates in Apple Maps because this point is outside the bundled map")
+                Text("Outside the bundled map, so it opens at its recorded coordinates in Apple Maps instead of being pushed to the map edge.").font(.fieldCaption).foregroundStyle(.secondary)
             }
         }
     }

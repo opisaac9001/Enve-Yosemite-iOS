@@ -1,7 +1,7 @@
 import SwiftUI
 import CoreLocation
 
-/// Pure rules for the parked-car pin: note normalisation and what the Valley map can show.
+/// Pure rules for the parked-car pin: note normalisation and links out for pins beyond the bundled map.
 enum ParkedCar {
     static func pin(at coordinate: CLLocationCoordinate2D, basis: CarPinBasis, note: String) -> SavedCar {
         SavedCar(latitude: coordinate.latitude, longitude: coordinate.longitude, note: normalised(note), basis: basis, updatedAt: .stamp)
@@ -10,11 +10,6 @@ enum ParkedCar {
     static func normalised(_ note: String) -> String? {
         let trimmed = note.trimmingCharacters(in: .whitespacesAndNewlines)
         return trimmed.isEmpty ? nil : trimmed
-    }
-
-    /// The bundled Valley map only covers its own extent; a pin beyond it is real but cannot be shown there.
-    static func isOnValleyMap(_ coordinate: CLLocationCoordinate2D) -> Bool {
-        YosemiteGeo.valleyBounds.contains(latitude: coordinate.latitude, longitude: coordinate.longitude)
     }
 
     static func externalMapURL(for car: SavedCar) -> URL? {
@@ -46,8 +41,9 @@ struct ParkedCarSheet: View {
                 if let proposed {
                     Section("Chosen spot") {
                         Text(String(format: "%.5f, %.5f", proposed.latitude, proposed.longitude)).font(.fieldMono)
-                        if !ParkedCar.isOnValleyMap(proposed) {
-                            Text("Outside the bundled Valley map; the pin will be saved but cannot be drawn there.").font(.fieldCaption).foregroundStyle(Palette.ember)
+                        if !MapCoverage.contains(proposed) {
+                            Text("Outside the bundled map; the pin will be saved but cannot be drawn.")
+                                .font(.fieldCaption).foregroundStyle(Palette.ember)
                         }
                         Button { onSave(proposed, .manual); dismiss() } label: { Label(existing == nil ? "Set parked car here" : "Move parked car here", systemImage: "car.fill") }
                             .accessibilityHint("Saves this spot with your note")
@@ -56,10 +52,10 @@ struct ParkedCarSheet: View {
                     Section("Current pin") {
                         Text(ParkedCar.describe(existing)).font(.fieldCaption)
                         Text(String(format: "%.5f, %.5f", existing.latitude, existing.longitude)).font(.fieldMono).foregroundStyle(.secondary)
-                        if ParkedCar.isOnValleyMap(existing.coordinate) {
-                            Button { dismiss(); onShowOnMap() } label: { Label("Show on the Valley map", systemImage: "map") }
+                        if MapCoverage.contains(existing.coordinate) {
+                            Button { dismiss(); onShowOnMap() } label: { Label("Show on the map", systemImage: "map") }
                         } else {
-                            Text("This pin lies outside the bundled Valley map, so it cannot be drawn there.").font(.fieldCaption).foregroundStyle(Palette.ember)
+                            Text("This pin lies outside the bundled map, so it cannot be drawn.").font(.fieldCaption).foregroundStyle(Palette.ember)
                             if let url = ParkedCar.externalMapURL(for: existing) { ExternalLinkRow(label: "Open the coordinates in Apple Maps", url: url) }
                         }
                         Button { onSave(existing.coordinate, existing.basis); dismiss() } label: { Label("Save note", systemImage: "square.and.pencil") }
@@ -94,7 +90,7 @@ struct ParkedCarSheet: View {
     }
 }
 
-/// Crosshair mode shown over the Valley map; the pin is only written on explicit confirmation.
+/// Crosshair mode shown over the map; the pin is only written on explicit confirmation.
 struct ParkedCarPlacementBar: View {
     let note: String
     let onSet: () -> Void

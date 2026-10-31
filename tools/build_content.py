@@ -513,8 +513,9 @@ def build_geo():
     dst = GEO / "waterways.geojson"
     dst.write_text(json.dumps(waterways, separators=(",", ":")))
     manifest.append({"file": "waterways.geojson", "bytes": dst.stat().st_size, "sha256": hashlib.sha256(dst.read_bytes()).hexdigest()})
-    # Relief grids are produced directly into the Geo folder by tools/prepare_basemap_terrain.py (public AWS tiles).
-    for name in ("elevation-basemap.json", "elevation-region.json"):
+    # Relief grids are produced directly into the Geo folder by tools/prepare_basemap_terrain.py (Valley detail,
+    # public AWS tiles) and tools/prepare_park_relief.py (park and surround tiers, USGS 3DEP), which registers its own files.
+    for name in ("elevation-basemap.json",):
         relief = GEO / name
         if not relief.exists():
             sys.exit(f"missing {name}: run tools/prepare_basemap_terrain.py first")

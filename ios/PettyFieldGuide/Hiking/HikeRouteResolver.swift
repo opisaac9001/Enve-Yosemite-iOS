@@ -74,6 +74,7 @@ struct HikeProfile: Sendable, Equatable {
     let approxGainMetres: Double
     let approxLossMetres: Double
     let source: String
+    var gridMetres = 20.0
 
     var totalMetres: Double { samples.last?.distanceMetres ?? 0 }
 }
@@ -106,7 +107,7 @@ enum HikeRouteResolver {
     static func join(_ segments: [HikeSegment], features: [String: LineFeature]) -> [CGPoint]? {
         var points: [CGPoint] = []
         for segment in segments {
-            guard let feature = features[String(segment.feature)] else { return nil }
+            guard let feature = features[segment.part.map { "\(segment.feature)-\($0)" } ?? String(segment.feature)] else { return nil }
             var piece = slice(feature.points, from: segment.from, to: segment.to)
             if let last = points.last, let first = piece.first, hypot(last.x - first.x, last.y - first.y) < 0.5 {
                 piece.removeFirst()
@@ -163,7 +164,7 @@ enum HikeRouteResolver {
         }
         let elevations = samples.map(\.elevationMetres)
         return HikeProfile(samples: samples, stepMetres: step, minMetres: elevations.min()!, maxMetres: elevations.max()!,
-                           approxGainMetres: gain, approxLossMetres: loss, source: grid.source)
+                           approxGainMetres: gain, approxLossMetres: loss, source: grid.source, gridMetres: grid.cellSizeMeters.x)
     }
 }
 

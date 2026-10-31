@@ -75,6 +75,10 @@ enum MapFocus: Hashable {
     case coordinate(latitude: Double, longitude: Double, label: String)
     case trail(String)
     case hikeRoute(String)
+    /// Frames a park region's guide points and trailheads.
+    case region(String)
+    /// Frames the whole park.
+    case park
 }
 
 @MainActor

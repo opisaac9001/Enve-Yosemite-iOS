@@ -11,8 +11,8 @@ struct MapLayersSheet: View {
                     Toggle("Emphasize shuttle routes", isOn: $model.layers.emphasizeShuttle).disabled(!model.layers.shuttleRoutes)
                 }
                 Section("Terrain") {
-                    Toggle("Contours (50 m from the relief grid)", isOn: $model.layers.contours)
-                    Text("Shaded relief is always drawn from the bundled Mapzen/USGS elevation grid; contours add 50 m lines on top.").font(.fieldCaption).foregroundStyle(.secondary)
+                    Toggle("Contours", isOn: $model.layers.contours)
+                    Text("Shaded relief is always drawn from bundled USGS elevation grids. Contours add 50 m lines around Yosemite Valley and 200 m lines across the rest of the park.").font(.fieldCaption).foregroundStyle(.secondary)
                 }
                 Section("Buildings") {
                     Toggle("Building footprints", isOn: $model.layers.buildings)
@@ -92,33 +92,36 @@ struct MapKeySheet: View {
                     HStack(spacing: 10) {
                         LinearGradient(colors: [Color(red: 0.90, green: 0.88, blue: 0.81), Color(red: 0.55, green: 0.53, blue: 0.49), Color(red: 0.76, green: 0.77, blue: 0.78)], startPoint: .leading, endPoint: .trailing)
                             .frame(width: 28, height: 10).clipShape(RoundedRectangle(cornerRadius: 2))
-                        Text("Shaded relief lit from the north-west, tinted from valley floor (warm) to high granite (cool). Terrain only: it does not classify meadows or forest.").font(.fieldCaption)
+                        Text("Shaded relief lit from the north-west, tinted by elevation from low canyons (warm) to the high Sierra (cool). Terrain only: it does not classify meadows, forest, snow or burned ground.").font(.fieldCaption)
                     }
-                    keyRow(color: Color(red: 0.50, green: 0.40, blue: 0.26).opacity(0.6), stroke: nil, "Contours every 50 m (optional layer)")
+                    keyRow(color: Color(red: 0.50, green: 0.40, blue: 0.26).opacity(0.6), stroke: nil, "Contours (optional layer): every 50 m around Yosemite Valley, every 200 m elsewhere; bold lines at 250 m and 1,000 m")
+                    Text("Summit, pass, meadow and canyon names are official USGS GNIS names; higher summits are named from further out.").font(.fieldCaption)
                 }
                 Section("Lines") {
-                    keyRow(color: .white, stroke: Color(red: 0.46, green: 0.43, blue: 0.39), "Secondary roads (Northside/Southside Drive, El Portal, Wawona, Big Oak Flat)")
+                    keyRow(color: .white, stroke: Color(red: 0.46, green: 0.43, blue: 0.39), "Secondary roads (Valley drives, El Portal, Wawona, Big Oak Flat, Tioga, Glacier Point, Hetch Hetchy)")
                     keyRow(color: Color(red: 0.985, green: 0.975, blue: 0.95), stroke: Color(red: 0.46, green: 0.43, blue: 0.39), "Local roads")
                     keyRow(color: Color(red: 0.93, green: 0.91, blue: 0.87), stroke: Color(red: 0.64, green: 0.62, blue: 0.58), "Service, parking-lot and private roads · appear when zoomed in; dashed when seasonal")
-                    keyRow(color: Color(red: 0.55, green: 0.30, blue: 0.16), stroke: nil, "Hiking trails (dashed; minor paths appear when zoomed in)")
+                    keyRow(color: Color(red: 0.55, green: 0.30, blue: 0.16), stroke: nil, "NPS trails (dashed): long named trails from regional zoom, short and unnamed paths closer in. A drawn line does not mean a trail is open")
                     keyRow(color: Palette.accent, stroke: Color(red: 1.0, green: 0.96, blue: 0.88), "Selected hike route (complete published route on NPS trail features; start and destination badges)")
                     keyRow(color: Color(red: 0.12, green: 0.47, blue: 0.42), stroke: nil, "Paved bike paths")
-                    keyRow(color: Color(red: 0.27, green: 0.50, blue: 0.71), stroke: nil, "Merced River (USGS NHD main stem)")
-                    keyRow(color: Color(red: 0.40, green: 0.60, blue: 0.77), stroke: nil, "Creeks and tributaries (USGS NHD)")
+                    keyRow(color: Color(red: 0.27, green: 0.50, blue: 0.71), stroke: nil, "Rivers: Merced, Tuolumne and their forks (USGS NHD)")
+                    keyRow(color: Color(red: 0.40, green: 0.60, blue: 0.77), stroke: nil, "Named creeks, then unnamed perennial streams when zoomed in (USGS NHD)")
+                    keyRow(color: Color(hex: "#1F4D3F"), stroke: nil, "Park boundary (dashed)")
                     keyRow(color: Color(hex: "#3eb649"), stroke: nil, "Valleywide shuttle (arrows show travel direction)")
                     keyRow(color: Color(hex: "#a8509e"), stroke: nil, "East Valley shuttle (dashed)")
                     Text("▶ One-way arrows follow the NPS digitized road direction.").font(.fieldCaption)
                 }
                 Section("Areas") {
+                    keyRow(color: Color(red: 0.68, green: 0.80, blue: 0.88), stroke: nil, "Lakes and reservoirs (USGS NHD, 0.2 ha and larger)")
                     keyRow(color: Color(red: 0.74, green: 0.67, blue: 0.58), stroke: nil, "Buildings (NPS footprints; grey when closed or decommissioned)")
                     keyRow(color: Color(red: 0.80, green: 0.78, blue: 0.74), stroke: nil, "Parking lots (NPS polygons; a lot on the map is not an open or available lot)")
                 }
                 Section("Markers") {
-                    Text("Pin colours follow the filter categories; names appear beside important places as you zoom in. Orange marks saved places, your car and your campsite. Square green badges are numbered shuttle stops; when zoomed out, nearby stops or places merge into a count — tap it to zoom in. Site numbers appear at the closest zoom.").font(.fieldCaption)
+                    Text("Pin colours follow the filter categories; names appear beside important places as you zoom in. Orange marks saved places, your car and your campsite. Square green badges are numbered shuttle stops. Beyond the Valley, hikers mark NPS trailhead points of the listed hikes, tents campgrounds and dark green badges entrances and region points; these follow the Trails & recreation, Lodging & camping and related filters. When zoomed out, nearby markers merge into a count — tap it to zoom in. Campsite numbers appear at the closest zoom.").font(.fieldCaption)
                 }
                 Section("Sources") {
                     ForEach(scene?.sources ?? [], id: \.self) { Text($0).font(.fieldCaption) }
-                    Text("NPS geometry is orientation data with mostly unknown positional accuracy, not survey data. Relief comes from Mapzen/Tilezen Terrarium tiles on AWS Open Data (USGS 3DEP/NED for this area); the sun preview uses its own smaller grid.").font(.fieldCaption).foregroundStyle(.secondary)
+                    Text("NPS geometry is orientation data with mostly unknown positional accuracy, not survey data. Park relief is the USGS 3D Elevation Program bare-earth DEM resampled to about 30 m (about 250 m around the park and 800 m beyond, where the ocean shows as flat sea-level ground or blank); the Valley keeps a 20 m Mapzen/Tilezen Terrarium grid derived from USGS data. The sun preview uses its own smaller Valley grid. Historical fire perimeters are shown only on the Fire map.").font(.fieldCaption).foregroundStyle(.secondary)
                 }
             }
             .navigationTitle("Map key")

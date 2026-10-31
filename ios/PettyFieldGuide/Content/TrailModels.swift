@@ -33,6 +33,11 @@ struct HikeGuide: Codable, Hashable, Sendable {
     var source: SourceLink
 }
 
+struct AccessRoad: Codable, Hashable, Sendable {
+    var key: String
+    var name: String
+}
+
 struct TrailLink: Codable, Hashable, Sendable {
     var label: String
     var url: String?
@@ -63,8 +68,19 @@ struct Trail: Codable, Identifiable, Hashable, Sendable {
     var permits: [String]?
     var estimatedTime: String?
     var guide: HikeGuide?
+    /// Park region for hikes outside Yosemite Valley; nil for the Valley hikes.
+    var regionId: String?
+    /// The NPS GIS point the trailhead coordinate comes from.
+    var trailheadSource: String?
+    /// Roads the trailhead is reached by, keyed like the notice patterns' road targets.
+    var accessRoads: [AccessRoad]?
+    /// Distinctive names on the route; a notice naming one is shown with the hike.
+    var noticeTerms: [String]?
+    /// Dated, attributed access facts (road hours, vehicle limits), never live status.
+    var access: [String]?
 
     var coordinate: CLLocationCoordinate2D { CLLocationCoordinate2D(latitude: latitude, longitude: longitude) }
+    var isValley: Bool { regionId == nil }
     var longestDistanceMi: Double { routes.map(\.distanceMi).max() ?? 0 }
     var shortestDistanceMi: Double { routes.map(\.distanceMi).min() ?? 0 }
     var maxGainFt: Int { routes.compactMap(\.gainFt).max() ?? 0 }
@@ -92,6 +108,22 @@ struct TrailsPack: Codable, Sendable {
     var mistTrailIds: [String]
     var johnMuirValleyIds: [String]
     var preparationTips: [String]
+}
+
+/// Dated, sourced planning points for one region's hikes or for the whole park.
+struct HikeAdvice: Codable, Hashable, Sendable {
+    var regionId: String?
+    var source: SourceLink
+    var points: [String]
+}
+
+/// NPS-published day hikes outside Yosemite Valley; merged into the trail list at load.
+struct ParkHikesPack: Codable, Sendable {
+    var generated: String
+    var about: String
+    var trails: [Trail]
+    var regionNotes: [HikeAdvice]
+    var parkRules: HikeAdvice
 }
 
 struct LoopClosure: Codable, Hashable, Sendable {

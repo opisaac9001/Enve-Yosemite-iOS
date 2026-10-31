@@ -68,7 +68,8 @@ final class StateAndSearchTests: XCTestCase {
     func testContentPacksDecodeWithExpectedCoverage() throws {
         let content = try BundleContent.load()
         XCTAssertGreaterThanOrEqual(content.places.filter(\.listed).count, 240)
-        XCTAssertEqual(content.trails.trails.count, 12)
+        XCTAssertEqual(content.trails.trails.filter(\.isValley).count, 12)
+        XCTAssertEqual(content.trails.trails.filter { !$0.isValley }.count, 40)
         XCTAssertEqual(content.campgrounds.campgrounds.count, 13)
         XCTAssertGreaterThanOrEqual(content.events.events.count, 140)
         XCTAssertEqual(content.documents.count, 5)

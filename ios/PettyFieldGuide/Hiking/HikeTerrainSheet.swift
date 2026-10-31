@@ -46,7 +46,7 @@ struct HikeTerrainSheet: View {
     }
 
     @ViewBuilder private var miniMap: some View {
-        if case .ready(let scene) = packs.valley, let trace = scene.hikeRoutes[route.id] {
+        if case .ready(let scene) = packs.map, let trace = scene.hikeRoutes[route.id] {
             HikeMiniMap(scene: scene, route: route, trace: trace, dark: scheme == .dark, cursor: cursor)
                 .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                 .accessibilityElement(children: .ignore)

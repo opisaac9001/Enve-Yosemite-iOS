@@ -38,6 +38,8 @@ struct LineFeature: Sendable {
     let points: [CGPoint]           // projected, full detail
     let lod: [PathBox]               // indexed by LevelOfDetail.rawValue
     let bounds: CGRect
+    /// Projected length in metres, kept for label ranking and visibility rules.
+    let length: CGFloat
     let attributes: [String: GeoValue]
     let styleKey: String             // renderer style selector (e.g. road class, "bike")
     let oneWay: Int                  // +1 along digitized direction, -1 against, 0 two-way
@@ -77,6 +79,17 @@ struct PointFeature: Sendable {
     let attributes: [String: GeoValue]
 }
 
+/// A GNIS landform name or a park region name, labelled between `minScale` and `maxScale`; higher priority wins collisions.
+struct SceneLabel: Sendable {
+    let id: String
+    let text: String
+    let point: CGPoint
+    let kind: LabelKind
+    let priority: Int
+    let minScale: CGFloat
+    var maxScale: CGFloat = .infinity
+}
+
 /// Everything a map screen needs, projected once.
 final class MapScene: Sendable {
     let projection: LocalProjection
@@ -93,13 +106,14 @@ final class MapScene: Sendable {
     let contours: [LineFeature]
     let sources: [String]
     let relief: MapRelief?
+    let labels: [SceneLabel]
     /// Hike routes resolved onto this scene's trail geometry, by route id.
     let hikeRoutes: [String: MapRouteTrace]
 
     init(projection: LocalProjection, extent: CGRect, roads: [LineFeature], trails: [LineFeature],
          waterLines: [LineFeature], waterAreas: [AreaFeature], buildings: [AreaFeature], parking: [AreaFeature],
          pois: [PointFeature], boundary: [AreaFeature], fireScars: [AreaFeature], contours: [LineFeature], sources: [String],
-         relief: MapRelief? = nil, hikeRoutes: [String: MapRouteTrace] = [:]) {
+         relief: MapRelief? = nil, labels: [SceneLabel] = [], hikeRoutes: [String: MapRouteTrace] = [:]) {
         self.projection = projection
         self.extent = extent
         self.roads = roads
@@ -114,6 +128,7 @@ final class MapScene: Sendable {
         self.contours = contours
         self.sources = sources
         self.relief = relief
+        self.labels = labels
         self.hikeRoutes = hikeRoutes
     }
 }
@@ -129,7 +144,7 @@ enum SceneBuilder {
             path.addLines(between: simplified)
             return PathBox(path)
         }
-        return LineFeature(id: id, name: name, label: label, points: points, lod: lod, bounds: GeometryOps.bounds(of: points),
+        return LineFeature(id: id, name: name, label: label, points: points, lod: lod, bounds: GeometryOps.bounds(of: points), length: GeometryOps.length(points),
                            attributes: attributes, styleKey: styleKey, oneWay: oneWay, seasonal: seasonal)
     }
 

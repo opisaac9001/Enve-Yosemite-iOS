@@ -1,0 +1,30 @@
+{
+ "version": "81ce02a95e74",
+ "source": "USGS 3D Elevation Program (3DEP) bare-earth DEM via The National Map 3DEPElevation ImageServer",
+ "sourceUrl": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer",
+ "catalog": "https://data.usgs.gov/datacatalog/data/USGS%3A3a81321b-c153-416f-98b7-cc8e5f0e17c3",
+ "licence": "Public domain (U.S. Government work, USGS); credit: U.S. Geological Survey, 3D Elevation Program",
+ "fetchedAt": "2026-10-30T16:14:22Z",
+ "purpose": "Park-wide shaded relief, elevation tint, contours and park hike profiles; the Valley's 20 m detail tier draws on top of it",
+ "processing": "exportImage in 12 chunks, bilinear resampling by the service onto sample centres; rounded to 0.25 m; planar-prediction residuals, raw DEFLATE",
+ "bounds": {
+  "north": 38.3,
+  "south": 37.37,
+  "west": -120.05,
+  "east": -119.05
+ },
+ "width": 3201,
+ "height": 2977,
+ "encoding": "uint16-le-planar-deflate",
+ "dataFile": "elevation-park.bin",
+ "verticalScale": 0.25,
+ "cellSizeMeters": {
+  "x": 27.47,
+  "y": 34.69
+ },
+ "rangeMeters": {
+  "min": 257.9,
+  "max": 3994.1
+ },
+ "dataSha256": "81ce02a95e7419d007058267076b8aafc09cc3c7670c010f323f3a639d276a76"
+}

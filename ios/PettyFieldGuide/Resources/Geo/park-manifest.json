@@ -3,16 +3,89 @@
   "fetchedAt": "2026-09-21T23:44:40.560Z",
   "files": [
     {
+      "file": "park-trails.geojson",
+      "count": 1307,
+      "bytes": 5120886,
+      "sha256": "24a7a158926fe08fc1e43da95b286811cb4ec64e1846cfc0446b229f7bd90434",
+      "fetchedAt": "2026-10-30T08:46:57Z"
+    },
+    {
       "file": "park-roads.geojson",
-      "count": 224,
-      "bytes": 69561,
-      "sha256": "6ee28e7b6120e737faf1547acb7b1040049f52968d21e75edec76740e4a1e8dd"
+      "count": 702,
+      "bytes": 780006,
+      "sha256": "d20c96a28cb5d8c5dbb3ee1ed9715f2c8b1f112c818a4c73fb322f428fdd734a",
+      "fetchedAt": "2026-10-30T15:55:04Z"
+    },
+    {
+      "file": "park-buildings.geojson",
+      "count": 1571,
+      "bytes": 709838,
+      "sha256": "253535e2c55ad20a12a00436d85e33363c33a42ad7fee049c22d10abc8cde011",
+      "fetchedAt": "2026-10-30T15:55:09Z"
+    },
+    {
+      "file": "park-parking.geojson",
+      "count": 203,
+      "bytes": 404342,
+      "sha256": "b7947cd5218849d546bad823ab943011f17f526c48256f45a00275210e08c2f4",
+      "fetchedAt": "2026-10-30T15:55:12Z"
     },
     {
       "file": "park-pois.geojson",
-      "count": 207,
-      "bytes": 46273,
-      "sha256": "c92c96291411956c3a08a93c6896c5cb5103db386c63671fb09eff01aedccc32"
+      "count": 269,
+      "bytes": 99540,
+      "sha256": "71935767cc95f1f3fc996bd4e8edc61ed28a5866d0b6f1f028712540ad23e11b",
+      "fetchedAt": "2026-10-30T15:55:14Z"
+    },
+    {
+      "file": "park-water.geojson",
+      "count": 4686,
+      "bytes": 3509245,
+      "sha256": "e30aae6f8ce1255e506645e1f9b9b2be1c9755d967aaec0a7abfc1dbfda85bad",
+      "fetchedAt": "2026-10-30T15:57:21Z"
+    },
+    {
+      "file": "park-names.geojson",
+      "count": 777,
+      "bytes": 123587,
+      "sha256": "d25376a3e96c9ee9132dab749e108b32db43bbfbb33efa2e0e486f872d6e324e",
+      "fetchedAt": "2026-10-30T15:57:54Z"
+    },
+    {
+      "file": "elevation-park.json",
+      "bytes": 1194,
+      "sha256": "dd8e6aa1a7a7d0077d0de36ecdabca05179eaf0d41705f0f2313f0430989aab0",
+      "fetchedAt": "2026-10-30T16:14:22Z"
+    },
+    {
+      "file": "elevation-park.bin",
+      "bytes": 7670387,
+      "sha256": "81ce02a95e7419d007058267076b8aafc09cc3c7670c010f323f3a639d276a76",
+      "fetchedAt": "2026-10-30T16:14:22Z"
+    },
+    {
+      "file": "elevation-surround.json",
+      "bytes": 1174,
+      "sha256": "ee2168fc23a622b0ccd07653403488d95b2e87b0de18a65610276764d6bf3724",
+      "fetchedAt": "2026-10-30T16:14:35Z"
+    },
+    {
+      "file": "elevation-surround.bin",
+      "bytes": 881120,
+      "sha256": "aa97b7c1277902c5788de86224173cb9d7866009c4e4e2c29eb5d204cd13377c",
+      "fetchedAt": "2026-10-30T16:14:35Z"
+    },
+    {
+      "file": "elevation-outer.json",
+      "bytes": 1294,
+      "sha256": "d542c9500fc1fea9aa561c525e31d27d5189734afb8642d3974ed57fb0ac57d9",
+      "fetchedAt": "2026-10-30T16:32:54Z"
+    },
+    {
+      "file": "elevation-outer.bin",
+      "bytes": 625747,
+      "sha256": "2ae987c8e8b7a024b3a3ef7b96b7236b5ae96f73870e9df1d997ddac05ac997a",
+      "fetchedAt": "2026-10-30T16:32:54Z"
     }
   ]
 }

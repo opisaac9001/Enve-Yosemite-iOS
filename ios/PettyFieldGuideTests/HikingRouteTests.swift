@@ -13,7 +13,7 @@ final class HikingRouteTests: XCTestCase {
         for (i, f) in doc.features.enumerated() {
             trails += SceneBuilder.lineFeatures(from: f, index: i, projection: projection, name: f.string("TRLNAME"), label: f.string("MAPLABEL"), styleKey: "trail")
         }
-        return (content, trails, HikeRouteResolver.traces(for: content.hikeRoutes.routes, trails: trails, projection: projection))
+        return (content, trails, HikeRouteResolver.traces(for: content.hikeRoutes.routes.filter { $0.pack == .valley }, trails: trails, projection: projection))
     }()
 
     private var content: Content { Self.fixture.content }
@@ -23,14 +23,17 @@ final class HikingRouteTests: XCTestCase {
     private func length(_ points: [CGPoint]) -> Double { Double(GeometryOps.length(points)) }
 
     func testPackCoversEveryPublishedVariantWithStableIdsAndOneDefaultPerHike() {
-        let routes = content.hikeRoutes.routes
-        XCTAssertEqual(routes.count, 19)
-        XCTAssertEqual(Set(routes.map(\.id)).count, 19, "route ids are unique")
+        // Park-pack routes are covered by ParkTrailsTests and ParkHikesTests; this checks the Valley-map routes.
+        let routes = content.hikeRoutes.routes.filter { $0.pack == .valley }
+        XCTAssertEqual(content.hikeRoutes.routes.count, 43)
+        XCTAssertEqual(routes.count, 22)
+        XCTAssertEqual(Set(routes.map(\.id)).count, 22, "route ids are unique")
         XCTAssertEqual(Set(routes.map(\.id)), ["bridalveil-viewing-area", "lower-yosemite-fall-loop", "cooks-meadow-loop", "mirror-lake-paved-road", "mirror-lake-loop",
                                                "valley-loop-half", "valley-loop-full", "vernal-footbridge", "vernal-fall-mist", "vernal-fall-clark-point-loop",
                                                "nevada-fall-mist", "nevada-fall-clark-point-loop", "yosemite-falls-columbia-rock", "yosemite-falls-top",
-                                               "four-mile-one-way", "four-mile-round-trip", "snow-creek-footbridge", "half-dome-mist", "half-dome-john-muir"])
-        for trail in content.trails.trails {
+                                               "four-mile-one-way", "four-mile-round-trip", "snow-creek-footbridge", "half-dome-mist", "half-dome-john-muir",
+                                               "taft-point", "panorama-trail-mist", "pohono-trail"])
+        for trail in content.trails.trails where trail.isValley {
             let own = content.hikeRoutes(for: trail.id)
             XCTAssertEqual(own.count, trail.routes.count, trail.id)
             XCTAssertEqual(own.map(\.label), trail.routes.map(\.label), "\(trail.id): published order and labels")
@@ -42,6 +45,8 @@ final class HikingRouteTests: XCTestCase {
         XCTAssertEqual(content.defaultHikeRoute(for: "trail-vernal-fall")?.id, "vernal-fall-mist")
         XCTAssertEqual(content.hikeRoutes.geometry.featureCount, 612)
         XCTAssertEqual(content.hikeRoutes.geometry.sha256, SHA256Digest.hex(try! BundleContent.data("trails.geojson", subdirectory: "Geo")), "the pack was built against the bundled geometry")
+        XCTAssertEqual(content.hikeRoutes.parkGeometry?.featureCount, 1307)
+        XCTAssertEqual(content.hikeRoutes.parkGeometry?.sha256, SHA256Digest.hex(try! BundleContent.data("park-trails.geojson", subdirectory: "Geo")), "park routes were built against the bundled park pack")
     }
 
     func testPublishedTimesAndPerVariantDifficultyDecodeWithTheirSources() throws {
@@ -56,7 +61,7 @@ final class HikingRouteTests: XCTestCase {
         XCTAssertEqual(content.trails.trails.filter { $0.guide != nil }.count, 12)
 
         // Every variant carries the difficulty its NPS page publishes, with a dated source; Yosemite Falls splits it.
-        for trail in content.trails.trails {
+        for trail in content.trails.trails where trail.isValley {
             for route in trail.routes {
                 XCTAssertNotNil(route.difficulty, "\(route.id)")
                 XCTAssertNotNil(route.difficultySource?.url, "\(route.id)")
@@ -74,8 +79,8 @@ final class HikingRouteTests: XCTestCase {
 
     func testEveryRouteResolvesContinuouslyOntoTheBundledFeaturesAndMeetsItsAnchors() throws {
         let byId = Dictionary(Self.fixture.trails.map { ($0.id, $0) }, uniquingKeysWith: { a, _ in a })
-        XCTAssertEqual(traces.count, 19, "every bundled route resolves")
-        for route in content.hikeRoutes.routes {
+        XCTAssertEqual(traces.count, 22, "every bundled route resolves")
+        for route in content.hikeRoutes.routes where route.pack == .valley {
             let trace = try XCTUnwrap(traces[route.id], route.id)
             var previousEnd: CGPoint?
             for (i, seg) in route.segments.enumerated() {
@@ -176,7 +181,7 @@ final class HikingRouteTests: XCTestCase {
 
     func testSharedCorridorFeaturesMapBackToEveryHikeThatWalksThem() {
         let onFootbridgeApproach = Set(content.hikeRoutes(usingFeature: 20007).map(\.trailId))
-        XCTAssertEqual(onFootbridgeApproach, ["trail-vernal-footbridge", "trail-vernal-fall", "trail-nevada-fall", "trail-half-dome"])
+        XCTAssertEqual(onFootbridgeApproach, ["trail-vernal-footbridge", "trail-vernal-fall", "trail-nevada-fall", "trail-half-dome", "trail-panorama"], "the Panorama Trail descends the same corridor")
         XCTAssertEqual(Set(content.hikeRoutes(usingFeature: 19755).map(\.trailId)), ["trail-half-dome"])
         XCTAssertTrue(content.hikeRoutes(usingFeature: 99_999).isEmpty)
     }
@@ -192,10 +197,10 @@ final class HikingRouteTests: XCTestCase {
         // Take the Little Yosemite Valley connector away: both Half Dome routes vanish, nothing else changes,
         // and no straight line is drawn between Nevada Fall and the Half Dome Trail.
         let without = Self.fixture.trails.filter { $0.id != "20072" }
-        let traces = HikeRouteResolver.traces(for: content.hikeRoutes.routes, trails: without, projection: Self.projection)
+        let traces = HikeRouteResolver.traces(for: content.hikeRoutes.routes.filter { $0.pack == .valley }, trails: without, projection: Self.projection)
         XCTAssertNil(traces["half-dome-mist"])
         XCTAssertNil(traces["half-dome-john-muir"])
-        XCTAssertEqual(traces.count, 17)
+        XCTAssertEqual(traces.count, 20)
         for (id, trace) in traces {
             XCTAssertEqual(trace.points.count, Self.fixture.traces[id]!.points.count, id)
         }
@@ -220,13 +225,13 @@ final class HikingRouteTests: XCTestCase {
         XCTAssertEqual(roundTrip.totalMetres, 2 * length(halfDome.points), accuracy: 2)
         XCTAssertGreaterThan(roundTrip.maxMetres, 2600)
         XCTAssertEqual(roundTrip.approxGainMetres, roundTrip.approxLossMetres, accuracy: 15)
-        for route in content.hikeRoutes.routes {
+        for route in content.hikeRoutes.routes where route.pack == .valley {
             XCTAssertNotNil(HikeRouteResolver.profile(for: traces[route.id]!, grid: grid, projection: Self.projection), "\(route.id) lies inside the relief grid")
         }
     }
 
     func testFiltersMatchDifficultyAndLengthAgainstOneVariantAndOpenThatVariant() {
-        let trails = content.trails.trails
+        let trails = content.trails.trails.filter(\.isValley)
         func apply(_ query: String = "", _ difficulty: HikeDifficultyFilter = .all, _ distance: HikeDistanceFilter = .any, saved: Set<String> = [], savedOnly: Bool = false, sort: TrailSort = .difficulty) -> [HikeMatch] {
             HikeFilters.apply(trails, query: query, difficulty: difficulty, distance: distance, savedOnly: savedOnly, savedIds: saved, sort: sort) { content.defaultHikeRoute(for: $0.id)?.id }
         }

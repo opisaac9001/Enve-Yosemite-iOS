@@ -15,7 +15,7 @@ final class HikingMapTests: XCTestCase {
         for (i, f) in doc.features.enumerated() {
             trails += SceneBuilder.lineFeatures(from: f, index: i, projection: projection, name: f.string("TRLNAME"), label: f.string("MAPLABEL"), styleKey: "trail")
         }
-        let traces = HikeRouteResolver.traces(for: content.hikeRoutes.routes, trails: trails, projection: projection)
+        let traces = HikeRouteResolver.traces(for: content.hikeRoutes.routes.filter { $0.pack == .valley }, trails: trails, projection: projection)
         let scene = MapScene(projection: projection, extent: projection.projectedRect(YosemiteGeo.valleyBounds), roads: [], trails: trails, waterLines: [], waterAreas: [],
                              buildings: [], parking: [], pois: [], boundary: [], fireScars: [], contours: [], sources: [], hikeRoutes: traces)
         return (content, scene)
@@ -204,8 +204,8 @@ final class HikingMapTests: XCTestCase {
             XCTAssertEqual(clamped.center.x, model.camera.center.x, accuracy: 0.01, "\(size): clamping the fitted camera does not shift it")
             XCTAssertEqual(clamped.center.y, model.camera.center.y, accuracy: 0.01, "\(size): clamping the fitted camera does not shift it")
             XCTAssertTrue(clamped.visibleRect().contains(route.bounds), "\(size)")
-            let region = try TerrainGrid.load(file: TerrainGrid.regionFile)
-            XCTAssertTrue(scene.projection.projectedRect(region.bounds).contains(model.camera.visibleRect()), "\(size): the view stays on the background relief")
+            let park = try TerrainGrid.load(file: TerrainGrid.parkFile)
+            XCTAssertTrue(scene.projection.projectedRect(park.bounds).contains(model.camera.visibleRect()), "\(size): the view stays on the park relief")
         }
         let plain = valleyModel()
         plain.setScene(scene)
@@ -245,17 +245,37 @@ final class HikingMapTests: XCTestCase {
         model.handleTap(.trail(id: "20007"), at: .zero)
         XCTAssertEqual(model.selection, .trail(id: "20007"))
         XCTAssertNil(model.activeRouteId, "selecting something else clears the hike overlay")
-        XCTAssertEqual(Set(self.content.hikeRoutes(usingFeature: 20007).map(\.trailId)).count, 4)
+        XCTAssertEqual(Set(self.content.hikeRoutes(usingFeature: 20007).map(\.trailId)).count, 5, "four Valley hikes and the Panorama Trail descent")
+    }
+
+    func testConcurrentMapLoadsBothSeeTheReadyScene() async {
+        // A region map opened by deep link while the Map tab is still loading must not be left on "Loading".
+        let store = GeoPackStore()
+        var seen: [Bool] = []
+        func loadAndCheck() async -> Bool {
+            await store.loadMap()
+            if case .ready = store.map { return true }
+            return false
+        }
+        async let first = loadAndCheck()
+        async let second = loadAndCheck()
+        seen = await [first, second]
+        XCTAssertEqual(seen, [true, true], "both callers return only once the shared build is ready")
+        guard case .ready(let scene) = store.map else { return XCTFail("map scene should be ready") }
+        XCTAssertFalse(scene.roads.isEmpty)
+        await store.loadMap()
+        guard case .ready(let again) = store.map else { return XCTFail("still ready") }
+        XCTAssertTrue(again === scene, "a later call reuses the built scene")
     }
 
     func testConcurrentSceneAndProfileRequestsShareOneLoadAndSettle() async {
         let store = GeoPackStore()
         async let profile = store.hikeProfile(for: "four-mile-one-way")
-        async let load: Void = store.loadValley()
+        async let load: Void = store.loadMap()
         let (first, _) = await (profile, load)
         XCTAssertNotNil(first, "a profile asked for while the scene is still loading waits for it instead of giving up")
-        guard case .ready(let scene) = store.valley else { return XCTFail("valley scene should be ready") }
-        XCTAssertEqual(scene.hikeRoutes.count, 19)
+        guard case .ready(let scene) = store.map else { return XCTFail("map scene should be ready") }
+        XCTAssertEqual(scene.hikeRoutes.count, content.hikeRoutes.routes.count, "Valley-pack and park-pack routes all resolve on the one map")
         let again = await store.hikeProfile(for: "four-mile-one-way")
         XCTAssertEqual(again, first, "cached")
         let missing = await store.hikeProfile(for: "no-such-route")

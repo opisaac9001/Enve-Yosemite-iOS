@@ -1,9 +1,9 @@
 {
  "schema": 1,
- "generated": "2026-10-27",
+ "generated": "2026-10-30",
  "title": "Enve Yosemite hike routes — source manifest",
  "about": "Ordered chains of NPS trail features (bundled trails.geojson ids = NPS NationalDatasets OBJECTIDs) that make up each published hike variant. `from`/`to` are fractions of a feature's arc length in travel order (from > to means the feature is walked against its digitised direction); {\"at\": anchor} trims at the nearest point of the feature to a named anchor. tools/build_hike_routes.py validates continuity and endpoints against the real geometry and writes the bundled pack.",
- "derivation": "Chains were produced by a shortest-path exploration over the NPS pack constrained to official map waypoints (docs/HIKING_ROUTE_AUDIT.md, docs/HIKING_UPGRADE_BRIEF.md), then reviewed segment by segment against the NPS trail maps (Vernal/Nevada, Yosemite Falls, Valley Loop, Cook's Meadow) on 2026-10-27. No connectors were invented; every segment is an NPS feature.",
+ "derivation": "Chains were produced by a shortest-path exploration over the NPS pack constrained to official map waypoints (docs/HIKING_ROUTE_AUDIT.md, docs/HIKING_UPGRADE_BRIEF.md), then reviewed segment by segment against the NPS trail maps (Vernal/Nevada, Yosemite Falls, Valley Loop, Cook's Meadow) on 2026-10-27. No connectors were invented; every segment is an NPS feature. Glacier Point Road additions (Taft Point, Panorama Trail, Pohono Trail) were found with tools/find_hike_chain.py over the same bundled NPS features and reviewed on 2026-10-30 against the NPS Glacier Point Road day-hike descriptions and the NPS wilderness trailheads map. Park-wide routes marked \"geometry\": \"park\" resolve against park-trails.geojson (all NPS_Public_Trails_Geographic features for YOSE, fetched 2026-10-30); they were found with tools/find_hike_chain.py over that pack, checked against relief-grid elevations and USGS NHD lake outlines where a destination has no NPS point, and reviewed on 2026-10-30 against the cited NPS regional day-hike pages.",
  "geometry": {
   "file": "ios/PettyFieldGuide/Resources/Geo/trails.geojson",
   "extraFeatures": "content/hikes/trails-extra-lyv.geojson"
@@ -312,6 +312,358 @@
     37.717632
    ],
    "source": "end vertex of NPS trail feature 15754, the easternmost end of the named Bridalveil Fall Trail; NPS maps no platform point"
+  },
+  "glacier-point-rim-trailhead": {
+   "name": "Glacier Point trailhead",
+   "lonlat": [
+    -119.573491,
+    37.727709
+   ],
+   "source": "NPS POI 21520 (Glacier Point Trailhead), beside the parking area"
+  },
+  "sentinel-dome-trailhead": {
+   "name": "Sentinel Dome and Taft Point trailhead",
+   "lonlat": [
+    -119.586349,
+    37.712552
+   ],
+   "source": "NPS POI 20333 (Sentinel Dome Trailhead)"
+  },
+  "taft-point": {
+   "name": "Taft Point",
+   "lonlat": [
+    -119.605563,
+    37.713238
+   ],
+   "source": "NPS POI 22999 (Taft Point)"
+  },
+  "dewey-point": {
+   "name": "Dewey Point",
+   "lonlat": [
+    -119.650179,
+    37.704417
+   ],
+   "source": "NPS POI 20294 (Dewey Point)"
+  },
+  "pohono-trailhead-tunnel": {
+   "name": "Pohono Trail trailhead at Tunnel View",
+   "lonlat": [
+    -119.676809,
+    37.715075
+   ],
+   "source": "NPS POI 23002 (Pohono Trailhead, Wawona Tunnel)"
+  },
+  "mcgurk-meadow-trailhead": {
+   "name": "McGurk Meadow trailhead",
+   "lonlat": [
+    -119.628121,
+    37.670447
+   ],
+   "source": "NPS POI 21924 (McGurk Meadow Trailhead)"
+  },
+  "mcgurk-meadow-bridge": {
+   "name": "McGurk Meadow footbridge (approximate meadow destination)",
+   "lonlat": [
+    -119.623015,
+    37.679272
+   ],
+   "source": "derived: north end of NPS trail feature 17573 (McGurk Meadow Trail, McGurk Meadow Bridge); NPS maps no point for the meadow or the cabin"
+  },
+  "sentinel-dome-summit": {
+   "name": "Sentinel Dome summit (approximate)",
+   "lonlat": [
+    -119.58423,
+    37.723277
+   ],
+   "source": "derived: upper end of NPS trail feature 21957 (Sentinel Dome Trail), within 3 m of the highest 20 m relief-grid sample nearby; NPS maps no summit point"
+  },
+  "ostrander-trailhead": {
+   "name": "Ostrander Lake trailhead",
+   "lonlat": [
+    -119.603609,
+    37.666739
+   ],
+   "source": "NPS POI 22812 (Ostrander Trailhead)"
+  },
+  "ostrander-ski-hut": {
+   "name": "Ostrander Lake at the Ostrander Ski Hut",
+   "lonlat": [
+    -119.549967,
+    37.626772
+   ],
+   "source": "NPS POI 20752 (Ostrander Ski Hut)"
+  },
+  "mariposa-grove-trailhead": {
+   "name": "Mariposa Grove arrival area trailhead",
+   "lonlat": [
+    -119.61087,
+    37.501595
+   ],
+   "source": "NPS POI 20092 (Mariposa Grove Trailhead)"
+  },
+  "grizzly-giant": {
+   "name": "Grizzly Giant",
+   "lonlat": [
+    -119.600723,
+    37.503559
+   ],
+   "source": "NPS POI 20378 (Grizzly Giant)"
+  },
+  "california-tunnel-tree": {
+   "name": "California Tunnel Tree",
+   "lonlat": [
+    -119.60036,
+    37.504348
+   ],
+   "source": "NPS POI 20683 (California Tunnel Tree)"
+  },
+  "wawona-tunnel-tree": {
+   "name": "Fallen Wawona Tunnel Tree",
+   "lonlat": [
+    -119.594965,
+    37.5147
+   ],
+   "source": "NPS POI 21838 (Wawona Tunnel Tree)"
+  },
+  "mariposa-grove-cabin": {
+   "name": "Mariposa Grove Cabin",
+   "lonlat": [
+    -119.598978,
+    37.513572
+   ],
+   "source": "NPS POI 20211 (Mariposa Grove Cabin)"
+  },
+  "wawona-point": {
+   "name": "Wawona Point (approximate)",
+   "lonlat": [
+    -119.600024,
+    37.51836
+   ],
+   "source": "derived: end vertex of NPS trail feature 18723 (Mariposa Grove Trail), the top of the mapped trail at about 2,070 m in the relief grid; NPS maps no overlook point"
+  },
+  "chilnualna-falls-trailhead": {
+   "name": "Chilnualna Falls trailhead",
+   "lonlat": [
+    -119.633688,
+    37.548545
+   ],
+   "source": "NPS POI 21941 (Chilnualna Falls Trailhead)"
+  },
+  "chilnualna-falls": {
+   "name": "Chilnualna Falls",
+   "lonlat": [
+    -119.617686,
+    37.563375
+   ],
+   "source": "NPS POI 20299 (Chilnualna Falls)"
+  },
+  "hetch-hetchy-trailhead": {
+   "name": "Hetch Hetchy trailhead",
+   "lonlat": [
+    -119.787515,
+    37.946497
+   ],
+   "source": "NPS POI 22178 (Hetch Hetchy Trailhead)"
+  },
+  "wapama-falls-trail": {
+   "name": "Trail below Wapama Falls (approximate)",
+   "lonlat": [
+    -119.765398,
+    37.963717
+   ],
+   "source": "derived: east end of NPS trail feature 15187, the point of the mapped trail nearest NPS POI 20158 (Wapama Falls), which lies about 280 m upslope"
+  },
+  "smith-peak-trailhead": {
+   "name": "Smith Peak trailhead",
+   "lonlat": [
+    -119.795145,
+    37.926192
+   ],
+   "source": "NPS POI 22815 (Smith Peak Trailhead)"
+  },
+  "mather-ranger-station-trailhead": {
+   "name": "Mather Ranger Station trailhead at the Hetch Hetchy Entrance",
+   "lonlat": [
+    -119.841514,
+    37.893081
+   ],
+   "source": "NPS POI 21066 (Mather Ranger Station Trailhead)"
+  },
+  "smith-peak-summit": {
+   "name": "Smith Peak summit (approximate)",
+   "lonlat": [
+    -119.734889,
+    37.926912
+   ],
+   "source": "derived: end vertex of NPS trail feature 19994 (Smith Peak Trail), within 10 m of the highest 45 m relief-grid sample nearby; NPS maps no summit point"
+  },
+  "poopenaut-valley-trailhead": {
+   "name": "Poopenaut Valley trailhead",
+   "lonlat": [
+    -119.814626,
+    37.910204
+   ],
+   "source": "NPS POI 20212 (Poopenaut Valley Trailhead)"
+  },
+  "poopenaut-valley-river": {
+   "name": "Tuolumne River in Poopenaut Valley (approximate)",
+   "lonlat": [
+    -119.820062,
+    37.919163
+   ],
+   "source": "derived: lower end of NPS trail feature 22819 (Poopenaut Valley Trail); NPS maps no river-side point"
+  },
+  "tuolumne-grove-trailhead": {
+   "name": "Tuolumne Grove trailhead",
+   "lonlat": [
+    -119.805599,
+    37.758253
+   ],
+   "source": "NPS POI 20953 (Tuolumne Grove Trailhead)"
+  },
+  "tuolumne-grove-dead-tunnel-tree": {
+   "name": "Tuolumne Grove Dead Tunnel Tree",
+   "lonlat": [
+    -119.805706,
+    37.768443
+   ],
+   "source": "NPS POI 21573 (Tuolumne Grove Dead Tunnel Tree)"
+  },
+  "merced-grove-trailhead": {
+   "name": "Merced Grove trailhead",
+   "lonlat": [
+    -119.842272,
+    37.762993
+   ],
+   "source": "NPS POI 21394 (Merced Grove Trailhead)"
+  },
+  "merced-grove": {
+   "name": "Merced Grove of Giant Sequoias",
+   "lonlat": [
+    -119.840182,
+    37.750905
+   ],
+   "source": "NPS POI 20197 (Merced Grove of Giant Sequoias)"
+  },
+  "may-lake-trailhead": {
+   "name": "May Lake trailhead",
+   "lonlat": [
+    -119.491154,
+    37.832706
+   ],
+   "source": "NPS POI 20954 (May Lake Trailhead)"
+  },
+  "may-lake": {
+   "name": "May Lake (approximate)",
+   "lonlat": [
+    -119.491049,
+    37.844167
+   ],
+   "source": "derived: north end of NPS trail feature 19452 (May Lake Trail), where the Mount Hoffman Trail begins, about 105 m from the USGS NHD May Lake shoreline"
+  },
+  "lukens-trailhead-tioga": {
+   "name": "Lukens Lake trailhead on Tioga Road",
+   "lonlat": [
+    -119.61521,
+    37.850521
+   ],
+   "source": "NPS POI 21984 (Lukens to Lukens Lake Trailhead)"
+  },
+  "lukens-lake-south-shore": {
+   "name": "Lukens Lake, south shore (approximate)",
+   "lonlat": [
+    -119.616003,
+    37.858922
+   ],
+   "source": "derived: first vertex of NPS trail feature 18552 (Lukens Lake Trail) within 15 m of the USGS NHD Lukens Lake shoreline, walking in from Tioga Road"
+  },
+  "white-wolf-trailhead": {
+   "name": "White Wolf trailhead",
+   "lonlat": [
+    -119.64882,
+    37.869768
+   ],
+   "source": "NPS POI 21102 (White Wolf Trailhead)"
+  },
+  "lukens-lake-north-shore": {
+   "name": "Lukens Lake, north shore (approximate)",
+   "lonlat": [
+    -119.617559,
+    37.860425
+   ],
+   "source": "derived: first vertex of NPS trail feature 18552 (Lukens Lake Trail) within 15 m of the USGS NHD Lukens Lake shoreline, walking in from White Wolf"
+  },
+  "porcupine-creek-trailhead": {
+   "name": "Porcupine Creek trailhead",
+   "lonlat": [
+    -119.545261,
+    37.806575
+   ],
+   "source": "NPS POI 22600 (Porcupine Creek Trailhead)"
+  },
+  "north-dome-summit": {
+   "name": "North Dome summit (approximate)",
+   "lonlat": [
+    -119.559933,
+    37.7564
+   ],
+   "source": "derived: south end of NPS trail feature 16618 (North Dome Trail), within 4 m of the highest 20 m relief-grid sample nearby; NPS maps no summit point"
+  },
+  "lembert-dome-trailhead": {
+   "name": "Lembert Dome trailhead",
+   "lonlat": [
+    -119.353701,
+    37.877417
+   ],
+   "source": "NPS POI 21179 (Lembert Dome Trailhead)"
+  },
+  "dog-lake-trailhead": {
+   "name": "Dog Lake trailhead",
+   "lonlat": [
+    -119.338986,
+    37.878407
+   ],
+   "source": "NPS POI 21439 (Dog Lake Trailhead)"
+  },
+  "lembert-dome-top": {
+   "name": "Lembert Dome",
+   "lonlat": [
+    -119.34706,
+    37.88195
+   ],
+   "source": "NPS POI 22423 (Lembert Dome)"
+  },
+  "dog-lake": {
+   "name": "Dog Lake (approximate)",
+   "lonlat": [
+    -119.343773,
+    37.890827
+   ],
+   "source": "derived: end vertex of NPS trail feature 15981 (Dog Lake Trail), about 5 m from the USGS NHD Dog Lake shoreline"
+  },
+  "mono-parker-pass-trailhead": {
+   "name": "Mono and Parker Pass trailhead",
+   "lonlat": [
+    -119.262696,
+    37.89091
+   ],
+   "source": "NPS POI 21643 (Mono/Parker Pass Trailhead)"
+  },
+  "mono-pass": {
+   "name": "Mono Pass (approximate)",
+   "lonlat": [
+    -119.21376,
+    37.855493
+   ],
+   "source": "derived: east end of NPS trail feature 14734, where the trail meets the NPS park boundary (within 1 m) and continues as a Forest Service trail; NPS maps no pass point"
+  },
+  "glen-aulin-bridge": {
+   "name": "Glen Aulin footbridge (approximate)",
+   "lonlat": [
+    -119.420236,
+    37.909374
+   ],
+   "source": "derived: north end of NPS trail feature 17348 (Pacific Crest Trail, Glen Aulin Bridge); NPS maps no point for Glen Aulin itself"
   }
  },
  "routes": [
@@ -2197,6 +2549,1514 @@
     },
     {
      "feature": 19755,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "taft-point",
+   "trailId": "trail-taft-point",
+   "label": "Round trip from the trailhead",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "start": "sentinel-dome-trailhead",
+   "destination": "taft-point",
+   "milestones": [],
+   "sequence": "West from the trailhead through forest and meadow, joining the Pohono Trail near the rim to the Taft Point overlook. The way back is the climb.",
+   "traceNote": "The mapped line ends at the NPS Taft Point feature; the overlook itself is not a separate mapped feature.",
+   "segments": [
+    {
+     "feature": 22472,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19778,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15277,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20739,
+     "from": 1,
+     "to": 0
+    }
+   ]
+  },
+  {
+   "id": "panorama-trail-mist",
+   "trailId": "trail-panorama",
+   "label": "One way to Happy Isles via the Mist Trail",
+   "kind": "oneWay",
+   "isDefault": true,
+   "start": "glacier-point-rim-trailhead",
+   "destination": "happy-isles-trailhead",
+   "milestones": [
+    "nevada-fall-footbridge",
+    "vernal-fall-footbridge"
+   ],
+   "sequence": "Down from Glacier Point to the Illilouette Creek crossing, then the Panorama Trail's climb and traverse to the John Muir Trail above Nevada Fall, across the Nevada Fall footbridge and down the Mist Trail past Vernal Fall to Happy Isles. No shuttle returns you to Glacier Point.",
+   "traceNote": "NPS publishes 8.2 miles and says the final miles may follow either the John Muir Trail or the Mist Trail without saying which the figure measures; this trace uses the Mist Trail. The Mist Trail section closes for ice in winter.",
+   "segments": [
+    {
+     "feature": 17092,
+     "from": {
+      "at": "glacier-point-rim-trailhead"
+     },
+     "to": 1
+    },
+    {
+     "feature": 16798,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22327,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18986,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19122,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17001,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15327,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15390,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21620,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20089,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21659,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16450,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17156,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18748,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22642,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20240,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19515,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15046,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20091,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20007,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16589,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15622,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18937,
+     "from": 0,
+     "to": {
+      "at": "happy-isles-trailhead"
+     }
+    }
+   ]
+  },
+  {
+   "id": "pohono-trail",
+   "trailId": "trail-pohono",
+   "label": "One way to Tunnel View",
+   "kind": "oneWay",
+   "isDefault": true,
+   "start": "glacier-point-rim-trailhead",
+   "destination": "pohono-trailhead-tunnel",
+   "milestones": [
+    "sentinel-dome-trailhead",
+    "dewey-point"
+   ],
+   "sequence": "The whole south rim of Yosemite Valley from Glacier Point west to the Wawona Tunnel: past Sentinel Dome and Taft Point and along the rim viewpoints including Dewey Point, then down to Tunnel View.",
+   "traceNote": "The trace follows NPS rim features from Glacier Point to the Tunnel View trailhead and matches the published 12.5 miles closely; side trips to individual viewpoints are not included.",
+   "segments": [
+    {
+     "feature": 17092,
+     "from": {
+      "at": "glacier-point-rim-trailhead"
+     },
+     "to": 1
+    },
+    {
+     "feature": 16798,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22327,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18986,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22030,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20681,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21128,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16507,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20827,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21941,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19778,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15277,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15176,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17196,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17735,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15344,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22684,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18327,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "mcgurk-meadow-rt",
+   "trailId": "trail-mcgurk-meadow",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "mcgurk-meadow-trailhead",
+   "destination": "mcgurk-meadow-bridge",
+   "milestones": [],
+   "sequence": "Gently downhill on the McGurk Meadow Trail through forest to the footbridge at the meadow; the climb is on the way back.",
+   "traceNote": "The mapped line ends at the McGurk Meadow footbridge, about 1.4 miles round trip against the published 1.6; NPS maps no point for the meadow or the historic cabin, so the turnaround is approximate.",
+   "segments": [
+    {
+     "feature": 17070,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17573,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "sentinel-dome",
+   "trailId": "trail-sentinel-dome",
+   "label": "Round trip from the trailhead",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "sentinel-dome-trailhead",
+   "destination": "sentinel-dome-summit",
+   "milestones": [],
+   "sequence": "North from the trailhead through forest, then up the Sentinel Dome Trail across bare granite to the top.",
+   "traceNote": "The NPS Sentinel Dome Trail line climbs to within a few metres of the highest relief-grid sample on the dome, so the summit end is approximate. The final stretch is open rock; the line is orientation only.",
+   "segments": [
+    {
+     "feature": 22472,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21941,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21957,
+     "from": 1,
+     "to": 0
+    }
+   ]
+  },
+  {
+   "id": "dewey-point-rt",
+   "trailId": "trail-dewey-point",
+   "label": "Round trip via McGurk Meadow",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "mcgurk-meadow-trailhead",
+   "destination": "dewey-point",
+   "milestones": [],
+   "sequence": "Down the McGurk Meadow Trail across the meadow to the Pohono Trail, then west along the Valley rim to Dewey Point.",
+   "traceNote": "McGurk Meadow Trail features to the Pohono Trail junction, then the Pohono Trail to the point nearest NPS Dewey Point (about 30 m). The trace is within a few percent of the published 7.6 miles.",
+   "segments": [
+    {
+     "feature": 17070,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17573,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19719,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20327,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22684,
+     "from": 1,
+     "to": {
+      "at": "dewey-point"
+     }
+    }
+   ]
+  },
+  {
+   "id": "ostrander-lake-rt",
+   "trailId": "trail-ostrander-lake",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "ostrander-trailhead",
+   "destination": "ostrander-ski-hut",
+   "milestones": [],
+   "sequence": "Through forest and meadow on gentle grades, then a long, steeper climb to Ostrander Lake and the ski hut.",
+   "traceNote": "Five unnamed NPS trail features lead from the trailhead to the end of the mapped trail beside the lake, about 30 m from the NPS ski hut point. The trace matches the published 12 miles closely.",
+   "segments": [
+    {
+     "feature": 16423,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22067,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19915,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19102,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19267,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "grizzly-giant-loop",
+   "trailId": "trail-grizzly-giant-loop",
+   "label": "Loop from the grove arrival area",
+   "kind": "loop",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "mariposa-grove-trailhead",
+   "destination": "mariposa-grove-trailhead",
+   "milestones": [
+    "grizzly-giant",
+    "california-tunnel-tree"
+   ],
+   "sequence": "Along the Big Trees Loop and up the Mariposa Grove Trail past the Bachelor and Three Graces to the Grizzly Giant and California Tunnel Tree, then back down the Grizzly Giant Loop Trail along the edge of the grove.",
+   "traceNote": "Big Trees Loop, Mariposa Grove Trail and Grizzly Giant Loop Trail features, starting and ending about 8 m from the NPS trailhead point. NPS does not say which way round to walk; the trace runs anticlockwise up the main trail and returns on the loop trail.",
+   "segments": [
+    {
+     "feature": 18212,
+     "from": {
+      "at": "mariposa-grove-trailhead"
+     },
+     "to": 1
+    },
+    {
+     "feature": 21647,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21961,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18911,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16367,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 14985,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18800,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16375,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18452,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15190,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18289,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20937,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20816,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16026,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16239,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17265,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16389,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18351,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18212,
+     "from": 1,
+     "to": {
+      "at": "mariposa-grove-trailhead"
+     }
+    }
+   ]
+  },
+  {
+   "id": "guardians-loop-rt",
+   "trailId": "trail-guardians-loop",
+   "label": "Round trip from the grove arrival area",
+   "kind": "loop",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "mariposa-grove-trailhead",
+   "destination": "mariposa-grove-trailhead",
+   "milestones": [
+    "grizzly-giant",
+    "wawona-tunnel-tree",
+    "mariposa-grove-cabin"
+   ],
+   "sequence": "Up the Mariposa Grove Trail past the Grizzly Giant to the upper grove, around the Guardians loop past the fallen Wawona Tunnel Tree and the Mariposa Grove Cabin, then back down the same trail.",
+   "traceNote": "Drawn as one closed walk: the Mariposa Grove Trail up and back, plus the upper loop on Guardians of the Grove Loop Trail features (about 1.4 miles against the published 1.5). The mapped line starts about 30 m from the NPS trailhead point. NPS does not give a direction for the upper loop; it is drawn clockwise.",
+   "segments": [
+    {
+     "feature": 16395,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21369,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16367,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 14985,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18800,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16375,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18452,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15190,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18289,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20937,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20816,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22499,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 14723,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20792,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16279,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19833,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21692,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15557,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17054,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20802,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18921,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17198,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20654,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16226,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21664,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19890,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21874,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17942,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17054,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15557,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21692,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19833,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16279,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20792,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 14723,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 22499,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20816,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20937,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18289,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15190,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18452,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16375,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18800,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 14985,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16367,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21369,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16395,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "wawona-point-rt",
+   "trailId": "trail-wawona-point",
+   "label": "Round trip to Wawona Point",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "mariposa-grove-trailhead",
+   "destination": "wawona-point",
+   "milestones": [
+    "grizzly-giant"
+   ],
+   "sequence": "The whole Mariposa Grove Trail from the arrival area past the Grizzly Giant and through the upper grove to the end of the trail at Wawona Point.",
+   "traceNote": "Every segment is an NPS Mariposa Grove Trail feature; the mapped line starts about 30 m from the NPS trailhead point and its top end stands in for Wawona Point, which NPS does not map. The trace matches the newer published 7 miles; the older Wawona page's 7.75 miles is listed as a discrepancy.",
+   "segments": [
+    {
+     "feature": 16395,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21369,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16367,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 14985,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18800,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16375,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18452,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15190,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18289,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20937,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20816,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22499,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 14723,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20792,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16279,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19833,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21692,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15557,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17054,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20802,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18723,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "chilnualna-falls-rt",
+   "trailId": "trail-chilnualna-falls",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "chilnualna-falls-trailhead",
+   "destination": "chilnualna-falls",
+   "milestones": [],
+   "sequence": "Up beside Chilnualna Creek, then switchbacks with views over Wawona, to the trail's closest approach to the falls.",
+   "traceNote": "Chilnualna Falls Trail features to the point nearest the NPS Chilnualna Falls point (about 40 m). The trace is about 7.1 miles round trip against the published 8.2.",
+   "segments": [
+    {
+     "feature": 22383,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": "21503-0",
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": "21503-1",
+     "from": 0,
+     "to": {
+      "at": "chilnualna-falls"
+     }
+    }
+   ]
+  },
+  {
+   "id": "wapama-falls-rt",
+   "trailId": "trail-wapama-falls",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "hetch-hetchy-trailhead",
+   "destination": "wapama-falls-trail",
+   "milestones": [],
+   "sequence": "Across O'Shaughnessy Dam and through the tunnel, then along the north shore of the reservoir to the crossings below Wapama Falls.",
+   "traceNote": "Unnamed NPS trail features from the trailhead to the point of the trail nearest the NPS Wapama Falls point, which sits about 280 m upslope; the turnaround is approximate. The trace is within a few percent of the published 5 miles.",
+   "segments": [
+    {
+     "feature": 15302,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20889,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20767,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15865,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22149,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16728,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20830,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16804,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21750,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16595,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15187,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "smith-peak-from-road",
+   "trailId": "trail-smith-peak",
+   "label": "Round trip from the trailhead beyond the entrance",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "smith-peak-trailhead",
+   "destination": "smith-peak-summit",
+   "milestones": [],
+   "sequence": "From the trailhead beyond the entrance, a long climb on unnamed trail to the Smith Peak Trail and up to the summit.",
+   "traceNote": "Unnamed NPS features to the Smith Peak Trail, whose end sits within 10 m of the highest relief-grid sample on the peak; the summit point is approximate. The trace is within a few percent of the published 13 miles.",
+   "segments": [
+    {
+     "feature": 16016,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18689,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19994,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "smith-peak-from-entrance",
+   "trailId": "trail-smith-peak",
+   "label": "Round trip from the entrance station",
+   "kind": "outAndBack",
+   "isDefault": false,
+   "geometry": "park",
+   "start": "mather-ranger-station-trailhead",
+   "destination": "smith-peak-summit",
+   "milestones": [],
+   "sequence": "From the Hetch Hetchy Entrance, unnamed trail to the Cottonwood Meadow Trail, east past Cottonwood Meadow and up the Smith Peak Trail to the summit.",
+   "traceNote": "Starts at the NPS Mather Ranger Station trailhead point beside the entrance station, about 20 m from the first mapped feature; the first stretch is recorded by NPS as non-NPS trail. Unnamed features, the Cottonwood Meadow Trail and the Smith Peak Trail follow; the summit point is approximate. The trace matches the published 16 miles closely.",
+   "segments": [
+    {
+     "feature": 19325,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18390,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21986,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17589,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 22436,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18718,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17060,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20165,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 20099,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 19994,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "poopenaut-valley-rt",
+   "trailId": "trail-poopenaut-valley",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "poopenaut-valley-trailhead",
+   "destination": "poopenaut-valley-river",
+   "milestones": [],
+   "sequence": "Steeply down the Poopenaut Valley Trail to the Tuolumne River; the whole climb is on the way back.",
+   "traceNote": "One NPS feature, the Poopenaut Valley Trail, from the trailhead to its lower end by the river. Its 1.06 miles each way are about 15 percent short of the published 2.5-mile round trip; the relief grid gives the same 390 m drop NPS publishes.",
+   "segments": [
+    {
+     "feature": 22819,
+     "from": 1,
+     "to": 0
+    }
+   ]
+  },
+  {
+   "id": "tuolumne-grove-rt",
+   "trailId": "trail-tuolumne-grove",
+   "label": "Round trip with the nature trail",
+   "kind": "loop",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "tuolumne-grove-trailhead",
+   "destination": "tuolumne-grove-trailhead",
+   "milestones": [
+    "tuolumne-grove-dead-tunnel-tree"
+   ],
+   "sequence": "Down the old Tuolumne Grove Road into the grove, through the Dead Tunnel Tree and around the nature trail, then back up the road.",
+   "traceNote": "Drawn as one closed walk: Tuolumne Grove Road down and back, plus the Tunnel Tree Trail and the Tuolumne Grove Loop Trail in the grove (about 0.5 mile, matching the published half-mile nature trail). NPS gives no direction for the nature trail. The whole walk maps to about 2.7 miles against the published 2.5.",
+   "segments": [
+    {
+     "feature": 17124,
+     "from": {
+      "at": "tuolumne-grove-trailhead"
+     },
+     "to": 0.909976
+    },
+    {
+     "feature": 16670,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 16726,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17124,
+     "from": 1,
+     "to": {
+      "at": "tuolumne-grove-trailhead"
+     }
+    }
+   ]
+  },
+  {
+   "id": "merced-grove-rt",
+   "trailId": "trail-merced-grove",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "merced-grove-trailhead",
+   "destination": "merced-grove",
+   "milestones": [],
+   "sequence": "Down the old Coulterville Road, keeping left where it forks, to the small Merced Grove.",
+   "traceNote": "One NPS feature, the Merced Grove Trail (Old Coulterville Road), to the point nearest the NPS Merced Grove point (about 18 m). In the NPS lines the left and right branches part at the trailhead itself, not half a mile in as the NPS page describes; the trace follows the left branch. About 2.8 miles round trip against the published 3.",
+   "segments": [
+    {
+     "feature": 20051,
+     "from": 1,
+     "to": {
+      "at": "merced-grove"
+     }
+    }
+   ]
+  },
+  {
+   "id": "may-lake-rt",
+   "trailId": "trail-may-lake",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "may-lake-trailhead",
+   "destination": "may-lake",
+   "milestones": [],
+   "sequence": "Up through forest and across granite slabs on the May Lake Trail to the lake.",
+   "traceNote": "One NPS feature, the May Lake Trail; its upper end, where the Mount Hoffman Trail begins about 100 m from the mapped shoreline, stands in for the lake. Close to the published 2.4 miles.",
+   "segments": [
+    {
+     "feature": 19452,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "lukens-lake-tioga-rt",
+   "trailId": "trail-lukens-lake-tioga",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "lukens-trailhead-tioga",
+   "destination": "lukens-lake-south-shore",
+   "milestones": [],
+   "sequence": "From Tioga Road through forest and over a low saddle, down to the meadow at the south end of Lukens Lake.",
+   "traceNote": "The Lukens Lake Trail from the trailhead to the first point within 15 m of the mapped lake shore. That is about 1.8 miles round trip, a little over the published 1.6.",
+   "segments": [
+    {
+     "feature": 18552,
+     "from": 1,
+     "to": {
+      "at": "lukens-lake-south-shore"
+     }
+    }
+   ]
+  },
+  {
+   "id": "lukens-lake-white-wolf-rt",
+   "trailId": "trail-lukens-lake-white-wolf",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "white-wolf-trailhead",
+   "destination": "lukens-lake-north-shore",
+   "milestones": [],
+   "sequence": "East from White Wolf through forest, across the Middle Tuolumne River, then onto the Lukens Lake Trail to the north end of the lake.",
+   "traceNote": "Two unnamed NPS features and the Lukens Lake Trail to the first point within 15 m of the mapped lake shore. Close to the published 4.6 miles.",
+   "segments": [
+    {
+     "feature": 22563,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17219,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18552,
+     "from": 0,
+     "to": {
+      "at": "lukens-lake-north-shore"
+     }
+    }
+   ]
+  },
+  {
+   "id": "north-dome-rt",
+   "trailId": "trail-north-dome",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "porcupine-creek-trailhead",
+   "destination": "north-dome-summit",
+   "milestones": [],
+   "sequence": "From the Porcupine Creek trailhead across the creek and through forest and meadow on the North Dome Trail, down to the base of the dome and up to its top.",
+   "traceNote": "Unnamed features then the North Dome Trail; its south end lies within a few metres of the highest relief-grid sample on the dome, so the summit is approximate. About 9.2 miles round trip against the published 10.4.",
+   "segments": [
+    {
+     "feature": 20396,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15586,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 14755,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18495,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17230,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 18413,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16618,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "dog-lake-lembert-rt",
+   "trailId": "trail-dog-lake-lembert-dome",
+   "label": "Out and back with the Lembert Dome side trip",
+   "kind": "loop",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "dog-lake-trailhead",
+   "destination": "dog-lake-trailhead",
+   "milestones": [
+    "lembert-dome-top",
+    "dog-lake"
+   ],
+   "sequence": "North from the Dog Lake parking area, up the Lembert Dome Trail to the top of the dome and back to the junction, on to Dog Lake, then back the same way.",
+   "traceNote": "Drawn as one closed walk because the Lembert Dome side trip and the Dog Lake leg are each walked twice; it maps to 3.8 miles, the published figure. The side trip ends at the NPS Lembert Dome point. Stay off domes in thunderstorms.",
+   "segments": [
+    {
+     "feature": 19139,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17343,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21543,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17076,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17076,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15102,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21892,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15981,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15981,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 21892,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 15102,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21543,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17343,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 19139,
+     "from": 1,
+     "to": 0
+    }
+   ]
+  },
+  {
+   "id": "mono-pass-rt",
+   "trailId": "trail-mono-pass",
+   "label": "Round trip",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "mono-parker-pass-trailhead",
+   "destination": "mono-pass",
+   "milestones": [],
+   "sequence": "From Dana Meadows southeast through forest and meadow, past the Spillway Lake junction, and up to Mono Pass on the park boundary.",
+   "traceNote": "Three unnamed NPS features from the trailhead to the point where the trail meets the park boundary and becomes a Forest Service trail; that point stands in for the pass. The trace matches the published 8 miles closely.",
+   "segments": [
+    {
+     "feature": 21630,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 21483,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 14734,
+     "from": 0,
+     "to": 1
+    }
+   ]
+  },
+  {
+   "id": "glen-aulin-rt",
+   "trailId": "trail-glen-aulin",
+   "label": "Round trip to Glen Aulin",
+   "kind": "outAndBack",
+   "isDefault": true,
+   "geometry": "park",
+   "start": "lembert-dome-trailhead",
+   "destination": "glen-aulin-bridge",
+   "milestones": [],
+   "sequence": "West on the gravel road past Soda Springs, then the Pacific Crest Trail beside the Tuolumne River and down to the footbridge at Glen Aulin.",
+   "traceNote": "Pacific Crest Trail features throughout, ending at the north end of the Glen Aulin Bridge; NPS maps no point for Glen Aulin, so the destination is approximate. About 11.4 miles round trip against the published 11.",
+   "segments": [
+    {
+     "feature": 20897,
+     "from": {
+      "at": "lembert-dome-trailhead"
+     },
+     "to": 0
+    },
+    {
+     "feature": 15880,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 15716,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 18270,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 14811,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 14830,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 20166,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16908,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 16780,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17907,
+     "from": 1,
+     "to": 0
+    },
+    {
+     "feature": 17697,
+     "from": 0,
+     "to": 1
+    },
+    {
+     "feature": 17348,
      "from": 0,
      "to": 1
     }

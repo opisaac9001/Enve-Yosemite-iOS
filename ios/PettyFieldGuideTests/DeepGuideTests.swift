@@ -57,17 +57,14 @@ final class DeepGuideTests: XCTestCase {
         XCTAssertFalse(WaterIceGuide.filtered(records, filter: .all, query: "registered guests").isEmpty, "access wording is searchable")
     }
 
-    func testOutsideValleyWaterPointsOpenExternalMapWithoutClamping() throws {
+    func testWaterPointsBeyondTheValleyFocusTheirPinAndExternalLinksKeepCoordinates() throws {
         let (pack, records, _) = try waterGuide()
-        let outside = records.filter { !$0.isInValley }
-        XCTAssertEqual(Set(outside.map(\.id)), ["fac-water-mariposa-grove-trailhead-drinking-water", "fac-water-mariposa-grove-welcome-plaza-drinking-water"])
-        for r in outside {
-            guard case .openExternalMap(let lat, let lon, let label) = WaterIceGuide.action(for: r) else { return XCTFail("\(r.id) should open an external map") }
+        let beyondValley = records.filter { !YosemiteGeo.valleyBounds.contains(latitude: $0.latitude, longitude: $0.longitude) }
+        XCTAssertEqual(Set(beyondValley.map(\.id)), ["fac-water-mariposa-grove-trailhead-drinking-water", "fac-water-mariposa-grove-welcome-plaza-drinking-water"])
+        XCTAssertTrue(records.allSatisfy(\.isOnMap), "every record lies on the continuous park map")
+        for r in beyondValley {
+            XCTAssertEqual(WaterIceGuide.action(for: r), .focusMap(placeId: r.id), "Mariposa Grove is on the map, so its own pin is focused")
             let raw = try XCTUnwrap(pack.places.first { $0.id == r.id })
-            XCTAssertEqual(lat, raw.latitude)
-            XCTAssertEqual(lon, raw.longitude)
-            XCTAssertEqual(label, r.name)
-            XCTAssertFalse(YosemiteGeo.valleyBounds.contains(latitude: lat, longitude: lon))
             let url = try XCTUnwrap(WaterIceGuide.externalMapURL(for: r))
             XCTAssertEqual(url.host, "maps.apple.com")
             let items = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems ?? []
@@ -75,8 +72,7 @@ final class DeepGuideTests: XCTestCase {
             XCTAssertEqual(items.first { $0.name == "q" }?.value, r.name)
         }
         let inside = try XCTUnwrap(records.first { $0.id == "ice-lodge-hemlock" })
-        XCTAssertEqual(WaterIceGuide.action(for: inside), .focusValleyMap(placeId: "ice-lodge-hemlock"))
-        XCTAssertEqual(records.filter(\.isInValley).count, 44)
+        XCTAssertEqual(WaterIceGuide.action(for: inside), .focusMap(placeId: "ice-lodge-hemlock"))
     }
 
     func testOldRepairReportStaysOldAndUnverified() throws {

@@ -59,7 +59,7 @@ enum AppSection: String, CaseIterable, Identifiable, Codable, Sendable {
 
     var blurb: String {
         switch self {
-        case .map: "Offline Valley map with roads, trails, buildings, shuttle routes and your saved pins."
+        case .map: "Offline maps: the detailed Valley with buildings and shuttle routes, and the whole park with NPS roads, trails and trailheads."
         case .directory: "Every mapped place with hours, access, contacts and sources."
         case .search: "One search across places, sites, phones, trails, guides, events and documents."
         case .status: "Weather by forecast point, daylight, webcams and feed freshness."

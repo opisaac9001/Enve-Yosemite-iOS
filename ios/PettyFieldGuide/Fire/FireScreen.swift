@@ -87,8 +87,7 @@ struct FireScreen: View {
     private func mapCard(_ c: Content) -> some View {
         FieldCard(eyebrow: "Park-wide fire map") {
             Picker("Mode", selection: $mode) { ForEach(FireMapMode.allCases) { Text($0.title).tag($0) } }.pickerStyle(.segmented)
-            ParkMapView(mode: .fire, onSelect: { id in handleTap(id, c) }, frameContent: fireContent(c))
-                .frame(height: 360).clipShape(RoundedRectangle(cornerRadius: 12))
+            ParkMapView(mode: .fire, onSelect: { id in handleTap(id, c) }, frameContent: fireContent(c), height: 360)
             if let tapped { Text(tapped).font(.fieldCaption) }
             legend
         }
@@ -110,7 +109,7 @@ struct FireScreen: View {
     private func fireContent(_ c: Content) -> MapFrameContent {
         var frame = MapFrameContent()
         guard effectiveMode == .live, let snap = conditions.smoke, !snap.isExpired else { return frame }
-        let projection = LocalProjection(origin: YosemiteGeo.parkBounds.center)
+        let projection = MapSceneBuilder.projection
         let feed = snap.payload
         for poly in feed.plumes.polygons ?? [] {
             let ring = poly.ring.map { projection.project(CLLocationCoordinate2D(latitude: $0[1], longitude: $0[0])) }

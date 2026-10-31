@@ -11,6 +11,7 @@ struct PettyFieldGuideApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .nightVision()
                 .environmentObject(theme)
                 .environmentObject(router)
                 .environmentObject(content)

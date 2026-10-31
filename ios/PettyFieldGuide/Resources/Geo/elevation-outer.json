@@ -1,0 +1,33 @@
+{
+ "version": "2ae987c8e8b7",
+ "source": "USGS 3D Elevation Program (3DEP) bare-earth DEM via The National Map 3DEPElevation ImageServer",
+ "sourceUrl": "https://elevation.nationalmap.gov/arcgis/rest/services/3DEPElevation/ImageServer",
+ "catalog": "https://data.usgs.gov/datacatalog/data/USGS%3A3a81321b-c153-416f-98b7-cc8e5f0e17c3",
+ "licence": "Public domain (U.S. Government work, USGS); credit: U.S. Geological Survey, 3D Elevation Program",
+ "fetchedAt": "2026-10-30T16:32:54Z",
+ "purpose": "Far terrain context so the map's most zoomed-out view on any supported layout stays on relief; the surround tier draws on top of it. Open water reads 0 m",
+ "processing": "exportImage in 1 chunks, bilinear resampling by the service onto sample centres; rounded to 0.25 m; planar-prediction residuals, raw DEFLATE",
+ "bounds": {
+  "north": 40.2,
+  "south": 35.45,
+  "west": -123.2,
+  "east": -115.9
+ },
+ "width": 877,
+ "height": 571,
+ "encoding": "uint16-le-planar-deflate",
+ "dataFile": "elevation-outer.bin",
+ "verticalScale": 0.25,
+ "offsetMeters": -85,
+ "noDataUnits": 65535,
+ "missingSamples": 12504,
+ "cellSizeMeters": {
+  "x": 732.75,
+  "y": 924.94
+ },
+ "rangeMeters": {
+  "min": -85.0,
+  "max": 4158.1
+ },
+ "dataSha256": "2ae987c8e8b7a024b3a3ef7b96b7236b5ae96f73870e9df1d997ddac05ac997a"
+}

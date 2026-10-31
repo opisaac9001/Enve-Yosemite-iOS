@@ -31,17 +31,20 @@ struct SheetHost: View {
     @EnvironmentObject private var content: ContentStore
 
     var body: some View {
-        switch sheet {
-        case .settings: SettingsSheet()
-        case .updates: UpdatesSheet(initialTab: .updates)
-        case .changelog: UpdatesSheet(initialTab: .changelog)
-        case .suggestions: UpdatesSheet(initialTab: .suggestions)
-        case .introGuide: IntroGuideSheet()
-        case .backup: BackupSheet()
-        case .waterIceGuide:
-            if let c = content.content { WaterIceGuideView(content: c) }
-        case .share(let link): ShareSheetView(title: link.title, url: link.url)
+        Group {
+            switch sheet {
+            case .settings: SettingsSheet()
+            case .updates: UpdatesSheet(initialTab: .updates)
+            case .changelog: UpdatesSheet(initialTab: .changelog)
+            case .suggestions: UpdatesSheet(initialTab: .suggestions)
+            case .introGuide: IntroGuideSheet()
+            case .backup: BackupSheet()
+            case .waterIceGuide:
+                if let c = content.content { WaterIceGuideView(content: c) }
+            case .share(let link): ShareSheetView(title: link.title, url: link.url)
+            }
         }
+        .nightVision()
     }
 }
 

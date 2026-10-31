@@ -207,7 +207,7 @@ enum HikeInspectorLoad: Equatable {
 
 extension GeoPackStore {
     func hikeInspector(for route: HikeRoute) async -> HikeInspector? {
-        guard let profile = await hikeProfile(for: route.id), case .ready(let scene) = valley, let trace = scene.hikeRoutes[route.id] else { return nil }
+        guard let profile = await hikeProfile(for: route.id, pack: route.pack), let trace = await scene()?.hikeRoutes[route.id] else { return nil }
         return HikeInspector(route: route, trace: trace, profile: profile)
     }
 }

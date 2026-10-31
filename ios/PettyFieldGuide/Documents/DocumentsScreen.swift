@@ -69,7 +69,7 @@ struct DocumentDetailView: View {
             .fieldNavigationTitle(doc.title)
             .navigationBarTitleDisplayMode(.inline)
             .fullScreenCover(isPresented: $showReader) {
-                if let fileURL { PDFReaderView(title: doc.title, url: fileURL) }
+                if let fileURL { PDFReaderView(title: doc.title, url: fileURL).nightVision() }
             }
         } else {
             EmptyStateView(symbol: "doc", title: "Document not found", message: "This link points to a document that is not bundled.")

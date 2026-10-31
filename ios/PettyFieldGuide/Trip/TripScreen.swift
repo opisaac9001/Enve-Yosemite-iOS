@@ -119,7 +119,7 @@ struct TripScreen: View {
                 VStack(alignment: .leading, spacing: 4) {
                     Label(ParkedCar.describe(car), systemImage: "car.fill").font(.fieldCaption)
                     if let note = car.note { Text(note).font(.fieldCaption).foregroundStyle(.secondary) }
-                    if ParkedCar.isOnValleyMap(car.coordinate) {
+                    if MapCoverage.contains(car.coordinate) {
                         HStack {
                             Button("Map") { router.showOnMap(.coordinate(latitude: car.latitude, longitude: car.longitude, label: "My car")) }
                             Button("Edit") { router.openMapTool(.parkedCar) }
@@ -127,7 +127,7 @@ struct TripScreen: View {
                         }
                         .buttonStyle(.bordered).font(.fieldCaption)
                     } else {
-                        Text(String(format: "Outside the bundled Valley map · %.5f, %.5f", car.latitude, car.longitude)).font(.caption2).foregroundStyle(Palette.ember)
+                        Text(String(format: "Outside the bundled map · %.5f, %.5f", car.latitude, car.longitude)).font(.caption2).foregroundStyle(Palette.ember)
                         HStack {
                             if let url = ParkedCar.externalMapURL(for: car) { Link("Apple Maps", destination: url) }
                             Button("Edit") { router.openMapTool(.parkedCar) }
@@ -156,13 +156,14 @@ struct TripScreen: View {
             let places = saved.state.places.values.sorted { $0.savedAt > $1.savedAt }
             if places.isEmpty { Text("No saved places yet. Tap the star on any place.").font(.caption2).foregroundStyle(.secondary) }
             ForEach(places, id: \.placeId) { sp in
-                if let p = c.place(sp.placeId) {
-                    // Saved hikes share the trail's place id; they open the hike, not the generic place record.
-                    Button { if c.trail(p.id) != nil { router.push(.trail(p.id), in: .trails) } else { router.push(.place(p.id), in: .directory) } } label: {
+                // Saved hikes open the hike; Valley hikes also have a place record, park-wide hikes only a trail.
+                let trail = c.trail(sp.placeId)
+                if let name = trail?.name ?? c.place(sp.placeId)?.name {
+                    Button { if trail != nil { router.push(.trail(sp.placeId), in: .trails) } else { router.push(.place(sp.placeId), in: .directory) } } label: {
                         HStack(alignment: .top) {
-                            Image(systemName: c.trail(p.id) != nil ? "figure.hiking" : "star.fill").foregroundStyle(Palette.accent).font(.caption)
+                            Image(systemName: trail != nil ? "figure.hiking" : "star.fill").foregroundStyle(Palette.accent).font(.caption)
                             VStack(alignment: .leading, spacing: 1) {
-                                Text(p.name).font(.fieldCaption.weight(.semibold))
+                                Text(name).font(.fieldCaption.weight(.semibold))
                                 if let note = sp.note { Text(note).font(.caption2).foregroundStyle(.secondary) }
                             }
                             Spacer()
@@ -202,11 +203,14 @@ final class OfflinePackStatus: ObservableObject {
 
     nonisolated private static let labels: [String: String] = [
         "buildings.geojson": "Valley buildings", "parking.geojson": "Valley parking", "pois.geojson": "Valley points of interest",
-        "roads.geojson": "Valley roads", "trails.geojson": "Valley trails & bike paths", "park-roads.geojson": "Park roads",
-        "park-pois.geojson": "Park points of interest", "park-boundary.geojson": "Park boundary", "fire-scars.geojson": "Historical fire perimeters",
+        "roads.geojson": "Valley roads", "trails.geojson": "Valley trails & bike paths", "park-roads.geojson": "Park roads beyond the Valley", "park-trails.geojson": "Park trails (NPS)",
+        "park-pois.geojson": "Park points of interest beyond the Valley", "park-buildings.geojson": "Park buildings beyond the Valley",
+        "park-parking.geojson": "Park parking beyond the Valley", "park-water.geojson": "Park streams & lakes (NHD)", "park-names.geojson": "Park place names (GNIS)",
+        "park-boundary.geojson": "Park boundary", "fire-scars.geojson": "Historical fire perimeters",
         "campsites.geojson": "Campsite inventory (RIDB)", "campground-context.geojson": "Campground roads & restrooms",
         "elevation-valley.json": "Sun/shadow terrain grid 320×152", "elevation-basemap.json": "Relief detail grid (20 m)",
-        "elevation-region.json": "Relief background grid (45 m)",
+        "elevation-park.json": "Park relief grid header (3DEP)", "elevation-park.bin": "Park relief grid (3DEP, ≈30 m)",
+        "elevation-surround.json": "Surrounding relief header (3DEP)", "elevation-surround.bin": "Surrounding relief (3DEP, ≈250 m)",
         "transit.json": "Shuttle timetable (GTFS)", "map-manifest.json": "Valley pack manifest",
         "park-manifest.json": "Park pack manifest", "water-ice.json": "Water & ice records", "dump-stations.json": "RV dump stations",
         "waterways.geojson": "Rivers & creeks (NHD)",

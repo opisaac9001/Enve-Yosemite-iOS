@@ -1,0 +1,2406 @@
+{
+ "generated": "2026-10-30",
+ "about": "NPS-published day hikes outside Yosemite Valley. Distances, gains and times are NPS figures; trailhead coordinates are NPS GIS points. Not every park trail is listed.",
+ "trails": [
+  {
+   "id": "trail-glacier-point-overlook",
+   "name": "Glacier Point Overlook",
+   "regionId": "glacier-point",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "glacier-point-overlook-walk",
+     "label": "To the overlook",
+     "distanceMi": 0.17,
+     "kind": "one way",
+     "time": "10–15 minutes"
+    }
+   ],
+   "summary": "A short paved stroll from the parking area to the railing 3,200 feet above Yosemite Valley, facing Half Dome and the High Sierra.",
+   "start": "Glacier Point parking area",
+   "trailheadSource": "NPS POI 21520 (Glacier Point Trailhead)",
+   "latitude": 37.727709,
+   "longitude": -119.573491,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "NPS gives the distance as 300 yards each way on a paved, gently rising path.",
+    "Reached by car only while Glacier Point Road is open, usually from May to November."
+   ],
+   "mapPriority": 7,
+   "sources": [
+    {
+     "label": "NPS · Day hikes along the Glacier Point Road",
+     "url": "https://www.nps.gov/yose/planyourvisit/glacierhikes.htm",
+     "updated": "2026-09-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Glacier Point Road",
+     "name": "Glacier Point Road"
+    }
+   ],
+   "noticeTerms": [],
+   "accessibility": "NPS Accessibility Guide (Summer 2022): two paved paths reach the overlook, but both are steeper than an accessible grade in places.",
+   "pets": "The NPS pets page (updated June 24, 2026) allows leashed pets on fully paved paths and sidewalks in developed areas unless signs say otherwise, and bars them from trails; it does not name this path, so follow the signs.",
+   "extraSources": [
+    {
+     "label": "NPS · Yosemite Accessibility Guide (Summer 2022, bundled in Documents)",
+     "url": "https://www.nps.gov/yose/planyourvisit/upload/access2022.pdf",
+     "updated": "2022-05",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-mcgurk-meadow",
+   "name": "McGurk Meadow",
+   "regionId": "glacier-point",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "mcgurk-meadow-rt",
+     "label": "Round trip",
+     "distanceMi": 1.6,
+     "kind": "round trip",
+     "gainFt": 150,
+     "time": "1–1.5 hours"
+    }
+   ],
+   "summary": "A short downhill walk to a meadow and the historic McGurk cabin, best for early-summer wildflowers.",
+   "start": "McGurk Meadow Trailhead, Glacier Point Road",
+   "trailheadSource": "NPS POI 21924 (McGurk Meadow Trailhead)",
+   "latitude": 37.670447,
+   "longitude": -119.628121,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "The 150 feet of climbing comes on the way back.",
+    "Reached by car only while Glacier Point Road is open, usually from May to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes along the Glacier Point Road",
+     "url": "https://www.nps.gov/yose/planyourvisit/glacierhikes.htm",
+     "updated": "2026-09-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Glacier Point Road",
+     "name": "Glacier Point Road"
+    }
+   ],
+   "noticeTerms": [
+    "McGurk Meadow"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-sentinel-dome",
+   "name": "Sentinel Dome",
+   "regionId": "glacier-point",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "sentinel-dome",
+     "label": "Round trip from the trailhead",
+     "distanceMi": 2,
+     "kind": "round trip",
+     "gainFt": 400,
+     "time": "1–2 hours"
+    }
+   ],
+   "summary": "A short hike and a scramble up the side of a granite dome for a 360-degree view across Yosemite.",
+   "start": "Sentinel Dome / Taft Point Trailhead, Glacier Point Road",
+   "trailheadSource": "NPS POI 20333 (Sentinel Dome Trailhead)",
+   "latitude": 37.712552,
+   "longitude": -119.586349,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Reached by car only while Glacier Point Road is open, usually from May to November."
+   ],
+   "mapPriority": 7,
+   "sources": [
+    {
+     "label": "NPS · Day hikes along the Glacier Point Road",
+     "url": "https://www.nps.gov/yose/planyourvisit/glacierhikes.htm",
+     "updated": "2026-09-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "warnings": [
+    "Stay off domes and exposed summits when thunderstorms threaten."
+   ],
+   "accessRoads": [
+    {
+     "key": "Glacier Point Road",
+     "name": "Glacier Point Road"
+    }
+   ],
+   "noticeTerms": [
+    "Sentinel Dome"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-taft-point",
+   "name": "Taft Point",
+   "regionId": "glacier-point",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "taft-point",
+     "label": "Round trip from the trailhead",
+     "distanceMi": 2.2,
+     "kind": "round trip",
+     "gainFt": 200,
+     "time": "1–2 hours"
+    }
+   ],
+   "summary": "Forest and meadow to the Valley rim, with views of El Capitan and Yosemite Falls from a sheer overlook.",
+   "start": "Sentinel Dome / Taft Point Trailhead, Glacier Point Road",
+   "trailheadSource": "NPS POI 20333 (Sentinel Dome Trailhead)",
+   "latitude": 37.712552,
+   "longitude": -119.586349,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "The 200 feet of climbing comes on the way back.",
+    "Reached by car only while Glacier Point Road is open, usually from May to November."
+   ],
+   "mapPriority": 7,
+   "sources": [
+    {
+     "label": "NPS · Day hikes along the Glacier Point Road",
+     "url": "https://www.nps.gov/yose/planyourvisit/glacierhikes.htm",
+     "updated": "2026-09-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "warnings": [
+    "The overlook ends at unfenced cliff edges; keep well back from the rim."
+   ],
+   "accessRoads": [
+    {
+     "key": "Glacier Point Road",
+     "name": "Glacier Point Road"
+    }
+   ],
+   "noticeTerms": [
+    "Taft Point"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-mono-meadow",
+   "name": "Mono Meadow",
+   "regionId": "glacier-point",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "mono-meadow-rt",
+     "label": "Round trip",
+     "distanceMi": 3,
+     "kind": "round trip",
+     "gainFt": 900,
+     "time": "2–3 hours"
+    }
+   ],
+   "summary": "A steep descent to a meadow that stays wet through summer; another half mile leads to views of the Clark Range, Mount Starr King and Half Dome.",
+   "start": "Mono Meadow Trailhead, Glacier Point Road",
+   "trailheadSource": "NPS POI 22020 (Mono Meadow Trailhead)",
+   "latitude": 37.671453,
+   "longitude": -119.584778,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "NPS describes the descent as steep; the 900 feet of climbing comes on the way back.",
+    "Reached by car only while Glacier Point Road is open, usually from May to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes along the Glacier Point Road",
+     "url": "https://www.nps.gov/yose/planyourvisit/glacierhikes.htm",
+     "updated": "2026-09-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Glacier Point Road",
+     "name": "Glacier Point Road"
+    }
+   ],
+   "noticeTerms": [
+    "Mono Meadow"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-dewey-point",
+   "name": "Dewey Point",
+   "regionId": "glacier-point",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "dewey-point-rt",
+     "label": "Round trip via McGurk Meadow",
+     "distanceMi": 7.6,
+     "kind": "round trip",
+     "gainFt": 750,
+     "time": "4–5 hours"
+    }
+   ],
+   "summary": "Through McGurk Meadow to the Pohono Trail and along the Valley rim to a sweeping viewpoint.",
+   "start": "McGurk Meadow Trailhead, Glacier Point Road",
+   "trailheadSource": "NPS POI 21924 (McGurk Meadow Trailhead)",
+   "latitude": 37.670447,
+   "longitude": -119.628121,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "NPS: a 250-foot descent to the Pohono Trail junction, then about 500 feet of climbing over the last two miles.",
+    "Reached by car only while Glacier Point Road is open, usually from May to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes along the Glacier Point Road",
+     "url": "https://www.nps.gov/yose/planyourvisit/glacierhikes.htm",
+     "updated": "2026-09-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "discrepancies": [
+    "The NPS page lists 7.6 miles alongside 13.2 km; 7.6 miles is about 12.2 km. The mile figure is shown."
+   ],
+   "accessRoads": [
+    {
+     "key": "Glacier Point Road",
+     "name": "Glacier Point Road"
+    }
+   ],
+   "noticeTerms": [
+    "Dewey Point",
+    "McGurk Meadow",
+    "Pohono Trail"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-ostrander-lake",
+   "name": "Ostrander Lake",
+   "regionId": "glacier-point",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "ostrander-lake-rt",
+     "label": "Round trip",
+     "distanceMi": 12,
+     "kind": "round trip",
+     "gainFt": 1500,
+     "time": "8–10 hours"
+    }
+   ],
+   "summary": "A long day through forest and meadow, then a steep climb with views of Mount Starr King and the Clark Range before the lake.",
+   "start": "Ostrander Lake Trailhead, Glacier Point Road",
+   "trailheadSource": "NPS POI 22812 (Ostrander Trailhead)",
+   "latitude": 37.666739,
+   "longitude": -119.603609,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Reached by car only while Glacier Point Road is open, usually from May to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes along the Glacier Point Road",
+     "url": "https://www.nps.gov/yose/planyourvisit/glacierhikes.htm",
+     "updated": "2026-09-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Glacier Point Road",
+     "name": "Glacier Point Road"
+    }
+   ],
+   "noticeTerms": [
+    "Ostrander Lake",
+    "Ostrander Hut"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-panorama",
+   "name": "Panorama Trail",
+   "regionId": "glacier-point",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "panorama-trail-mist",
+     "label": "One way to Happy Isles via the Mist Trail",
+     "distanceMi": 8.2,
+     "kind": "one way",
+     "time": "6–8 hours"
+    }
+   ],
+   "summary": "From Glacier Point down to Illilouette Fall, an 800-foot climb, then down past Nevada and Vernal falls to the Valley floor.",
+   "start": "Glacier Point",
+   "trailheadSource": "NPS POI 21520 (Glacier Point Trailhead)",
+   "latitude": 37.727709,
+   "longitude": -119.573491,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "One way: no shuttle runs between the Valley and Glacier Point. The seasonal Glacier Point Tour bus needs a reservation; NPS warns not to plan on it for the return.",
+    "Reached by car only while Glacier Point Road is open, usually from May to November."
+   ],
+   "mapPriority": 6,
+   "sources": [
+    {
+     "label": "NPS · Day hikes along the Glacier Point Road",
+     "url": "https://www.nps.gov/yose/planyourvisit/glacierhikes.htm",
+     "updated": "2026-09-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "warnings": [
+    "The Mist Trail above the Vernal Fall footbridge and the John Muir Trail between Clark Point and the Panorama junction can close for ice from November."
+   ],
+   "accessRoads": [
+    {
+     "key": "Glacier Point Road",
+     "name": "Glacier Point Road"
+    }
+   ],
+   "noticeTerms": [
+    "Panorama Trail",
+    "Illilouette",
+    "Nevada Fall",
+    "Vernal Fall",
+    "Mist Trail"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-pohono",
+   "name": "Pohono Trail",
+   "regionId": "glacier-point",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "pohono-trail",
+     "label": "One way to Tunnel View",
+     "distanceMi": 12.5,
+     "kind": "one way",
+     "time": "8–10 hours"
+    }
+   ],
+   "summary": "The full south rim of Yosemite Valley from Glacier Point to Tunnel View, past Sentinel Dome, Taft Point and Dewey Point.",
+   "start": "Glacier Point",
+   "trailheadSource": "NPS POI 21520 (Glacier Point Trailhead)",
+   "latitude": 37.727709,
+   "longitude": -119.573491,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "One way: arrange a car or ride at Tunnel View.",
+    "Reached by car only while Glacier Point Road is open, usually from May to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes along the Glacier Point Road",
+     "url": "https://www.nps.gov/yose/planyourvisit/glacierhikes.htm",
+     "updated": "2026-09-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Glacier Point Road",
+     "name": "Glacier Point Road"
+    }
+   ],
+   "noticeTerms": [
+    "Pohono Trail",
+    "Taft Point",
+    "Dewey Point"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-wawona-meadow-loop",
+   "name": "Wawona Meadow Loop",
+   "regionId": "wawona-mariposa-grove",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "wawona-meadow-loop",
+     "label": "Loop around the meadow",
+     "distanceMi": 3.5,
+     "kind": "loop",
+     "time": "2–3 hours"
+    }
+   ],
+   "summary": "Across the Wawona golf course on a paved road, then an unpaved fire road around the meadow; wildflowers in spring and early summer.",
+   "start": "Wawona Hotel",
+   "trailheadSource": "NPS POI 21368 (Meadow Loop Trailhead)",
+   "latitude": 37.535055,
+   "longitude": -119.657715,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Mostly flat with uneven ground.",
+    "No drinking water on Wawona trails; the nearest fountain is by the restrooms at the Wawona Store parking area."
+   ],
+   "mapPriority": 6,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Wawona and Mariposa Grove",
+     "url": "https://www.nps.gov/yose/planyourvisit/wawonahikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "pets": "Leashed pets and bicycles are allowed; NPS says this is the only hiking trail in Yosemite where they are.",
+   "accessRoads": [
+    {
+     "key": "SR-41",
+     "name": "Wawona Road (Highway 41)"
+    }
+   ],
+   "noticeTerms": [
+    "Wawona Meadow"
+   ]
+  },
+  {
+   "id": "trail-wawona-swinging-bridge",
+   "name": "Wawona Swinging Bridge",
+   "regionId": "wawona-mariposa-grove",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "wawona-swinging-bridge-rt",
+     "label": "Round trip",
+     "distanceMi": 0.6,
+     "kind": "round trip",
+     "time": "30 minutes"
+    }
+   ],
+   "summary": "A flat 0.3-mile walk to a suspended footbridge and a popular swimming hole on the South Fork Merced River.",
+   "start": "Swinging Bridge Trailhead, end of Forest Drive",
+   "trailheadSource": "NPS POI 22475 (Swinging Bridge Trailhead)",
+   "latitude": 37.543336,
+   "longitude": -119.628391,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Wawona and Mariposa Grove",
+     "url": "https://www.nps.gov/yose/planyourvisit/wawonahikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "warnings": [
+    "River currents are strongest during snowmelt; NPS does not publish a safe-swimming season for this spot."
+   ],
+   "accessRoads": [
+    {
+     "key": "SR-41",
+     "name": "Wawona Road (Highway 41)"
+    }
+   ],
+   "noticeTerms": [
+    "Wawona Swinging Bridge",
+    "Forest Drive"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-chilnualna-falls",
+   "name": "Chilnualna Falls",
+   "regionId": "wawona-mariposa-grove",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "chilnualna-falls-rt",
+     "label": "Round trip",
+     "distanceMi": 8.2,
+     "kind": "round trip",
+     "gainFt": 2400,
+     "time": "5–7 hours"
+    }
+   ],
+   "summary": "Beside cascading Chilnualna Creek, then switchbacks with views over Wawona toward the falls. NPS calls it very challenging; a first waterfall view comes a quarter mile in.",
+   "start": "Chilnualna Falls Trailhead, near the end of Chilnualna Falls Road",
+   "trailheadSource": "NPS POI 21941 (Chilnualna Falls Trailhead)",
+   "latitude": 37.548545,
+   "longitude": -119.633688,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "The falls run fullest in spring and early summer.",
+    "No drinking water on Wawona trails."
+   ],
+   "mapPriority": 6,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Wawona and Mariposa Grove",
+     "url": "https://www.nps.gov/yose/planyourvisit/wawonahikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "SR-41",
+     "name": "Wawona Road (Highway 41)"
+    }
+   ],
+   "noticeTerms": [
+    "Chilnualna"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-alder-creek",
+   "name": "Alder Creek",
+   "regionId": "wawona-mariposa-grove",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "alder-creek-rt",
+     "label": "Round trip from Chilnualna Falls Road",
+     "distanceMi": 12,
+     "kind": "round trip",
+     "gainFt": 2500,
+     "time": "7–9 hours"
+    },
+    {
+     "id": "alder-creek-mosquito-creek",
+     "label": "Shorter round trip from Mosquito Creek Trailhead",
+     "distanceMi": 7.4,
+     "kind": "round trip"
+    }
+   ],
+   "summary": "A very challenging climb through open pine forest to a seldom-visited 100-foot cascade.",
+   "start": "Alder Creek Trailhead on Chilnualna Falls Road, or Mosquito Creek Trailhead on Wawona Road for the shorter version",
+   "trailheadSource": "NPS POI 21996 (Alder Creek Trailhead)",
+   "latitude": 37.541171,
+   "longitude": -119.652298,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "NPS publishes no gain or time for the shorter Mosquito Creek option.",
+    "No drinking water on Wawona trails."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Wawona and Mariposa Grove",
+     "url": "https://www.nps.gov/yose/planyourvisit/wawonahikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "SR-41",
+     "name": "Wawona Road (Highway 41)"
+    }
+   ],
+   "noticeTerms": [
+    "Alder Creek",
+    "Mosquito Creek",
+    "Chilnualna Falls Road"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-big-trees-loop",
+   "name": "Big Trees Loop",
+   "regionId": "wawona-mariposa-grove",
+   "difficulty": "Easy",
+   "routes": [
+    {
+     "id": "big-trees-loop",
+     "label": "Loop from the grove arrival area",
+     "distanceMi": 0.3,
+     "kind": "loop",
+     "time": "30–45 minutes",
+     "difficulty": "Easy",
+     "difficultySource": {
+      "label": "NPS · Mariposa Grove of Giant Sequoias",
+      "url": "https://www.nps.gov/yose/planyourvisit/mg.htm",
+      "updated": "2026-06-11",
+      "checked": "2026-10-30"
+     }
+    }
+   ],
+   "summary": "A flat loop on pavement, packed dirt and boardwalk among giant sequoias, past the Fallen Monarch and interpretive panels.",
+   "start": "Mariposa Grove Arrival Area & Trailhead",
+   "trailheadSource": "NPS POI 20092 (Mariposa Grove Trailhead)",
+   "latitude": 37.501595,
+   "longitude": -119.61087,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [],
+   "mapPriority": 7,
+   "sources": [
+    {
+     "label": "NPS · Mariposa Grove of Giant Sequoias",
+     "url": "https://www.nps.gov/yose/planyourvisit/mg.htm",
+     "updated": "2026-06-11",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Day hikes in Wawona and Mariposa Grove",
+     "url": "https://www.nps.gov/yose/planyourvisit/wawonahikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "discrepancies": [
+    "The Wawona hikes page calls it 0.3 mile round trip; the Mariposa Grove page calls it a 0.3-mile loop."
+   ],
+   "accessibility": "NPS describes the loop as wheelchair accessible.",
+   "pets": "Pets are not allowed on any trail or road in the Mariposa Grove, on the Washburn Trail or on the grove shuttle.",
+   "accessRoads": [
+    {
+     "key": "Mariposa Grove Road",
+     "name": "Mariposa Grove Road"
+    }
+   ],
+   "noticeTerms": [
+    "Mariposa Grove",
+    "Big Trees Loop"
+   ]
+  },
+  {
+   "id": "trail-grizzly-giant-loop",
+   "name": "Grizzly Giant Loop",
+   "regionId": "wawona-mariposa-grove",
+   "difficulty": "Moderate",
+   "routes": [
+    {
+     "id": "grizzly-giant-loop",
+     "label": "Loop from the grove arrival area",
+     "distanceMi": 2,
+     "kind": "loop",
+     "gainFt": 300,
+     "time": "1.5–2 hours",
+     "difficulty": "Moderate",
+     "difficultySource": {
+      "label": "NPS · Mariposa Grove of Giant Sequoias",
+      "url": "https://www.nps.gov/yose/planyourvisit/mg.htm",
+      "updated": "2026-06-11",
+      "checked": "2026-10-30"
+     }
+    }
+   ],
+   "summary": "Past the Bachelor and Three Graces, the roughly 3,000-year-old Grizzly Giant and the California Tunnel Tree.",
+   "start": "Mariposa Grove Arrival Area & Trailhead",
+   "trailheadSource": "NPS POI 20092 (Mariposa Grove Trailhead)",
+   "latitude": 37.501595,
+   "longitude": -119.61087,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [],
+   "mapPriority": 7,
+   "sources": [
+    {
+     "label": "NPS · Mariposa Grove of Giant Sequoias",
+     "url": "https://www.nps.gov/yose/planyourvisit/mg.htm",
+     "updated": "2026-06-11",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Day hikes in Wawona and Mariposa Grove",
+     "url": "https://www.nps.gov/yose/planyourvisit/wawonahikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessibility": "Holders of a valid disability placard can drive to the Grizzly Giant parking area, where a section of trail is wheelchair accessible.",
+   "pets": "Pets are not allowed anywhere in the Mariposa Grove.",
+   "accessRoads": [
+    {
+     "key": "Mariposa Grove Road",
+     "name": "Mariposa Grove Road"
+    }
+   ],
+   "noticeTerms": [
+    "Mariposa Grove",
+    "Grizzly Giant"
+   ]
+  },
+  {
+   "id": "trail-guardians-loop",
+   "name": "Guardians Loop",
+   "regionId": "wawona-mariposa-grove",
+   "difficulty": "Strenuous",
+   "routes": [
+    {
+     "id": "guardians-loop-rt",
+     "label": "Round trip from the grove arrival area",
+     "distanceMi": 6.5,
+     "kind": "round trip",
+     "gainFt": 1000,
+     "time": "4–6 hours",
+     "difficulty": "Strenuous",
+     "difficultySource": {
+      "label": "NPS · Mariposa Grove of Giant Sequoias",
+      "url": "https://www.nps.gov/yose/planyourvisit/mg.htm",
+      "updated": "2026-06-11",
+      "checked": "2026-10-30"
+     }
+    }
+   ],
+   "summary": "Beyond the Grizzly Giant to the quiet upper grove, where a 1.5-mile loop passes the fallen Wawona Tunnel Tree, the Telescope Tree and the Mariposa Grove Cabin.",
+   "start": "Mariposa Grove Arrival Area & Trailhead",
+   "trailheadSource": "NPS POI 20092 (Mariposa Grove Trailhead)",
+   "latitude": 37.501595,
+   "longitude": -119.61087,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Mariposa Grove of Giant Sequoias",
+     "url": "https://www.nps.gov/yose/planyourvisit/mg.htm",
+     "updated": "2026-06-11",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Day hikes in Wawona and Mariposa Grove",
+     "url": "https://www.nps.gov/yose/planyourvisit/wawonahikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "pets": "Pets are not allowed anywhere in the Mariposa Grove.",
+   "accessRoads": [
+    {
+     "key": "Mariposa Grove Road",
+     "name": "Mariposa Grove Road"
+    }
+   ],
+   "noticeTerms": [
+    "Mariposa Grove",
+    "Guardians Loop"
+   ]
+  },
+  {
+   "id": "trail-wawona-point",
+   "name": "Mariposa Grove Trail to Wawona Point",
+   "regionId": "wawona-mariposa-grove",
+   "difficulty": "Strenuous",
+   "routes": [
+    {
+     "id": "wawona-point-rt",
+     "label": "Round trip to Wawona Point",
+     "distanceMi": 7,
+     "kind": "round trip",
+     "gainFt": 1200,
+     "time": "4–6 hours",
+     "difficulty": "Strenuous",
+     "difficultySource": {
+      "label": "NPS · Mariposa Grove of Giant Sequoias",
+      "url": "https://www.nps.gov/yose/planyourvisit/mg.htm",
+      "updated": "2026-06-11",
+      "checked": "2026-10-30"
+     }
+    }
+   ],
+   "summary": "A wide, fairly smooth historic route to the top of the grove past the Faithful Couple and the Clothespin Tree, continuing to the Wawona Point overlook.",
+   "start": "Mariposa Grove Arrival Area & Trailhead",
+   "trailheadSource": "NPS POI 20092 (Mariposa Grove Trailhead)",
+   "latitude": 37.501595,
+   "longitude": -119.61087,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Mariposa Grove of Giant Sequoias",
+     "url": "https://www.nps.gov/yose/planyourvisit/mg.htm",
+     "updated": "2026-06-11",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Day hikes in Wawona and Mariposa Grove",
+     "url": "https://www.nps.gov/yose/planyourvisit/wawonahikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "discrepancies": [
+    "The Mariposa Grove page (updated June 11, 2026) gives 7 miles round trip; the older Wawona hikes page (October 15, 2024) gives 7.75 miles. The newer figure is shown."
+   ],
+   "pets": "Pets are not allowed anywhere in the Mariposa Grove.",
+   "accessRoads": [
+    {
+     "key": "Mariposa Grove Road",
+     "name": "Mariposa Grove Road"
+    }
+   ],
+   "noticeTerms": [
+    "Mariposa Grove",
+    "Wawona Point"
+   ]
+  },
+  {
+   "id": "trail-lookout-point",
+   "name": "Lookout Point",
+   "regionId": "hetch-hetchy",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "lookout-point-rt",
+     "label": "Round trip",
+     "distanceMi": 2,
+     "kind": "round trip",
+     "gainFt": 680
+    }
+   ],
+   "summary": "Moderate climbing to a rocky outcrop overlooking Hetch Hetchy Valley.",
+   "start": "Hetch Hetchy Entrance Station",
+   "trailheadSource": "NPS POI 21339 (Hetch Hetchy Entrance)",
+   "latitude": 37.893591,
+   "longitude": -119.841696,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "NPS gives 680 feet as the elevation gain and loss."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Hetch Hetchy",
+     "url": "https://www.nps.gov/yose/planyourvisit/hetchhetchy.htm",
+     "updated": "2023-08-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Hetch Hetchy Road",
+     "name": "Hetch Hetchy Road"
+    }
+   ],
+   "noticeTerms": [
+    "Lookout Point"
+   ],
+   "access": [
+    "NPS Hetch Hetchy page (updated June 11, 2026): the road is open only from sunrise to sunset, vehicles or trailers over 25 feet long or 8 feet wide are not permitted, and there is no public transportation. From November to March it may close or need chains for ice and snow."
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Visiting Hetch Hetchy",
+     "url": "https://www.nps.gov/yose/planyourvisit/hh.htm",
+     "updated": "2026-06-11",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-wapama-falls",
+   "name": "Wapama Falls",
+   "regionId": "hetch-hetchy",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "wapama-falls-rt",
+     "label": "Round trip",
+     "distanceMi": 5,
+     "kind": "round trip",
+     "gainFt": 507
+    }
+   ],
+   "summary": "Across O'Shaughnessy Dam and through the tunnel, then along the reservoir shore with views of Tueeulala and Wapama falls.",
+   "start": "Hetch Hetchy Trailhead, across the dam",
+   "trailheadSource": "NPS POI 22178 (Hetch Hetchy Trailhead)",
+   "latitude": 37.946497,
+   "longitude": -119.787515,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "NPS gives 507 feet as the elevation gain and loss, with moderate ups and downs."
+   ],
+   "mapPriority": 6,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Hetch Hetchy",
+     "url": "https://www.nps.gov/yose/planyourvisit/hetchhetchy.htm",
+     "updated": "2023-08-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "warnings": [
+    "The footbridges below Wapama Falls can flood during spring runoff; check current conditions before crossing."
+   ],
+   "accessRoads": [
+    {
+     "key": "Hetch Hetchy Road",
+     "name": "Hetch Hetchy Road"
+    }
+   ],
+   "noticeTerms": [
+    "O'Shaughnessy Dam",
+    "Wapama",
+    "Tueeulala"
+   ],
+   "access": [
+    "NPS Hetch Hetchy page (updated June 11, 2026): the road is open only from sunrise to sunset, vehicles or trailers over 25 feet long or 8 feet wide are not permitted, and there is no public transportation. From November to March it may close or need chains for ice and snow."
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Visiting Hetch Hetchy",
+     "url": "https://www.nps.gov/yose/planyourvisit/hh.htm",
+     "updated": "2026-06-11",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-rancheria-falls",
+   "name": "Rancheria Falls",
+   "regionId": "hetch-hetchy",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "rancheria-falls-rt",
+     "label": "Round trip",
+     "distanceMi": 13,
+     "kind": "round trip",
+     "gainFt": 1909
+    }
+   ],
+   "summary": "Beyond Wapama Falls along the reservoir to Rancheria Falls; a long day hike or an overnight trip with a wilderness permit.",
+   "start": "Hetch Hetchy Trailhead, across the dam",
+   "trailheadSource": "NPS POI 22178 (Hetch Hetchy Trailhead)",
+   "latitude": 37.946497,
+   "longitude": -119.787515,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "A wilderness permit is required for any overnight stay."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Hetch Hetchy",
+     "url": "https://www.nps.gov/yose/planyourvisit/hetchhetchy.htm",
+     "updated": "2023-08-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Hetch Hetchy Road",
+     "name": "Hetch Hetchy Road"
+    }
+   ],
+   "noticeTerms": [
+    "O'Shaughnessy Dam",
+    "Wapama",
+    "Tueeulala",
+    "Rancheria"
+   ],
+   "access": [
+    "NPS Hetch Hetchy page (updated June 11, 2026): the road is open only from sunrise to sunset, vehicles or trailers over 25 feet long or 8 feet wide are not permitted, and there is no public transportation. From November to March it may close or need chains for ice and snow."
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Visiting Hetch Hetchy",
+     "url": "https://www.nps.gov/yose/planyourvisit/hh.htm",
+     "updated": "2026-06-11",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-smith-peak",
+   "name": "Smith Peak",
+   "regionId": "hetch-hetchy",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "smith-peak-from-road",
+     "label": "Round trip from the trailhead beyond the entrance",
+     "distanceMi": 13,
+     "kind": "round trip",
+     "gainFt": 3700
+    },
+    {
+     "id": "smith-peak-from-entrance",
+     "label": "Round trip from the entrance station",
+     "distanceMi": 16,
+     "kind": "round trip",
+     "gainFt": 3300
+    }
+   ],
+   "summary": "The highest point in the Hetch Hetchy area at 7,751 feet, with wide views.",
+   "start": "Smith Peak Trailhead about 6 miles beyond the entrance station, or the entrance station itself",
+   "trailheadSource": "NPS POI 22815 (Smith Peak Trailhead)",
+   "latitude": 37.926192,
+   "longitude": -119.795145,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Hetch Hetchy",
+     "url": "https://www.nps.gov/yose/planyourvisit/hetchhetchy.htm",
+     "updated": "2023-08-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Hetch Hetchy Road",
+     "name": "Hetch Hetchy Road"
+    }
+   ],
+   "noticeTerms": [
+    "Smith Peak"
+   ],
+   "access": [
+    "NPS Hetch Hetchy page (updated June 11, 2026): the road is open only from sunrise to sunset, vehicles or trailers over 25 feet long or 8 feet wide are not permitted, and there is no public transportation. From November to March it may close or need chains for ice and snow."
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Visiting Hetch Hetchy",
+     "url": "https://www.nps.gov/yose/planyourvisit/hh.htm",
+     "updated": "2026-06-11",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-poopenaut-valley",
+   "name": "Poopenaut Valley",
+   "regionId": "hetch-hetchy",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "poopenaut-valley-rt",
+     "label": "Round trip",
+     "distanceMi": 2.5,
+     "kind": "round trip",
+     "gainFt": 1279
+    }
+   ],
+   "summary": "A steep descent to the Tuolumne River and a strenuous climb back out.",
+   "start": "Signed trailhead 4 miles past the entrance station",
+   "trailheadSource": "NPS POI 20212 (Poopenaut Valley Trailhead)",
+   "latitude": 37.910204,
+   "longitude": -119.814626,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Hetch Hetchy",
+     "url": "https://www.nps.gov/yose/planyourvisit/hetchhetchy.htm",
+     "updated": "2023-08-22",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Hetch Hetchy Road",
+     "name": "Hetch Hetchy Road"
+    }
+   ],
+   "noticeTerms": [
+    "Poopenaut"
+   ],
+   "access": [
+    "NPS Hetch Hetchy page (updated June 11, 2026): the road is open only from sunrise to sunset, vehicles or trailers over 25 feet long or 8 feet wide are not permitted, and there is no public transportation. From November to March it may close or need chains for ice and snow."
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Visiting Hetch Hetchy",
+     "url": "https://www.nps.gov/yose/planyourvisit/hh.htm",
+     "updated": "2026-06-11",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-tuolumne-grove",
+   "name": "Tuolumne Grove",
+   "regionId": "crane-flat-big-oak-flat",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "tuolumne-grove-rt",
+     "label": "Round trip with the nature trail",
+     "distanceMi": 2.5,
+     "kind": "round trip",
+     "gainFt": 500,
+     "time": "1–2 hours"
+    }
+   ],
+   "summary": "Down a historic wagon road to about two dozen giant sequoias and a half-mile self-guided nature trail; the climb back is steep.",
+   "start": "Tuolumne Grove Trailhead, Tioga Road near Crane Flat",
+   "trailheadSource": "NPS POI 20953 (Tuolumne Grove Trailhead)",
+   "latitude": 37.758253,
+   "longitude": -119.805599,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "The 500 feet of climbing comes on the way back.",
+    "No drinking water; parking is limited.",
+    "Open year-round; skis or snowshoes may be needed in winter."
+   ],
+   "mapPriority": 7,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Crane Flat and White Wolf",
+     "url": "https://www.nps.gov/yose/planyourvisit/whitewolf.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Giant sequoias",
+     "url": "https://www.nps.gov/yose/planyourvisit/sequoias.htm",
+     "updated": "2025-04-07",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Tuolumne Grove"
+   ],
+   "accessibility": "NPS Accessibility Guide (Summer 2022): the path is not accessible. It follows the paved former Big Oak Flat Road at about a 7.5% grade for a mile, then packed dirt, and is not plowed in winter. An accessible restroom is near the parking area.",
+   "discrepancies": [
+    "The 2022 NPS Accessibility Guide gives about 400 feet of elevation change; the NPS day-hike page gives 500 feet. The day-hike figure is shown."
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Yosemite Accessibility Guide (Summer 2022, bundled in Documents)",
+     "url": "https://www.nps.gov/yose/planyourvisit/upload/access2022.pdf",
+     "updated": "2022-05",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-merced-grove",
+   "name": "Merced Grove",
+   "regionId": "crane-flat-big-oak-flat",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "merced-grove-rt",
+     "label": "Round trip",
+     "distanceMi": 3,
+     "kind": "round trip",
+     "gainFt": 520,
+     "time": "1–3 hours"
+    }
+   ],
+   "summary": "An old road down to Yosemite's smallest sequoia grove; keep left at the junction about half a mile in.",
+   "start": "Merced Grove Trailhead, Big Oak Flat Road",
+   "trailheadSource": "NPS POI 21394 (Merced Grove Trailhead)",
+   "latitude": 37.762993,
+   "longitude": -119.842272,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "The 520 feet of climbing comes on the way back.",
+    "No drinking water; parking is very limited.",
+    "Open year-round; skis or snowshoes may be needed in winter."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Crane Flat and White Wolf",
+     "url": "https://www.nps.gov/yose/planyourvisit/whitewolf.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Giant sequoias",
+     "url": "https://www.nps.gov/yose/planyourvisit/sequoias.htm",
+     "updated": "2025-04-07",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "SR-120",
+     "name": "Big Oak Flat Road (Highway 120)"
+    }
+   ],
+   "noticeTerms": [
+    "Merced Grove"
+   ],
+   "accessibility": "NPS Accessibility Guide (Summer 2022): a steep, unpaved road of packed dirt with no vehicle access; the trailhead has picnic tables but no restroom.",
+   "discrepancies": [
+    "The 2022 NPS Accessibility Guide gives about 600 feet of elevation change; the NPS day-hike page gives 520 feet. The day-hike figure is shown."
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Yosemite Accessibility Guide (Summer 2022, bundled in Documents)",
+     "url": "https://www.nps.gov/yose/planyourvisit/upload/access2022.pdf",
+     "updated": "2022-05",
+     "checked": "2026-10-30"
+    },
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-may-lake",
+   "name": "May Lake",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "may-lake-rt",
+     "label": "Round trip",
+     "distanceMi": 2.4,
+     "kind": "round trip",
+     "gainFt": 485,
+     "time": "1–2 hours"
+    }
+   ],
+   "summary": "Through forest and over granite slabs to a lake below Mount Hoffmann, with Half Dome views on the way.",
+   "start": "May Lake parking area, 1.75 miles up May Lake Road",
+   "trailheadSource": "NPS POI 20954 (May Lake Trailhead)",
+   "latitude": 37.832706,
+   "longitude": -119.491154,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Crane Flat and White Wolf",
+     "url": "https://www.nps.gov/yose/planyourvisit/whitewolf.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "May Lake"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-lukens-lake-tioga",
+   "name": "Lukens Lake from Tioga Road",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "lukens-lake-tioga-rt",
+     "label": "Round trip",
+     "distanceMi": 1.6,
+     "kind": "round trip",
+     "gainFt": 200,
+     "time": "1–2 hours"
+    }
+   ],
+   "summary": "Through forest and over a saddle to a small lake ringed by meadow; wildflowers in early summer.",
+   "start": "Lukens Trailhead, Tioga Road",
+   "trailheadSource": "NPS POI 21984 (Lukens to Lukens Lake Trailhead)",
+   "latitude": 37.850521,
+   "longitude": -119.61521,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "NPS says the trail stays wet and muddy until early August.",
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Crane Flat and White Wolf",
+     "url": "https://www.nps.gov/yose/planyourvisit/whitewolf.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Lukens Lake"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-lukens-lake-white-wolf",
+   "name": "Lukens Lake from White Wolf",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "lukens-lake-white-wolf-rt",
+     "label": "Round trip",
+     "distanceMi": 4.6,
+     "kind": "round trip",
+     "gainFt": 400,
+     "time": "2–3 hours"
+    }
+   ],
+   "summary": "The longer way to Lukens Lake, crossing the Middle Fork of the Tuolumne River.",
+   "start": "White Wolf, across from the lodge",
+   "trailheadSource": "NPS POI 21102 (White Wolf Trailhead)",
+   "latitude": 37.869768,
+   "longitude": -119.64882,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Can be wet and muddy.",
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Crane Flat and White Wolf",
+     "url": "https://www.nps.gov/yose/planyourvisit/whitewolf.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Lukens Lake",
+    "White Wolf"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-harden-lake",
+   "name": "Harden Lake",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "harden-lake-rt",
+     "label": "Round trip",
+     "distanceMi": 5.8,
+     "kind": "round trip",
+     "gainFt": 390,
+     "time": "2–4 hours"
+    }
+   ],
+   "summary": "North from White Wolf along the Middle Tuolumne River and an old road to a lake; an optional, very challenging extension drops to the rim of the Grand Canyon of the Tuolumne.",
+   "start": "White Wolf, across from the lodge",
+   "trailheadSource": "NPS POI 21102 (White Wolf Trailhead)",
+   "latitude": 37.869768,
+   "longitude": -119.64882,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "The 390 feet of climbing comes on the way back.",
+    "NPS gives no distance for the optional loop past the lake, only about 1,000 feet of extra climbing.",
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Crane Flat and White Wolf",
+     "url": "https://www.nps.gov/yose/planyourvisit/whitewolf.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Harden Lake",
+    "White Wolf"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-north-dome",
+   "name": "North Dome",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "north-dome-rt",
+     "label": "Round trip",
+     "distanceMi": 10.4,
+     "kind": "round trip",
+     "gainFt": 580,
+     "time": "5–7 hours"
+    }
+   ],
+   "summary": "A paved start, a Porcupine Creek crossing and forest and meadow to steep steps below North Dome, whose summit faces Half Dome across Yosemite Valley.",
+   "start": "Porcupine Creek Trailhead, Tioga Road",
+   "trailheadSource": "NPS POI 22600 (Porcupine Creek Trailhead)",
+   "latitude": 37.806575,
+   "longitude": -119.545261,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "The 580 feet of climbing comes on the way back.",
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Crane Flat and White Wolf",
+     "url": "https://www.nps.gov/yose/planyourvisit/whitewolf.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "warnings": [
+    "Stay off domes and exposed summits when thunderstorms threaten."
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "North Dome",
+    "Porcupine Creek"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-ten-lakes",
+   "name": "Ten Lakes",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "ten-lakes-rt",
+     "label": "Round trip",
+     "distanceMi": 12.6,
+     "kind": "round trip",
+     "gainFt": 2200,
+     "time": "7–9 hours"
+    }
+   ],
+   "summary": "Through conifers and over granite to Ten Lakes Pass and down into the lake basin; Grant Lakes lie a mile off the pass on a side trail.",
+   "start": "Ten Lakes Trailhead, Tioga Road",
+   "trailheadSource": "NPS POI 21777 (Ten Lakes Trailhead)",
+   "latitude": 37.852193,
+   "longitude": -119.576523,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Crane Flat and White Wolf",
+     "url": "https://www.nps.gov/yose/planyourvisit/whitewolf.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Ten Lakes",
+    "Grant Lakes"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-pothole-dome",
+   "name": "Pothole Dome",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "pothole-dome-rt",
+     "label": "Round trip",
+     "distanceMi": 1,
+     "kind": "round trip",
+     "gainFt": 200
+    }
+   ],
+   "summary": "A short walk along Tioga Road and a scramble up the dome for views across Tuolumne Meadows.",
+   "start": "Pothole Dome parking, Tioga Road",
+   "trailheadSource": "NPS POI 21473 (Pothole Dome Shuttle Stop); NPS maps no separate parking point",
+   "latitude": 37.876432,
+   "longitude": -119.393421,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "NPS lists it among walks taking about an hour or less.",
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Tuolumne Meadows",
+     "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "warnings": [
+    "Stay off domes and exposed summits when thunderstorms threaten."
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Pothole Dome"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-soda-springs",
+   "name": "Parsons Lodge & Soda Springs",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "soda-springs-rt",
+     "label": "Round trip",
+     "distanceMi": 1.4,
+     "kind": "round trip"
+    }
+   ],
+   "summary": "A level, unpaved stroll across Tuolumne Meadows to the cold, bubbling Soda Springs and historic Parsons Memorial Lodge.",
+   "start": "Lembert Dome parking or Tuolumne Meadows Visitor Center",
+   "trailheadSource": "NPS POI 21179 (Lembert Dome Trailhead)",
+   "latitude": 37.877417,
+   "longitude": -119.353701,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "NPS lists it among walks taking about an hour or less.",
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 6,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Tuolumne Meadows",
+     "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Soda Springs",
+    "Parsons"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-twin-bridges",
+   "name": "Twin Bridges (Lyell Fork)",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "twin-bridges-rt",
+     "label": "Round trip",
+     "distanceMi": 3,
+     "kind": "round trip"
+    }
+   ],
+   "summary": "The John Muir Trail to a scenic spot on the Lyell Fork of the Tuolumne River; continue up Lyell Canyon and turn back whenever you like.",
+   "start": "Dog Lake parking",
+   "trailheadSource": "NPS POI 21439 (Dog Lake Trailhead)",
+   "latitude": 37.878407,
+   "longitude": -119.338986,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Mostly flat with uneven ground.",
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Tuolumne Meadows",
+     "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Twin Bridges",
+    "Lyell"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-gaylor-lakes",
+   "name": "Gaylor Lakes",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "gaylor-lakes-rt",
+     "label": "Round trip to Middle Gaylor Lake",
+     "distanceMi": 2.6,
+     "kind": "round trip",
+     "gainFt": 500,
+     "time": "2–3 hours"
+    }
+   ],
+   "summary": "A short, steep climb from Tioga Pass to a ridge above Dana Meadows, then 200 feet down to Middle Gaylor Lake.",
+   "start": "Tioga Pass Entrance",
+   "trailheadSource": "NPS POI 21419 (Gaylor Lakes Trailhead)",
+   "latitude": 37.910225,
+   "longitude": -119.258284,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "The trailhead is near 10,000 feet; altitude makes the climb harder than the numbers suggest.",
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 6,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Tuolumne Meadows",
+     "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Gaylor Lake",
+    "Gaylor Lakes"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-dog-lake-lembert-dome",
+   "name": "Dog Lake & Lembert Dome",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "dog-lake-lembert-rt",
+     "label": "Out and back with the Lembert Dome side trip",
+     "distanceMi": 3.8,
+     "kind": "round trip",
+     "gainFt": 850,
+     "time": "3–4 hours"
+    },
+    {
+     "id": "dog-lake-lembert-loop",
+     "label": "Loop returning via Lembert Dome parking",
+     "distanceMi": 5,
+     "kind": "loop"
+    }
+   ],
+   "summary": "A steep climb to Dog Lake with a side trip to the top of Lembert Dome.",
+   "start": "Dog Lake parking area",
+   "trailheadSource": "NPS POI 21439 (Dog Lake Trailhead)",
+   "latitude": 37.878407,
+   "longitude": -119.338986,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "NPS publishes no gain or time for the 5-mile loop option.",
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 6,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Tuolumne Meadows",
+     "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "warnings": [
+    "Stay off domes and exposed summits when thunderstorms threaten."
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Dog Lake",
+    "Lembert Dome"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-elizabeth-lake",
+   "name": "Elizabeth Lake",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "elizabeth-lake-rt",
+     "label": "Round trip",
+     "distanceMi": 6.8,
+     "kind": "round trip",
+     "gainFt": 1000,
+     "time": "6–7 hours"
+    }
+   ],
+   "summary": "A steady two-mile climb to a glacier-carved lake below Unicorn Peak; a one-mile path circles the lake.",
+   "start": "Tuolumne Meadows Visitor Center",
+   "trailheadSource": "NPS POI 21607 (Tuolumne Meadows Visitor Center)",
+   "latitude": 37.871567,
+   "longitude": -119.374178,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Tuolumne Meadows",
+     "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "discrepancies": [
+    "The NPS day-hike page names the visitor center as the start; NPS GIS also maps an Elizabeth Lake Trailhead in Tuolumne Meadows Campground. The coordinate here is the visitor center."
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Elizabeth Lake"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-cathedral-lakes",
+   "name": "Cathedral Lakes",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "cathedral-lakes-rt",
+     "label": "Round trip to Upper Cathedral Lake",
+     "distanceMi": 7.6,
+     "kind": "round trip",
+     "gainFt": 1000,
+     "time": "6–7 hours"
+    }
+   ],
+   "summary": "The area's most popular trail, climbing steadily to Upper Cathedral Lake; a 0.7-mile spur near the top leads to Lower Cathedral Lake.",
+   "start": "Tuolumne Meadows Visitor Center",
+   "trailheadSource": "NPS POI 21607 (Tuolumne Meadows Visitor Center)",
+   "latitude": 37.871567,
+   "longitude": -119.374178,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 6,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Tuolumne Meadows",
+     "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "discrepancies": [
+    "The NPS day-hike page names the visitor center as the start; NPS GIS maps a Cathedral Lakes trailhead on Tioga Road west of it. The coordinate here is the visitor center."
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Cathedral Lake",
+    "Cathedral Lakes"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-mono-pass",
+   "name": "Mono Pass",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "mono-pass-rt",
+     "label": "Round trip",
+     "distanceMi": 8,
+     "kind": "round trip",
+     "gainFt": 1000,
+     "time": "5–7 hours"
+    }
+   ],
+   "summary": "A steady climb to Mono Pass with views of Mono Lake and the eastern Sierra.",
+   "start": "Tioga Road at Dana Meadows",
+   "trailheadSource": "NPS POI 21643 (Mono/Parker Pass Trailhead)",
+   "latitude": 37.89091,
+   "longitude": -119.262696,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Tuolumne Meadows",
+     "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Mono Pass"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-glen-aulin",
+   "name": "Glen Aulin",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "glen-aulin-rt",
+     "label": "Round trip to Glen Aulin",
+     "distanceMi": 11,
+     "kind": "round trip",
+     "gainFt": 800,
+     "time": "6–8 hours"
+    },
+    {
+     "id": "waterwheel-falls-rt",
+     "label": "Round trip to Waterwheel Falls",
+     "distanceMi": 19,
+     "kind": "round trip"
+    }
+   ],
+   "summary": "Downstream with the Tuolumne River as it drops 5.5 miles to Glen Aulin; Waterwheel Falls is 4 miles further.",
+   "start": "Lembert Dome parking area",
+   "trailheadSource": "NPS POI 21179 (Lembert Dome Trailhead)",
+   "latitude": 37.877417,
+   "longitude": -119.353701,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "The 800 feet of climbing comes on the way back.",
+    "NPS publishes no gain or time for the Waterwheel Falls extension.",
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Tuolumne Meadows",
+     "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Glen Aulin",
+    "Waterwheel Falls"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  },
+  {
+   "id": "trail-young-lakes",
+   "name": "Young Lakes",
+   "regionId": "tioga-tuolumne",
+   "difficulty": "Not rated by NPS",
+   "routes": [
+    {
+     "id": "young-lakes-rt",
+     "label": "Round trip",
+     "distanceMi": 13.6,
+     "kind": "round trip",
+     "gainFt": 1300,
+     "time": "8–10 hours"
+    }
+   ],
+   "summary": "A long but rewarding day to a chain of lakes, reached by the Glen Aulin or Dog Lake trails; return the same way or make a loop.",
+   "start": "Lembert Dome parking area",
+   "trailheadSource": "NPS POI 21179 (Lembert Dome Trailhead)",
+   "latitude": 37.877417,
+   "longitude": -119.353701,
+   "shuttleStops": [],
+   "gisNames": [],
+   "notes": [
+    "Reached by car only while Tioga Road is open, typically from May or June to November."
+   ],
+   "mapPriority": 5,
+   "sources": [
+    {
+     "label": "NPS · Day hikes in Tuolumne Meadows",
+     "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+     "updated": "2024-10-15",
+     "checked": "2026-10-30"
+    }
+   ],
+   "accessRoads": [
+    {
+     "key": "Tioga",
+     "name": "Tioga Road"
+    }
+   ],
+   "noticeTerms": [
+    "Young Lakes"
+   ],
+   "pets": "Pets are not allowed: NPS bars pets from park trails, wilderness and meadows even if carried, and names the Wawona Meadow Loop as the trail exception (NPS pets page, updated June 24, 2026).",
+   "extraSources": [
+    {
+     "label": "NPS · Pets",
+     "url": "https://www.nps.gov/yose/planyourvisit/pets.htm",
+     "updated": "2026-06-24",
+     "checked": "2026-10-30"
+    }
+   ]
+  }
+ ],
+ "regionNotes": [
+  {
+   "regionId": "glacier-point",
+   "source": {
+    "label": "NPS · Day hikes along the Glacier Point Road",
+    "url": "https://www.nps.gov/yose/planyourvisit/glacierhikes.htm",
+    "updated": "2026-09-22",
+    "checked": "2026-10-30"
+   },
+   "points": [
+    "Glacier Point Road is usually open from May to November, depending on conditions.",
+    "Expect snowy or wet trails in early spring.",
+    "Water is typically available at Glacier Point from late spring to early fall only; carry enough for the whole hike.",
+    "No shuttle runs between Yosemite Valley and Glacier Point. The summer Glacier Point Tour bus needs a reservation; do not count on it to return to your car."
+   ]
+  },
+  {
+   "regionId": "wawona-mariposa-grove",
+   "source": {
+    "label": "NPS · Mariposa Grove of Giant Sequoias",
+    "url": "https://www.nps.gov/yose/planyourvisit/mg.htm",
+    "updated": "2026-06-11",
+    "checked": "2026-10-30"
+   },
+   "points": [
+    "No drinking water on the Wawona trails; a fountain stands by the restrooms at the Wawona Store parking area.",
+    "In the Mariposa Grove, water is available only at the Welcome Plaza (all year) and the arrival area (summer).",
+    "A free shuttle runs from the Welcome Plaza to the grove from late April to November when conditions allow; NPS lists shorter 2026 hours for November and no service from December 1.",
+    "Without the shuttle, the grove is a 2-mile walk each way on the Washburn Trail or Mariposa Grove Road, with about 500 feet of climbing.",
+    "Pets are not allowed anywhere in the Mariposa Grove."
+   ]
+  },
+  {
+   "regionId": "hetch-hetchy",
+   "source": {
+    "label": "NPS · Day hikes in Hetch Hetchy",
+    "url": "https://www.nps.gov/yose/planyourvisit/hetchhetchy.htm",
+    "updated": "2023-08-22",
+    "checked": "2026-10-30"
+   },
+   "points": [
+    "At about 3,900 feet, Hetch Hetchy has one of the longest hiking seasons in the park; summer is hot and dry.",
+    "Carry plenty of water and sunscreen, and watch for rattlesnakes and poison oak.",
+    "Swimming and boating are prohibited in the reservoir; pets are not allowed on the dam or on hiking trails.",
+    "Overnight trips need a wilderness permit."
+   ]
+  },
+  {
+   "regionId": "crane-flat-big-oak-flat",
+   "source": {
+    "label": "NPS · Giant sequoias",
+    "url": "https://www.nps.gov/yose/planyourvisit/sequoias.htm",
+    "updated": "2025-04-07",
+    "checked": "2026-10-30"
+   },
+   "points": [
+    "The Tuolumne and Merced groves are each about 30 to 45 minutes from Yosemite Valley.",
+    "Neither grove trail has drinking water, and trailhead parking is limited.",
+    "Both groves stay open all year; skis or snowshoes may be needed in winter.",
+    "The sequoias are below the trailheads, so the hard climbing comes on the way back."
+   ]
+  },
+  {
+   "regionId": "tioga-tuolumne",
+   "source": {
+    "label": "NPS · Day hikes in Tuolumne Meadows",
+    "url": "https://www.nps.gov/yose/planyourvisit/tmhikes.htm",
+    "updated": "2024-10-15",
+    "checked": "2026-10-30"
+   },
+   "points": [
+    "Tioga Road and its trailheads are reachable by car only while the road is open, typically from May or June to November.",
+    "Trails can still be snowy or wet in spring.",
+    "Services are extremely limited; carry all your water and food. The nearest fuel is at Crane Flat or Lee Vining.",
+    "Afternoon thunderstorms are common in summer; stay off domes and summits when they build."
+   ]
+  }
+ ],
+ "parkRules": {
+  "source": {
+   "label": "NPS · Hiking",
+   "url": "https://www.nps.gov/yose/planyourvisit/hiking.htm",
+   "updated": "2024-11-08",
+   "checked": "2026-10-30"
+  },
+  "points": [
+   "Stay on trails; shortcuts cause erosion and are dangerous and illegal.",
+   "Carry and drink plenty of water, and treat any water from rivers, streams, lakes or springs.",
+   "Pets and bicycles are allowed only on paved bike paths, apart from the exceptions named on individual hikes.",
+   "Horses and mules have the right of way.",
+   "Trails are not maintained or regularly patrolled; travel carefully and at your own risk."
+  ]
+ }
+}

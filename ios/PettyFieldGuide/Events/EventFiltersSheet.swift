@@ -82,7 +82,7 @@ struct EventFiltersSheet: View {
             .navigationTitle("Event filters")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } } }
-            .sheet(isPresented: $showQR) { QRSheet(title: "Event filter", url: state.filter.encoded().flatMap { AppRouter.eventFilterURL(encoded: $0) }) }
+            .sheet(isPresented: $showQR) { QRSheet(title: "Event filter", url: state.filter.encoded().flatMap { AppRouter.eventFilterURL(encoded: $0) }).nightVision() }
         }
     }
 

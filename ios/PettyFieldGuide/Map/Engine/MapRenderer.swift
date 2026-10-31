@@ -14,8 +14,10 @@ struct MapFrameOptions {
     /// Resolved hike route drawn above the base trails whatever the zoom or trail filters.
     var highlightedRouteId: String?
     var dimBase = false
-    /// Secondary maps keep the in-canvas bar; the Valley map draws its own above the chrome.
+    /// Secondary maps keep the in-canvas bar; the Map tab draws its own above the chrome.
     var showsScaleBar = true
+    /// Historical burn outlines are a fire-desk layer, never part of the base terrain.
+    var showFireScars = false
     /// Screen edges covered by chrome; labels are never placed there.
     var obscuredInsets: UIEdgeInsets = .zero
 }
@@ -76,6 +78,14 @@ struct MapFrameContent {
     var selectedMarkerId: String?
     /// Projected point being inspected on the highlighted route; drawn above everything, never a tap target.
     var routeCursor: CGPoint?
+    var userAccuracy: MapAccuracyRing?
+}
+
+/// The accuracy radius iOS reported for the live position, in projected metres; dashed once the fix is stale.
+struct MapAccuracyRing: Equatable, Sendable {
+    let center: CGPoint
+    let radius: CGFloat
+    let stale: Bool
 }
 
 enum MapRenderer {
@@ -184,13 +194,29 @@ enum MapRenderer {
         return (base * grow * es, casing * es)
     }
 
+    /// Long named trails ("trail-major") appear from this regional zoom; the whole-park overview stays roads, water and terrain.
+    static let trailScale: CGFloat = 0.008
+
+    /// One rule for every NPS trail, Valley or not, so the lines never change character at a pack border.
     static func trailVisible(_ trail: LineFeature, scale: CGFloat) -> Bool {
         if trail.styleKey == "bike" { return scale >= 0.03 }
-        guard let name = trail.name, !name.isEmpty else { return scale >= 0.15 }
-        if scale >= 0.08 { return true }
-        guard scale >= 0.035 else { return false }
+        guard let name = trail.name, !name.isEmpty else { return scale >= (trail.length >= 400 ? 0.06 : 0.15) }
         let minor = ["Path", "Footpath", "Boardwalk", "Loop Road", "Access", "Camp 4"]
-        return !minor.contains { name.contains($0) }
+        if minor.contains(where: { name.contains($0) }) { return scale >= 0.08 }
+        return scale >= (trail.styleKey == "trail-major" ? trailScale : 0.035)
+    }
+
+    static func waterLineVisible(_ line: LineFeature, scale: CGFloat) -> Bool {
+        switch line.styleKey {
+        case "river": true
+        case "stream": scale >= 0.008
+        default: scale >= 0.03
+        }
+    }
+
+    /// Lakes smaller than about two points across are skipped rather than drawn as specks.
+    static func waterAreaVisible(_ area: AreaFeature, scale: CGFloat) -> Bool {
+        max(area.bounds.width, area.bounds.height) * scale >= 2
     }
 
     static func draw(scene: MapScene?, camera: MapCamera, options: MapFrameOptions, content: MapFrameContent, in ctx: CGContext) {
@@ -205,26 +231,36 @@ enum MapRenderer {
         let es = options.elementScale
         let scale = camera.scale
 
-        for tier in scene.relief?.tiers ?? [] where tier.rect.intersects(visible) {
-            drawImage(tier.image(dark: options.dark), in: tier.rect, alpha: 1, camera: camera, ctx: ctx)
+        for layer in scene.relief?.layers ?? [] where layer.footprint.intersects(visible) {
+            drawRelief(layer, dark: options.dark, camera: camera, visible: visible, ctx: ctx)
         }
 
         ctx.saveGState()
         ctx.setLineJoin(.round)
         ctx.setLineCap(.round)
 
-        for area in scene.waterAreas where area.bounds.intersects(visible) {
+        for area in scene.waterAreas where area.bounds.intersects(visible) && waterAreaVisible(area, scale: scale) {
             addPath(area.path(lod), transform: t, to: ctx)
             ctx.setFillColor(style.waterArea.cgColor)
-            ctx.fillPath(using: .evenOdd)
+            ctx.setStrokeColor(style.stream.withAlphaComponent(0.6).cgColor)
+            ctx.setLineWidth(0.6)
+            ctx.drawPath(using: .eoFillStroke)
         }
         let riverWidth = min(7, 1.6 + scale * 5) * es
         let streamWidth = min(3.5, 0.9 + scale * 2.5) * es
-        for line in scene.waterLines where line.bounds.intersects(visible) {
-            let major = line.styleKey == "river"
+        for line in scene.waterLines where line.bounds.intersects(visible) && waterLineVisible(line, scale: scale) {
             addPath(line.path(lod), transform: t, to: ctx)
-            ctx.setStrokeColor((major ? style.river : style.stream).cgColor)
-            ctx.setLineWidth(major ? riverWidth : streamWidth)
+            switch line.styleKey {
+            case "river":
+                ctx.setStrokeColor(style.river.cgColor)
+                ctx.setLineWidth(riverWidth)
+            case "stream":
+                ctx.setStrokeColor(style.stream.cgColor)
+                ctx.setLineWidth(scale < 0.03 ? streamWidth * 0.7 : streamWidth)
+            default:
+                ctx.setStrokeColor(style.stream.withAlphaComponent(0.75).cgColor)
+                ctx.setLineWidth(streamWidth * 0.6)
+            }
             ctx.strokePath()
         }
 
@@ -304,15 +340,15 @@ enum MapRenderer {
             }
         }
 
-        for scar in scene.fireScars where scar.bounds.intersects(visible) {
+        for scar in scene.fireScars where options.showFireScars && scar.bounds.intersects(visible) {
             addPath(scar.path(lod), transform: t, to: ctx)
             ctx.setFillColor(UIColor(red: 0.85, green: 0.35, blue: 0.2, alpha: options.dark ? 0.22 : 0.16).cgColor)
             ctx.fillPath(using: .evenOdd)
         }
         for b in scene.boundary where b.bounds.intersects(visible) {
             addPath(b.path(lod), transform: t, to: ctx)
-            ctx.setStrokeColor(UIColor(hex: "#1F4D3F").withAlphaComponent(0.9).cgColor)
-            ctx.setLineWidth(2)
+            ctx.setStrokeColor((options.dark ? UIColor(hex: "#7FB59E") : UIColor(hex: "#1F4D3F")).withAlphaComponent(0.85).cgColor)
+            ctx.setLineWidth(1.8)
             ctx.setLineDash(phase: 0, lengths: [10, 5])
             ctx.strokePath()
             ctx.setLineDash(phase: 0, lengths: [])
@@ -368,6 +404,7 @@ enum MapRenderer {
         if let id = options.highlightedRouteId, let route = scene.hikeRoutes[id], route.bounds.intersects(visible) {
             drawRoute(route, lod: lod, transform: t, elementScale: es, dark: options.dark, ctx: ctx)
         }
+        if let ring = content.userAccuracy { drawAccuracyRing(ring, camera: camera, ctx: ctx) }
         ctx.restoreGState()
 
         let layout = MarkerLayout.compute(content.markers, camera: camera, elementScale: es, selectedId: content.selectedMarkerId)
@@ -394,6 +431,28 @@ enum MapRenderer {
         ctx.restoreGState()
     }
 
+    static let userColor = UIColor(hex: "#3B7EA8")
+    static let staleUserColor = UIColor(hex: "#7D8389")
+
+    private static func drawAccuracyRing(_ ring: MapAccuracyRing, camera: MapCamera, ctx: CGContext) {
+        let r = ring.radius * camera.scale
+        guard r > 8 else { return }
+        let c = camera.screenPoint(for: ring.center)
+        let rect = CGRect(x: c.x - r, y: c.y - r, width: r * 2, height: r * 2)
+        guard rect.intersects(CGRect(origin: .zero, size: camera.viewSize)) else { return }
+        let color = ring.stale ? staleUserColor : userColor
+        ctx.saveGState()
+        if !ring.stale {
+            ctx.setFillColor(color.withAlphaComponent(0.14).cgColor)
+            ctx.fillEllipse(in: rect)
+        }
+        ctx.setStrokeColor(color.withAlphaComponent(0.75).cgColor)
+        ctx.setLineWidth(1.5)
+        ctx.setLineDash(phase: 0, lengths: ring.stale ? [6, 5] : [])
+        ctx.strokeEllipse(in: rect)
+        ctx.restoreGState()
+    }
+
     static let routeCasing = UIColor(red: 1.0, green: 0.96, blue: 0.88, alpha: 1)
 
     /// Cream-cased orange stroke for the selected hike, simplified like the base trails but never culled.
@@ -417,6 +476,28 @@ enum MapRenderer {
     private static func addPath(_ path: CGPath, transform: CGAffineTransform, to ctx: CGContext) {
         var tf = transform
         if let transformed = path.copy(using: &tf) { ctx.addPath(transformed) }
+    }
+
+    /// The visible tiles of the level that suits the zoom. Edges are not antialiased, so neighbouring tiles
+    /// meet without a hairline gap.
+    private static func drawRelief(_ layer: ReliefLayer, dark: Bool, camera: MapCamera, visible: CGRect, ctx: CGContext) {
+        let level = layer.level(forScale: camera.scale)
+        let (cols, rows) = layer.tileCount(level: level)
+        let first = layer.tileRect(level: level, col: 0, row: 0)
+        let c0 = max(0, Int(((visible.minX - first.minX) / first.width).rounded(.down)))
+        let c1 = min(cols - 1, Int(((visible.maxX - first.minX) / first.width).rounded(.down)))
+        let r0 = max(0, Int(((first.maxY - visible.maxY) / first.height).rounded(.down)))
+        let r1 = min(rows - 1, Int(((first.maxY - visible.minY) / first.height).rounded(.down)))
+        guard c0 <= c1, r0 <= r1 else { return }
+        ctx.saveGState()
+        ctx.setShouldAntialias(false)
+        for row in r0...r1 {
+            for col in c0...c1 {
+                guard let image = layer.tile(level: level, col: col, row: row, dark: dark) else { continue }
+                drawImage(image, in: layer.tileRect(level: level, col: col, row: row), alpha: 1, camera: camera, ctx: ctx)
+            }
+        }
+        ctx.restoreGState()
     }
 
     // Row 0 of the raster is the north edge of `rect` (projected metres).
@@ -533,26 +614,39 @@ enum MapRenderer {
             var byName: [String: [LineFeature]] = [:]
             for f in features { if let name = f.label ?? f.name, !name.isEmpty { byName[name, default: []].append(f) } }
             for name in byName.keys.sorted() {
-                let ranked = byName[name]!.sorted { GeometryOps.length($0.points) != GeometryOps.length($1.points) ? GeometryOps.length($0.points) > GeometryOps.length($1.points) : $0.id < $1.id }
+                let ranked = byName[name]!.sorted { $0.length != $1.length ? $0.length > $1.length : $0.id < $1.id }
+                guard let longest = ranked.first, longest.length * scale >= minLength else { continue }
                 let width = measure(name, font: font, maxWidth: nil).width
                 for f in ranked.prefix(perName) {
-                    guard GeometryOps.length(f.points) * scale >= max(minLength, width + 24), let anchor = lineLabelAnchor(f.points, camera: camera) else { continue }
+                    guard f.length * scale >= max(minLength, width + 24), let anchor = lineLabelAnchor(f.points, camera: camera) else { continue }
                     add(id: "\(prefix)-\(f.id)", text: name, kind: kind, point: anchor.point, priority: priority(f), font: font, color: color, halo: style.halo, angle: anchor.angle)
                 }
             }
         }
 
-        if options.showRoadNames && scale >= 0.1 {
+        // Park highways are named from regional zoom; local roads once the Valley streets are readable.
+        if options.showRoadNames && scale >= 0.012 {
             let roadFont = font(for: .road, size: 10.5 * es)
-            lineLabels(visibleRoads.filter { $0.styleKey == "road-secondary" || $0.styleKey == "road-local" || scale >= 0.5 },
-                       minLength: 90, kind: .road, font: roadFont, color: style.roadText, prefix: "road", perName: scale >= 0.4 ? 3 : 2) {
+            lineLabels(visibleRoads.filter { $0.styleKey == "road-secondary" || (scale >= 0.1 && $0.styleKey == "road-local") || scale >= 0.5 },
+                       minLength: 90, kind: .road, font: roadFont, color: style.roadText, prefix: "road", perName: scale >= 0.4 ? 3 : scale >= 0.1 ? 2 : 1) {
                 $0.styleKey == "road-secondary" ? 18 : $0.styleKey == "road-local" ? 14 : 10
             }
         }
-        if scale >= 0.045 {
+        if scale >= 0.012 {
             let waterFont = font(for: .water, size: 12 * es)
-            let waterLines = scene.waterLines.filter { $0.bounds.intersects(visible) && ($0.styleKey == "river" || scale >= 0.12) }
+            let waterLines = scene.waterLines.filter { $0.bounds.intersects(visible) && $0.name != nil && ($0.styleKey == "river" || scale >= 0.06) }
             lineLabels(waterLines, minLength: 120, kind: .water, font: waterFont, color: style.waterText, prefix: "water", perName: 2) { $0.styleKey == "river" ? 34 : 24 }
+            let lakeFont = font(for: .water, size: 11 * es)
+            for lake in scene.waterAreas where lake.name != nil && lake.bounds.intersects(visible) && max(lake.bounds.width, lake.bounds.height) * scale >= 14 {
+                add(id: "lake-\(lake.id)", text: lake.name!, kind: .water, point: camera.screenPoint(for: lake.centroid), priority: 22 + min(10, Int(lake.areaSquareMeters / 200_000)),
+                    font: lakeFont, color: style.waterText, halo: style.halo, offsets: [.zero, CGPoint(x: 0, y: 12 * es)])
+            }
+        }
+        let nameFont = font(for: .landform, size: 11 * es), regionFont = font(for: .custom, size: 12 * es)
+        for label in scene.labels where scale >= label.minScale && scale < label.maxScale && visible.contains(label.point) {
+            add(id: "name-\(label.id)", text: label.text, kind: label.kind, point: camera.screenPoint(for: label.point), priority: label.priority,
+                font: label.kind == .custom ? regionFont : nameFont, color: label.kind == .custom ? style.text : style.landformText, halo: style.halo,
+                maxWidth: label.kind == .custom ? 150 * es : nil, offsets: [.zero, CGPoint(x: 0, y: -12 * es), CGPoint(x: 0, y: 12 * es)])
         }
 
         if options.showBuildings && options.buildingLabelMode != .off && scale >= 0.45 {
@@ -683,8 +777,6 @@ enum MapRenderer {
             drawGlyph(rep, center: c, radius: r, ctx: ctx)
         case .user:
             ctx.setShadow(offset: .zero, blur: 0, color: nil)
-            ctx.setFillColor(color.withAlphaComponent(0.18).cgColor)
-            ctx.fillEllipse(in: CGRect(x: c.x - r * 2.4, y: c.y - r * 2.4, width: r * 4.8, height: r * 4.8))
             ctx.setFillColor(color.cgColor)
             ctx.fillEllipse(in: CGRect(x: c.x - r, y: c.y - r, width: r * 2, height: r * 2))
             ctx.setStrokeColor(UIColor.white.cgColor)

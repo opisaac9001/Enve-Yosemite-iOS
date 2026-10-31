@@ -41,7 +41,7 @@ struct PlaceDetailView: View {
                     }
                 }
             }
-            .sheet(isPresented: $showQR) { QRSheet(title: place.name, url: AppRouter.url(for: .place(place.id))) }
+            .sheet(isPresented: $showQR) { QRSheet(title: place.name, url: AppRouter.url(for: .place(place.id))).nightVision() }
             .onAppear { noteDraft = saved.state.places[place.id]?.note ?? "" }
         } else {
             EmptyStateView(symbol: "mappin.slash", title: "Place not found", message: "This link points to a place that is not in the bundled directory.")

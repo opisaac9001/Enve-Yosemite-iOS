@@ -7,6 +7,8 @@ enum Palette {
     static let river = Color(red: 0x3B / 255, green: 0x7E / 255, blue: 0xA8 / 255)
     static let ember = Color(red: 0xC9 / 255, green: 0x3B / 255, blue: 0x2E / 255)
     static let meadow = Color(red: 0x6E / 255, green: 0x9C / 255, blue: 0x4A / 255)
+    /// Multiplier for night vision: white becomes a dim red, black stays black.
+    static let nightVisionTint = Color(red: 0.86, green: 0.07, blue: 0.03)
 
     /// Backgrounds: true black in dark mode for OLED, warm paper in light mode.
     static func canvas(_ scheme: ColorScheme) -> Color {
