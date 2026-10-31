@@ -54,6 +54,8 @@ TOOLCHAINS=com.apple.dt.toolchain.XcodeDefault xcodebuild \
   -derivedDataPath build/DerivedData CODE_SIGNING_ALLOWED=NO build
 ```
 
+Xcode Cloud builds use `ios/ci_scripts/ci_post_clone.sh`, which installs XcodeGen and generates the project after cloning. Point the workflow at `ios/EnveYosemite.xcodeproj` and the **EnveYosemite** scheme.
+
 For a physical device, select your development team in Xcode and use a provisioning profile that supports the app's push entitlement. Push also requires separately configured server credentials. Signing credentials and profiles are not included.
 
 The internal target, module and source folder remain `PettyFieldGuide`, and the bundle identifier remains `dev.petty.fieldguide`, to preserve existing installations and saved data. Public links use `enveyosemite://`; legacy `pettyfieldguide://` links still open.

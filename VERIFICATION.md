@@ -14,6 +14,7 @@ Last verified October 30, 2026.
 | Map pack manifest | All 30 checksums match the bundled files |
 | Server checks (`npm run check`), October 29, 2026 | 11 passed; not rerun after later iOS-only changes |
 | Physical iPhone 16 Pro, iOS 27.0 | Signed development build installed and launched |
+| Xcode Cloud post-clone script on a fresh clone, then full XCTest suite, October 31, 2026 | Project generated; 156 passed, 0 failed. Not yet run on Xcode Cloud |
 
 Builds and tests emit one existing tool warning: AppIntents metadata extraction is skipped because the app does not depend on AppIntents. No other warnings are accepted.
 
